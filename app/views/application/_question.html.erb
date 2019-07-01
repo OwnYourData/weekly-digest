@@ -1,0 +1,16 @@
+<li class="info">
+	<div class="date"><%= question.post_date.to_s %></div>
+	<div class="user">[<a href="/user/<%= question.user_id.to_s + view_mode %>"><%= User.find(question.user_id).name %></a>]</div>
+	<div class="title">
+		<a href="<%= question.url %>">
+			<%= question.title %>
+		</a> 
+	</div>
+	(show <a href="<%= question.media_url %>">answers</a>)
+	<div class="description">
+		<%= question.description %>
+	</div>
+	<div class="tags">
+		<%= render partial: "tag", collection: question.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+	</div>
+</li>

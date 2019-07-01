@@ -1,0 +1,4 @@
+<h3>List of all tags</h3>
+<ul>
+	<%= render partial: "mytag", collection: @tag.sort_by { |item| item["tag"].downcase } %>
+</ul>

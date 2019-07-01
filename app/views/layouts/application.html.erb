@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @heading.to_s %></title>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','<%= ENV["GOOGLE_TOKEN"] %>');</script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= ENV["GOOGLE_TOKEN"] %>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-2 col-sm-1">
+          <a href="https://www.ownyourdata.eu/<%= I18n.locale.to_s %>"><%= image_tag 'oyd.png', style: "height: 48px; margin: 18px 0;" %></a>
+        </div>
+        <div class="col-xs-10 col-sm-11">
+          <h1 class="visible-xs visible-sm hidden-md hiden-lg" style="text-align: left; margin-bottom: 30px;"><a href="/<%= view_mode %>" class="title-link"><%= @heading_short.to_s %></a></h1>
+          <h1 class="hidden-xs hidden-sm visible-md visible-lg" style="text-align: left; margin-bottom: 30px;"><a href="/<%= view_mode %>" class="title-link"><%= @heading.to_s %></a></h1>
+        </div>
+      </div>
+      <%= yield %>
+      <% if controller_name != "static_pages" %>
+        <div class="row" style="margin-top: 40px;">
+          <div class="col-md-12">
+            <p><a href="/<%= view_mode %>">back to start page</a></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12" style="margin: -10px 0 30px;">
+          &copy; <a href="https://www.ownyourdata.eu/<%= I18n.locale %>">OwnYourData.eu</a>
+          <a href="https://www.ownyourdata.eu/en/imprint/" style="margin: 0 10px;">Imprint</a>
+          <a href="https://www.ownyourdata.eu/en/privacy-policy/">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

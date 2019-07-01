@@ -1,0 +1,16 @@
+<li class="info">
+	<div class="date"><%= post.post_date.to_s %></div>
+	<div class="user">[<a href="/user/<%= post.user_id.to_s + view_mode %>"><%= User.find(post.user_id).name %></a>] </div>
+	<div class="title">
+		<a href="<%= post.url %>">
+			<%= post.title %>
+		</a>
+		<a class="<%= post.media_type %>" href="<%= post.media_url %>"> </a>
+	</div>
+	<div class="description">
+		<%= post.description %>
+	</div>
+	<div class="tags">
+		<%= render partial: "tag", collection: post.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+	</div>
+</li>

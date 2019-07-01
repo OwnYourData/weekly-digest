@@ -1,0 +1,75 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingInfo">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseInfo" aria-expanded="false" aria-controls="collapseInfo">
+                Noteworthy Information (<%= @posts.count.to_s %> posts)
+            </a>
+          </h4>
+        </div>
+        <div id="collapseInfo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingInfo">
+            <div class="panel-body">
+                <div class="row">
+                    <ul class="list-unstyled">
+                        <%= render partial: "post", collection: @posts.sort_by { |item| item["post_date"] }.reverse %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingQuestion">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseQuestion" aria-expanded="false" aria-controls="collapseQuestion">
+                Questions Asked (<%= @questions.count.to_s %> posts)
+            </a>
+          </h4>
+        </div>
+        <div id="collapseQuestion" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingQuestion">
+            <div class="panel-body">
+                <div class="row">
+                    <ul class="list-unstyled">
+                        <%= render partial: "question", collection: @questions.sort_by { |item| item["date"] }.reverse %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTools">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTools" aria-expanded="false" aria-controls="collapseTools">
+                Apps & Services (<%= @apps.count.to_s %> entries)
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTools" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTools">
+            <div class="panel-body">
+                <div class="row">
+                    <ul class="list-unstyled">
+                        <%= render partial: "app", collection: @apps.sort_by { |item| item["title"] } %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingStatistics">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseStatistics" aria-expanded="false" aria-controls="collapseStatistics">
+                Statistics
+            </a>
+          </h4>
+        </div>
+        <div id="collapseStatistics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingStatistics">
+            <div class="panel-body">
+                <div class="row">
+                    <ul class="list-unstyled">
+                        #TODO: create list with statistics
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
