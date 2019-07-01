@@ -1,0 +1,13 @@
+<li class="info">
+	<div class="title_app">
+		<a href="/app/<%= app.id %>">
+			<%= app.title %>
+		</a>
+	</div>
+	<div class="description">
+		<%= app.description %>
+	</div>
+	<div class="tags">
+		<%= render partial: "tag", collection: app.app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+	</div>
+</li>

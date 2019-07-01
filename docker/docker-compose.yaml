@@ -1,0 +1,14 @@
+web:
+  image: oydeu/weekly-digest
+  environment:
+    RAILS_ENV: production
+    RAILS_LOG_TO_STDOUT: "TRUE"
+  links:
+    - wd_db
+  ports:
+    - "3100:3000"
+
+wd_db:
+  image: postgres:postgres:9.6.12
+  volumes: 
+    - wd-postgres:/var/lib/postgresql/data

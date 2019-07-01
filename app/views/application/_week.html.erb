@@ -1,0 +1,5 @@
+<li>
+	<a href="/weekly/<%= week["release"].to_s + view_mode %>">
+		<%= week["release"].strftime("%B #{week["release"].day.ordinalize}, %Y") %>
+	</a>
+</li>

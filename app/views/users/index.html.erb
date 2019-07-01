@@ -1,0 +1,4 @@
+<h3>List of all users</h3>
+<ul>
+	<%= render partial: "user", collection: @user.sort_by { |item| item["name"].downcase } %>
+</ul>

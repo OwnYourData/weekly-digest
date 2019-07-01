@@ -1,0 +1,109 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+    font-family: "Open Sans",Arial,sans-serif;
+    margin: 0;
+}
+
+.info {
+  margin-top: 15px;
+  margin-left: 40px;
+}
+
+.date {
+  display: inline;
+  margin-top: 20px;
+  margin-left: -40px;
+  font-weight: 600;
+  font-size: large;
+}
+
+.user {
+  display: inline;
+  font-style: italic;
+  font-size: large;
+}
+
+.user_app {
+  display: inline;
+  font-style: italic;
+  font-size: large;
+  margin-left: -40px;
+}
+
+.title {
+  display: inline;
+  font-weight: 500;
+  font-size: large;
+  line-height: 1.3em;
+}
+
+.title_app {
+  display: inline;
+  font-weight: 500;
+  font-size: large;
+  line-height: 1.3em;
+  margin-left: -40px;
+}
+
+.description {
+  margin: 1px 0 5px -40px;
+}
+
+.tags {
+  margin-left: -40px;
+}
+
+.tag {
+  display: inline;
+  padding: 2px 8px 3px;
+  color: gray;
+  border-radius: 10px;
+  background: lightgrey;
+  font-size: small;
+  margin-right: 4px;
+}
+a.tag:hover, a.tag:visited, a.tag:link, a.tag:active{
+  color: gray;
+  text-decoration: none;
+}
+
+a.mydata {
+    background: transparent url(mydata.png) center right no-repeat;
+    background-size: cover;
+    padding-right: 25px;
+    margin-left: 5px;
+}
+
+.panel-body {
+  padding: 0 30px;
+}
+
+.statistic {
+  padding-top: 7px;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.form-horizontal {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.title-link:hover, .title-link:visited, .title-link:link, .title-link:active {
+    text-decoration: none;
+    color: black;
+}
+
+.digest-navigtation {
+  margin-bottom: 20px;
+}
+.previous-digest {
+  display: inline;
+}
+.next-digest {
+  float: right;
+}

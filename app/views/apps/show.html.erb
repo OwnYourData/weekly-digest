@@ -1,0 +1,5 @@
+<p><strong>URL:</strong> <a href="<%= @app.url.to_s %>" target="_blank"><%= @app.url.to_s %></a></p>
+<p><strong>Description:</strong> <%= @app.description.to_s %></p>
+<div>
+	<%= render partial: "tag", collection: @app.app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+</div>
