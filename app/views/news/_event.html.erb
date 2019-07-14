@@ -1,0 +1,14 @@
+<li style="padding-top: 10px;">
+	<div class="date_plain">
+		<%= (event.start.date || event.start.date_time).to_date.strftime("%F") %>
+
+		<% if !event.start.date_time.nil? %>
+			<%=  event.start.date_time.to_time.strftime("%H:%M") %>
+		<% else %>
+			all day
+		<% end %>
+	</div>
+	<div class="event">
+		<%= event.summary.to_s %>
+	</div>
+</li>

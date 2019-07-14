@@ -1,5 +1,12 @@
 <li class="info">
-	<div class="date"><%= post.post_date.to_s %></div>
+	<div class="date">
+		<% if controller_name == "news" %>
+			<%= post.post_date.to_s %>
+		<% else %>
+			<a href="/weekly/<%= Weekly.find(post.weekly_id).release.to_s + view_mode %>" style="font-weight: 300;">
+				<%= post.post_date.to_s %></a>
+		<% end %>
+	</div>
 	<div class="user">[<a href="/user/<%= post.user_id.to_s + view_mode %>"><%= User.find(post.user_id).name %></a>] </div>
 	<div class="title">
 		<a href="<%= post.url %>">
@@ -8,7 +15,7 @@
 		<a class="<%= post.media_type %>" href="<%= post.media_url %>"> </a>
 	</div>
 	<div class="description">
-		<%= post.description %>
+		<%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(post.description.to_s).html_safe %>
 	</div>
 	<div class="tags">
 		<%= render partial: "tag", collection: post.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>

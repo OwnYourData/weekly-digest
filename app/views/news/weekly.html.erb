@@ -60,7 +60,7 @@
             <div class="panel-body">
                 <div class="row">
                     <ul class="list-unstyled">
-                        <%= render partial: "question", collection: @questions.sort_by { |item| item["date"] } %>
+                        <%= render partial: "question", collection: @questions.sort_by { |item| item["post_date"] } %>
                     </ul>
                 </div>
             </div>
@@ -96,9 +96,9 @@
             <div class="panel-body">
                 <div class="row">
                     <ul class="list-unstyled">
-                        #TODO: integration Google MyData Global Calendar
-                        <%= render partial: "event", collection: @events.sort_by { |item| item["date"] } %>
+                        <%= render partial: "event", collection: @events %>
                     </ul>
+                    <p>more details in the <a href="https://calendar.google.com/calendar/r?cid=vndcn3m1dmhve9130flvub9dhg@group.calendar.google.com">MyData Global Google Calendar</a></p>
                 </div>
             </div>
         </div>
@@ -120,7 +120,7 @@
                     </div>
                     <div class="form-group">
                         <label class="col-xs-3 control-label statistic">Slack Channels:</label>
-                        <div class="col-xs-2 statistic"><%= @channels %> (<%= @monitored_channels%> monitored)</div>
+                        <div class="col-xs-9 statistic"><%= @channels %> (<%= @monitored_channels %> monitored<% if @monitored_channel_names.to_s != ""%>: <%= @monitored_channel_names %><% end %>)</div>
                     </div>
                     <div class="form-group">
                         <label class="col-xs-3 control-label statistic">Postings:</label>

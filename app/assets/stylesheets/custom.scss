@@ -19,6 +19,14 @@ body {
   font-size: large;
 }
 
+.date_plain {
+  display: inline;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: large;
+}
+
+
 .user {
   display: inline;
   font-style: italic;
@@ -30,6 +38,13 @@ body {
   font-style: italic;
   font-size: large;
   margin-left: -40px;
+}
+
+.event {
+  display: inline;
+  font-style: italic;
+  font-size: large;
+  line-height: 1.3em;
 }
 
 .title {
@@ -53,6 +68,7 @@ body {
 
 .tags {
   margin-left: -40px;
+  line-height: 2em;
 }
 
 .tag {

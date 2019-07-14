@@ -1,13 +1,13 @@
 <li class="info">
 	<div class="user_app">[<a href="/user/<%= app.user_id.to_s + view_mode %>"><%= User.find(app.user_id).name %></a>] </div>
 	<div class="title">
-		<a href="/app/<%= app.app_id %>">
+		<a href="/app/<%= app.app_id.to_s + view_mode %>">
 			<%= App.find(app.app_id).title %>
 		</a>
 		<a class="<%= app.media_type %>" href="<%= app.media_url %>"> </a>
 	</div>
 	<div class="description">
-		<%= app.description %>
+		<%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(app.description.to_s).html_safe %>
 	</div>
 	<div class="tags">
 		<%= render partial: "tag", collection: App.find(app.app_id).app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>

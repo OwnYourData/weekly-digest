@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'static_pages#home'
+  get 'favicon', to: "static_pages#favicon"
+
   match '/news',       to: 'news#index',  via: 'get'
   match '/weekly/:id', to: 'news#weekly', via: 'get'
   match '/users',      to: 'users#index', via: 'get'

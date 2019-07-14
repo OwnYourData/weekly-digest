@@ -5,7 +5,7 @@
 		</a>
 	</div>
 	<div class="description">
-		<%= App.find(app.app_id).description %>
+		<%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(App.find(app.app_id).description.to_s).html_safe %>
 	</div>
 	<div class="tags">
 		<%= render partial: "tag", collection: App.find(app.app_id).app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>

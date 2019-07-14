@@ -13,4 +13,5 @@
 
 class App < ApplicationRecord
 	has_many :app_tags, dependent: :destroy
+	has_many :weekly_apps, dependent: :destroy
 end
