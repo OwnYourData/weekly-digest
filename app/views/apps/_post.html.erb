@@ -1,0 +1,9 @@
+<li style="margin-top: 10px;">
+	<div style="font-size: larger;">
+		<a href="/weekly/<%= Weekly.find(post.weekly_id).release.to_s + view_mode %>">
+			<%= Weekly.find(post.weekly_id).release.to_s %></a> 
+		[<a href="/user/<%= post.user_id.to_s + view_mode %>"><%= User.find(post.user_id.to_s).name %></a>] 
+		<a class="<%= post.media_type %>" href="<%= post.media_url %>"> </a>
+	</div>
+	<%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(post.description.to_s).html_safe %>
+</li>

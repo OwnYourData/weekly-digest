@@ -6,7 +6,7 @@ ENV RAILS_ROOT $WORKDIR
 
 COPY Gemfile $WORKDIR
 
-RUN bundle install && \
+RUN bundle install --without development test && \
 	gem install bundler
 
 COPY . .

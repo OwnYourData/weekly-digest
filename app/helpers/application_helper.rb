@@ -1,4 +1,8 @@
 module ApplicationHelper
+    require 'google/apis/calendar_v3'
+    require 'googleauth'
+    require 'googleauth/stores/file_token_store'
+
 	def view_mode
 		if params[:mode].to_s == ""
 			""
@@ -6,4 +10,26 @@ module ApplicationHelper
 			"?mode=" + params[:mode].to_s
 		end
 	end
+
+    def authorize
+        client_id = Google::Auth::ClientId.new(
+            ENV['CALENDAR_KEY'].to_s, 
+            ENV['CALENDAR_SECRET'].to_s)
+        token_store = Google::Auth::Stores::FileTokenStore.new(file: 'token.yaml')
+        authorizer = Google::Auth::UserAuthorizer.new(
+            client_id, 
+            Google::Apis::CalendarV3::AUTH_CALENDAR_READONLY, 
+            token_store)
+        user_id = 'default'
+        credentials = authorizer.get_credentials(user_id) rescue nil
+        if credentials.nil?
+            code = ENV['CALENDAR_CODE'].to_s
+            credentials = authorizer.get_and_store_credentials_from_code(
+                user_id: user_id, 
+                code: code, 
+                base_url: 'urn:ietf:wg:oauth:2.0:oob') rescue nil
+        end
+        credentials
+    end
+
 end

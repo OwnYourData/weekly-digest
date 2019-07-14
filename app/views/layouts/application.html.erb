@@ -8,6 +8,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% if !@og.nil? %>
+      <meta property="og:title" content="<%= @heading.to_s %>" />
+      <meta property="og:url" content="https://weekly-digest.ownyourdata.eu/weekly/<%= @og_date %>" />
+      <meta property="og:type"  content="blog" />
+      <meta property="og:image" content="<%= image_url 'MyDataLogo.png' %>" />
+      <meta property="og:description" content="<%= @intro_text_plain %>" />
+    <% end %>
   </head>
 
   <body>

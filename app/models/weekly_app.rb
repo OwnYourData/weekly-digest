@@ -15,4 +15,5 @@
 #
 
 class WeeklyApp < ApplicationRecord
+	belongs_to :app
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_29_141909) do
+ActiveRecord::Schema.define(version: 2019_07_06_230200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2019_06_29_141909) do
     t.integer "users"
     t.integer "channels"
     t.integer "postings"
+    t.text "monitored_channel_names"
   end
 
   create_table "weekly_apps", force: :cascade do |t|
