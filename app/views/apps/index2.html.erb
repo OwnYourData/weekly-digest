@@ -1,0 +1,14 @@
+<div class="row">
+	<div class="col-sm-4">
+		<h3>Apps [A-Z]</h3>
+		<ul>
+			<%= render partial: "app", collection: @app.sort_by { |item| item["title"].downcase } %>
+		</ul>
+	</div>
+	<div class="col-sm-4">
+		&nbsp;
+	</div>
+	<div class="col-sm-4">
+		&nbsp;
+	</div>
+</div>

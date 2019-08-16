@@ -1,0 +1,24 @@
+<div class="quest-elements">
+	<div class="post-title">
+		<a href="<%= question2.url %>" target="_blank"><%= question2.title %></a>
+		<a class="<%= question2.media_type %>" href="<%= question2.media_url %>" target="_blank" title="show on MyData Slack"> </a>
+	</div>
+	<div class="post-sub">
+		<div class="post-user"><a href="/user/<%= question2.user_id.to_s + view_mode %>" style="color: inherit;"><%= User.find(question2.user_id).name %></a></div>
+		<div class="post-date">
+			<% if controller_name == "news" %>
+				<%= question2.post_date.to_s %>
+			<% else %>
+				<a href="/weekly/<%= Weekly.find(question2.weekly_id).release.to_s + view_mode %>" style="color: inherit;">
+					<%= question2.post_date.to_s %></a>
+			<% end %>
+		</div>
+
+	</div>
+	<div class="post-text">
+		<%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(question2.description.to_s).html_safe %>
+	</div>
+	<div class="post-tags">
+		<%= render partial: "tag2", collection: question2.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+	</div>
+</div>

@@ -5,9 +5,17 @@ module ApplicationHelper
 
 	def view_mode
 		if params[:mode].to_s == ""
-			""
+            if params[:view].to_s == ""
+                ""
+            else
+                "?view=" + params[:view].to_s
+            end
 		else
-			"?mode=" + params[:mode].to_s
+            if params[:view].to_s == ""
+                "?mode=" + params[:mode].to_s
+            else
+                "?mode=" + params[:mode].to_s + "&view=" + params[:view].to_s
+            end
 		end
 	end
 

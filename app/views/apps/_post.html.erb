@@ -1,7 +1,11 @@
 <li style="margin-top: 10px;">
 	<div style="font-size: larger;">
 		<a href="/weekly/<%= Weekly.find(post.weekly_id).release.to_s + view_mode %>">
-			<%= Weekly.find(post.weekly_id).release.to_s %></a> 
+			<%= if post.post_date.to_s == ""
+					Weekly.find(post.weekly_id).release.to_s
+				else
+					post.post_date.to_s
+				end %></a> 
 		[<a href="/user/<%= post.user_id.to_s + view_mode %>"><%= User.find(post.user_id.to_s).name %></a>] 
 		<a class="<%= post.media_type %>" href="<%= post.media_url %>"> </a>
 	</div>

@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-sm-9">
+        <div class="weekly-intro">
+            <p><strong>Website:</strong> <a href="<%= @app.url.to_s %>" target="_blank"><%= @app.url.to_s %></a></p>
+            <p><%= @app.description.to_s %></p>
+            <div>
+            	<%= render partial: "tag2", collection: @app.app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+            </div>
+        </div>
+        <hr style="margin: 20px 0 13px;">
+        <div style="margin-top:17px;">
+            <div class="section">
+                Mentioned on Slack
+            </div>
+            <div class="section-sub hidden-xs"><%= @posts.count.to_s %> posts</div>
+        </div>
+        <%= render partial: "post2", collection: @posts.sort_by { |item| item["post_date"] }.reverse %>
+    </div>
+     <div class="col-sm-3" style="margin-top: 20px;">
+        <nav class="bs-docs-sidebar hidden-xs" id="myScrollspy">
+          <ul class="nav bs-docs-sidenav" data-spy="affix" data-offset-top="110">
+            <li><div class="section">Menu</div></li>
+            <li><a href="/apps<%= view_mode %>"><i class="fa fa-wrench" aria-hidden="true"></i> All Apps & Services</a></li>                        
+            <li><a href="/<%= view_mode %>"><i class="fa fa-home" aria-hidden="true"></i> Start Page</a></li>            
+          </ul>
+        </nav>
+    </div>
+</div>   
+

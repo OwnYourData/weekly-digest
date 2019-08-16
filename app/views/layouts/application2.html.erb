@@ -19,16 +19,28 @@
 
   <body data-spy="scroll" data-target="#myScrollspy" data-offset="15">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= ENV["GOOGLE_TOKEN"] %>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-2 col-sm-1">
-          <a href="https://www.ownyourdata.eu/<%= I18n.locale.to_s %>"><%= image_tag 'oyd.png', style: "height: 48px; margin: 18px 0;" %></a>
-        </div>
-        <div class="col-xs-10 col-sm-11">
-          <h1 class="visible-xs visible-sm hidden-md hiden-lg" style="text-align: left; margin-bottom: 30px;"><a href="/<%= view_mode %>" class="title-link"><%= @heading_short.to_s %></a></h1>
-          <h1 class="hidden-xs hidden-sm visible-md visible-lg" style="text-align: left; margin-bottom: 30px;"><a href="/<%= view_mode %>" class="title-link"><%= @heading.to_s %></a></h1>
+    <div style="background-color: #F2F3F9;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12" style="min-height: 60px; margin-top: 20px;">
+            <div style="display: table;">
+              <a href="/<%= view_mode %>" style="display: table-cell;"><%= image_tag 'oyd2.png', style: "height: 60px; margin: -20px -5px -10px -10px; vertical-align: text-bottom;" %></a>
+              <div style="display: table-cell;">
+                <h1 class="visible-xs visible-sm hidden-md hiden-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large; padding-right: 110px;"><a href="/<%= view_mode %>" class="title-link"><%= @heading_short.to_s %></a></h1>
+                <h1 class="hidden-xs hidden-sm visible-md visible-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large;"><a href="/<%= view_mode %>" class="title-link"><%= @heading.to_s %></a></h1>
+              </div>
+            </div>
+            <a href="https://www.ownyourdata.eu/" style="color: #42B58C; text-decoration: none; float: right; white-space: nowrap; margin-top: -28px;">
+              <span style="text-decoration: underline;">
+                ownyourdata.eu</span> 
+              <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i>
+            </a>
+          </div>
         </div>
       </div>
+    </div>
+    <hr style="margin-top: 0;">
+    <div class="container">
       <%= yield %>
       <% if controller_name != "static_pages" %>
         <div class="row" style="margin-top: 40px;">

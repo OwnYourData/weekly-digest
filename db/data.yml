@@ -1,0 +1,3684 @@
+
+---
+schema_migrations:
+  columns:
+  - version
+  records: 
+  - - '20190610092739'
+  - - '20190610092750'
+  - - '20190610092800'
+  - - '20190610092807'
+  - - '20190610092838'
+  - - '20190610093619'
+  - - '20190616150234'
+  - - '20190625113302'
+  - - '20190625113459'
+  - - '20190625113531'
+  - - '20190625120938'
+  - - '20190625123813'
+  - - '20190626063358'
+  - - '20190626063545'
+  - - '20190628122800'
+  - - '20190628135632'
+  - - '20190629140622'
+  - - '20190629141909'
+  - - '20190706230200'
+  - - '20190720163739'
+
+---
+ar_internal_metadata:
+  columns:
+  - key
+  - value
+  - created_at
+  - updated_at
+  records: 
+  - - environment
+    - production
+    - '2019-06-11 23:19:08.677338'
+    - '2019-06-11 23:19:08.677338'
+
+---
+users:
+  columns:
+  - id
+  - name
+  - full_name
+  - status
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - BAF
+    - 
+    - 1
+    - '2019-06-11 23:19:35.806209'
+    - '2019-06-11 23:19:35.806209'
+  - - 2
+    - apoikola
+    - 
+    - 1
+    - '2019-06-11 23:19:35.896311'
+    - '2019-06-11 23:19:35.896311'
+  - - 3
+    - Dixon
+    - 
+    - 1
+    - '2019-06-12 10:16:24.740992'
+    - '2019-06-12 10:16:24.740992'
+  - - 4
+    - Ansku Tuomainen
+    - 
+    - 1
+    - '2019-06-12 10:16:24.934192'
+    - '2019-06-12 10:16:24.934192'
+  - - 5
+    - Valto
+    - 
+    - 1
+    - '2019-06-12 10:16:24.938332'
+    - '2019-06-12 10:16:24.938332'
+  - - 6
+    - Karolina Mackiewicz
+    - 
+    - 1
+    - '2019-06-12 10:16:24.941368'
+    - '2019-06-12 10:16:24.941368'
+  - - 7
+    - Paul-Olivier Dehaye
+    - 
+    - 1
+    - '2019-06-12 10:16:24.945241'
+    - '2019-06-12 10:16:24.945241'
+  - - 8
+    - Viivi
+    - 
+    - 1
+    - '2019-06-12 10:16:24.9724'
+    - '2019-06-12 10:16:24.9724'
+  - - 10
+    - Sille
+    - 
+    - 1
+    - '2019-06-12 10:16:24.984435'
+    - '2019-06-12 10:16:24.984435'
+  - - 11
+    - teemu.ropponen
+    - 
+    - 1
+    - '2019-06-12 10:16:24.987255'
+    - '2019-06-12 10:16:24.987255'
+  - - 12
+    - Sofia Yan
+    - 
+    - 1
+    - '2019-06-16 21:54:24.129334'
+    - '2019-06-16 21:54:24.129334'
+  - - 13
+    - Terhi Marttila
+    - 
+    - 1
+    - '2019-06-16 21:54:26.25937'
+    - '2019-06-16 21:54:26.25937'
+  - - 14
+    - VladiKup
+    - 
+    - 1
+    - '2019-06-16 21:54:27.622801'
+    - '2019-06-16 21:54:27.622801'
+  - - 15
+    - John W.
+    - 
+    - 1
+    - '2019-06-26 06:01:47.680654'
+    - '2019-06-26 06:01:47.680654'
+  - - 16
+    - pknowles
+    - 
+    - 1
+    - '2019-06-26 06:02:16.585662'
+    - '2019-06-26 06:02:16.585662'
+  - - 17
+    - Iain
+    - 
+    - 1
+    - '2019-06-26 06:03:18.642091'
+    - '2019-06-26 06:03:18.642091'
+  - - 18
+    - Stijn Vernaillen
+    - 
+    - 1
+    - '2019-06-26 06:55:24.863861'
+    - '2019-06-26 06:55:24.863861'
+  - - 19
+    - Göran Wågström
+    - 
+    - 1
+    - '2019-06-26 06:55:25.541944'
+    - '2019-07-06 20:46:40.056375'
+  - - 20
+    - IdentityWoman
+    - 
+    - 1
+    - '2019-06-30 15:33:43.238236'
+    - '2019-06-30 15:33:43.238236'
+  - - 21
+    - M-J
+    - 
+    - 1
+    - '2019-06-30 15:39:29.005145'
+    - '2019-06-30 15:39:29.005145'
+  - - 22
+    - ito_nao
+    - 
+    - 1
+    - '2019-06-30 22:12:40.893407'
+    - '2019-06-30 22:12:40.893407'
+  - - 23
+    - Lasse Rouhiainen
+    - 
+    - 1
+    - '2019-06-30 22:30:14.750935'
+    - '2019-06-30 22:30:14.750935'
+  - - 24
+    - Sophie
+    - 
+    - 1
+    - '2019-06-30 22:31:51.528895'
+    - '2019-06-30 22:31:51.528895'
+  - - 25
+    - Mehdi Medjaoui
+    - 
+    - 1
+    - '2019-07-06 21:09:46.692096'
+    - '2019-07-06 21:09:46.692096'
+  - - 26
+    - Kaye maree
+    - 
+    - 1
+    - '2019-07-13 14:34:19.204642'
+    - '2019-07-13 14:34:19.204642'
+  - - 27
+    - Joss
+    - 
+    - 1
+    - '2019-07-13 16:43:08.099349'
+    - '2019-07-13 16:43:08.099349'
+  - - 28
+    - peacekeeper
+    - 
+    - 1
+    - '2019-07-20 14:01:36.369337'
+    - '2019-07-20 14:03:17.57609'
+  - - 29
+    - j12t
+    - 
+    - 1
+    - '2019-07-20 14:01:44.173745'
+    - '2019-07-20 14:01:44.173745'
+
+---
+posts:
+  columns:
+  - id
+  - weekly_id
+  - user_id
+  - post_date
+  - title
+  - url
+  - media_url
+  - media_type
+  - description
+  - category
+  - status
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - 1
+    - '2019-06-01'
+    - 'A Tale of Two Strings: An Information Economics Thought Experiment'
+    - https://medium.com/@yoda_your_data/a-tale-of-two-strings-an-information-economics-thought-experiment-6321c531951e
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559397689041200
+    - mydata
+    - It was the best of times for data scientists, it was the worst of times for
+      data subjects.
+    - info
+    - 1
+    - '2019-06-11 23:19:35.840997'
+    - '2019-06-11 23:19:35.840997'
+  - - 2
+    - 1
+    - 2
+    - '2019-06-01'
+    - LEDGER selects 16 human centric projects
+    - https://ledgerproject.eu/index.php/2019/05/30/ledger-selects-16-human-centric-projects-working-on-decentralised-technologies-to-enter-its-venture-builder-programme/
+    - https://mydataglobal.slack.com/archives/C8S3TP6P7/p1559373947018600)
+    - mydata
+    - "...working on decentralised technologies to enter its Venture Builder programme."
+    - info
+    - 1
+    - '2019-06-11 23:19:35.918829'
+    - '2019-06-11 23:19:35.918829'
+  - - 3
+    - 1
+    - 3
+    - '2019-06-03'
+    - MyData Japan 2019 conference is on the news again.
+    - https://www.nikkei.com/article/DGXMZO45318670X20C19A5EE8000/
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559524448056200
+    - mydata
+    - You have to use Google Translate to read the text.
+    - info
+    - 1
+    - '2019-06-12 11:13:46.375651'
+    - '2019-06-12 11:13:46.375651'
+  - - 4
+    - 1
+    - 4
+    - '2019-06-03'
+    - MyData in the Finnish Government Agenda
+    - https://valtioneuvosto.fi/en/article/-/asset_publisher/10616/sallistava-ja-osaava-suomi-sosiaalisesti-taloudellisesti-ja-ekologisesti-kestava-yhteiskunta
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559564732061600
+    - mydata
+    - Finland had the new Government Agenda agreed on MyData (omadata) is mentioned
+      3 times in the new programme.
+    - info
+    - 1
+    - '2019-06-12 11:13:46.385785'
+    - '2019-06-12 11:13:46.385785'
+  - - 5
+    - 1
+    - 3
+    - '2019-06-03'
+    - Apple launches Sign in with Apple button
+    - https://9to5mac.com/2019/06/03/apple-launches-sign-in-with-apple-button-for-apps-no-tracking-login/
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559597084067700
+    - mydata
+    - Apple announced a new Sign in with Apple button as part of its iOS 13 announcements
+      and is marketing this as a privacy-secure sign-in option.
+    - info
+    - 1
+    - '2019-06-12 11:13:46.451774'
+    - '2019-06-12 11:13:46.451774'
+  - - 6
+    - 1
+    - 4
+    - '2019-06-04'
+    - MyData 2019 conference prgoramme launch & the Hub Finland Kickoff on 10th June
+      2019
+    - https://mydata.org/finland-10-june-2019/
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559636906005200
+    - mydata
+    - Tune in to the Twitter livestream (@mydataorg) of the MyData 2019 programme
+      launch and if you are in Helsinki join us in person for the celebration.
+    - info
+    - 1
+    - '2019-06-12 11:13:46.472441'
+    - '2019-06-12 11:13:46.472441'
+  - - 7
+    - 1
+    - 2
+    - '2019-06-04'
+    - Presenter Cards for MyData2019 are available
+    - https://twitter.com/apoikola/status/1135960153596026880
+    - https://mydataglobal.slack.com/archives/CDRBBQL74/p1559669128001800
+    - mydata
+    - We are doing individual "presenter cards" for all presenters. Idea is that you
+      can share in twitter etc.
+    - info
+    - 1
+    - '2019-06-12 11:14:19.596321'
+    - '2019-06-12 11:14:19.596321'
+  - - 8
+    - 1
+    - 5
+    - '2019-06-05'
+    - Who has more data on you than Facebook, Google or Amazon?
+    - https://disruptive.asia/data-on-you-facebook-google-amazon/
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559712331009200
+    - mydata
+    - Who is this party that knows more about you and collects more of your data?
+    - info
+    - 1
+    - '2019-06-12 11:14:39.796362'
+    - '2019-06-12 11:14:39.796362'
+  - - 9
+    - 1
+    - 4
+    - '2019-06-05'
+    - The MyData 2019 conference is an official side event of Finland's EU Presidency.
+    - https://mydata2019.org/mydata-2019-is-an-official-side-event-of-finlands-presidency-of-the-council-of-the-eu/
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559742601010900
+    - mydata
+    - Remember that the EARLY BIRD prices are ending 16th of June.
+    - info
+    - 1
+    - '2019-06-12 11:15:51.154247'
+    - '2019-06-12 11:15:51.154247'
+  - - 10
+    - 1
+    - 6
+    - '2019-06-05'
+    - 'Putting end-users in charge of algorithms: Privacy and autonomy by design -
+      QUT Design Lab'
+    - https://research.qut.edu.au/designlab/projects/datacare/
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559748183014100
+    - mydata
+    - 'Queensland University of Technology will soon be launching Dr Monique Mann''s
+      new book Good Data - it''s open source: http://networkcultures.org/blog/publication/tod-29-good-data/'
+    - info
+    - 1
+    - '2019-06-12 11:16:21.100258'
+    - '2019-06-12 11:19:33.262122'
+  - - 11
+    - 1
+    - 7
+    - '2019-06-06'
+    - The Clever Cryptography Behind Apple's 'Find My' Feature
+    - https://www.wired.com/story/apple-find-my-cryptography-bluetooth/
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559777517017000
+    - mydata
+    - An impressive encryption system, only possible through Apple's nontrivial market
+      share in hardware.
+    - info
+    - 1
+    - '2019-06-14 16:44:16.718237'
+    - '2019-06-14 16:44:16.718237'
+  - - 12
+    - 1
+    - 6
+    - '2019-06-06'
+    - 'New Data Economy Rainmakers: Where''s My Money?'
+    - https://www.sitra.fi/en/events/ihan-business-event-pioneers-new-data-economy/
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559801450021900
+    - mydata
+    - Europe has the potential to become the leader of the new data economy - live
+      stream and recording from the event is available.
+    - info
+    - 1
+    - '2019-06-14 16:44:16.965124'
+    - '2019-06-14 16:44:16.965124'
+  - - 13
+    - 1
+    - 7
+    - '2019-06-07'
+    - QR codes for MyData.org or personalized to your own URI
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559922833058800
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559922833058800
+    - mydata
+    - "...printed on laptop sticker or embroidered onto TShirt/badge."
+    - question
+    - 1
+    - '2019-06-14 16:44:17.047675'
+    - '2019-06-14 16:44:17.047675'
+  - - 14
+    - 1
+    - 7
+    - '2019-06-07'
+    - 'Adversarial Interoperability: Reviving an Elegant Weapon From a More Civilized
+      Age to Slay Today''s Monopolies'
+    - https://www.eff.org/deeplinks/2019/06/adversarial-interoperability-reviving-elegant-weapon-more-civilized-age-slay
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559941809060800
+    - mydata
+    - Today, Apple is one of the largest, most profitable companies on Earth, but
+      in the early 2000s, the company was fighting for its life. Microsoft's Windows
+      operating system was ascendant, and Microsoft leveraged its dominance to ensure
+      that every Windows user relied on its Microsoft Office suite.
+    - info
+    - 1
+    - '2019-06-14 16:44:17.25088'
+    - '2019-06-14 16:44:17.25088'
+  - - 15
+    - 1
+    - 8
+    - '2019-06-07'
+    - Status of Vision of Success 2022
+    - https://mydata-global.org/vision-v1-comments
+    - https://mydataglobal.slack.com/archives/CFN8M57MW/p1559921698001600?thread_ts=1559920992.001500&cid=CFN8M57MW
+    - mydata
+    - ''
+    - info
+    - 1
+    - '2019-06-14 16:44:17.779297'
+    - '2019-06-14 16:44:17.779297'
+  - - 16
+    - 1
+    - 2
+    - '2019-06-01'
+    - If there were 7 weeks time [...] who should one try to meet with MyData agenda?
+    - https://twitter.com/apoikola/status/1134679562359586816
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559363805039500
+    - mydata
+    - Focus on learning and building meaningful relationships, not in selling or money
+      raising.
+    - question
+    - 1
+    - '2019-06-16 12:56:15.544362'
+    - '2019-06-16 13:24:44.934057'
+  - - 17
+    - 1
+    - 17
+    - '2019-06-02'
+    - Is there another meeting schedule tool other than Doodle, which uses the invasive
+      IAB framework?
+    - https://mydataglobal.slack.com/archives/C8S3TP6P7/p1559505218019500
+    - https://mydataglobal.slack.com/archives/C8S3TP6P7/p1559505218019500
+    - mydata
+    - ''
+    - question
+    - 1
+    - '2019-06-16 12:56:31.934406'
+    - '2019-07-20 13:59:15.938714'
+  - - 18
+    - 1
+    - 10
+    - '2019-06-03'
+    - "@programme-stewards: Can you help facilitating sessions of various formats?"
+    - https://mydataglobal.slack.com/archives/CDRBBQL74/p1559571880004900
+    - https://mydataglobal.slack.com/archives/CDRBBQL74/p1559571880004900
+    - mydata
+    - We are planning to build a team of 5-6 facilitators who could support some picked
+      session teams with interactiveness of the session. Do you have experience in
+      facilitating sessions of various formats, and would be interested in taking
+      this additional role during the conference?
+    - question
+    - 1
+    - '2019-06-16 12:56:39.7004'
+    - '2019-06-16 12:56:39.7004'
+  - - 19
+    - 1
+    - 10
+    - '2019-06-03'
+    - Should we create posters from all initiatives for the MyData 2019 conference?
+    - https://mydataglobal.slack.com/archives/CFJ5PB0NT/p1559547035008100
+    - https://mydataglobal.slack.com/archives/CFJ5PB0NT/p1559547035008100
+    - mydata
+    - "@John W. suggested to organise a semi-facilitated networking meeting at the
+      conference, where all MyData initiatives could share what they're up to and
+      learn from each other. Sille added: What do you think of the idea to organise
+      a 'Initiatives lounge' where we could post posters from all Initiatives, what
+      are your ongoings, what are your plans for the coming months, who are the people
+      stewarding the hubs and how to get in contact with you?"
+    - question
+    - 1
+    - '2019-06-16 12:56:46.109453'
+    - '2019-06-16 12:56:46.109453'
+  - - 20
+    - 1
+    - 6
+    - '2019-06-06'
+    - Do you have a knowledge about any big conferences, festivals etc relevant for
+      us happening in March 2020?
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559839278035900
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559839278035900
+    - mydata
+    - The spring community meeting is planned for March 2020 in Amsterdam and we want
+      to find the best dates possible and avoid the situation where a big event happening
+      at the same time.
+    - question
+    - 1
+    - '2019-06-16 12:56:54.675548'
+    - '2019-06-16 12:56:54.675548'
+  - - 21
+    - 1
+    - 11
+    - '2019-06-07'
+    - Can someone help me understand GoodID?
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559916360054400
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1559916360054400
+    - mydata
+    - "...and how it relates to some of the things people in the MyData community
+      are doing?"
+    - question
+    - 1
+    - '2019-06-16 12:57:00.919893'
+    - '2019-06-16 12:57:00.919893'
+  - - 22
+    - 2
+    - 10
+    - '2019-06-12'
+    - Making the most of your session - Tips & Tricks
+    - https://mydata2019.org/session-tips/
+    - https://mydataglobal.slack.com/archives/CDRBBQL74/p1560347595011700
+    - mydata
+    - Sille has put together some tips & tricks that you can use in the preparation
+      of your sessions for MyData 2019 conference.
+    - info
+    - 1
+    - '2019-06-16 22:07:28.772593'
+    - '2019-06-16 22:07:28.772593'
+  - - 23
+    - 2
+    - 12
+    - '2019-06-10'
+    - Knowing What Google Knows About You Is Just Not Enough...
+    - https://medium.com/@yangtammy/baec74d8237d
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560156430071500
+    - mydata
+    - Sofia from Numbers team (http://numbersprotocol.io) shared an article by CEO
+      @Tammy Yang. And @Goeran Waogstroem added an article from the NY Times about
+      'A Brief History of How Your Privacy Was Stolen'.
+    - info
+    - 1
+    - '2019-06-16 22:08:41.131604'
+    - '2019-06-16 22:08:41.131604'
+  - - 24
+    - 2
+    - 7
+    - '2019-06-10'
+    - Empty Uber cabs driving pollution and congestion
+    - https://twitter.com/workerinfox/status/1137713869013561344?s=21
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560193405080100
+    - mydata
+    - Uber drivers get their data to analyse it and show the impact of the business
+      model on congestion (with help from PersonalData.IO).
+    - info
+    - 1
+    - '2019-06-16 22:08:55.72411'
+    - '2019-06-16 22:08:55.72411'
+  - - 25
+    - 2
+    - 1
+    - '2019-06-11'
+    - 'The Ethics of Personal Data: Human Rights, Agency Costs, Protection Rackets,
+      and Privacy Wrongs'
+    - https://medium.com/@yoda_your_data/the-ethics-of-personal-data-human-rights-agency-costs-protection-rackets-and-privacy-wrongs-3f1c79621883
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560243250081500
+    - mydata
+    - A gaping ethical dilemma at the very heart of the data protection ecosystem
+      practically guarantees widespread privacy wrongs.
+    - info
+    - 1
+    - '2019-06-16 22:09:07.247531'
+    - '2019-06-16 22:09:07.247531'
+  - - 26
+    - 2
+    - 13
+    - '2019-06-11'
+    - MyData Business Challenge
+    - https://app.industryhack.com/challenges/mydata-business-challenge/
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560249352091400
+    - mydata
+    - Develop a business concept for leading MyData company connecting data-based
+      services with user permissions.
+    - info
+    - 1
+    - '2019-06-16 22:09:29.600687'
+    - '2019-06-16 22:09:29.600687'
+  - - 27
+    - 2
+    - 2
+    - '2019-06-12'
+    - MyData in Finland's Government Agenda
+    - https://julkaisut.valtioneuvosto.fi/handle/10024/161664
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560348951115400
+    - mydata
+    - The official english translation of the Finland's Government Agenda with several
+      mentions of MyData has been published.
+    - info
+    - 1
+    - '2019-06-16 22:09:52.623504'
+    - '2019-06-16 22:09:52.623504'
+  - - 28
+    - 2
+    - 7
+    - '2019-06-13'
+    - Solid chat and comments
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560455288121900
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560455288121900
+    - mydata
+    - A screenshot from a chat of Solid people and talks to reach out form the MyData
+      community.
+    - info
+    - 1
+    - '2019-06-16 22:10:01.255931'
+    - '2019-06-16 22:10:01.255931'
+  - - 29
+    - 2
+    - 6
+    - '2019-06-14'
+    - IGF2020 will be in Poland
+    - https://twitter.com/MC_GOV_PL/status/1136201659305144323
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560463407123500
+    - mydata
+    - The Internet Governance Forum next year will be in Poland.
+    - info
+    - 1
+    - '2019-06-16 22:10:10.414347'
+    - '2019-06-16 22:10:10.414347'
+  - - 30
+    - 2
+    - 14
+    - '2019-06-14'
+    - Interview with Rob van Kranenburg
+    - https://hqsoftwarelab.com/about-us/blog/internet-of-things/rob-van-kranenburg-on-iot-future
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560544034195800
+    - mydata
+    - Rob van Kranenburg is the founder of the Internet of Things Council and he confirmed
+      to come to the MyData2019 conference.
+    - info
+    - 1
+    - '2019-06-16 22:10:20.324246'
+    - '2019-06-16 22:10:20.324246'
+  - - 31
+    - 2
+    - 11
+    - '2019-06-13'
+    - MyData Global at RightsCon
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560416371117900
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560416371117900
+    - mydata
+    - A punch of people from MyData Global will be at RightsCon in Tunis, Tunisia
+      next week and Teemu asked to retweet RightsCon-related tweets!
+    - question
+    - 1
+    - '2019-06-16 22:10:28.418897'
+    - '2019-06-16 22:10:28.418897'
+  - - 32
+    - 4
+    - 5
+    - '2019-06-15'
+    - Internet trends 2019
+    - https://www.bondcap.com/pdf/Internet_Trends_2019.pdf
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560598309196900
+    - mydata
+    - ''
+    - info
+    - 1
+    - '2019-06-25 21:50:51.715735'
+    - '2019-06-25 21:51:59.308461'
+  - - 33
+    - 4
+    - 4
+    - '2019-06-17'
+    - Newsletter Topics
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560773233223700
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560773233223700
+    - mydata
+    - Have you or your organisation done something remarkable that the MyData Global
+      community should know about?
+    - question
+    - 1
+    - '2019-06-25 21:55:58.968388'
+    - '2019-06-25 21:55:58.968388'
+  - - 34
+    - 4
+    - 7
+    - '2019-06-18'
+    - Looking for MOVE developers in Geneva
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560866280237200
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560866280237200
+    - mydata
+    - ''
+    - question
+    - 1
+    - '2019-06-26 05:57:47.576991'
+    - '2019-06-26 05:57:47.576991'
+  - - 35
+    - 4
+    - 15
+    - '2019-06-17'
+    - The New Wilderness
+    - https://idlewords.com/2019/06/the_new_wilderness.htm
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560783303224800
+    - mydata
+    - The need to regulate online privacy is a truth so universally acknowledged that
+      even Facebook and Google have joined the chorus of voices crying for change.
+    - info
+    - 1
+    - '2019-06-26 06:07:09.225583'
+    - '2019-06-26 06:07:09.225583'
+  - - 36
+    - 4
+    - 16
+    - '2019-06-19'
+    - Blinding Identity Taxonomy
+    - https://kantarainitiative.org/confluence/display/infosharing/Blinding+Identity+Taxonomy
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560958917249700
+    - mydata
+    - The UK Parliament's Human Rights Committee on protecting the privacy of personally
+      identifiable information.
+    - info
+    - 1
+    - '2019-06-26 06:09:20.646512'
+    - '2019-06-26 06:09:20.646512'
+  - - 37
+    - 4
+    - 7
+    - '2019-06-20'
+    - UN gives ultimatum to Yemen rebels over reports of aid theft
+    - https://www.thenewhumanitarian.org/news/2019/06/17/un-yemen-rebels-aid-theft-biometrics
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561065256273100
+    - mydata
+    - MyData-like dynamics playing out in high stakes context of famine and humanitarian
+      aid.
+    - info
+    - 1
+    - '2019-06-26 06:10:29.996667'
+    - '2019-06-26 06:10:29.996667'
+  - - 38
+    - 4
+    - 17
+    - '2019-06-20'
+    - Update report into adtech and real time bidding
+    - https://ico.org.uk/media/about-the-ico/documents/2615156/adtech-real-time-bidding-report-201906.pdf
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561065363273800
+    - mydata
+    - An interesting development shared by the UK Information Commissioner.
+    - info
+    - 1
+    - '2019-06-26 06:11:32.553547'
+    - '2019-06-26 06:11:32.553547'
+  - - 39
+    - 5
+    - 20
+    - '2019-06-25'
+    - Invitation to DWeb Camp
+    - https://dwebcamp.org/
+    - https://mydataglobal.slack.com/archives/C8T25FW8P/p1561420982010400
+    - mydata
+    - The Decentralized Web Camp will be from July 18th - 21st and you are invited
+      to join.
+    - info
+    - 1
+    - '2019-06-30 15:34:53.540191'
+    - '2019-06-30 15:34:53.540191'
+  - - 40
+    - 5
+    - 7
+    - '2019-06-26'
+    - Session Title 'Data Ownership - thanks, but no thanks'
+    - https://mydata2019.org/programme-page/data-anti-ownership/
+    - https://mydataglobal.slack.com/archives/CJ5046HEW/p1561551085003400
+    - mydata
+    - 'The content of the session sounds great: asking the community for their opinion,
+      given the vacuum left by leadership on this issue. The session title conveys
+      the idea that a decision has already been made, which is a different message
+      of course.'
+    - info
+    - 1
+    - '2019-06-30 15:34:54.33484'
+    - '2019-06-30 15:34:54.33484'
+  - - 41
+    - 5
+    - 21
+    - '2019-06-26'
+    - Catch up on the Case Library
+    - https://mydataglobal.slack.com/archives/C8S3TP6P7/p1561540903014600
+    - https://mydataglobal.slack.com/archives/C8S3TP6P7/p1561540903014600
+    - mydata
+    - With Schluss we're building Proof of Concepts around Use cases that might be
+      interesting for the case library. What's the easiets way to catch up?
+    - question
+    - 1
+    - '2019-06-30 15:41:51.59817'
+    - '2019-06-30 15:41:51.59817'
+  - - 42
+    - 5
+    - 7
+    - '2019-06-25'
+    - Humanitarian aid in the digital age
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561440456306800
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561440456306800
+    - mydata
+    - I testified yesterday at the UN on 'Humanitarian aid in the digital age'. I
+      was anxious at coming with MyData principles (framed usually for more advanced
+      economies) and trying to apply them to the humanitarian context. Nevertheless
+      the discussion was extremely encouraging, and there was definitely response
+      and even demand for the idea of a bridge on those issues.
+    - info
+    - 1
+    - '2019-06-30 22:10:16.237674'
+    - '2019-06-30 22:10:16.237674'
+  - - 43
+    - 5
+    - 8
+    - '2019-06-25'
+    - 'Smart data: putting consumers in control of their data and enabling innovation'
+    - https://www.gov.uk/government/consultations/smart-data-putting-consumers-in-control-of-their-data-and-enabling-innovation
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561449437308400
+    - mydata
+    - We are seeking views on proposals to allow the creation of innovative data-driven
+      services, for the benefit of consumers.
+    - info
+    - 1
+    - '2019-06-30 22:10:41.483395'
+    - '2019-06-30 22:10:41.483395'
+  - - 44
+    - 5
+    - 17
+    - '2019-06-25'
+    - Launch of the Global Citizen Foundation
+    - https://medium.com/global-citizen-foundation/the-launch-of-the-global-citizen-foundation-b2f6779078e
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561491496316600
+    - mydata
+    - A foundation similar to MyData with the goal to develop digital competencies
+      within our society, define the values that we all want to see, and work towards
+      a digital sovereignty.
+    - info
+    - 1
+    - '2019-06-30 22:11:01.2282'
+    - '2019-06-30 22:11:01.2282'
+  - - 45
+    - 5
+    - 11
+    - '2019-06-26'
+    - 'Finland''s Presidency Programme: SUSTAINABLE EUROPE - SUSTAINABLE FUTURE'
+    - https://eu2019.fi/documents/11707387/14346258/EU2019FI-EU-puheenjohtajakauden-ohjelma-en.pdf/3556b7f1-16df-148c-6f59-2b2816611b36/EU2019FI-EU-puheenjohtajakauden-ohjelma-en.pdf.pdf
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561549663332900
+    - mydata
+    - ''
+    - info
+    - 1
+    - '2019-06-30 22:11:55.652923'
+    - '2019-06-30 22:11:55.652923'
+  - - 46
+    - 5
+    - 22
+    - '2019-06-28'
+    - MyData in official documents of Japanese government
+    - https://www.kantei.go.jp/jp/singi/it2/detakatuyo_wg/pdf/summary.pdf
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561718773345900
+    - mydata
+    - MyData declaration and MyData Global were introduced as an approach to personal
+      data utilization in other countries, and it is also mentioned that MyData Japan
+      is working to spread it in Japan.
+    - info
+    - 1
+    - '2019-06-30 22:12:14.361308'
+    - '2019-06-30 22:12:14.361308'
+  - - 47
+    - 5
+    - 23
+    - '2019-06-22'
+    - Which governments or associations are committed to use MyData?
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561208820282000
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561208820282000
+    - mydata
+    - Finnish government has mention it will use MyData, but wanted to know if any
+      other governments or big associations are committed to use MyData?
+    - question
+    - 1
+    - '2019-06-30 22:34:29.103861'
+    - '2019-06-30 22:34:29.103861'
+  - - 48
+    - 5
+    - 24
+    - '2019-06-25'
+    - Interpreting figure in MyData WhitePaper
+    - https://mydata.org/papers/
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561443635307400
+    - mydata
+    - There are some questions that I have regarding money flow between stakeholders.
+    - question
+    - 1
+    - '2019-06-30 22:34:47.686788'
+    - '2019-06-30 22:34:47.686788'
+  - - 49
+    - 5
+    - 4
+    - '2019-06-27'
+    - Please share MyData2019 message on Twitter, Facebook, LinkedIn
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561626348338700
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561626348338700
+    - mydata
+    - This year we have thrilling possibilities to reach influence on political level
+      because The MyData 2019 conference is officially an associated event of Finland's
+      EU Presidency!
+    - question
+    - 1
+    - '2019-06-30 22:35:04.781917'
+    - '2019-06-30 22:35:04.781917'
+  - - 50
+    - 6
+    - 10
+    - '2019-06-29'
+    - How to make the most of our guiding principles?
+    - https://www.bosslevelpodcast.com/
+    - https://mydataglobal.slack.com/archives/C8T25FW8P/p1561842345021500
+    - mydata
+    - Sille was listening to the Boss Level podcast and among other things they were
+      talking about corporate values. This could be an interesting input to think
+      about the MyData Guiding Principles!
+    - question
+    - 1
+    - '2019-07-06 22:00:18.301134'
+    - '2019-07-06 22:00:18.301134'
+  - - 51
+    - 6
+    - 2
+    - '2019-07-03'
+    - Interview Template for Case Library
+    - https://mydataglobal.slack.com/files/U7KSE0QF8/FKWS4A1UH/suomen_tilaajavastuu_oy_____use_case.pdf
+    - https://mydataglobal.slack.com/archives/C8S3TP6P7/p1562106928023000
+    - mydata
+    - An interesting project from MyData is the Case Library and this is a template
+      based on one of the first interviews with Tilaajavastuu.
+    - info
+    - 1
+    - '2019-07-06 22:04:10.335133'
+    - '2019-07-06 22:04:10.335133'
+  - - 52
+    - 6
+    - 2
+    - '2019-06-30'
+    - 'Reading Club - Shoshana Zuboff: The Age of Surveillance Capitalism'
+    - https://calendar.google.com/calendar/r/week/2019/7/11?eid=ZzBiMmExdTY4NDg0bTIzMWY1cDRscDY3NXMgdm5kY24zbTFkbWh2ZTkxMzBmbHZ1YjlkaGdAZw&sf=true
+    - https://mydataglobal.slack.com/archives/CH8FQ6PNK/p1561882009000400
+    - mydata
+    - The first reading club chat is in the coming week on July 11th.
+    - info
+    - 1
+    - '2019-07-06 22:08:10.039381'
+    - '2019-07-06 22:08:10.039381'
+  - - 54
+    - 6
+    - 7
+    - '2019-06-30'
+    - Why paying people for their data is a bad idea
+    - http://bigdatasoc.blogspot.com/2019/02/jumping-to-exclusions-why-data-commons.html
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561910033374400
+    - mydata
+    - Paying people for 'data is a bad idea. Not only would it lure the cash-poor
+      into selling their privacy, but it also plays into the hands of those who seek
+      to...avoid a collective response to the increasing power asymmetries in the
+      digital data economy'.
+    - info
+    - 1
+    - '2019-07-06 22:29:17.104023'
+    - '2019-07-06 22:29:17.104023'
+  - - 55
+    - 6
+    - 2
+    - '2019-07-01'
+    - Paper about 'Return on Data'
+    - https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3362880
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561971264376500
+    - mydata
+    - Consumers routinely supply personal data to technology companies in exchange
+      for services. Yet, the relationship between the utility (U) consumers gain and
+      the data (D) they supply - 'return on data' (ROD) - remains largely unexplored.
+    - info
+    - 1
+    - '2019-07-06 22:31:40.468833'
+    - '2019-07-06 22:31:40.468833'
+  - - 56
+    - 6
+    - 2
+    - '2019-07-02'
+    - Data Portability Sandbox Reports
+    - https://www.ctrl-shift.co.uk/reports/DCMS_Ctrl-Shift_Data_mobility_report_full.pdf
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561991963377200
+    - mydata
+    - 'This document is the final report on Data Mobility: the data portability growth
+      opportunity for the UK economy, carried out for the Department for Digital,
+      Culture, Media and Sport (DCMS) by Ctrl-Shift.'
+    - info
+    - 1
+    - '2019-07-06 22:34:01.350276'
+    - '2019-07-06 22:34:01.350276'
+  - - 57
+    - 6
+    - 19
+    - '2019-07-02'
+    - It's not that we've failed to rein in Facebook and Google. We've not even tried!
+    - https://www.theguardian.com/commentisfree/2019/jul/02/facebook-google-data-change-our-behaviour-democracy
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1562063618384700
+    - mydata
+    - This is an incredible article by Shoshana Zuboff, the Harvard Professor that
+      wrote 'The Age of Surveillance Capitalism'. I strongly recommend you to read
+      it as what she says also is related to what's being done in MyData. What she
+      says is very much the essence of what we have to tackle.
+    - info
+    - 1
+    - '2019-07-06 22:37:52.453763'
+    - '2019-07-06 22:37:52.453763'
+  - - 58
+    - 6
+    - 11
+    - '2019-07-02'
+    - "'Osaka Track' framework for free cross-border data flow"
+    - https://www.japantimes.co.jp/news/2019/06/28/national/abe-heralds-launch-osaka-track-framework-free-cross-border-data-flow-g20/#.XSC-Bnvgrar
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1562090415385600
+    - mydata
+    - Japanese Prime Minister Shinzo Abe on Friday at the G20 summit formally declared
+      the launch of the 'Osaka Track', an overarching framework promoting cross-border
+      data flow with enhanced protections.
+    - info
+    - 1
+    - '2019-07-06 22:41:44.452853'
+    - '2019-07-06 22:41:44.452853'
+  - - 59
+    - 6
+    - 25
+    - '2019-07-03'
+    - Can You Put a Price on Your Personal Data?
+    - https://www.nytimes.com/2019/06/28/technology/data-price-big-tech.html
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1562166614388100
+    - mydata
+    - A US senator wants to oblige big tech to declare to users how much they make
+      with personal data.
+    - info
+    - 1
+    - '2019-07-06 22:44:29.525227'
+    - '2019-07-06 22:44:29.525227'
+  - - 60
+    - 7
+    - 4
+    - '2019-07-09'
+    - MyData 2019 comms and marketing 101 for the community
+    - https://mydata-global.org/conference-2019-comms-101-community
+    - https://mydataglobal.slack.com/archives/CFJ5PB0NT/p1562658890015000
+    - mydata
+    - Anna Ansku Tuomainen has created a folder (linked in the title) to support us
+      in communicating MyData. The 101 doc is currently mostly about the conference
+      but you are encouraged to creatively use the materials also for any comms needs
+      you have. Also important is to remember to tag @mydataorg in your tweets and
+      posts so those can be forwarded in the main channel.
+    - info
+    - 1
+    - '2019-07-13 10:27:32.071018'
+    - '2019-07-13 10:27:32.071018'
+  - - 61
+    - 7
+    - 2
+    - '2019-07-10'
+    - IHAN Pilot Projects
+    - https://www.sitra.fi/en/projects/ihan-pilot-projects/#what-is-it-about
+    - https://mydataglobal.slack.com/archives/C8S3TP6P7/p1562753399023600
+    - mydata
+    - Sitra implemented the call for funding applications as part of Sitra’s IHAN®
+      – Human-Driven Data Economy focus area, which will run until 2021. Some projects
+      started in 2018 and the rest will start in spring 2019. All projects will be
+      finished in 2021.
+    - info
+    - 1
+    - '2019-07-13 10:47:08.057102'
+    - '2019-07-13 10:47:53.975395'
+  - - 62
+    - 7
+    - 2
+    - '2019-07-11'
+    - 1st Reading Club Took Place
+    - https://bryanalexander.org/tag/zuboff/
+    - https://mydataglobal.slack.com/archives/CH8FQ6PNK/p1562832430002200
+    - mydata
+    - 'This week the first reading club was held on Thursday and a number of interesting
+      things were posted subsequently: @Fredrik Löfman posted an Economis article
+      ([Is Google an evil genius?](https://www.economist.com/business/2019/01/19/is-google-an-evil-genius))
+      and an interesting [article series on data-rights related issues](https://mydataglobal.slack.com/archives/CH8FQ6PNK/p1562842446021700).
+      [@Antti ''Jogi'' Poikola](/user/2) proposed to read and discuss [Laron Lanier,
+      Ten Arguments for Deleting Your Social Media Accounts Right Now](https://www.amazon.com/gp/product/B079DTVVG8/ref=dbs_a_def_rwt_hsch_vapi_taft_p1_i1)
+      next.'
+    - info
+    - 1
+    - '2019-07-13 12:21:54.710417'
+    - '2019-07-13 12:22:24.658015'
+  - - 63
+    - 7
+    - 11
+    - '2019-07-11'
+    - Are we open, transparent and participatory enough?
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1562842244418100
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1562842244418100
+    - mydata
+    - Teemu Ropponen wrote that he recently got some criticism from the membership
+      about MyData Global not being transparent enough. Because transparency is one
+      of the MyData [key principles](https://mydata.org/guiding-principles/) and many
+      of the staff have some background in the open knowledge movement, this feedback
+      stings and needs to be taken seriously. Read more about [participation](https://mydataglobal.slack.com/archives/C7G9FPL81/p1562842254418300),
+      [planning](https://mydataglobal.slack.com/archives/C7G9FPL81/p1562842300419000),
+      [leading](https://mydataglobal.slack.com/archives/C7G9FPL81/p1562842536422400),
+      and [finance](https://mydataglobal.slack.com/archives/C7G9FPL81/p1562842656424400)
+      on Slack!
+    - question
+    - 1
+    - '2019-07-13 12:50:34.791726'
+    - '2019-07-13 12:50:34.791726'
+  - - 64
+    - 7
+    - 10
+    - '2019-07-11'
+    - Call for Papers for the 2020 ACM Conference on Fairness, Accountability, and
+      Transparency (FAT 2020)
+    - https://fatconference.org/2020/
+    - https://mydataglobal.slack.com/archives/C7ZHS9XUZ/p1562844314007500
+    - mydata
+    - 'The third annual ACM FAT Conference brings together researchers and practitioners
+      interested in fairness, accountability, and transparency in socio-technical
+      systems. FAT 2020 has 5 submission tracks reflecting its disciplinary diversity,
+      each with a separate call for papers: #1 - Computer Science; #2 - Law; #3 -
+      Social Sciences and Humanities; #4 - Practice and Experience; #5 -  Education.
+      Full paper submission deadline: Aug 22, 2019; Notification date: Oct 31, 2019;
+      Conference: Jan 27-30, 2020'
+    - info
+    - 1
+    - '2019-07-13 14:22:10.500861'
+    - '2019-07-13 14:22:10.500861'
+  - - 65
+    - 7
+    - 10
+    - '2019-07-11'
+    - Data Protection and Digital Agency for Refugees
+    - https://www.cigionline.org/publications/data-protection-and-digital-agency-refugees
+    - https://mydataglobal.slack.com/archives/C7ZHS9XUZ/p1562842920006000
+    - mydata
+    - For the millions of refugees fleeing conflict and persecution every year, access
+      to information about their rights and control over their personal data are crucial
+      for their ability to assess risk and navigate the asylum process. While asylum
+      seekers are required to provide significant amounts of personal information
+      on their journey to safety, they are rarely fully informed of their data rights
+      by UN agencies or local border control and law enforcement staff tasked with
+      obtaining and processing their personal information. Despite recent improvements
+      in data protection mechanisms in the European Union, refugees’ informed consent
+      for the collection and use of their personal data is rarely sought.
+    - info
+    - 1
+    - '2019-07-13 14:31:27.256901'
+    - '2019-07-13 14:31:27.256901'
+  - - 66
+    - 7
+    - 26
+    - '2019-07-11'
+    - Māori Data Sovereignty Network
+    - https://www.temanararaunga.maori.nz/
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1562879383434100
+    - mydata
+    - 'Our data, our sovereignty, our future.  This vision drove the establishment
+      of Te Mana Raraunga as the Māori Data Sovereignty Network. We advocate for Māori
+      rights and interests in data to be protected as the world moves into an increasingly
+      open data environment. '
+    - info
+    - 1
+    - '2019-07-13 14:40:25.572819'
+    - '2019-07-13 14:40:25.572819'
+  - - 67
+    - 7
+    - 7
+    - '2019-07-11'
+    - Watch 'The Great Hack' Trailer
+    - https://www.youtube.com/watch?v=iX8GxLP1FHo
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1562860269427400
+    - mydata
+    - They took your data. Then they took control. The Great Hack uncovers the dark
+      world of data exploitation through the compelling personal journeys of players
+      on different sides of the explosive Cambridge Analytica/Facebook data scandal.
+      In select theaters and on Netflix July 24.
+    - info
+    - 1
+    - '2019-07-13 14:44:29.73147'
+    - '2019-07-13 14:44:29.73147'
+  - - 68
+    - 7
+    - 27
+    - '2019-07-12'
+    - The MyData Operator
+    - https://mydata-global.org/what-is-operator
+    - https://mydataglobal.slack.com/archives/CJ5046HEW/p1562914823001300
+    - mydata
+    - 'This week was another planning call for the MyData operator workshop. The session
+      description currently is: ''An outcome-orientated, multi-stakeholder workshop
+      to better define the role of the Operator within the MyData ecosystem. The session
+      will include perspectives from Japanese data banks, US fiduciaries, and global
+      intermediaries with existing public and private-sector practitioners. The aim
+      of the workshop will be to develop the direction and working party for a whitepaper
+      to be published in 2019.'''
+    - info
+    - 1
+    - '2019-07-13 16:52:08.772926'
+    - '2019-07-13 16:52:08.772926'
+  - - 69
+    - 7
+    - 2
+    - '2019-07-12'
+    - Introducing Personal Data Exchanges & the Personal Data Economy
+    - https://medium.com/project-2030/what-is-a-personal-data-exchange-256bcd5bf447
+    - https://mydataglobal.slack.com/archives/C8S3TP6P7/p1562936074031800
+    - mydata
+    - The next big technological shift is to a world where every individual can manage
+      and (optionally) monetise their personal data. Companies like Facebook and Google
+      already make billions because they know everything about us via our online habits.
+      What if we could take a cut? What if we could own and sell our data directly?
+    - info
+    - 1
+    - '2019-07-13 16:58:13.216288'
+    - '2019-07-13 16:58:13.216288'
+  - - 70
+    - 7
+    - 2
+    - '2019-07-12'
+    - Tech companies organize two efforts to support personal data management
+    - https://martechtoday.com/tech-companies-organize-two-efforts-to-support-personal-data-management-both-called-open-gdpr-214123
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1562936654452800
+    - mydata
+    - "...and both are called Open GDPR. Though unrelated, the initiatives reflect
+      some of the ways the ad and marketing industry is organizing itself around its
+      personal data responsibilities."
+    - info
+    - 1
+    - '2019-07-13 17:03:35.555441'
+    - '2019-07-13 17:03:35.555441'
+  - - 71
+    - 7
+    - 10
+    - '2019-07-10'
+    - Who joins Community Call about Japanese Information Banking?
+    - https://mydataglobal.slack.com/archives/C8T25FW8P/p1562737533039100
+    - https://mydataglobal.slack.com/archives/C8T25FW8P/p1562737533039100
+    - mydata
+    - Many of you've heard about the developments in Japan around Information Banking.
+      We'll have the chance to hear more in depth presentations about it at MyData
+      2019 conference, while we wish to already share insights in the next community
+      telco on July 19th.
+    - question
+    - 1
+    - '2019-07-13 20:17:14.889162'
+    - '2019-07-13 20:17:14.889162'
+  - - 72
+    - 7
+    - 10
+    - '2019-07-11'
+    - Initiatives Posters
+    - https://mydata-global.org/initiatives-posters
+    - https://mydataglobal.slack.com/archives/CFJ5PB0NT/p1562830055025500
+    - mydata
+    - As discussed in the last monthly community telco, we suggest a way how all MyData
+      initiatives could be represented at the MyData 2019 conference to promote themselves
+      - developing a poster that shows the key elements of your hub / thematic group
+      and a way to get engaged.
+    - question
+    - 1
+    - '2019-07-13 21:23:30.023932'
+    - '2019-07-13 21:23:30.023932'
+  - - 73
+    - 7
+    - 2
+    - '2019-07-11'
+    - Which personal data sources would be most useful to get easily portable?
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1562932298440300
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1562932298440300
+    - mydata
+    - Here's a try for quick crowdsourcing the above question. The aim is to crate
+      a top-20 list.
+    - question
+    - 1
+    - '2019-07-13 21:37:03.015866'
+    - '2019-07-13 21:37:03.015866'
+  - - 74
+    - 8
+    - 7
+    - '2019-07-13'
+    - 'Looking Beyond Privacy: The Importance of Economic Rights to Our Data'
+    - https://thewire.in/tech/data-privacy-digital-economy
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1563052600471800
+    - mydata
+    - Some interesting thoughts about the role of the US and China vs. other 'stronger
+      developing countries' in respect to the use and ownership of data from an Indian
+      point of view.
+    - info
+    - 1
+    - '2019-07-20 14:06:18.405753'
+    - '2019-07-20 14:06:18.405753'
+  - - 75
+    - 8
+    - 7
+    - '2019-07-14'
+    - Stop Surveillance Humanitarianism
+    - https://www.nytimes.com/2019/07/11/opinion/data-humanitarian-aid.html
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1563136904473100
+    - mydata
+    - Requiring biometric data, like iris and facial scans, sets a dangerous precedent
+      for vital aid.
+    - info
+    - 1
+    - '2019-07-20 14:18:14.940294'
+    - '2019-07-20 14:18:14.940294'
+  - - 76
+    - 8
+    - 7
+    - '2019-07-16'
+    - 'Clouded data: Privacy and the promiseof encryption'
+    - https://journals.sagepub.com/doi/pdf/10.1177/2053951719848781
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1563289332477700
+    - mydata
+    - 'Interesting paper highlighting the different reconfiguration of the notion
+      of privacy taking place under various technical schemes: blockchain, multiparty
+      computation, fully homomorphic encryption, differential privacy'
+    - info
+    - 1
+    - '2019-07-20 14:23:05.591469'
+    - '2019-07-20 14:23:05.591469'
+  - - 77
+    - 8
+    - 8
+    - '2019-07-18'
+    - 'Information Bank: Ryosuke Shibasaki at TEDxTokyo'
+    - https://www.youtube.com/watch?v=AbjQC4MB2qE
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1563442200488900
+    - mydata
+    - Found this TEDxTokyo talk from 2012 where Prof. Ryosuke Shibasaki pitches an
+      information bank (same exact idea as a MyData operator).
+    - info
+    - 1
+    - '2019-07-20 14:27:21.943365'
+    - '2019-07-20 14:27:21.943365'
+  - - 78
+    - 8
+    - 7
+    - '2019-07-18'
+    - Our Data Future
+    - https://privacyinternational.org/long-read/3088/our-data-future
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1563477829490300
+    - mydata
+    - Privacy International discusses data futures, and encourages people to join
+      their local MyData hub.
+    - info
+    - 1
+    - '2019-07-20 14:38:46.149816'
+    - '2019-07-20 14:38:46.149816'
+  - - 79
+    - 8
+    - 10
+    - '2019-07-16'
+    - Overview for Q2 membership fee sharing
+    - https://mydataglobal.slack.com/archives/CFJ5PB0NT/p1563358703031800?thread_ts=1563287491.031000&cid=CFJ5PB0NT
+    - https://mydataglobal.slack.com/archives/CFJ5PB0NT/p1563358703031800?thread_ts=1563287491.031000&cid=CFJ5PB0NT
+    - mydata
+    - An overview about the membership fee sharing for the individual hubs. Read more
+      about Financial guidelines for Initiatives [here](https://mydata-global.org/initiatives-finances).
+    - info
+    - 1
+    - '2019-07-20 14:42:36.585546'
+    - '2019-07-20 14:42:36.585546'
+  - - 80
+    - 8
+    - 10
+    - '2019-07-14'
+    - Building Collective Momentum to Challenge the Ad Tech Industry
+    - https://responsibledata.io/2019/06/27/building-collective-momentum-to-challenge-the-ad-tech-industry/
+    - https://mydataglobal.slack.com/archives/C7ZHS9XUZ/p1563089765008000
+    - mydata
+    - This story is the first of a series on how civil society organisations and activists
+      are using the GDPR (and similar data protection legislation) to advance rights
+      and strengthen their work.
+    - info
+    - 1
+    - '2019-07-20 15:04:33.900704'
+    - '2019-07-20 15:04:33.900704'
+  - - 81
+    - 8
+    - 10
+    - '2019-07-17'
+    - 'Artificial Intelligence Governance and Ethics: Global Perspectives'
+    - https://angeladaly.files.wordpress.com/2019/06/artificial-intelligence-ethics-and-global-governance_final.pdf
+    - https://mydataglobal.slack.com/archives/CE8N0JT0R/p1563360926006200
+    - mydata
+    - AI is increasingly being embedded in our lives, supplementing our pervasive
+      use of digital technologies. But this is being accompanied by disquiet over
+      problematic and dangerous implementations of AI, or indeed, even AI itself deciding
+      to do dangerous and problematic actions, especially in fields such as the military,
+      medicine and criminal justice.
+    - info
+    - 1
+    - '2019-07-20 15:10:15.889218'
+    - '2019-07-20 15:10:15.889218'
+  - - 82
+    - 8
+    - 29
+    - '2019-07-17'
+    - Calling all MyData Startups
+    - https://www.surveymonkey.com/r/LGZPWCR
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1563396750486700
+    - mydata
+    - 'Calling all MyData startups: If you work for one, or if you know of an interesting
+      startup company that follows MyData principles (regardless of whether they are
+      a member or not), can you tell us about them?'
+    - question
+    - 1
+    - '2019-07-20 15:16:00.120838'
+    - '2019-07-20 15:16:00.120838'
+  - - 83
+    - 8
+    - 10
+    - '2019-07-13'
+    - Would it be beneficial to the MyData community to develop a Collaborative Documentation
+      Site?
+    - https://mydataglobal.slack.com/archives/CE9FLJKME/p1563030122024500
+    - https://mydataglobal.slack.com/archives/CE9FLJKME/p1563030122024500
+    - mydata
+    - 'After reading this article from the [NY Times](https://open.nytimes.com/we-built-a-collaborative-documentation-site-deploy-your-own-with-the-push-of-a-button-134de99c42fc)
+      Sille asked: Although using GDocs or not, is a totally separate question, while
+      we still do… would it be beneficial to the MyData community to develop something
+      similar for us based on the Library source?'
+    - question
+    - 1
+    - '2019-07-20 15:16:00.239269'
+    - '2019-07-20 15:16:00.239269'
+
+---
+tags:
+  columns:
+  - id
+  - tag
+  - status
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - general
+    - 1
+    - '2019-06-11 23:19:35.85733'
+    - '2019-06-11 23:19:35.85733'
+  - - 2
+    - medium
+    - 1
+    - '2019-06-11 23:19:35.862292'
+    - '2019-06-11 23:19:35.862292'
+  - - 3
+    - make-it-happen
+    - 1
+    - '2019-06-11 23:19:35.922541'
+    - '2019-06-11 23:19:35.922541'
+  - - 4
+    - ledger
+    - 1
+    - '2019-06-11 23:19:35.925731'
+    - '2019-06-11 23:19:35.925731'
+  - - 9
+    - japan
+    - 1
+    - '2019-06-12 11:23:59.234661'
+    - '2019-06-12 11:23:59.234661'
+  - - 10
+    - gov
+    - 1
+    - '2019-06-12 11:23:59.238212'
+    - '2019-06-12 11:23:59.238212'
+  - - 11
+    - apple
+    - 1
+    - '2019-06-12 11:23:59.245977'
+    - '2019-06-12 11:23:59.245977'
+  - - 12
+    - privacy
+    - 1
+    - '2019-06-12 11:23:59.25209'
+    - '2019-06-12 11:23:59.25209'
+  - - 13
+    - signin
+    - 1
+    - '2019-06-12 11:23:59.25727'
+    - '2019-06-12 11:23:59.25727'
+  - - 14
+    - twitter
+    - 1
+    - '2019-06-12 11:23:59.262464'
+    - '2019-06-12 11:23:59.262464'
+  - - 15
+    - mydata2019
+    - 1
+    - '2019-06-12 11:23:59.266919'
+    - '2019-06-12 11:23:59.266919'
+  - - 16
+    - presenter
+    - 1
+    - '2019-06-12 11:23:59.27045'
+    - '2019-06-12 11:23:59.27045'
+  - - 17
+    - conference-programme
+    - 1
+    - '2019-06-12 11:23:59.275432'
+    - '2019-06-12 11:23:59.275432'
+  - - 18
+    - disruptive.asia
+    - 1
+    - '2019-06-12 11:23:59.280352'
+    - '2019-06-12 11:23:59.280352'
+  - - 19
+    - book
+    - 1
+    - '2019-06-12 11:24:00.227828'
+    - '2019-06-12 11:24:00.227828'
+  - - 20
+    - wired
+    - 1
+    - '2019-06-14 16:43:42.734465'
+    - '2019-06-14 16:43:42.734465'
+  - - 21
+    - sitra
+    - 1
+    - '2019-06-14 16:43:43.426337'
+    - '2019-06-14 16:43:43.426337'
+  - - 22
+    - money
+    - 1
+    - '2019-06-14 16:43:43.479946'
+    - '2019-06-14 16:43:43.479946'
+  - - 23
+    - goodie
+    - 1
+    - '2019-06-14 16:43:43.534478'
+    - '2019-06-14 16:43:43.534478'
+  - - 24
+    - eff
+    - 1
+    - '2019-06-14 16:43:43.729708'
+    - '2019-06-14 16:43:43.729708'
+  - - 25
+    - visionofsuccess2022
+    - 1
+    - '2019-06-14 16:43:43.842302'
+    - '2019-06-14 16:43:43.842302'
+  - - 26
+    - doodle
+    - 1
+    - '2019-06-16 13:01:39.343516'
+    - '2019-06-16 13:01:39.343516'
+  - - 27
+    - programme-stewards
+    - 1
+    - '2019-06-16 13:01:39.348068'
+    - '2019-06-16 13:01:39.348068'
+  - - 28
+    - hub-initiators
+    - 1
+    - '2019-06-16 13:01:39.352088'
+    - '2019-06-16 13:01:39.352088'
+  - - 29
+    - community
+    - 1
+    - '2019-06-16 13:01:40.230789'
+    - '2019-06-16 13:01:40.230789'
+  - - 30
+    - tips&tricks
+    - 1
+    - '2019-06-16 22:14:03.432407'
+    - '2019-06-16 22:14:03.432407'
+  - - 31
+    - google
+    - 1
+    - '2019-06-16 22:14:03.442771'
+    - '2019-06-16 22:14:03.442771'
+  - - 32
+    - ny-times
+    - 1
+    - '2019-06-16 22:14:03.44671'
+    - '2019-06-16 22:14:03.44671'
+  - - 33
+    - the sunday times
+    - 1
+    - '2019-06-16 22:14:03.450099'
+    - '2019-06-16 22:14:03.450099'
+  - - 34
+    - ethics
+    - 1
+    - '2019-06-16 22:14:03.453089'
+    - '2019-06-16 22:14:03.453089'
+  - - 35
+    - challenge
+    - 1
+    - '2019-06-16 22:14:03.456431'
+    - '2019-06-16 22:14:03.456431'
+  - - 36
+    - solid
+    - 1
+    - '2019-06-16 22:14:03.459962'
+    - '2019-06-16 22:14:03.459962'
+  - - 37
+    - poland
+    - 1
+    - '2019-06-16 22:14:03.463339'
+    - '2019-06-16 22:14:03.463339'
+  - - 38
+    - interview
+    - 1
+    - '2019-06-16 22:14:03.466982'
+    - '2019-06-16 22:14:03.466982'
+  - - 39
+    - iot
+    - 1
+    - '2019-06-16 22:14:04.21024'
+    - '2019-06-16 22:14:04.21024'
+  - - 40
+    - rights
+    - 1
+    - '2019-06-16 22:14:54.077307'
+    - '2019-06-16 22:14:54.077307'
+  - - 41
+    - trends
+    - 1
+    - '2019-06-25 21:53:26.536491'
+    - '2019-06-25 21:53:26.536491'
+  - - 42
+    - newsletter
+    - 1
+    - '2019-06-25 21:56:40.621507'
+    - '2019-06-25 21:56:40.621507'
+  - - 43
+    - ai
+    - 1
+    - '2019-06-25 22:03:35.967169'
+    - '2019-06-25 22:04:17.500873'
+  - - 44
+    - job
+    - 1
+    - '2019-06-26 05:58:08.364244'
+    - '2019-06-26 05:58:08.364244'
+  - - 45
+    - idlewords
+    - 1
+    - '2019-06-26 06:12:58.022914'
+    - '2019-06-26 06:12:58.022914'
+  - - 46
+    - regulation
+    - 1
+    - '2019-06-26 06:15:47.583494'
+    - '2019-06-26 06:15:47.583494'
+  - - 47
+    - uk
+    - 1
+    - '2019-06-26 06:15:47.927346'
+    - '2019-06-26 06:15:47.927346'
+  - - 48
+    - un
+    - 1
+    - '2019-06-26 06:15:48.392631'
+    - '2019-06-26 06:15:48.392631'
+  - - 49
+    - thenewhumanitarian
+    - 1
+    - '2019-06-26 06:15:48.476664'
+    - '2019-06-26 06:15:48.476664'
+  - - 50
+    - ads
+    - 1
+    - '2019-06-26 06:15:48.527047'
+    - '2019-06-26 06:15:48.527047'
+  - - 51
+    - ssi
+    - 1
+    - '2019-06-26 07:02:06.467242'
+    - '2019-06-26 07:02:06.467242'
+  - - 52
+    - decentralization
+    - 1
+    - '2019-06-26 07:02:06.502437'
+    - '2019-06-26 07:02:06.502437'
+  - - 53
+    - collaboration
+    - 1
+    - '2019-06-26 07:02:07.096637'
+    - '2019-06-26 07:02:07.096637'
+  - - 54
+    - event
+    - 1
+    - '2019-06-30 15:33:59.706072'
+    - '2019-06-30 15:33:59.706072'
+  - - 55
+    - economy
+    - 1
+    - '2019-06-30 15:34:00.112058'
+    - '2019-06-30 15:34:00.112058'
+  - - 56
+    - case-library
+    - 1
+    - '2019-06-30 15:45:05.757618'
+    - '2019-06-30 15:45:05.757618'
+  - - 57
+    - aid
+    - 1
+    - '2019-06-30 22:15:00.972494'
+    - '2019-06-30 22:15:00.972494'
+  - - 58
+    - identity
+    - 1
+    - '2019-06-30 22:16:25.92283'
+    - '2019-06-30 22:16:25.92283'
+  - - 59
+    - organization
+    - 1
+    - '2019-06-30 22:18:09.781253'
+    - '2019-06-30 22:18:09.781253'
+  - - 60
+    - finland
+    - 1
+    - '2019-06-30 22:19:30.521999'
+    - '2019-06-30 22:19:30.521999'
+  - - 61
+    - business
+    - 1
+    - '2019-06-30 22:41:29.579965'
+    - '2019-06-30 22:41:29.579965'
+  - - 62
+    - adoption
+    - 1
+    - '2019-06-30 22:41:29.59386'
+    - '2019-06-30 22:41:29.59386'
+  - - 63
+    - operator
+    - 1
+    - '2019-06-30 22:41:29.598333'
+    - '2019-06-30 22:41:29.598333'
+  - - 64
+    - stakeholders
+    - 1
+    - '2019-06-30 22:41:30.149977'
+    - '2019-06-30 22:41:30.149977'
+  - - 65
+    - sharing
+    - 1
+    - '2019-06-30 22:44:55.155494'
+    - '2019-06-30 22:44:55.155494'
+  - - 66
+    - guiding-principles
+    - 1
+    - '2019-07-06 21:08:00.537903'
+    - '2019-07-06 21:08:00.537903'
+  - - 67
+    - reading
+    - 1
+    - '2019-07-06 21:08:00.557367'
+    - '2019-07-06 21:08:00.557367'
+  - - 68
+    - reading-club
+    - 1
+    - '2019-07-06 21:08:00.569776'
+    - '2019-07-06 21:08:00.569776'
+  - - 69
+    - tools
+    - 1
+    - '2019-07-06 21:08:00.583835'
+    - '2019-07-06 21:08:00.583835'
+  - - 70
+    - axios
+    - 1
+    - '2019-07-06 21:08:00.593072'
+    - '2019-07-06 21:08:00.593072'
+  - - 71
+    - data-mobility
+    - 1
+    - '2019-07-06 21:08:00.605698'
+    - '2019-07-06 21:08:00.605698'
+  - - 72
+    - theguardian
+    - 1
+    - '2019-07-06 21:08:00.617261'
+    - '2019-07-06 21:08:00.617261'
+  - - 73
+    - facebook
+    - 1
+    - '2019-07-06 21:08:00.626774'
+    - '2019-07-06 21:08:00.626774'
+  - - 74
+    - japantimes
+    - 1
+    - '2019-07-06 21:08:00.63628'
+    - '2019-07-06 21:08:00.63628'
+  - - 75
+    - us
+    - 1
+    - '2019-07-06 21:08:00.647934'
+    - '2019-07-06 21:08:00.647934'
+  - - 76
+    - washingtonpost
+    - 1
+    - '2019-07-06 21:08:00.66967'
+    - '2019-07-06 21:08:00.66967'
+  - - 77
+    - browser
+    - 1
+    - '2019-07-06 21:08:00.682209'
+    - '2019-07-06 21:08:00.682209'
+  - - 78
+    - email
+    - 1
+    - '2019-07-06 22:24:57.062669'
+    - '2019-07-06 22:24:57.062669'
+  - - 79
+    - communication
+    - 1
+    - '2019-07-13 10:28:11.604416'
+    - '2019-07-13 10:28:11.604416'
+  - - 81
+    - ihan
+    - 1
+    - '2019-07-13 10:45:37.52637'
+    - '2019-07-13 10:45:37.52637'
+  - - 82
+    - media
+    - 1
+    - '2019-07-13 14:21:36.324613'
+    - '2019-07-13 14:21:36.324613'
+  - - 83
+    - call-for-papers
+    - 1
+    - '2019-07-13 14:21:36.340333'
+    - '2019-07-13 14:21:36.340333'
+  - - 84
+    - refugees
+    - 1
+    - '2019-07-13 14:29:44.911547'
+    - '2019-07-13 14:29:44.911547'
+  - - 85
+    - indigenous
+    - 1
+    - '2019-07-13 14:38:29.959528'
+    - '2019-07-13 14:38:29.959528'
+  - - 86
+    - data-sovereignty
+    - 1
+    - '2019-07-13 14:38:29.9792'
+    - '2019-07-13 14:38:29.9792'
+  - - 87
+    - netflix
+    - 1
+    - '2019-07-13 14:42:35.258687'
+    - '2019-07-13 14:42:35.258687'
+  - - 88
+    - personal-data-store
+    - 1
+    - '2019-07-13 16:56:47.103863'
+    - '2019-07-13 16:56:47.103863'
+  - - 89
+    - gdpr
+    - 1
+    - '2019-07-13 17:01:42.772316'
+    - '2019-07-13 17:01:42.772316'
+  - - 90
+    - data-source
+    - 1
+    - '2019-07-13 21:35:16.073527'
+    - '2019-07-13 21:35:16.073527'
+  - - 91
+    - music
+    - 1
+    - '2019-07-13 21:42:01.961434'
+    - '2019-07-13 21:42:01.961434'
+  - - 92
+    - india
+    - 1
+    - '2019-07-20 14:08:02.575856'
+    - '2019-07-20 14:08:02.575856'
+  - - 93
+    - the-wire
+    - 1
+    - '2019-07-20 14:08:02.588333'
+    - '2019-07-20 14:08:02.588333'
+  - - 94
+    - blockchain
+    - 1
+    - '2019-07-20 14:16:29.870162'
+    - '2019-07-20 14:16:29.870162'
+  - - 95
+    - mpc
+    - 1
+    - '2019-07-20 14:16:29.892773'
+    - '2019-07-20 14:16:29.892773'
+  - - 96
+    - homomorphic-encryption
+    - 1
+    - '2019-07-20 14:16:29.896147'
+    - '2019-07-20 14:16:29.896147'
+  - - 97
+    - differential-privacy
+    - 1
+    - '2019-07-20 14:16:29.898968'
+    - '2019-07-20 14:16:29.898968'
+  - - 98
+    - paper
+    - 1
+    - '2019-07-20 14:16:29.901638'
+    - '2019-07-20 14:16:29.901638'
+  - - 99
+    - sage
+    - 1
+    - '2019-07-20 14:21:05.246274'
+    - '2019-07-20 14:21:05.246274'
+  - - 100
+    - data-bank
+    - 1
+    - '2019-07-20 14:26:42.121895'
+    - '2019-07-20 14:26:42.121895'
+  - - 101
+    - future
+    - 1
+    - '2019-07-20 14:36:11.053173'
+    - '2019-07-20 14:36:11.053173'
+  - - 102
+    - privacy-international
+    - 1
+    - '2019-07-20 14:36:11.097243'
+    - '2019-07-20 14:36:11.097243'
+  - - 103
+    - finance
+    - 1
+    - '2019-07-20 14:41:46.400353'
+    - '2019-07-20 14:41:46.400353'
+  - - 104
+    - civil-society
+    - 1
+    - '2019-07-20 15:03:53.761891'
+    - '2019-07-20 15:03:53.761891'
+  - - 105
+    - responsible-data
+    - 1
+    - '2019-07-20 15:03:53.784543'
+    - '2019-07-20 15:03:53.784543'
+  - - 106
+    - my-ai
+    - 1
+    - '2019-07-20 15:10:46.760923'
+    - '2019-07-20 15:10:46.760923'
+  - - 107
+    - governance
+    - 1
+    - '2019-07-20 15:10:46.786291'
+    - '2019-07-20 15:10:46.786291'
+  - - 108
+    - startup
+    - 1
+    - '2019-07-20 15:16:26.90247'
+    - '2019-07-20 15:16:26.90247'
+  - - 109
+    - mydata-principles
+    - 1
+    - '2019-07-20 15:16:27.003419'
+    - '2019-07-20 15:16:27.003419'
+
+---
+posting_tags:
+  columns:
+  - id
+  - post_id
+  - tag_id
+  - created_at
+  - updated_at
+  records: 
+  - - 37
+    - 1
+    - 1
+    - '2019-06-14 17:01:40.995394'
+    - '2019-06-14 17:01:40.995394'
+  - - 38
+    - 1
+    - 2
+    - '2019-06-14 17:01:41.030084'
+    - '2019-06-14 17:01:41.030084'
+  - - 39
+    - 2
+    - 3
+    - '2019-06-14 17:01:41.035394'
+    - '2019-06-14 17:01:41.035394'
+  - - 40
+    - 2
+    - 4
+    - '2019-06-14 17:01:41.040022'
+    - '2019-06-14 17:01:41.040022'
+  - - 41
+    - 3
+    - 9
+    - '2019-06-14 17:01:41.044552'
+    - '2019-06-14 17:01:41.044552'
+  - - 42
+    - 3
+    - 1
+    - '2019-06-14 17:01:41.048851'
+    - '2019-06-14 17:01:41.048851'
+  - - 43
+    - 4
+    - 10
+    - '2019-06-14 17:01:41.053736'
+    - '2019-06-14 17:01:41.053736'
+  - - 44
+    - 4
+    - 1
+    - '2019-06-14 17:01:41.058337'
+    - '2019-06-14 17:01:41.058337'
+  - - 45
+    - 5
+    - 11
+    - '2019-06-14 17:01:41.062318'
+    - '2019-06-14 17:01:41.062318'
+  - - 46
+    - 5
+    - 12
+    - '2019-06-14 17:01:41.067092'
+    - '2019-06-14 17:01:41.067092'
+  - - 47
+    - 5
+    - 13
+    - '2019-06-14 17:01:41.070876'
+    - '2019-06-14 17:01:41.070876'
+  - - 48
+    - 5
+    - 1
+    - '2019-06-14 17:01:41.074896'
+    - '2019-06-14 17:01:41.074896'
+  - - 49
+    - 6
+    - 14
+    - '2019-06-14 17:01:41.078668'
+    - '2019-06-14 17:01:41.078668'
+  - - 50
+    - 6
+    - 15
+    - '2019-06-14 17:01:41.082744'
+    - '2019-06-14 17:01:41.082744'
+  - - 51
+    - 6
+    - 1
+    - '2019-06-14 17:01:41.086832'
+    - '2019-06-14 17:01:41.086832'
+  - - 52
+    - 7
+    - 15
+    - '2019-06-14 17:01:41.123329'
+    - '2019-06-14 17:01:41.123329'
+  - - 53
+    - 7
+    - 16
+    - '2019-06-14 17:01:41.129071'
+    - '2019-06-14 17:01:41.129071'
+  - - 54
+    - 7
+    - 17
+    - '2019-06-14 17:01:41.133694'
+    - '2019-06-14 17:01:41.133694'
+  - - 55
+    - 8
+    - 18
+    - '2019-06-14 17:01:41.138267'
+    - '2019-06-14 17:01:41.138267'
+  - - 56
+    - 8
+    - 1
+    - '2019-06-14 17:01:41.142561'
+    - '2019-06-14 17:01:41.142561'
+  - - 57
+    - 9
+    - 15
+    - '2019-06-14 17:01:41.146945'
+    - '2019-06-14 17:01:41.146945'
+  - - 58
+    - 9
+    - 1
+    - '2019-06-14 17:01:41.151606'
+    - '2019-06-14 17:01:41.151606'
+  - - 59
+    - 10
+    - 12
+    - '2019-06-14 17:01:41.155908'
+    - '2019-06-14 17:01:41.155908'
+  - - 60
+    - 10
+    - 19
+    - '2019-06-14 17:01:41.160326'
+    - '2019-06-14 17:01:41.160326'
+  - - 61
+    - 10
+    - 1
+    - '2019-06-14 17:01:41.164585'
+    - '2019-06-14 17:01:41.164585'
+  - - 62
+    - 11
+    - 11
+    - '2019-06-14 17:01:41.169435'
+    - '2019-06-14 17:01:41.169435'
+  - - 63
+    - 11
+    - 20
+    - '2019-06-14 17:01:41.173457'
+    - '2019-06-14 17:01:41.173457'
+  - - 64
+    - 11
+    - 1
+    - '2019-06-14 17:01:41.194116'
+    - '2019-06-14 17:01:41.194116'
+  - - 65
+    - 12
+    - 21
+    - '2019-06-14 17:01:41.219917'
+    - '2019-06-14 17:01:41.219917'
+  - - 66
+    - 12
+    - 22
+    - '2019-06-14 17:01:41.23968'
+    - '2019-06-14 17:01:41.23968'
+  - - 67
+    - 12
+    - 1
+    - '2019-06-14 17:01:41.520526'
+    - '2019-06-14 17:01:41.520526'
+  - - 68
+    - 13
+    - 23
+    - '2019-06-14 17:01:41.629082'
+    - '2019-06-14 17:01:41.629082'
+  - - 69
+    - 13
+    - 1
+    - '2019-06-14 17:01:41.745208'
+    - '2019-06-14 17:01:41.745208'
+  - - 70
+    - 14
+    - 24
+    - '2019-06-14 17:01:41.793165'
+    - '2019-06-14 17:01:41.793165'
+  - - 71
+    - 14
+    - 1
+    - '2019-06-14 17:01:41.82671'
+    - '2019-06-14 17:01:41.82671'
+  - - 72
+    - 15
+    - 25
+    - '2019-06-14 17:02:30.592529'
+    - '2019-06-14 17:02:30.592529'
+  - - 73
+    - 16
+    - 14
+    - '2019-06-16 13:01:47.811235'
+    - '2019-06-16 13:25:57.034789'
+  - - 74
+    - 16
+    - 1
+    - '2019-06-16 13:01:47.826497'
+    - '2019-06-16 13:01:47.826497'
+  - - 75
+    - 17
+    - 26
+    - '2019-06-16 13:01:47.834207'
+    - '2019-06-16 13:01:47.834207'
+  - - 76
+    - 17
+    - 3
+    - '2019-06-16 13:01:47.843263'
+    - '2019-06-16 13:01:47.843263'
+  - - 77
+    - 18
+    - 17
+    - '2019-06-16 13:01:47.861443'
+    - '2019-06-16 13:01:47.861443'
+  - - 78
+    - 18
+    - 27
+    - '2019-06-16 13:01:47.868237'
+    - '2019-06-16 13:01:47.868237'
+  - - 79
+    - 19
+    - 15
+    - '2019-06-16 13:01:47.878748'
+    - '2019-06-16 13:01:47.878748'
+  - - 80
+    - 19
+    - 28
+    - '2019-06-16 13:01:47.883896'
+    - '2019-06-16 13:01:47.883896'
+  - - 81
+    - 20
+    - 29
+    - '2019-06-16 13:01:47.895086'
+    - '2019-06-16 13:01:47.895086'
+  - - 82
+    - 20
+    - 1
+    - '2019-06-16 13:01:47.900294'
+    - '2019-06-16 13:01:47.900294'
+  - - 83
+    - 21
+    - 1
+    - '2019-06-16 13:01:48.632943'
+    - '2019-06-16 13:01:48.632943'
+  - - 84
+    - 22
+    - 17
+    - '2019-06-16 22:18:12.450782'
+    - '2019-06-16 22:18:12.450782'
+  - - 85
+    - 22
+    - 30
+    - '2019-06-16 22:18:12.497377'
+    - '2019-06-16 22:18:12.497377'
+  - - 86
+    - 23
+    - 1
+    - '2019-06-16 22:18:12.501923'
+    - '2019-06-16 22:18:12.501923'
+  - - 87
+    - 23
+    - 2
+    - '2019-06-16 22:18:12.505716'
+    - '2019-06-16 22:18:12.505716'
+  - - 88
+    - 23
+    - 31
+    - '2019-06-16 22:18:12.509689'
+    - '2019-06-16 22:18:12.509689'
+  - - 89
+    - 23
+    - 32
+    - '2019-06-16 22:18:12.513533'
+    - '2019-06-16 22:18:12.513533'
+  - - 90
+    - 24
+    - 1
+    - '2019-06-16 22:18:12.517449'
+    - '2019-06-16 22:18:12.517449'
+  - - 91
+    - 24
+    - 14
+    - '2019-06-16 22:18:12.521524'
+    - '2019-06-16 22:18:12.521524'
+  - - 92
+    - 24
+    - 33
+    - '2019-06-16 22:18:12.525322'
+    - '2019-06-16 22:18:12.525322'
+  - - 93
+    - 25
+    - 1
+    - '2019-06-16 22:18:12.620328'
+    - '2019-06-16 22:18:12.620328'
+  - - 94
+    - 25
+    - 34
+    - '2019-06-16 22:18:12.631861'
+    - '2019-06-16 22:18:12.631861'
+  - - 95
+    - 25
+    - 2
+    - '2019-06-16 22:18:12.636577'
+    - '2019-06-16 22:18:12.636577'
+  - - 96
+    - 26
+    - 1
+    - '2019-06-16 22:18:12.64097'
+    - '2019-06-16 22:18:12.64097'
+  - - 97
+    - 26
+    - 35
+    - '2019-06-16 22:18:12.644768'
+    - '2019-06-16 22:18:12.644768'
+  - - 98
+    - 27
+    - 1
+    - '2019-06-16 22:18:12.669504'
+    - '2019-06-16 22:18:12.669504'
+  - - 99
+    - 27
+    - 10
+    - '2019-06-16 22:18:12.681519'
+    - '2019-06-16 22:18:12.681519'
+  - - 100
+    - 28
+    - 1
+    - '2019-06-16 22:18:12.68685'
+    - '2019-06-16 22:18:12.68685'
+  - - 101
+    - 28
+    - 36
+    - '2019-06-16 22:18:12.692866'
+    - '2019-06-16 22:18:12.692866'
+  - - 102
+    - 29
+    - 1
+    - '2019-06-16 22:18:12.69893'
+    - '2019-06-16 22:18:12.69893'
+  - - 103
+    - 29
+    - 37
+    - '2019-06-16 22:18:12.704347'
+    - '2019-06-16 22:18:12.704347'
+  - - 104
+    - 30
+    - 1
+    - '2019-06-16 22:18:12.707993'
+    - '2019-06-16 22:18:12.707993'
+  - - 105
+    - 30
+    - 38
+    - '2019-06-16 22:18:12.711523'
+    - '2019-06-16 22:18:12.711523'
+  - - 106
+    - 30
+    - 39
+    - '2019-06-16 22:18:12.714992'
+    - '2019-06-16 22:18:12.714992'
+  - - 107
+    - 30
+    - 15
+    - '2019-06-16 22:18:12.718403'
+    - '2019-06-16 22:18:12.718403'
+  - - 108
+    - 31
+    - 1
+    - '2019-06-16 22:18:12.722031'
+    - '2019-06-16 22:18:12.722031'
+  - - 109
+    - 31
+    - 40
+    - '2019-06-16 22:18:13.480848'
+    - '2019-06-16 22:18:13.480848'
+  - - 110
+    - 32
+    - 1
+    - '2019-06-25 21:52:49.627114'
+    - '2019-06-25 21:52:49.627114'
+  - - 111
+    - 32
+    - 41
+    - '2019-06-25 21:52:49.63561'
+    - '2019-06-25 21:52:49.63561'
+  - - 112
+    - 33
+    - 1
+    - '2019-06-25 21:57:20.283589'
+    - '2019-06-25 21:57:20.283589'
+  - - 113
+    - 33
+    - 42
+    - '2019-06-25 21:57:20.94185'
+    - '2019-06-25 21:57:20.94185'
+  - - 114
+    - 34
+    - 1
+    - '2019-06-26 05:59:10.388103'
+    - '2019-06-26 05:59:10.388103'
+  - - 115
+    - 34
+    - 44
+    - '2019-06-26 05:59:10.944774'
+    - '2019-06-26 05:59:10.944774'
+  - - 116
+    - 35
+    - 1
+    - '2019-06-26 06:17:53.996141'
+    - '2019-06-26 06:17:53.996141'
+  - - 117
+    - 35
+    - 45
+    - '2019-06-26 06:17:54.225895'
+    - '2019-06-26 06:17:54.225895'
+  - - 118
+    - 35
+    - 12
+    - '2019-06-26 06:17:56.542794'
+    - '2019-06-26 06:17:56.542794'
+  - - 119
+    - 35
+    - 46
+    - '2019-06-26 06:17:56.548599'
+    - '2019-06-26 06:17:56.548599'
+  - - 120
+    - 36
+    - 1
+    - '2019-06-26 06:17:56.553327'
+    - '2019-06-26 06:17:56.553327'
+  - - 121
+    - 36
+    - 12
+    - '2019-06-26 06:17:56.557845'
+    - '2019-06-26 06:17:56.557845'
+  - - 122
+    - 36
+    - 47
+    - '2019-06-26 06:17:56.562317'
+    - '2019-06-26 06:17:56.562317'
+  - - 123
+    - 37
+    - 1
+    - '2019-06-26 06:17:56.567023'
+    - '2019-06-26 06:17:56.567023'
+  - - 124
+    - 37
+    - 48
+    - '2019-06-26 06:17:56.57189'
+    - '2019-06-26 06:17:56.57189'
+  - - 125
+    - 37
+    - 49
+    - '2019-06-26 06:17:56.577272'
+    - '2019-06-26 06:17:56.577272'
+  - - 126
+    - 38
+    - 1
+    - '2019-06-26 06:17:56.58915'
+    - '2019-06-26 06:17:56.58915'
+  - - 127
+    - 38
+    - 47
+    - '2019-06-26 06:17:56.594447'
+    - '2019-06-26 06:17:56.594447'
+  - - 128
+    - 38
+    - 50
+    - '2019-06-26 06:17:57.863762'
+    - '2019-06-26 06:17:57.863762'
+  - - 129
+    - 39
+    - 29
+    - '2019-06-30 15:36:31.636924'
+    - '2019-06-30 15:36:31.636924'
+  - - 130
+    - 39
+    - 52
+    - '2019-06-30 15:36:31.765018'
+    - '2019-06-30 15:36:31.765018'
+  - - 131
+    - 39
+    - 54
+    - '2019-06-30 15:36:31.868756'
+    - '2019-06-30 15:36:31.868756'
+  - - 132
+    - 40
+    - 55
+    - '2019-06-30 15:36:31.934997'
+    - '2019-06-30 15:36:31.934997'
+  - - 133
+    - 40
+    - 17
+    - '2019-06-30 15:36:31.968947'
+    - '2019-06-30 15:36:31.968947'
+  - - 134
+    - 41
+    - 3
+    - '2019-06-30 15:43:40.701225'
+    - '2019-06-30 15:43:40.701225'
+  - - 135
+    - 41
+    - 56
+    - '2019-06-30 15:43:40.778158'
+    - '2019-06-30 15:43:40.778158'
+  - - 136
+    - 42
+    - 1
+    - '2019-06-30 22:22:26.024498'
+    - '2019-06-30 22:22:26.024498'
+  - - 137
+    - 42
+    - 48
+    - '2019-06-30 22:22:26.12073'
+    - '2019-06-30 22:22:26.12073'
+  - - 138
+    - 42
+    - 57
+    - '2019-06-30 22:22:26.131502'
+    - '2019-06-30 22:22:26.131502'
+  - - 139
+    - 42
+    - 58
+    - '2019-06-30 22:22:26.143482'
+    - '2019-06-30 22:22:26.143482'
+  - - 140
+    - 43
+    - 1
+    - '2019-06-30 22:22:26.148903'
+    - '2019-06-30 22:22:26.148903'
+  - - 141
+    - 43
+    - 47
+    - '2019-06-30 22:22:26.153996'
+    - '2019-06-30 22:22:26.153996'
+  - - 142
+    - 43
+    - 10
+    - '2019-06-30 22:22:26.158493'
+    - '2019-06-30 22:22:26.158493'
+  - - 143
+    - 44
+    - 1
+    - '2019-06-30 22:22:26.162374'
+    - '2019-06-30 22:22:26.162374'
+  - - 144
+    - 44
+    - 2
+    - '2019-06-30 22:22:26.166362'
+    - '2019-06-30 22:22:26.166362'
+  - - 145
+    - 44
+    - 59
+    - '2019-06-30 22:22:26.170608'
+    - '2019-06-30 22:22:26.170608'
+  - - 146
+    - 45
+    - 1
+    - '2019-06-30 22:22:26.174685'
+    - '2019-06-30 22:22:26.174685'
+  - - 147
+    - 45
+    - 60
+    - '2019-06-30 22:22:26.178659'
+    - '2019-06-30 22:22:26.178659'
+  - - 148
+    - 46
+    - 1
+    - '2019-06-30 22:22:26.18302'
+    - '2019-06-30 22:22:26.18302'
+  - - 149
+    - 46
+    - 9
+    - '2019-06-30 22:22:26.187161'
+    - '2019-06-30 22:22:26.187161'
+  - - 150
+    - 46
+    - 10
+    - '2019-06-30 22:22:26.74056'
+    - '2019-06-30 22:22:26.74056'
+  - - 151
+    - 47
+    - 1
+    - '2019-06-30 22:41:40.888233'
+    - '2019-06-30 22:41:40.888233'
+  - - 152
+    - 47
+    - 10
+    - '2019-06-30 22:41:40.893512'
+    - '2019-06-30 22:41:40.893512'
+  - - 153
+    - 47
+    - 61
+    - '2019-06-30 22:41:40.897515'
+    - '2019-06-30 22:41:40.897515'
+  - - 154
+    - 47
+    - 62
+    - '2019-06-30 22:41:40.901494'
+    - '2019-06-30 22:41:40.901494'
+  - - 155
+    - 48
+    - 1
+    - '2019-06-30 22:41:40.905161'
+    - '2019-06-30 22:41:40.905161'
+  - - 156
+    - 48
+    - 61
+    - '2019-06-30 22:41:40.90884'
+    - '2019-06-30 22:41:40.90884'
+  - - 157
+    - 48
+    - 63
+    - '2019-06-30 22:41:40.91235'
+    - '2019-06-30 22:41:40.91235'
+  - - 158
+    - 48
+    - 64
+    - '2019-06-30 22:41:40.915821'
+    - '2019-06-30 22:41:40.915821'
+  - - 159
+    - 49
+    - 1
+    - '2019-06-30 22:41:40.919255'
+    - '2019-06-30 22:41:40.919255'
+  - - 160
+    - 49
+    - 15
+    - '2019-06-30 22:41:41.494317'
+    - '2019-06-30 22:41:41.494317'
+  - - 161
+    - 50
+    - 29
+    - '2019-07-06 22:01:02.673123'
+    - '2019-07-06 22:01:02.673123'
+  - - 162
+    - 50
+    - 66
+    - '2019-07-06 22:01:02.75779'
+    - '2019-07-06 22:01:02.75779'
+  - - 163
+    - 51
+    - 3
+    - '2019-07-06 22:04:46.456758'
+    - '2019-07-06 22:04:46.456758'
+  - - 164
+    - 51
+    - 56
+    - '2019-07-06 22:04:46.506184'
+    - '2019-07-06 22:04:46.506184'
+  - - 165
+    - 52
+    - 67
+    - '2019-07-06 22:09:15.710962'
+    - '2019-07-06 22:09:15.710962'
+  - - 166
+    - 52
+    - 68
+    - '2019-07-06 22:09:15.935721'
+    - '2019-07-06 22:09:15.935721'
+  - - 167
+    - 52
+    - 19
+    - '2019-07-06 22:09:16.720969'
+    - '2019-07-06 22:09:16.720969'
+  - - 171
+    - 54
+    - 1
+    - '2019-07-06 22:29:17.123755'
+    - '2019-07-06 22:29:17.123755'
+  - - 172
+    - 54
+    - 22
+    - '2019-07-06 22:29:17.81147'
+    - '2019-07-06 22:29:17.81147'
+  - - 173
+    - 55
+    - 1
+    - '2019-07-06 22:31:40.68262'
+    - '2019-07-06 22:31:40.68262'
+  - - 174
+    - 55
+    - 22
+    - '2019-07-06 22:31:41.282181'
+    - '2019-07-06 22:31:41.282181'
+  - - 175
+    - 56
+    - 1
+    - '2019-07-06 22:34:01.428433'
+    - '2019-07-06 22:34:01.428433'
+  - - 176
+    - 56
+    - 71
+    - '2019-07-06 22:34:01.478498'
+    - '2019-07-06 22:34:01.478498'
+  - - 177
+    - 56
+    - 47
+    - '2019-07-06 22:34:01.539561'
+    - '2019-07-06 22:34:01.539561'
+  - - 178
+    - 57
+    - 1
+    - '2019-07-06 22:37:52.524496'
+    - '2019-07-06 22:37:52.524496'
+  - - 179
+    - 57
+    - 72
+    - '2019-07-06 22:37:52.569332'
+    - '2019-07-06 22:37:52.569332'
+  - - 180
+    - 57
+    - 12
+    - '2019-07-06 22:37:52.582229'
+    - '2019-07-06 22:37:52.582229'
+  - - 181
+    - 57
+    - 73
+    - '2019-07-06 22:37:52.589057'
+    - '2019-07-06 22:37:52.589057'
+  - - 182
+    - 57
+    - 31
+    - '2019-07-06 22:37:53.463241'
+    - '2019-07-06 22:37:53.463241'
+  - - 183
+    - 58
+    - 1
+    - '2019-07-06 22:41:44.500118'
+    - '2019-07-06 22:41:44.500118'
+  - - 184
+    - 58
+    - 9
+    - '2019-07-06 22:41:44.529203'
+    - '2019-07-06 22:41:44.529203'
+  - - 185
+    - 58
+    - 74
+    - '2019-07-06 22:41:44.539907'
+    - '2019-07-06 22:41:44.539907'
+  - - 186
+    - 58
+    - 71
+    - '2019-07-06 22:41:44.560858'
+    - '2019-07-06 22:41:44.560858'
+  - - 187
+    - 59
+    - 1
+    - '2019-07-06 22:44:29.582446'
+    - '2019-07-06 22:44:29.582446'
+  - - 188
+    - 59
+    - 75
+    - '2019-07-06 22:44:29.592134'
+    - '2019-07-06 22:44:29.592134'
+  - - 189
+    - 59
+    - 22
+    - '2019-07-06 22:44:30.115021'
+    - '2019-07-06 22:44:30.115021'
+  - - 190
+    - 60
+    - 28
+    - '2019-07-13 10:30:21.998328'
+    - '2019-07-13 10:30:21.998328'
+  - - 191
+    - 60
+    - 79
+    - '2019-07-13 10:30:22.02791'
+    - '2019-07-13 10:30:22.02791'
+  - - 192
+    - 60
+    - 15
+    - '2019-07-13 10:30:22.034184'
+    - '2019-07-13 10:30:22.034184'
+  - - 193
+    - 60
+    - 73
+    - '2019-07-13 10:30:22.040284'
+    - '2019-07-13 10:30:22.040284'
+  - - 194
+    - 60
+    - 14
+    - '2019-07-13 10:30:22.046567'
+    - '2019-07-13 10:30:22.046567'
+  - - 195
+    - 61
+    - 3
+    - '2019-07-13 10:47:08.063979'
+    - '2019-07-13 10:47:08.063979'
+  - - 196
+    - 61
+    - 21
+    - '2019-07-13 10:47:08.069582'
+    - '2019-07-13 10:47:08.069582'
+  - - 197
+    - 61
+    - 21
+    - '2019-07-13 10:47:08.083003'
+    - '2019-07-13 12:47:26.362316'
+  - - 198
+    - 61
+    - 81
+    - '2019-07-13 10:47:08.089258'
+    - '2019-07-13 10:47:08.089258'
+  - - 199
+    - 62
+    - 67
+    - '2019-07-13 12:21:54.734974'
+    - '2019-07-13 12:21:54.734974'
+  - - 200
+    - 62
+    - 68
+    - '2019-07-13 12:21:54.753617'
+    - '2019-07-13 12:21:54.753617'
+  - - 201
+    - 62
+    - 19
+    - '2019-07-13 12:21:54.759057'
+    - '2019-07-13 12:21:54.759057'
+  - - 202
+    - 62
+    - 40
+    - '2019-07-13 12:21:54.763869'
+    - '2019-07-13 12:21:54.763869'
+  - - 203
+    - 63
+    - 1
+    - '2019-07-13 12:50:34.825701'
+    - '2019-07-13 12:50:34.825701'
+  - - 204
+    - 63
+    - 29
+    - '2019-07-13 12:50:34.830882'
+    - '2019-07-13 12:50:34.830882'
+  - - 205
+    - 63
+    - 53
+    - '2019-07-13 12:50:34.835872'
+    - '2019-07-13 12:50:34.835872'
+  - - 206
+    - 63
+    - 79
+    - '2019-07-13 12:50:34.840569'
+    - '2019-07-13 12:50:34.840569'
+  - - 207
+    - 63
+    - 66
+    - '2019-07-13 12:50:34.84507'
+    - '2019-07-13 12:50:34.84507'
+  - - 208
+    - 64
+    - 82
+    - '2019-07-13 14:22:10.517299'
+    - '2019-07-13 14:22:10.517299'
+  - - 209
+    - 64
+    - 83
+    - '2019-07-13 14:22:10.521802'
+    - '2019-07-13 14:22:10.521802'
+  - - 210
+    - 65
+    - 82
+    - '2019-07-13 14:31:27.291149'
+    - '2019-07-13 14:31:27.291149'
+  - - 211
+    - 65
+    - 40
+    - '2019-07-13 14:31:27.295826'
+    - '2019-07-13 14:31:27.295826'
+  - - 212
+    - 65
+    - 84
+    - '2019-07-13 14:31:27.300227'
+    - '2019-07-13 14:31:27.300227'
+  - - 213
+    - 66
+    - 1
+    - '2019-07-13 14:40:25.597605'
+    - '2019-07-13 14:40:25.597605'
+  - - 214
+    - 66
+    - 85
+    - '2019-07-13 14:40:25.603079'
+    - '2019-07-13 14:40:25.603079'
+  - - 215
+    - 66
+    - 86
+    - '2019-07-13 14:40:25.60816'
+    - '2019-07-13 14:40:25.60816'
+  - - 216
+    - 67
+    - 1
+    - '2019-07-13 14:44:29.739394'
+    - '2019-07-13 14:44:29.739394'
+  - - 217
+    - 67
+    - 61
+    - '2019-07-13 14:44:29.744573'
+    - '2019-07-13 14:44:29.744573'
+  - - 218
+    - 67
+    - 22
+    - '2019-07-13 14:44:29.749085'
+    - '2019-07-13 14:44:29.749085'
+  - - 219
+    - 67
+    - 12
+    - '2019-07-13 14:44:29.753466'
+    - '2019-07-13 14:44:29.753466'
+  - - 220
+    - 67
+    - 87
+    - '2019-07-13 14:44:29.757811'
+    - '2019-07-13 14:44:29.757811'
+  - - 221
+    - 68
+    - 17
+    - '2019-07-13 16:52:08.795908'
+    - '2019-07-13 16:52:08.795908'
+  - - 222
+    - 68
+    - 55
+    - '2019-07-13 16:52:08.801568'
+    - '2019-07-13 16:52:08.801568'
+  - - 223
+    - 68
+    - 15
+    - '2019-07-13 16:52:08.80594'
+    - '2019-07-13 16:52:08.80594'
+  - - 224
+    - 69
+    - 3
+    - '2019-07-13 16:58:13.234973'
+    - '2019-07-13 16:58:13.234973'
+  - - 225
+    - 69
+    - 61
+    - '2019-07-13 16:58:13.239177'
+    - '2019-07-13 16:58:13.239177'
+  - - 226
+    - 69
+    - 73
+    - '2019-07-13 16:58:13.242847'
+    - '2019-07-13 16:58:13.242847'
+  - - 227
+    - 69
+    - 31
+    - '2019-07-13 16:58:13.246439'
+    - '2019-07-13 16:58:13.246439'
+  - - 228
+    - 69
+    - 88
+    - '2019-07-13 16:58:13.249737'
+    - '2019-07-13 16:58:13.249737'
+  - - 229
+    - 70
+    - 1
+    - '2019-07-13 17:03:35.562818'
+    - '2019-07-13 17:03:35.562818'
+  - - 230
+    - 70
+    - 61
+    - '2019-07-13 17:03:35.567792'
+    - '2019-07-13 17:03:35.567792'
+  - - 231
+    - 70
+    - 89
+    - '2019-07-13 17:03:35.572129'
+    - '2019-07-13 17:03:35.572129'
+  - - 232
+    - 71
+    - 29
+    - '2019-07-13 20:17:14.906402'
+    - '2019-07-13 20:17:14.906402'
+  - - 233
+    - 71
+    - 9
+    - '2019-07-13 20:17:14.911876'
+    - '2019-07-13 20:17:14.911876'
+  - - 234
+    - 72
+    - 15
+    - '2019-07-13 21:23:30.051194'
+    - '2019-07-13 21:23:30.051194'
+  - - 235
+    - 72
+    - 79
+    - '2019-07-13 21:23:30.056013'
+    - '2019-07-13 21:23:30.056013'
+  - - 236
+    - 72
+    - 28
+    - '2019-07-13 21:23:30.060875'
+    - '2019-07-13 21:23:30.060875'
+  - - 237
+    - 73
+    - 1
+    - '2019-07-13 21:37:03.073111'
+    - '2019-07-13 21:37:03.073111'
+  - - 238
+    - 73
+    - 29
+    - '2019-07-13 21:37:03.08047'
+    - '2019-07-13 21:37:03.08047'
+  - - 239
+    - 73
+    - 90
+    - '2019-07-13 21:37:03.085711'
+    - '2019-07-13 21:37:03.085711'
+  - - 240
+    - 74
+    - 1
+    - '2019-07-20 14:08:40.015096'
+    - '2019-07-20 14:08:40.015096'
+  - - 241
+    - 74
+    - 92
+    - '2019-07-20 14:08:40.040249'
+    - '2019-07-20 14:08:40.040249'
+  - - 242
+    - 74
+    - 93
+    - '2019-07-20 14:08:40.044349'
+    - '2019-07-20 14:08:40.044349'
+  - - 243
+    - 75
+    - 1
+    - '2019-07-20 14:18:14.953712'
+    - '2019-07-20 14:18:14.953712'
+  - - 244
+    - 75
+    - 32
+    - '2019-07-20 14:18:14.958793'
+    - '2019-07-20 14:18:14.958793'
+  - - 245
+    - 75
+    - 84
+    - '2019-07-20 14:18:14.963619'
+    - '2019-07-20 14:18:14.963619'
+  - - 246
+    - 76
+    - 1
+    - '2019-07-20 14:23:05.614304'
+    - '2019-07-20 14:23:05.614304'
+  - - 247
+    - 76
+    - 94
+    - '2019-07-20 14:23:05.619677'
+    - '2019-07-20 14:23:05.619677'
+  - - 248
+    - 76
+    - 95
+    - '2019-07-20 14:23:05.624652'
+    - '2019-07-20 14:23:05.624652'
+  - - 249
+    - 76
+    - 96
+    - '2019-07-20 14:23:05.629663'
+    - '2019-07-20 14:23:05.629663'
+  - - 250
+    - 76
+    - 97
+    - '2019-07-20 14:23:05.634428'
+    - '2019-07-20 14:23:05.634428'
+  - - 251
+    - 76
+    - 98
+    - '2019-07-20 14:23:05.638994'
+    - '2019-07-20 14:23:05.638994'
+  - - 252
+    - 76
+    - 99
+    - '2019-07-20 14:23:05.643072'
+    - '2019-07-20 14:23:05.643072'
+  - - 253
+    - 77
+    - 1
+    - '2019-07-20 14:27:21.976772'
+    - '2019-07-20 14:27:21.976772'
+  - - 254
+    - 77
+    - 100
+    - '2019-07-20 14:27:21.983355'
+    - '2019-07-20 14:27:21.983355'
+  - - 255
+    - 77
+    - 9
+    - '2019-07-20 14:27:21.994275'
+    - '2019-07-20 14:27:21.994275'
+  - - 256
+    - 78
+    - 1
+    - '2019-07-20 14:38:46.188726'
+    - '2019-07-20 14:38:46.188726'
+  - - 257
+    - 78
+    - 101
+    - '2019-07-20 14:38:46.224512'
+    - '2019-07-20 14:38:46.224512'
+  - - 258
+    - 78
+    - 102
+    - '2019-07-20 14:38:46.229337'
+    - '2019-07-20 14:38:46.229337'
+  - - 259
+    - 79
+    - 28
+    - '2019-07-20 14:42:36.615323'
+    - '2019-07-20 14:42:36.615323'
+  - - 260
+    - 79
+    - 103
+    - '2019-07-20 14:42:36.621118'
+    - '2019-07-20 14:42:36.621118'
+  - - 261
+    - 80
+    - 82
+    - '2019-07-20 15:04:34.140275'
+    - '2019-07-20 15:04:34.140275'
+  - - 262
+    - 80
+    - 89
+    - '2019-07-20 15:04:34.145345'
+    - '2019-07-20 15:04:34.145345'
+  - - 263
+    - 80
+    - 104
+    - '2019-07-20 15:04:34.168564'
+    - '2019-07-20 15:04:34.168564'
+  - - 264
+    - 80
+    - 105
+    - '2019-07-20 15:04:34.177826'
+    - '2019-07-20 15:04:34.177826'
+  - - 265
+    - 81
+    - 106
+    - '2019-07-20 15:10:15.90656'
+    - '2019-07-20 15:10:15.90656'
+  - - 266
+    - 81
+    - 98
+    - '2019-07-20 15:10:15.919916'
+    - '2019-07-20 15:10:15.919916'
+  - - 267
+    - 81
+    - 34
+    - '2019-07-20 15:10:15.935822'
+    - '2019-07-20 15:10:15.935822'
+  - - 268
+    - 81
+    - 107
+    - '2019-07-20 15:10:15.985424'
+    - '2019-07-20 15:10:15.985424'
+  - - 269
+    - 82
+    - 108
+    - '2019-07-20 15:16:00.137565'
+    - '2019-07-20 15:16:00.137565'
+  - - 270
+    - 82
+    - 109
+    - '2019-07-20 15:16:00.1624'
+    - '2019-07-20 15:16:00.1624'
+  - - 271
+    - 83
+    - 53
+    - '2019-07-20 15:16:00.257814'
+    - '2019-07-20 15:16:00.257814'
+  - - 272
+    - 83
+    - 69
+    - '2019-07-20 15:16:00.40137'
+    - '2019-07-20 15:16:00.40137'
+
+---
+weeklies:
+  columns:
+  - id
+  - release
+  - intro
+  - status
+  - created_at
+  - updated_at
+  - monitored_channels
+  - new_users
+  - thanks
+  - thanked
+  - users
+  - channels
+  - postings
+  - monitored_channel_names
+  records: 
+  - - 1
+    - '2019-06-07'
+    - Hello **MyData**!
+    - 1
+    - '2019-06-11 23:19:35.781087'
+    - '2019-06-18 06:46:17.96061'
+    - 9
+    - 22
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 2
+    - '2019-06-14'
+    - |-
+      Early bird tickets for MyData2019 will only be available until this Sunday, June 16th - so you better be quick! In the meantime also the official MyData2019 Programme Launch took place on Monday, June 10th. Find the programme here: https://mydata2019.org/programme/
+
+      The MyData Japan hub reports about being now officially incorporated and there will be soon a new thematic group about a Portability Governance Consortium led by Sarah Medjek (@Sarah). Also a new channel was created by @Joesp Aliagas where startups from all over the world and following MyData principles can introduce themselves and share their ideas and projects. Of course this channel will now also be monitored here. And Sille & Viivi are going to Japan - looking forward to your stories!
+    - 1
+    - '2019-06-16 15:24:22.783382'
+    - '2019-06-18 08:59:04.380149'
+    - 10
+    - 18
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 4
+    - '2019-06-21'
+    - "Last week a discussion started if the Greetbot and introductions should move
+      to a separate channel and this Monday an anonymous poll was held: 21 were in
+      favour, 4 against it. So @Viivi is now making the necessary changes.    \n\nThis
+      week I start collecting information in the Apps & Services section. After being
+      interviewed by @Kata about MyData's Vision of Success 2022 and also reading
+      a question from @apoikola I sense that a catalog for the Personal Data Ecosystem
+      is really necessary. There are a few ideas I have about how this can develop
+      and right now it is just a simple list of apps mentioned on Slack. Stay tuned
+      for upcoming changes and don't hesitate to let me know what you think: write
+      me at mdwd@ownyourdata.eu"
+    - 1
+    - '2019-06-25 21:41:22.345267'
+    - '2019-06-25 21:43:49.999262'
+    - 10
+    - 17
+    - 4
+    - 8
+    - 
+    - 
+    - 
+    - 
+  - - 5
+    - '2019-06-28'
+    - It was midsummer this week and I hope you all had a good time! Meanwhile, @Vivii
+      and @Sille are in Tokyo and busy attending conferences (https://ncc.garage.co.jp/en/)
+      and meeting many MyData enthusiasts.
+    - 1
+    - '2019-06-29 10:47:55.821022'
+    - '2019-06-30 22:01:23.105454'
+    - 13
+    - 13
+    - 10
+    - 42
+    - 1291
+    - 180
+    - 1421
+    - 
+  - - 6
+    - '2019-07-05'
+    - |-
+      [@Ansku Tuomainen](/user/4) put up a site with practical infos for the MyData2019 conference [here](https://mydata2019.org/practical-information/). [@apoikola](/user/2) introduced a new channel #decisions that automatically collects posts with the :gavel: emoji and I got aware of the #reading channel that is also monitored now.
+
+      And on the Weekly-Digest own account there are also a few updates: I reached out to the MyData community and introduced the Weekly-Digest (you can read the discussion [here](https://mydataglobal.slack.com/archives/CE9FLJKME/p1562014934006800)) and I'll post now these digests also on Slack. Let me know what you think!
+    - 1
+    - '2019-07-05 08:25:18.758708'
+    - '2019-07-13 12:12:00.166934'
+    - 15
+    - 14
+    - 8
+    - 14
+    - 1306
+    - 182
+    - 1859
+    - community, conference-2019, conference-programme, economy, general, hub-initiators,
+      ihan, make-it-happen, my-ai, reading, startups, tools, visionofsuccess2022,
+      welcome, thank-you
+  - - 7
+    - '2019-07-12'
+    - |-
+      If you have something to share with the MyData Community reach out to [@Ansku Tuomainen](/user/4) so that she can put it into the monthly newsletter - the next one is going out on Wednesday, 24 July. And this week I started to also monitor the #mydata-volunteers channel: the website to register as a volunteer is https://mydata2019.org/volunteer/.
+
+      MyData's general manager [@teemu.ropponen](/user/11) posted comprehensive information about the way MyData operates, how it is financed, and what the overall plans are - read more in the 'Questions Asked' section below. That sparked a discussion about the currently missing indigenous layer and if and how this can be rectified. And on a more technical side there is an ongoing effort in the Case Library to publish a first case and the process is described [here](https://mydata-global.org/mydata-cases).
+    - 1
+    - '2019-07-12 19:05:47.560024'
+    - '2019-07-20 14:32:18.799767'
+    - 20
+    - 7
+    - 4
+    - 5
+    - 1310
+    - 183
+    - 1593
+    - community, conference-2019, conference-programme, decisions, economy, general,
+      hub-initiators, ihan, make-it-happen, media, my-ai, mydata-volunteers, mydata-wild-ideas,
+      new-digital-rights, reading, startups, thank-you, tools, visionofsuccess2022,
+      welcome
+  - - 8
+    - '2019-07-19'
+    - This week I participated in a highly interesting community call with a special
+      focus on [Personal Data Trust Banks](https://mydata-global.org/community-webinar-japan-data-banks)
+      and I'm looking forward to learn more about this exciting initiative at the
+      MyData conference! Work on the Case Library continues and since there were no
+      Apps & Services mentioned this week in the channels I'll start now to introduce
+      some tools that I think are worth mentioning. Please feel free to write me also
+      your suggestions at [mdwd(at)ownyourdata.eu](mailto:mdwd(at)ownyourdata.eu)!
+    - 1
+    - '2019-07-20 13:50:24.155163'
+    - '2019-07-20 14:32:39.017825'
+    - 20
+    - 6
+    - 4
+    - 21
+    - 1320
+    - 184
+    - 1197
+    - community, conference-2019, conference-programme, decisions, economy, general,
+      hub-initiators, ihan, make-it-happen, media, my-ai, mydata-volunteers, mydata-wild-ideas,
+      new-digital-rights, reading, startups, thank-you, tools, visionofsuccess2022,
+      welcome
+
+---
+apps:
+  columns:
+  - id
+  - title
+  - description
+  - url
+  - created_at
+  - updated_at
+  - status
+  records: 
+  - - 1
+    - Alt.ai
+    - Personal Artificial Intelligence
+    - https://alt.ai/en/
+    - '2019-06-25 21:59:46.712763'
+    - '2019-06-25 21:59:46.712763'
+    - 1
+  - - 2
+    - Jolocom
+    - 'Jolocom builds global infrastructure to support decentralized digital identity
+      management. Smart agents own and control the data that defines them, a prerequisite
+      for self-sovereign identity. '
+    - https://jolocom.io/
+    - '2019-06-26 06:51:10.471955'
+    - '2019-06-26 06:51:10.471955'
+    - 1
+  - - 3
+    - Silo.ai
+    - Build a world with safe human-centric AI that frees the human mind from manual
+      labour and empowers human creativity.
+    - https://silo.ai/
+    - '2019-06-26 06:51:10.500677'
+    - '2019-06-26 06:51:10.500677'
+    - 1
+  - - 4
+    - Idka
+    - The collaborative social platform that puts privacy first.
+    - https://www.idka.com
+    - '2019-06-26 06:51:11.332451'
+    - '2019-06-26 06:51:11.332451'
+    - 1
+  - - 5
+    - Schluss
+    - Schluss is an app that puts you back in control of your personal information.
+    - https://www.schluss.org/
+    - '2019-06-30 15:53:47.466854'
+    - '2019-06-30 15:53:47.466854'
+    - 1
+  - - 6
+    - BigID
+    - BigID aims to transform how enterprise protects and manage the privacy of personal
+      data.
+    - https://bigid.com/
+    - '2019-06-30 22:46:51.996115'
+    - '2019-06-30 22:46:51.996115'
+    - 1
+  - - 7
+    - Superhuman
+    - The fastest email experience ever made. An invitation-only service that costs
+      $30 a month.
+    - https://superhuman.com/
+    - '2019-07-06 22:22:18.641303'
+    - '2019-07-06 22:22:18.641303'
+    - 1
+  - - 8
+    - Google Chrome
+    - A freeware web browser developed by Google.
+    - https://www.google.com/chrome/
+    - '2019-07-06 22:46:21.917338'
+    - '2019-07-06 22:46:21.917338'
+    - 1
+  - - 9
+    - MyCelia
+    - MyCelia is founded by Imogen Heap as a research and development hub for music
+      makers, driven by a growing community of creatives, technologists and industry
+      champions for the love of music
+    - http://myceliaformusic.org/
+    - '2019-07-13 21:39:42.039264'
+    - '2019-07-13 21:39:42.039264'
+    - 1
+  - - 10
+    - OpenGDPR
+    - A common framework enabling companies to work together to protect consumers'
+      privacy and data rights.
+    - https://www.opengdpr.org/
+    - '2019-07-13 22:02:03.659927'
+    - '2019-07-13 22:02:03.659927'
+    - 1
+  - - 11
+    - Universal Resolver
+    - A Universal Resolver is an identifier resolver that works with any decentralized
+      identifier system, including Decentralized Identifiers (DIDs).
+    - https://uniresolver.io/
+    - '2019-07-20 15:22:15.430247'
+    - '2019-07-20 15:22:15.430247'
+    - 1
+  - - 12
+    - Personium
+    - An interconnectable open source PDS (Personal Data Store) server envisioning
+      world wide web of protected data APIs.
+    - https://personium.io/en/index.html
+    - '2019-07-20 15:28:34.351938'
+    - '2019-07-20 15:28:34.351938'
+    - 1
+
+---
+app_tags:
+  columns:
+  - id
+  - app_id
+  - tag_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - 43
+    - '2019-06-25 22:03:28.02403'
+    - '2019-06-25 22:03:28.02403'
+  - - 2
+    - 2
+    - 51
+    - '2019-06-26 07:02:27.258934'
+    - '2019-06-26 07:02:27.258934'
+  - - 3
+    - 2
+    - 52
+    - '2019-06-26 07:02:27.293809'
+    - '2019-06-26 07:02:27.293809'
+  - - 4
+    - 3
+    - 43
+    - '2019-06-26 07:02:27.302514'
+    - '2019-06-26 07:02:27.302514'
+  - - 5
+    - 4
+    - 12
+    - '2019-06-26 07:02:27.308786'
+    - '2019-06-26 07:02:27.308786'
+  - - 6
+    - 4
+    - 53
+    - '2019-06-26 07:02:27.81596'
+    - '2019-06-26 07:02:27.81596'
+  - - 7
+    - 5
+    - 65
+    - '2019-06-30 22:45:18.202456'
+    - '2019-06-30 22:45:18.202456'
+  - - 8
+    - 5
+    - 12
+    - '2019-06-30 22:45:18.209353'
+    - '2019-06-30 22:45:18.209353'
+  - - 9
+    - 6
+    - 58
+    - '2019-06-30 22:48:24.44874'
+    - '2019-06-30 22:48:24.44874'
+  - - 10
+    - 6
+    - 12
+    - '2019-06-30 22:48:25.031538'
+    - '2019-06-30 22:48:25.031538'
+  - - 11
+    - 7
+    - 69
+    - '2019-07-06 22:25:12.588569'
+    - '2019-07-06 22:25:12.588569'
+  - - 12
+    - 7
+    - 78
+    - '2019-07-06 22:25:12.599843'
+    - '2019-07-06 22:25:12.599843'
+  - - 13
+    - 8
+    - 77
+    - '2019-07-06 22:47:44.033619'
+    - '2019-07-06 22:47:44.033619'
+  - - 14
+    - 8
+    - 31
+    - '2019-07-06 22:47:44.768044'
+    - '2019-07-06 22:47:44.768044'
+  - - 15
+    - 9
+    - 91
+    - '2019-07-13 21:42:29.575328'
+    - '2019-07-13 21:42:29.575328'
+  - - 16
+    - 10
+    - 89
+    - '2019-07-13 22:02:03.714901'
+    - '2019-07-13 22:02:03.714901'
+  - - 17
+    - 11
+    - 52
+    - '2019-07-20 15:25:32.59906'
+    - '2019-07-20 15:25:32.59906'
+  - - 18
+    - 11
+    - 58
+    - '2019-07-20 15:25:32.605664'
+    - '2019-07-20 15:25:32.605664'
+  - - 19
+    - 12
+    - 88
+    - '2019-07-20 15:28:34.372474'
+    - '2019-07-20 15:28:34.372474'
+  - - 20
+    - 12
+    - 100
+    - '2019-07-20 15:28:34.376203'
+    - '2019-07-20 15:28:34.376203'
+
+---
+weekly_apps:
+  columns:
+  - id
+  - weekly_id
+  - app_id
+  - user_id
+  - created_at
+  - updated_at
+  - description
+  - media_url
+  - media_type
+  - status
+  - post_date
+  records: 
+  - - 1
+    - 4
+    - 1
+    - 2
+    - '2019-06-25 22:00:22.498909'
+    - '2019-06-26 06:40:22.35172'
+    - Could be another potential candidate for the MyData Case Library.
+    - https://mydataglobal.slack.com/archives/C8S3TP6P7/p1560947951007200
+    - mydata
+    - 1
+    - 
+  - - 2
+    - 4
+    - 2
+    - 18
+    - '2019-06-26 06:58:31.912669'
+    - '2019-06-26 06:58:31.912669'
+    - Somebody give me a quick rundown of what the difference between jolocom and
+      mydata is?
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560941515240200
+    - mydata
+    - 1
+    - 
+  - - 3
+    - 4
+    - 3
+    - 11
+    - '2019-06-26 06:58:31.96818'
+    - '2019-06-26 06:58:31.96818'
+    - AI company Silo.ai in the news.
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560948387246000
+    - mydata
+    - 1
+    - 
+  - - 4
+    - 4
+    - 4
+    - 19
+    - '2019-06-26 06:58:32.792321'
+    - '2019-06-26 06:58:32.792321'
+    - 'Great news for Idka: EADPP (European association for Privacy Professionals)
+      choses Idka as their communication, collaboration sharing and storing platform
+      for the members, boards, workgroups etc.'
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1560951309248700
+    - mydata
+    - 1
+    - 
+  - - 5
+    - 5
+    - 5
+    - 21
+    - '2019-06-30 15:55:31.715122'
+    - '2019-06-30 15:55:31.715122'
+    - With Schluss, you - and only you - decide who gets which information about you
+      on the Internet.
+    - https://mydataglobal.slack.com/archives/C8S3TP6P7/p1561540903014600
+    - mydata
+    - 1
+    - 
+  - - 6
+    - 5
+    - 6
+    - 16
+    - '2019-06-30 22:47:40.290902'
+    - '2019-06-30 22:47:40.290902'
+    - Has anybody come across BigID before?
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1561571941333700
+    - mydata
+    - 1
+    - 
+  - - 7
+    - 6
+    - 7
+    - 15
+    - '2019-07-06 22:23:43.369322'
+    - '2019-07-06 22:23:43.369322'
+    - Email management app Superhuman uses a pixel tracker, turned on by default,
+      to gather info on recipients without their knowledge.
+    - https://mydataglobal.slack.com/archives/CE9FLJKME/p1562190990021300
+    - mydata
+    - 1
+    - 
+  - - 8
+    - 6
+    - 8
+    - 19
+    - '2019-07-06 22:47:43.703305'
+    - '2019-07-06 22:47:43.703305'
+    - Our latest privacy experiment found Chrome ushered more than 11,000 tracker
+      cookies into our browser — in a single week.
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1562232770391800
+    - mydata
+    - 1
+    - 
+  - - 9
+    - 7
+    - 9
+    - 2
+    - '2019-07-13 21:42:29.560008'
+    - '2019-07-13 21:42:29.560008'
+    - 'MyCelia is potential candidate to case studies - more infos: https://www.sitra.fi/en/news/grammy-winning-musician-imogen-heap-sitra-revolutionising-music-industry/'
+    - https://mydataglobal.slack.com/archives/C8S3TP6P7/p1562754056024700
+    - mydata
+    - 1
+    - 
+  - - 10
+    - 7
+    - 10
+    - 2
+    - '2019-07-13 22:02:03.68892'
+    - '2019-07-13 22:02:03.68892'
+    - 'Tech companies organize two efforts to support personal data management: https://martechtoday.com/tech-companies-organize-two-efforts-to-support-personal-data-management-both-called-open-gdpr-214123'
+    - https://mydataglobal.slack.com/archives/C7G9FPL81/p1562936654452800
+    - mydata
+    - 1
+    - 
+  - - 11
+    - 8
+    - 11
+    - 28
+    - '2019-07-20 15:25:32.42979'
+    - '2019-07-20 15:25:32.42979'
+    - Universal Resolver implementation and drivers.
+    - ''
+    - ''
+    - 1
+    - 
+  - - 12
+    - 8
+    - 12
+    - 3
+    - '2019-07-20 15:28:34.367848'
+    - '2019-07-20 15:28:34.367848'
+    - Open Source PDS server software
+    - ''
+    - mydata
+    - 1
+    - 

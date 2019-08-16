@@ -12,6 +12,11 @@ class StaticPagesController < ApplicationController
 			@user = User.all
 			@app = App.all
 		end
+        if params[:view].to_s != ""
+            respond_to do |format|
+                format.html { render layout: "application2", template: "static_pages/home2"}
+            end
+        end
 	end
 
 	def favicon

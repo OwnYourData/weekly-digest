@@ -1,3 +1,4 @@
 <li>
-	<a href="/tag/<%= mytag.id.to_s + view_mode %>">#<%= mytag.tag.to_s %></a>
+	<a href="/tag/<%= mytag.id.to_s + view_mode %>">#<%= mytag.tag.to_s %></a> 
+	<span style="color: gray;">(<%= mytag.posting_tags.count + mytag.app_tags.count %>)</span>
 </li>

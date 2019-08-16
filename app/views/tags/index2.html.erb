@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-sm-4">
+		<h3>Tags [A-F]</h3>
+		<ul>
+			<%= render partial: "mytag", collection: @tag.sort_by { |item| item["tag"].downcase }.select { |item| item["tag"][0..0].downcase =~/[a-f]/ } %>
+		</ul>
+	</div>
+	<div class="col-sm-4">
+		<h3>Tags [G-O]</h3>
+		<ul>
+			<%= render partial: "mytag", collection: @tag.sort_by { |item| item["tag"].downcase }.select { |item| item["tag"][0..0].downcase =~ /[g-o]/ } %>
+		</ul>		
+	</div>
+	<div class="col-sm-4">
+		<h3>Tags [P-Z]</h3>
+		<ul>
+			<%= render partial: "mytag", collection: @tag.sort_by { |item| item["tag"].downcase }.select { |item| item["tag"][0..0].downcase !~ /[a-o]/ } %>
+		</ul>		
+	</div>
+</div>

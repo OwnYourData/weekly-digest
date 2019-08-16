@@ -7,6 +7,13 @@ class AppsController < ApplicationController
 		else
 			@app = App.all
 		end
+        if params[:view].to_s != ""
+			@heading = "List of All Apps & Services"
+			@heading_short = "All Apps & Services"
+            respond_to do |format|
+                format.html { render layout: "application2", template: "apps/index2"}
+            end
+        end
 	end
 
 	def show
@@ -25,5 +32,12 @@ class AppsController < ApplicationController
 				@posts = @app.weekly_apps
 			end
 		end
+
+        if params[:view].to_s != ""
+            respond_to do |format|
+                format.html { render layout: "application2", template: "apps/show2"}
+            end
+        end
+
 	end
 end
