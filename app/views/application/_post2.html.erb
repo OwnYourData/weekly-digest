@@ -1,0 +1,23 @@
+<div class="info-elements">
+	<div class="post-title">
+		<a href="<%= post2.url %>" target="_blank"><%= post2.title %></a>
+		<a class="<%= post2.media_type %>" href="<%= post2.media_url %>" target="_blank" title="show on MyData Slack"> </a>
+	</div>
+	<div class="post-sub">
+		<div class="post-user"><a href="/user/<%= post2.user_id.to_s + view_mode %>" style="color: inherit;"><%= User.find(post2.user_id).name %></a></div>
+		<div class="post-date">
+			<% if controller_name == "news" %>
+				<%= post2.post_date.to_s %>
+			<% else %>
+				<a href="/weekly/<%= Weekly.find(post2.weekly_id).release.to_s + view_mode %>" style="color: inherit;">
+					<%= post2.post_date.to_s %></a>
+			<% end %>
+		</div>
+	</div>
+	<div class="post-text">
+		<%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(post2.description.to_s).html_safe %>
+	</div>
+	<div class="post-tags">
+		<%= render partial: "tag2", collection: post2.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+	</div>
+</div>

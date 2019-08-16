@@ -4,7 +4,52 @@
 body {
     font-family: "Open Sans",Arial,sans-serif;
     margin: 0;
+    position: relative;
 }
+
+.affix {
+  top: 20px;
+  padding: 0;
+  z-index: 9999 !important;
+}
+
+/* all links */
+.bs-docs-sidebar .nav>li>a {
+    /*add trasnparent border */
+    border-left: 2px solid transparent;
+    font-size: larger;
+    padding-left: 0;
+    padding-right: 0;
+}
+/* active & hover links */
+.bs-docs-sidebar .nav>.active>a, 
+.bs-docs-sidebar .nav>li>a:hover, 
+.bs-docs-sidebar .nav>li>a:focus {
+    color: #563d7c;                 
+    text-decoration: none;          
+    background-color: transparent;  
+    /* border-left: 2px solid #563d7c; */
+}
+
+/* all active links */
+.bs-docs-sidebar .nav>.active>a, 
+.bs-docs-sidebar .nav>.active:hover>a,
+.bs-docs-sidebar .nav>.active:focus>a {
+    font-weight: 700;
+}
+/* nested active links */
+.bs-docs-sidebar .nav .nav>.active>a, 
+.bs-docs-sidebar .nav .nav>.active:hover>a,
+.bs-docs-sidebar .nav .nav>.active:focus>a {
+    font-weight: 500;
+}
+
+/*@media screen and (max-width: 768px) {
+  #info, .info-elements, #question, .quest-elements, #apps, .apps-elements, #stats  {
+    margin-left: 150px;
+  }
+}*/
+
 
 .info {
   margin-top: 15px;
@@ -122,4 +167,72 @@ a.mydata {
 }
 .next-digest {
   float: right;
+}
+
+.section {
+  font-size: x-large;
+  color: #434343;
+  display: inline;
+  margin-top: 30px;
+}
+
+.section-sub {
+  color: #999999;
+  display: inline;
+  font-size: larger;
+}
+
+.post-title {
+  font-size: large;
+  color: #337ab7;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  line-height: 1.5em;
+}
+
+.post-sub {
+  display: inline;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.post-user {
+  font-size: larger;
+  color: #434343;
+  font-weight: 600;
+  display: inline;
+}
+
+.post-date {
+  font-size: inherit;
+  color: #999999;
+  display: inline;
+}
+
+.post-text {
+  font-size: 14px;
+  margin-top: 10px;
+}
+.post-text p {
+  font-size: 14px;  
+  line-height: 1.5em;
+}
+
+.weekly-intro {
+  margin-top: 15px;
+}
+
+.weekly-intro p {
+  font-size: 14px;
+  line-height: 1.5em;
+}
+
+.post-tags {
+  line-height: 1.3em;
+  margin-top: -10px;
+}
+
+.post-tag {
+  color: #999999;
 }

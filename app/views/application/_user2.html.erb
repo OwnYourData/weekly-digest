@@ -1,0 +1,5 @@
+<li>
+	<a href="/user/<%= user2.id.to_s + view_mode %>">
+		<%= user2.name %>
+	</a> <span style="color: gray;">(<%= user2.posts.count + user2.weekly_apps.count %>)</span>
+</li>

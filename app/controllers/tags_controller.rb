@@ -8,6 +8,14 @@ class TagsController < ApplicationController
 			@tag = Tag.all
 		end
 
+        if params[:view].to_s != ""
+			@heading = "List of All Tags"
+			@heading_short = "All Tags"
+            respond_to do |format|
+                format.html { render layout: "application2", template: "tags/index2"}
+            end
+        end
+
 	end
 
 	def show
@@ -26,5 +34,15 @@ class TagsController < ApplicationController
 			@questions = Post.where(category: "question").where(id: PostingTag.where(tag_id: tag_id).pluck(:post_id))
 			@apps = AppTag.where(tag_id: tag_id)
 		end
+
+	    if params[:view].to_s != ""
+			@heading = "Tag #" + @tag.tag.to_s
+			@heading_short = "#" + @tag.tag.to_s
+	        respond_to do |format|
+	            format.html { render layout: "application2", template: "tags/show2"}
+	        end
+	    end
 	end
+
+
 end

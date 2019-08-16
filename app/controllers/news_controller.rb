@@ -97,5 +97,10 @@ class NewsController < ApplicationController
 
             end
         end
+        if params[:view].to_s != ""
+            respond_to do |format|
+                format.html { render layout: "application2", template: "news/weekly2"}
+            end
+        end
     end
 end

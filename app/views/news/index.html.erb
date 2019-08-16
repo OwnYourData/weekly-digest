@@ -1,4 +1,4 @@
 <h3>List of all digests</h3>
 <ul>
-	<%= render partial: "week", collection: @week.sort_by { |item| item["release"] }.last(5) %>
+	<%= render partial: "week", collection: @week.sort_by { |item| item["release"] } %>
 </ul>

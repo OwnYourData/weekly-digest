@@ -10,4 +10,6 @@
 #
 
 class Tag < ApplicationRecord
+	has_many :posting_tags, dependent: :destroy
+	has_many :app_tags, dependent: :destroy
 end

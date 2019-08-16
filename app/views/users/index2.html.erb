@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-sm-4">
+		<h3>Users [A-I]</h3>
+		<ul>
+			<%= render partial: "user2", collection: @user.sort_by { |item| item["name"].downcase }.select { |item| item["name"][0..0].downcase =~/[a-i]/ } %>
+		</ul>
+	</div>
+	<div class="col-sm-4">
+		<h3>Users [J-R]</h3>
+		<ul>
+			<%= render partial: "user2", collection: @user.sort_by { |item| item["name"].downcase }.select { |item| item["name"][0..0].downcase =~ /[j-r]/ } %>
+		</ul>		
+	</div>
+	<div class="col-sm-4">
+		<h3>Users [S-Z]</h3>
+		<ul>
+			<%= render partial: "user2", collection: @user.sort_by { |item| item["name"].downcase }.select { |item| item["name"][0..0].downcase !~ /[a-r]/ } %>
+		</ul>		
+	</div>
+</div>

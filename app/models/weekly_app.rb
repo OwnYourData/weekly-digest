@@ -6,6 +6,7 @@
 #  description :text
 #  media_type  :string
 #  media_url   :string
+#  post_date   :date
 #  status      :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -16,4 +17,5 @@
 
 class WeeklyApp < ApplicationRecord
 	belongs_to :app
+	belongs_to :user
 end

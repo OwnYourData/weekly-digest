@@ -19,4 +19,5 @@
 
 class Post < ApplicationRecord
 	has_many :posting_tags, dependent: :destroy
+	belongs_to :user
 end

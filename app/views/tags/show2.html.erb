@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-sm-9">
+        <nav id="menu" class="bs-docs-sidebar visible-xs" style="border-color: lightgray; border-width: 1px; border-style: solid; padding: 20px; margin-top: 20px; width: 220px; border-radius: 20px;">
+          <ul class="nav bs-docs-sidenav">
+            <li><div class="section">Menu</div></li>
+            <% if @posts.count > 0 %><li><a href="#info"><i class="fa fa-info-circle" aria-hidden="true"></i> Noteworthy Infos (<%= @posts.count.to_s %>)</a></li><% end %>
+            <% if @questions.count > 0 %><li><a href="#question"><i class="fa fa-question-circle" aria-hidden="true"></i> Questions Asked (<%= @questions.count.to_s %>)</a></li><% end %>
+            <% if @apps.count > 0 %><li><a href="#apps"><i class="fa fa-wrench" aria-hidden="true"></i> Apps & Services (<%= @apps.count.to_s %>)</a></li><% end %>
+            <li><a href="/tags<%= view_mode %>"><i class="fa fa-user" aria-hidden="true"></i> All Tags</a></li>            
+            <li><a href="/<%= view_mode %>"><i class="fa fa-home" aria-hidden="true"></i> Start Page</a></li>            
+          </ul>
+        </nav>
+
+        <% if @posts.count > 0 %>
+            <div id="info" style="margin-top:17px;">
+                <div class="section">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    Noteworthy Information
+                </div>
+                <div class="section-sub hidden-xs"><%= @posts.count.to_s %> posts</div>
+            </div>
+            <%= render partial: "post2", collection: @posts.sort_by { |item| item["post_date"] }.reverse %>
+            <div class="visible-xs text-right">
+                <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> menu</a>
+            </div>
+            <hr style="margin-top: 30px; margin-bottom: 23">
+        <% end %>
+
+        <% if @questions.count > 0 %>
+            <div id="question" style="margin-top:17px;">
+                <div class="section">
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                    Questions Asked
+                </div>
+                <div class="section-sub hidden-xs"><%= @questions.count.to_s %> posts</div>
+            </div>
+            <%= render partial: "question2", collection: @questions.sort_by { |item| item["post_date"] }.reverse %>
+            <div class="visible-xs text-right">
+                <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> menu</a>
+            </div>
+            <hr id="question" style="margin-top: 30px; margin-bottom: 23">
+        <% end %>
+
+        <% if @apps.count > 0 %>
+            <div id="apps" style="margin-top:17px;">
+                <div class="section">
+                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                    Apps & Services
+                </div>
+                <div class="section-sub hidden-xs"><%= @apps.count.to_s %> entries</div>
+            </div>
+            <%= render partial: "app2", collection: @apps.sort_by { |item| item["title"] } %>
+            <div class="visible-xs text-right">
+                <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> menu</a>
+            </div>
+        <% end %>
+    </div>
+    <div class="col-sm-3" style="margin-top: 20px;">
+        <nav class="bs-docs-sidebar hidden-xs" id="myScrollspy">
+          <ul class="nav bs-docs-sidenav" data-spy="affix" data-offset-top="110">
+            <li><div class="section">Menu</div></li>
+            <% if @posts.count > 0 %><li><a href="#info"><i class="fa fa-info-circle" aria-hidden="true"></i> Noteworthy Infos</a></li><% end %>
+            <% if @questions.count > 0 %><li><a href="#question"><i class="fa fa-question-circle" aria-hidden="true"></i> Questions Asked</a></li><% end %>
+            <% if @apps.count > 0 %><li><a href="#apps"><i class="fa fa-wrench" aria-hidden="true"></i> Apps & Services</a></li><% end %>
+            <li><a href="#"><i class="fa fa-arrow-up" aria-hidden="true"></i> back to top</a></li>
+            <li><a href="/tags<%= view_mode %>"><i class="fa fa-user" aria-hidden="true"></i> List of All Tags</a></li>            
+            <li><a href="/<%= view_mode %>"><i class="fa fa-home" aria-hidden="true"></i> Start Page</a></li>            
+          </ul>
+        </nav>
+    </div>
+</div>
