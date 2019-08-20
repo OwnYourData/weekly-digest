@@ -1,9 +1,12 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: weekly-digest-deployment
 spec:
-  replicas: 1
+  replicas: 2
+  selector:
+    matchLabels:
+      app: weekly-digest
   template:
     metadata:
       labels:
@@ -11,14 +14,51 @@ spec:
     spec:
       containers:
       - name: weekly-digest
-        image: oydeu/weekly-digest:0.3
+        image: oydeu/weekly-digest:latest
         ports:
         - containerPort: 3000
         env:
+          - name: LANG
+            value: C.UTF-8
+          - name: RAILS_LOG_TO_STDOUT
+            value: "TRUE"
+          - name: RAILS_SERVE_STATIC_FILES
+            value: "TRUE"
           - name: RAILS_ENV
             value: production
-          - name: SECRET_KEY_BASE
+          - name: DB_HOST
+            value: db-cluster-postgresql.default.svc.cluster.local
+          - name: DB_NAME
+            value: weekly_digest_production
+          - name: DB_USER
+            value: postgres
+          - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: railsapp-secrets
-                key: secret-key-base
+                name: general-secretes
+                key: db-passwd
+          - name: RAILS_MASTER_KEY
+            valueFrom:
+              secretKeyRef:
+                name: weekly-digest-secrets
+                key: rails-master-key
+          - name: CALENDAR_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: weekly-digest-secrets
+                key: calendar-secret
+          - name: CALENDAR_KEY
+            valueFrom:
+              secretKeyRef:
+                name: weekly-digest-secrets
+                key: calendar-key
+          - name: CALENDAR_CODE
+            valueFrom:
+              secretKeyRef:
+                name: weekly-digest-secrets
+                key: calendar-code
+          - name: GOOGLE_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: general-secrets
+                key: google-token

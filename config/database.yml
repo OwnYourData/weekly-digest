@@ -80,7 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: weekly_digest_production
-  host: wd_db
-  username: postgres
+  database: <%= ENV['DB_NAME'] %>
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USER'] %>
   password: <%= ENV['POSTGRES_PASSWORD'] %>

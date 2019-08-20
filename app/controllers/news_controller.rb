@@ -16,6 +16,22 @@ class NewsController < ApplicationController
             @app = App.all
         end
 
+        case params[:view].to_s
+        when "0"
+        when "2"
+            @heading = "List of All MyData Weekly Digests"
+            @heading_short = "All Weekly Digests"
+            respond_to do |format|
+                format.html { render layout: "application2", template: "news/index2"}
+            end
+        else
+            @heading = "List of All MyData Weekly Digests"
+            @heading_short = "All Weekly Digests"
+            respond_to do |format|
+                format.html { render layout: "application2", template: "news/index2"}
+            end
+        end
+
     end
 
     def weekly
@@ -97,7 +113,14 @@ class NewsController < ApplicationController
 
             end
         end
-        if params[:view].to_s != ""
+
+        case params[:view].to_s
+        when "0"
+        when "2"
+            respond_to do |format|
+                format.html { render layout: "application2", template: "news/weekly2"}
+            end
+        else
             respond_to do |format|
                 format.html { render layout: "application2", template: "news/weekly2"}
             end

@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-sm-8">
+		<ul style="list-style-type: none; padding-left: 0;">
+			<%= render partial: "week2", collection: @week.sort_by { |item| item["release"] }.reverse %>
+		</ul>
+	</div>
+    <div class="col-md-3 col-md-offset-1" style="margin-top: 20px;">
+        <nav class="bs-docs-sidebar hidden-xs" id="myScrollspy">
+          <ul class="nav bs-docs-sidenav" data-spy="affix" data-offset-top="110">
+            <li><div class="section">Menu</div></li>
+            <li><a href="#"><i class="fa fa-arrow-up" aria-hidden="true"></i> back to top</a></li>
+            <li><a href="/<%= view_mode %>"><i class="fa fa-home" aria-hidden="true"></i> Start Page</a></li>            
+          </ul>
+        </nav>
+    </div>
+		
+</div>
