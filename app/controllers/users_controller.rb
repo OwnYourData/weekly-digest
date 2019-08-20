@@ -8,14 +8,21 @@ class UsersController < ApplicationController
 			@user = User.all
 		end
 
-        if params[:view].to_s != ""
+        case params[:view].to_s
+        when "0"
+        when "2"
+			@heading = "List of All Users"
+			@heading_short = "All Users"
+            respond_to do |format|
+                format.html { render layout: "application2", template: "users/index2"}
+            end
+        else
 			@heading = "List of All Users"
 			@heading_short = "All Users"
             respond_to do |format|
                 format.html { render layout: "application2", template: "users/index2"}
             end
         end
-
 	end
 
 	def show
@@ -35,15 +42,21 @@ class UsersController < ApplicationController
 			@apps = App.where(id: WeeklyApp.where(user_id: user_id).pluck(:app_id))
 		end
 
-	    if params[:view].to_s != ""
+        case params[:view].to_s
+        when "0"
+        when "2"
 			@heading = "User '" + @user.name.to_s + "'"
 			@heading_short = @user.name
 			@apps = WeeklyApp.where(user_id: user_id)
 	        respond_to do |format|
 	            format.html { render layout: "application2", template: "users/show2"}
 	        end
-	    end
-
-
+        else
+			@heading = "List of All Users"
+			@heading_short = "All Users"
+            respond_to do |format|
+                format.html { render layout: "application2", template: "users/index2"}
+            end
+        end
 	end
 end

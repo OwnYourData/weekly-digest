@@ -2,6 +2,7 @@ web:
   image: oydeu/weekly-digest
   environment:
     RAILS_ENV: production
+    DB_HOST: wd_db
     RAILS_LOG_TO_STDOUT: "TRUE"
   links:
     - wd_db

@@ -12,7 +12,14 @@ class StaticPagesController < ApplicationController
 			@user = User.all
 			@app = App.all
 		end
-        if params[:view].to_s != ""
+
+        case params[:view].to_s
+        when "0"
+        when "2"
+            respond_to do |format|
+                format.html { render layout: "application2", template: "static_pages/home2"}
+            end
+        else
             respond_to do |format|
                 format.html { render layout: "application2", template: "static_pages/home2"}
             end

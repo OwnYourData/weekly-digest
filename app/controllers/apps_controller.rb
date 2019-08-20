@@ -7,13 +7,22 @@ class AppsController < ApplicationController
 		else
 			@app = App.all
 		end
-        if params[:view].to_s != ""
+
+		case params[:view].to_s
+		when "0"
+		when "2"
 			@heading = "List of All Apps & Services"
 			@heading_short = "All Apps & Services"
             respond_to do |format|
                 format.html { render layout: "application2", template: "apps/index2"}
             end
-        end
+		else
+			@heading = "List of All Apps & Services"
+			@heading_short = "All Apps & Services"
+            respond_to do |format|
+                format.html { render layout: "application2", template: "apps/index2"}
+            end
+		end
 	end
 
 	def show
@@ -33,7 +42,13 @@ class AppsController < ApplicationController
 			end
 		end
 
-        if params[:view].to_s != ""
+		case params[:view].to_s
+		when "0"
+		when "2"
+            respond_to do |format|
+                format.html { render layout: "application2", template: "apps/show2"}
+            end
+        else
             respond_to do |format|
                 format.html { render layout: "application2", template: "apps/show2"}
             end
