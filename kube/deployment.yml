@@ -35,7 +35,7 @@ spec:
           - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: general-secretes
+                name: general-secrets
                 key: db-passwd
           - name: RAILS_MASTER_KEY
             valueFrom:
