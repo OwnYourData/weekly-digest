@@ -1,0 +1,124 @@
+<div class="row">
+    <div class="col-sm-9">
+        <div class="weekly-intro">
+            <p>Digi.me is a personal data exchange platform that allows consumers to gather together information currently scattered around the web and share it on their terms under the company’s bespoke Consent Access process. Digi.me is working with world-leading businesses in the health, finance, FMCG and telco sectors on projects unlocking the benefits of targeted and consented data sharing for both consumers and organizations.</p>
+        </div>
+
+        <div style="margin-top:40px;">
+            <div class="section">
+                Scope
+            </div>
+        </div>
+        <hr style="margin-top: 4px;">
+        <p><strong>Sector:</strong> <span style="color: gray;">#finance &nbsp; #online &nbsp; #health &nbsp; #social</span></p>
+        <p><strong>Process:</strong> <span style="color: gray;">#source &nbsp; #access</span></p>
+        <p><strong>similar products:</strong> <a href="#">OwnYourData Data Vault</a>, <a href="#">Data Wallet</a></p>
+
+        <div style="margin-top:40px;">
+            <div class="section">
+                In the media
+            </div>
+        </div>
+        <hr style="margin-top: 4px;">
+        <%= render partial: "post2", collection: @posts.sort_by { |item| item["post_date"] }.reverse %>
+
+        <div style="margin-top:40px;">
+            <div class="section">
+                Rating
+            </div>
+        </div>
+        <hr style="margin-top: 4px;">
+        <p>This rating is based on 1 input from registered MyData users - <a href="#">show details</a></p>
+        <p style="white-space: nowrap;">
+            <div id="gauge_org" style="display: inline-block; width: 200px;">
+                <div class="text-center">[<a href="#">show details</a>]</div>
+            </div>
+            <div id="gauge_tool" style="display: inline-block; width: 200px;">
+                <div class="text-center">[<a href="#">show details</a>]</div>
+            </div>
+            <div id="gauge_impact" style="display: inline-block; width: 200px;">
+                <div class="text-center">[<a href="#">show details</a>]</div>
+            </div>
+        </p>
+        <script>
+          var org = new JustGage({
+            id: "gauge_org",
+            value: 63,
+            min: 0,
+            max: 100,
+            hideMinMax: true,
+            title: "Organization",
+            levelColors: [
+              "#00fff6",
+              "#00fff6",
+              "#00fff6"
+            ]
+          });
+          var tool = new JustGage({
+            id: "gauge_tool",
+            value: 80,
+            min: 0,
+            max: 100,
+            title: "Tool",
+            levelColors: [
+              "#ff00fc",
+              "#ff00fc",
+              "#ff00fc"
+            ]
+          });
+          var impact = new JustGage({
+            id: "gauge_impact",
+            value: 42,
+            min: 0,
+            max: 100,
+            title: "Impact",
+            levelColors: [
+              "#1200ff",
+              "#1200ff",
+              "#1200ff"
+            ]
+          });
+        </script>
+    </div>
+     <div class="col-sm-3" style="margin-top: 20px;">
+        <div style="border: lightgray 1px solid; padding: 5px 0;">
+            <div class="text-center">
+                <img src="https://media.licdn.com/dms/image/C560BAQE3lK3S22yoig/company-logo_200_200/0?e=2159024400&v=beta&t=v9lCOBQHIvHe9IrpAecliYs_G04jwkRnm3gR0KTOUgo" style="width: 200px;">
+            </div>
+            <hr>
+            <div style="padding: 0 15px;">
+                <strong>Web:</strong><br>
+                <a href="<%= @app.url.to_s %>" target="_blank"><%= @app.url.to_s %></a>
+            </div>
+            <hr>
+            <div style="padding: 0 15px;">
+                <p><strong>available since:</strong><br>
+                August 2017</p>
+                <p><strong>last update:</strong><br>
+                August 21st, 2019</p>
+            </div>
+            <hr>
+            <div style="padding: 0 15px;">
+                <p><strong>License:</strong><br>
+                commercial</p>
+            </div>
+        </div>
+        <p class="text-center"><small>information provided by <a href="/user/1">@Christoph Fabianek</a><br>
+        submit a <a href="#">request to edit</a> digi.me 
+            <a id="sighint" tabindex="0" data-toggle="popover" data-placement="top" data-html="true"
+                title='Request to Edit <span class="close">&times;</span>' 
+                data-content="<p>some text to explain how editing this information will work</p>">
+                        <i class="fa fa-info-circle" aria-hidden="true" alt="some text"></i>
+            </a>
+        </small></p>
+    </div>
+</div>
+
+<p style="margin: 40px 15px -30px;"><a href="/apps<%= view_mode %>"><i class="fa fa-wrench" aria-hidden="true"></i> show all Apps & Services</a></p>
+
+<script type="text/javascript">
+$(function () {
+  $('[data-toggle="popover"]').popover({ container: 'body' }).on("show.bs.popover", function(){ $(this).data("bs.popover").tip().css("max-width", "680px"); }).on('shown.bs.popover', function (eventShown) { var $popup = $('#' + $(eventShown.target).attr('aria-describedby')); $popup.find('.close').click(function (e) { $popup.popover('hide'); }); });
+});
+$('body').on('hidden.bs.popover', function (e) { $(e.target).data("bs.popover").inState.click = false; });
+</script>
