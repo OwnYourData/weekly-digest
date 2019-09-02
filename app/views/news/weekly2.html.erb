@@ -83,6 +83,19 @@
         <div class="visible-xs text-right">
             <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> menu</a>
         </div>
+        <hr id="events" style="margin-top: 30px;">
+        <div style="margin-top:40px;">
+            <div class="section">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                Upcoming Events
+            </div>
+            <div class="section-sub hidden-xs"><%= @events.count.to_s %> entries</div>
+        </div>
+        <%= render partial: "event2", collection: @events %>
+
+        <div class="visible-xs text-right">
+            <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> menu</a>
+        </div>
         <hr id="stats" style="margin-top: 30px;">
         <div style="margin-top:40px;">
             <div class="section">
@@ -120,6 +133,7 @@
             <li><a href="#info"><i class="fa fa-info-circle" aria-hidden="true"></i> Noteworthy Infos</a></li>
             <li><a href="#question"><i class="fa fa-question-circle" aria-hidden="true"></i> Questions Asked</a></li>
             <li><a href="#apps"><i class="fa fa-wrench" aria-hidden="true"></i> Apps & Services</a></li>
+            <li><a href="#events"><i class="fa fa-calendar" aria-hidden="true"></i> Upcoming Events</a></li>
             <li><a href="#stats"><i class="fa fa-bar-chart" aria-hidden="true"></i> Statistics</a></li>
             <li><a href="#"><i class="fa fa-arrow-up" aria-hidden="true"></i> back to top</a></li>
             <li><a href="/<%= view_mode %>"><i class="fa fa-home" aria-hidden="true"></i> Start Page</a></li>            

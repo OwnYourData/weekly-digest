@@ -48,6 +48,10 @@ class AppsController < ApplicationController
             respond_to do |format|
                 format.html { render layout: "application2", template: "apps/show2"}
             end
+        when "3"
+            respond_to do |format|
+                format.html { render layout: "application2", template: "apps/show3"}
+            end
         else
             respond_to do |format|
                 format.html { render layout: "application2", template: "apps/show2"}

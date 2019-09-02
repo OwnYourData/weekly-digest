@@ -52,11 +52,12 @@ class UsersController < ApplicationController
 	            format.html { render layout: "application2", template: "users/show2"}
 	        end
         else
-			@heading = "List of All Users"
-			@heading_short = "All Users"
-            respond_to do |format|
-                format.html { render layout: "application2", template: "users/index2"}
-            end
+			@heading = "User '" + @user.name.to_s + "'"
+			@heading_short = @user.name
+			@apps = WeeklyApp.where(user_id: user_id)
+	        respond_to do |format|
+	            format.html { render layout: "application2", template: "users/show2"}
+	        end
         end
 	end
 end
