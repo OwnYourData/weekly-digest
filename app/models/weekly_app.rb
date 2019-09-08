@@ -16,6 +16,7 @@
 #
 
 class WeeklyApp < ApplicationRecord
+	belongs_to :weekly
 	belongs_to :app
 	belongs_to :user
 end
