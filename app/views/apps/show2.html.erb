@@ -14,7 +14,7 @@
             </div>
             <div class="section-sub hidden-xs"><%= @posts.count.to_s %> posts</div>
         </div>
-        <%= render partial: "post2", collection: @posts.sort_by { |item| item["post_date"] }.reverse %>
+        <%= render partial: "post2", collection: @posts.sort_by { |item| item["post_date"] || Date.parse("1970-01-01") }.reverse %>
     </div>
      <div class="col-sm-3" style="margin-top: 20px;">
         <nav class="bs-docs-sidebar hidden-xs" id="myScrollspy">

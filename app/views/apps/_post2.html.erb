@@ -1,7 +1,7 @@
 <div class="info-elements">
 	<div class="post-title">
-		<div class="post-user" style="font-weight: 300;"><a href="/user/<%= post2.user_id.to_s + view_mode %>" style="color: inherit;"><%= User.find(post2.user_id).name %></a></div>
-		<div class="post-date">
+		<div class="post-user" style="color: #42B58C; font-weight: 600;"><a href="/user/<%= post2.user_id.to_s + view_mode %>" style="color: inherit; font-size: smaller;"><%= User.find(post2.user_id).name %></a></div>
+		<div class="post-date" style="font-size: smaller;">
 			<% if controller_name == "news" %>
 				<%= post2.post_date.to_s %>
 			<% else %>
