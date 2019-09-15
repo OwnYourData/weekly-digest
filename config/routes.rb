@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   match '/tag/:id',    to: 'tags#show',   via: 'get'
   match '/apps',       to: 'apps#index',  via: 'get'
   match '/app/:id',    to: 'apps#show',   via: 'get'
+  match '/source/:id', to: 'sources#show',via: 'get'
+
   resources :posts
-  match ':not_found' => 'static_pages#home', :constraints => { :not_found => /.*/ }, via: [:get, :post]
+  # match ':not_found' => 'static_pages#home', :constraints => { :not_found => /.*/ }, via: [:get, :post]
 
 end

@@ -14,5 +14,5 @@
 //= require jquery_ujs
 //= require activestorage
 //= require bootstrap
-// {remove space} = require turbolinks
+// {space} = require {space} turbolinks
 //= require_tree .
