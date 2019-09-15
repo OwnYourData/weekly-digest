@@ -13,4 +13,8 @@
 class User < ApplicationRecord
 	has_many :posts, dependent: :destroy
 	has_many :weekly_apps, dependent: :destroy
+	has_many :apps, dependent: :destroy
+	has_many :sources, dependent: :destroy
+	has_many :source_reports, dependent: :destroy
+
 end

@@ -2,16 +2,32 @@
 	<div class="post-title">
 		<a href="/app/<%= app2.app_id.to_s + view_mode %>"><%= App.find(app2.app_id).title %></a>
 		<a class="<%= app2.media_type %>" href="<%= app2.media_url %>" target="_blank" title="show on MyData Slack"> </a>
+		&nbsp;<a href="<%= app2.media_url %>" target="_blank" style="font-size: small;">show on Slack <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a>
 	</div>
 	<div class="post-sub">
-		<div class="post-user"><a href="/user/<%= app2.user_id.to_s + view_mode %>" style="color: inherit;"><%= User.find(app2.user_id).name %></a></div>
-		<div class="post-date"><%= app2.post_date.to_s %></div>
+		<div class="post-user">
+			<% if controller_name.to_s != "users" %><a href="/user/<%= app2.user_id.to_s + view_mode %>" style="color: inherit;"><% end %>
+				<%= User.find(app2.user_id).name %><% if controller_name.to_s != "users" %>
+					<i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a>&nbsp;<% end %>
+		</div>
+		<div class="post-date">
+			<% if controller_name == "news" %>
+				<%= app2.post_date.to_s %>
+			<% else %>
+				<a href="/weekly/<%= Weekly.find(app2.weekly_id).release.to_s + view_mode %>" style="color: inherit;">
+					<%= app2.post_date.to_s %> <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a>
+			<% end %>
+		</div>
+
+
 	</div>
 	<div class="post-text">
 		<%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(app2.description.to_s).html_safe %>
 	</div>
 	<div class="post-tags">
 		<%= render partial: "tag2", collection: App.find(app2.app_id).app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
-	</div>
+		<% if App.find(app2.app_id).app_tags.count > 0 %>
+			<i class="fa fa-arrow-left" aria-hidden="true" style="font-weight: 100; color: #999999;"></i> <span style="color: #999999;">click tag to show related <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg); color: #999999;"></i></span>
+		<% end %>	</div>
 
 </div>
