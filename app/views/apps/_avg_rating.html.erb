@@ -1,0 +1,11 @@
+<tr>
+    <td><%= avg_rating.title.to_s %> (<%= AppRatingItem.where(app_rating_id: AppRating.where(app_id: app_id).pluck(:id), rating_item: avg_rating.id).pluck(:rating).compact.count.to_s %>)</td>
+    <td class="text-center"><%= 
+        tmp = AppRatingItem.where(app_rating_id: AppRating.where(app_id: app_id).pluck(:id), rating_item: avg_rating.id).pluck(:rating).compact
+        retVal = tmp.sum.to_f / tmp.size.to_f
+        if retVal.to_s == "NaN"
+            "<em>missing</em>".html_safe
+        else
+            retVal
+        end %></td>
+</tr>

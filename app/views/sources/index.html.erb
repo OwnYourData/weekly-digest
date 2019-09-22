@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="col-sm-4">
-		<h3>Tools [A-Z]</h3>
+		<h3>Data Sources [A-Z]</h3>
 		<ul>
-			<%= render partial: "app", collection: @app.sort_by { |item| item["title"].downcase } %>
+			<%= render partial: "source", collection: @source.sort_by { |item| item["title"].downcase } %>
 		</ul>
 	</div>
 	<div class="col-sm-4">

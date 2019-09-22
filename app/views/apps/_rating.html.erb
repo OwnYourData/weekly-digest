@@ -1,0 +1,17 @@
+<tr>
+    <td><%= RatingItem.find(rating.rating_item_id).title.to_s %></td>
+    <td class="text-center">
+    	<% if rating.rating.to_s == "" %>
+    		<em>not rated</em>
+    	<% else %>
+    		<%= rating.rating.to_s %>
+    	<% end %>
+   	</td>
+</tr>
+<% if rating.comment.to_s != "" %>
+	<tr>
+	    <td colspan="2" style="padding-left: 25px;">
+	        Comment: <%= rating.comment.to_s %>
+	    </td>
+	</tr>
+<% end %>

@@ -7,10 +7,12 @@ class StaticPagesController < ApplicationController
 			@week = Weekly.where(status: 1)
 			@user = User.where(status: 1)
 			@app = App.where(status: 1)
+			@source = Source.where(status: 1)
 		else
 			@week = Weekly.all
 			@user = User.all
 			@app = App.all
+			@source = Source.all
 		end
 
         case params[:view].to_s
@@ -19,9 +21,13 @@ class StaticPagesController < ApplicationController
             respond_to do |format|
                 format.html { render layout: "application2", template: "static_pages/home2"}
             end
+        when "3"
+            respond_to do |format|
+                format.html { render layout: "application2", template: "static_pages/home3"}
+            end
         else
             respond_to do |format|
-                format.html { render layout: "application2", template: "static_pages/home2"}
+                format.html { render layout: "application2", template: "static_pages/home3"}
             end
         end
 	end

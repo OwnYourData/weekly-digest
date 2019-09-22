@@ -1,0 +1,56 @@
+<tr>
+    <td><a href="/user/<%= user.user_id %>"><%= User.find(user.user_id).name %></a></td>
+    <td><%= user.updated_at.strftime("%B #{ActiveSupport::Inflector.ordinalize(user.updated_at.day)}, %Y") %></td>
+    <td><a id="show_user_rating_<%= user.user_id %>" href="javascript:void(0);" style="display: inline-block;">show rating</a><a id="hide_user_rating_<%= user.user_id %>" href="javascript:void(0);" style="display: none;">hide rating</a></td>
+</tr>
+<script type="text/javascript">
+    $(function() {
+        var link_user_rating_<%= user.user_id %>_show = document.getElementById("show_user_rating_<%= user.user_id %>");
+        var link_user_rating_<%= user.user_id %>_hide = document.getElementById("hide_user_rating_<%= user.user_id %>");
+        link_user_rating_<%= user.user_id %>_show.onclick = function() {
+            $("#user_rating_<%= user.user_id %>").show();
+            $("#show_user_rating_<%= user.user_id %>").hide();
+            $("#hide_user_rating_<%= user.user_id %>").show();
+            return false;
+        };
+        link_user_rating_<%= user.user_id %>_hide.onclick = function() {
+            $("#user_rating_<%= user.user_id %>").hide();
+            $("#show_user_rating_<%= user.user_id %>").show();
+            $("#hide_user_rating_<%= user.user_id %>").hide();
+            return false;
+        };
+    });
+</script>
+
+<tr id="user_rating_<%= user.user_id %>" style="display: none">
+    <td colspan="3">
+        <div>
+            <h4>Organization Rating</h4>
+            <p>Please read the <a href="https://weekly-digest.ownyourdata.eu/OrganizationalRating.pdf">Organizational Rating document</a> for a detailed description about each category.<br>Ratings are scaled from 1-bad to 6-great.</p>
+                <table class="table table-hover">
+                    <tbody>
+                        <%= render partial: "rating", collection: AppRatingItem.where(app_rating_id: user.id, rating_item_id: RatingItem.where(group: "organization").pluck(:id)) %>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h4>Tool Rating</h4>
+                <p>Please read the <a href="https://weekly-digest.ownyourdata.eu/ToolsRating.pdf">Tool Rating document</a> for a detailed description about each category.</p>
+                <table class="table table-hover">
+                    <tbody>
+                        <%= render partial: "rating", collection: AppRatingItem.where(app_rating_id: user.id, rating_item_id: RatingItem.where(group: "tool").pluck(:id)) %>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h4>Impact Rating</h4>
+                <p>Please read the <a href="https://weekly-digest.ownyourdata.eu/ImpactRating.pdf">Impact Rating document</a> for a detailed description about each category.</p>
+                <table class="table table-hover">
+                    <tbody>
+                        <%= render partial: "rating", collection: AppRatingItem.where(app_rating_id: user.id, rating_item_id: RatingItem.where(group: "impact").pluck(:id)) %>
+                    </tbody>
+                </table>
+            </div>
+        </td>
+    </td>
+</tr>

@@ -31,6 +31,7 @@ class TagsController < ApplicationController
 		@posts = []
 		@questions = []
 		@apps = []
+		@sources = []
 		if @tag.nil?
 			@heading = "MyData Tag Info"
 			@heading_short = "Tag Info"
@@ -40,6 +41,7 @@ class TagsController < ApplicationController
 			@posts = Post.where(category: "info").where(id: PostingTag.where(tag_id: tag_id).pluck(:post_id))
 			@questions = Post.where(category: "question").where(id: PostingTag.where(tag_id: tag_id).pluck(:post_id))
 			@apps = AppTag.where(tag_id: tag_id)
+			@sources = SourceTag.where(tag_id: tag_id)
 		end
 
         case params[:view].to_s

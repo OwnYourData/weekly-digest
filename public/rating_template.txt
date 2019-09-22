@@ -1,0 +1,47 @@
+General information:
+~~~~~~~~~~~~~~~~~~~~
+
+name:
+description:
+web address:
+logo url: 
+tool available since (month & year):
+MyData membership:
+License:
+Sector tags:
+(available tags are: #finance, #media, #energy, #health, #learning, #mobility, #public-services, #retail, #self-measurement, #web-services)
+Processing tags:
+(available tags are: #data-source, #retrieval, #procssing, #personal-data-store, #analysis, #visualization) 
+Other tags: 
+Links to media articles about the tool:
+
+
+
+Rating:
+~~~~~~~
+use a scale from 1-bad to 6-great or leave empty if you are not able to rate
+
+Organization: 
+(question details described here: https://weekly-digest.ownyourdata.eu/OrganizationalRating.pdf )
+1. Access & changes to privacy policies:
+2. Sharing of information:
+3. Users' access to their own information:
+4. Collection of information from third parties:
+5. Process for responding to third-party requests for information:
+6. Data and user notification about third-party requests for information:
+7. Security oversight and addressing security vulnerabilities:
+8. Data breaches:
+
+Tool:
+(question details described here: https://weekly-digest.ownyourdata.eu/ToolsRating.pdf )
+1. Transparency in collection of information:
+2. Purpose for collecting and sharing information:
+3. Retention of information:
+4. Users' control over their own information:
+5. Technical information:
+
+Impact:
+(question details described here: https://weekly-digest.ownyourdata.eu/ImpactRating.pdf )
+1. Number of users:
+2. Unique functionalities:
+3. Sensitivity of processed data:
