@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   match '/tag/:id',    to: 'tags#show',   via: 'get'
   match '/apps',       to: 'apps#index',  via: 'get'
   match '/app/:id',    to: 'apps#show',   via: 'get'
+  match '/tools',      to: 'apps#index',  via: 'get'
+  match '/tool/:id',   to: 'apps#show',   via: 'get'
+  match '/sources',    to: 'sources#index',via: 'get'
   match '/source/:id', to: 'sources#show',via: 'get'
 
   resources :posts

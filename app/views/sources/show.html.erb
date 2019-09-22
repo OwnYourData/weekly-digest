@@ -1,28 +1,35 @@
 <div class="row">
     <div class="col-sm-12">
+      <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        This is an early version of the Data Source page that aims to bring user curated information about relevant personal data sources. Please don't hesitate to <a href="mailto:mdwd@ownyourdata.eu?subject=Feedback%20Data%20Sources">contact us</a> with comments & questions!
+      </div>
+    </div>
+    <div class="col-sm-12">
         <div class="weekly-intro">
-        	<strong>URL:</strong> <a href="https://www.oebb.at" target="_blank">https://www.oebb.at <i class="fa fa-external-link" aria-hidden="true"></i></a>
-            <p>The ÖBB group is one of Austrias leading eco-friendly companies and transports 459 million passengers and 115 million tons of goods operating on 100% traction power from renewable sources.<br>
-            <span style="color: gray;">#austria &nbsp; #transport</span></p>
+        	<strong>URL:</strong> <a href="<%= @source.url.to_s %>" target="_blank"><%= @source.url.to_s %> <i class="fa fa-external-link" aria-hidden="true"></i></a>
+            <p><%= @source.description.to_s %><br>
+            <%= render partial: "tag2", collection: @source.source_tags.sort_by { |item| Tag.find(item.tag_id).tag } %></p>
             <p class="text-right">
-            	<a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> <em>update general information</em></a><br>
-            	(last updated on 10. Sept 2019 by <a href="/user/48">Christoph Fabianek</a>)
+            	<a href="mailto:mdwd@ownyourdata.eu?subject=Update%20Source%20<%= @source.title.to_s %>"><i class="fa fa-pencil" aria-hidden="true"></i> <em>update general information</em></a><br>
+            	(last updated on <%= @source.updated_at.strftime("%B #{ActiveSupport::Inflector.ordinalize(@source.updated_at.day)}, %Y") %> by <a href="/user/<%= @source.user_id %>"><%= User.find(@source.user_id).name %></a>)
             </p>
         </div>
         <hr>
-        <strong>Request data via:</strong> Email <a href="">auskunftsbegehren@pv.oebb.at</a><br>
-        <strong>Response format:</strong> CSV<br>
+        <strong>Request data via:</strong> <%= @source.request.to_s.html_safe %><br>
+        <strong>Response format:</strong> <%= @source.response.to_s.html_safe %><br>
         <strong>Tools:</strong>
         <ul>
-        	<li><a href="">Axel Pollores GDPR Request Template</a></li>
-        	<li><a href=""><i class="fa fa-pencil" aria-hidden="true"></i> <em>add new tool</em></a></li>
+            <%= render partial: "app", collection: @source.source_tools.sort_by { |item| App.find(item.app_id).title } %></p>
+        	<li><a href="mailto:mdwd@ownyourdata.eu?subject=Add%20source%20tool%20for%20<%= @source.title.to_s %>"><i class="fa fa-pencil" aria-hidden="true"></i> <em>add new tool</em></a></li>
         </ul>
         <hr>
         <h3>User Reports</h3>
-        <p><strong>Anonymous on 10.09.2019</strong><br>
-        Submitted GDPR request 2 months ago and did not get any answer :-(</p>
-        <p><strong>John Doe on 18.08.2019</strong><br>
-        Received a free ÖBB USB stick with 2 MB of PDF data on it; includes my contact data and invoices from annual ÖBB pass</p>
-        <a href=""><i class="fa fa-pencil" aria-hidden="true"></i> <em>submit your report on ÖBB data request</em></a>
+        <%= render partial: "report", collection: @source.source_reports.sort_by { |item| item.updated_at }.reverse %></p>
+        <a href=""><i class="fa fa-pencil" aria-hidden="true"></i> <em>submit your report on <%= @source.title %> data request</em></a>
 	</div>
 </div>
+<p style="margin: 40px 15px -30px;"><a href="/sources<%= view_mode %>"><i class="fa fa-sign-in" aria-hidden="true"></i>
+ show all Data Sources</a></p>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_14_122418) do
+ActiveRecord::Schema.define(version: 2019_09_17_092932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_09_14_122418) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status"
   end
 
   create_table "app_tags", force: :cascade do |t|
@@ -45,10 +46,11 @@ ActiveRecord::Schema.define(version: 2019_09_14_122418) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status"
-    t.date "available_since"
+    t.string "available_since"
     t.string "mydata_membership"
     t.string "license"
     t.integer "user_id"
+    t.string "image_url"
   end
 
   create_table "commontator_comments", force: :cascade do |t|
@@ -157,6 +159,7 @@ ActiveRecord::Schema.define(version: 2019_09_14_122418) do
     t.integer "user_id"
     t.text "request"
     t.text "response"
+    t.string "url"
   end
 
   create_table "tags", force: :cascade do |t|

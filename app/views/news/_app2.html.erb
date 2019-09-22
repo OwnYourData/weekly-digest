@@ -1,6 +1,6 @@
 <div class="apps-elements">
 	<div class="post-title">
-		<a href="/app/<%= app2.app_id.to_s + view_mode %>"><%= App.find(app2.app_id).title %></a>
+		<a href="/tool/<%= app2.app_id.to_s + view_mode %>"><%= App.find(app2.app_id).title %></a>
 		<a class="<%= app2.media_type %>" href="<%= app2.media_url %>" target="_blank" title="show on MyData Slack"> </a>
 		&nbsp;<a href="<%= app2.media_url %>" target="_blank" style="font-size: small;">show on Slack <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a>
 	</div>

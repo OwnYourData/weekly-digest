@@ -1,0 +1,7 @@
+<li>
+    <a href="/source/<%= source.id.to_s + view_mode %>"><%= source.title.to_s %></a>
+    <% report_cnt = SourceReport.where(source_id: source.id).count %>
+    <% if report_cnt > 0 %>
+        (<%= pluralize report_cnt, "report" %>)
+    <% end %>
+</li>

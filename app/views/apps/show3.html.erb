@@ -4,12 +4,12 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        This is an early version of the Apps & Services page that aims to bring user curated information about relevant tools in the personal data ecosystem. Please don't hesitate to <a href="mailto:mdwd@ownyourdata.eu?subject=Feedback%20Apps%20and%20Services">contact us</a> with comments & questions!
+        This is an early version of the Tools page that aims to bring user curated information about relevant apps and services in the personal data ecosystem. Please don't hesitate to <a href="mailto:mdwd@ownyourdata.eu?subject=Feedback%20Tools">contact us</a> with comments & questions!
       </div>
-    </div>    
+    </div>
     <div class="col-sm-9">
         <div class="weekly-intro">
-            <p>Digi.me is a personal data exchange platform that allows consumers to gather together information currently scattered around the web and share it on their terms under the company’s bespoke Consent Access process. Digi.me is working with world-leading businesses in the health, finance, FMCG and telco sectors on projects unlocking the benefits of targeted and consented data sharing for both consumers and organizations.</p>
+            <p><%= @app.description.to_s %></p>
         </div>
 
         <div style="margin-top:40px;">
@@ -18,539 +18,295 @@
             </div>
         </div>
         <hr style="margin-top: 4px;">
-        <p><strong>Sector:</strong> <span style="color: gray;">#finance &nbsp; #online &nbsp; #health &nbsp; #social</span></p>
-        <p><strong>Process:</strong> <span style="color: gray;">#source &nbsp; #access</span></p>
-        <p><strong>similar products:</strong> <a href="#">OwnYourData Data Vault</a>, <a href="#">Data Wallet</a></p>
+        <p><strong>Sector:</strong> 
+            <a tabindex="0" data-toggle="popover" data-trigger="focus" data-placement="top" data-html="true"
+                title='Available Sector Tags <span class="close">&times;</span>' 
+                data-content="<p>The available sectors as described by MyData:</p>
+                  <ul>
+                    <li>finance</li>
+                    <li>media</li>
+                    <li>energy</li>
+                    <li>health</li>
+                    <li>learning</li>
+                    <li>mobility</li>
+                    <li>public-services</li>
+                    <li>retail</li>
+                    <li>self-measurement</li>
+                    <li>web-services</li>
+                  </ul>">
+                <i class="fa fa-info-circle" aria-hidden="true" alt="some text"></i></a>
+            <% if @sector_tags.count == 0 %>
+                <em>not available</em>
+            <% else %>
+                <%= render partial: "tag2", collection: @sector_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+            <% end %>
+        </p>
+        <p><strong>Process:</strong> 
+            <a tabindex="1" data-toggle="popover" data-trigger="focus" data-placement="top" data-html="true"
+                title='Available Process Tags <span class="close">&times;</span>' 
+                data-content="<p>Processing personal data involves various steps:</p>
+                  <ul>
+                    <li>data-source</li>
+                    <li>retrieval</li>
+                    <li>processing</li>
+                    <li>data-store</li>
+                    <li>analysis</li>
+                    <li>visualization</li>
+                  </ul>">
+                <i class="fa fa-info-circle" aria-hidden="true" alt="some text"></i></a>
+            <% if @process_tags.count == 0 %>
+                <em>not available</em>
+            <% else %>
+                <%= render partial: "tag2", collection: @process_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+            <% end %>
+        </p>
+        <% if @other_tags.count > 0 %>
+            <p><strong>Other:</strong> 
+                <%= render partial: "tag2", collection: @other_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+            </p>
+        <% end %>
+        <% if @similar.count > 0 %>
+            <p><strong>similar tools:</strong> 
+                <%= render partial: "similar_app", collection: @similar %>
+        <% end %>
 
         <div style="margin-top:40px;">
             <div class="section">
                 In the media
             </div>
         </div>
-        <hr style="margin-top: 4px;">
-        <%= render partial: "post2", collection: @posts.sort_by { |item| item["post_date"] }.reverse %>
-        <p>
+        <hr style="margin: 4px 0 -10px;">
+        <%= render partial: "post2", collection: @posts.sort_by { |item| item["post_date"] || Date.parse("1970-01-01") }.reverse %>
+        <p style="margin-top: 20px;">
             <a href="mailto:mdwd@ownyourdata.eu?subject=Media%20<%= @app.title.to_s %>"><i class="fa fa-pencil" aria-hidden="true"></i> Send us a link about <%= @app.title.to_s %> mentioned in the media</a>
         </p>
+
         <div style="margin-top:40px;">
             <div class="section">
                 Rating
             </div>
         </div>
         <hr style="margin-top: 4px;">
-        <p>This rating is based on 2 inputs from registered MyData users - <a id="show_individuals" href="javascript:void(0);" style="display: inline-block;">show details</a><a id="hide_individuals" href="javascript:void(0);" style="display: none;">hide details</a></p>
-        <div id="individual_ratings" style="display: none;">
-            <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <td><a href="/user/48">Christoph Fabianek</a></td>
-                        <td>11. September 2019</td>
-                        <td><a id="show_user_rating_48" href="javascript:void(0);" style="display: inline-block;">show rating</a><a id="hide_user_rating_48" href="javascript:void(0);" style="display: none;">hide rating</a></td>
-                    </tr>
-                    <script type="text/javascript">
-                        $(function() {
-                            var link_user_rating_48_show = document.getElementById("show_user_rating_48");
-                            var link_user_rating_48_hide = document.getElementById("hide_user_rating_48");
-                            link_user_rating_48_show.onclick = function() {
-                                $("#user_rating_48").show();
-                                $("#show_user_rating_48").hide();
-                                $("#hide_user_rating_48").show();
-                                return false;
-                            };
-                            link_user_rating_48_hide.onclick = function() {
-                                $("#user_rating_48").hide();
-                                $("#show_user_rating_48").show();
-                                $("#hide_user_rating_48").hide();
-                                return false;
-                            };
-                        });
-                    </script>
-                    <tr id="user_rating_48" style="display: none">
-                        <td colspan="3">
+        <% if @user_ratings.count == 0 %>
+            <div style="margin: -10px 0 10px"><em>no rating available yet</em></div>
+        <% else %>
+            <p>This rating is based on <%= pluralize @user_ratings.count, "input" %> from 
+                <%= "a " unless @user_ratings.count != 1 %>registered MyData 
+                user<%= "s" unless @user_ratings.count == 1 %> - <a id="show_individuals" href="javascript:void(0);" style="display: inline-block;">show details</a><a id="hide_individuals" href="javascript:void(0);" style="display: none;">hide details</a></p>
+            <div id="individual_ratings" style="display: none;">
+                <table class="table table-hover">
+                    <tbody>
+                        <%= render partial: "user", collection: @user_ratings.sort_by { |item| User.find(item.id).name.to_s } %>
+                    </tbody>
+                </table>
+            </div>
+            <script type="text/javascript">
+                $(function() {
+                    var link_individuals_show = document.getElementById("show_individuals");
+                    var link_individuals_hide = document.getElementById("hide_individuals");
+                    link_individuals_show.onclick = function() {
+                        $("#individual_ratings").show();
+                        $("#show_individuals").hide();
+                        $("#hide_individuals").show();
+                        return false;
+                    };
+                    link_individuals_hide.onclick = function() {
+                        $("#individual_ratings").hide();
+                        $("#show_individuals").show();
+                        $("#hide_individuals").hide();
+                        return false;
+                    };
 
-        <div>
-            <h4>Organization Rating</h4>
-            <p>Please read the <a href="#">Organizational Rating document</a> for a detailed description about each category.</p>
-            <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <td>1. Access & changes to privacy policies</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="padding-left: 25px;">
-                            Comment: some text
-                        </td>
-                    <tr>
-                        <td>2. Sharing of information (2)</td>
-                        <td class="text-center">64</td>
-                    </tr>
-                    <tr>
-                        <td>3. Users' access to their own information</td>
-                        <td class="text-center">12</td>
-                    </tr>
-                    <tr>
-                        <td>4. Collection of information from third parties</td>
-                        <td class="text-center">38</td>
-                    </tr>
-                    <tr>
-                        <td>5. Process for responding to third-party requests for information (2)</td>
-                        <td class="text-center">27</td>
-                    </tr>
-                    <tr>
-                        <td>6. Data and user notification about third-party requests for information (1)</td>
-                        <td class="text-center">58</td>
-                    </tr>
-                    <tr>
-                        <td>7. Security oversight and addressing security vulnerabilities (1)</td>
-                        <td class="text-center">98</td>
-                    </tr>
-                    <tr>
-                        <td>8. Data breaches (0)</td>
-                        <td class="text-center"><em>not rated</em></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div>
-            <h4>Tool Rating</h4>
-            <p>Please read the <a href="#">Tool Rating document</a> for a detailed description about each category.</p>
-            <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <td>1. Transparency in collection of information (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>2. Purpose for collecting and sharing information (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>3. Retention of information (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>4. Users' control over their own information (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>5. Technical information (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div>
-            <h4>Impact Rating</h4>
-            <p>Please read the <a href="#">Impact Rating document</a> for a detailed description about each category.</p>
-            <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <td>1. Number of users (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>2. Unique functionalities (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>3. Sensitivity of processed data (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">Kata</a></td>
-                        <td>30. August 2019</td>
-                        <td><a id="show_user_rating_0" href="javascript:void(0);" style="display: inline-block;">show rating</a><a id="hide_user_rating_0" href="javascript:void(0);" style="display: none;">hide rating</a></td>
-                    </tr>
-                    <script type="text/javascript">
-                        $(function() {
-                            var link_user_rating_0_show = document.getElementById("show_user_rating_0");
-                            var link_user_rating_0_hide = document.getElementById("hide_user_rating_0");
-                            link_user_rating_0_show.onclick = function() {
-                                $("#user_rating_0").show();
-                                $("#show_user_rating_0").hide();
-                                $("#hide_user_rating_0").show();
-                                return false;
-                            };
-                            link_user_rating_0_hide.onclick = function() {
-                                $("#user_rating_0").hide();
-                                $("#show_user_rating_0").show();
-                                $("#hide_user_rating_0").hide();
-                                return false;
-                            };
-                        });
-                    </script>
-                    <tr id="user_rating_0" style="display: none">
-                        <td colspan="3">
+                    var link_org_show = document.getElementById("show_organization");
+                    var link_org_hide = document.getElementById("hide_organization");
+                    link_org_show.onclick = function() {
+                        $("#organization_rating").show();
+                        $("#tool_rating").hide();
+                        $("#impact_rating").hide();
+                        $("#show_organization").hide();
+                        $("#hide_organization").show();
+                        $("#show_tool").show();
+                        $("#hide_tool").hide();
+                        $("#show_impact").show();
+                        $("#hide_impact").hide();
+                        return false;
+                    };
+                    link_org_hide.onclick = function() {
+                        $("#organization_rating").hide();
+                        $("#show_organization").show();
+                        $("#hide_organization").hide();
+                        return false;
+                    };
 
-        <div>
-            <h4>Organization Rating</h4>
-            <p>Please read the <a href="#">Organizational Rating document</a> for a detailed description about each category.</p>
-            <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <td>1. Access & changes to privacy policies</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" style="padding-left: 25px;">
-                            Comment: some other text
-                        </td>
-                    <tr>
-                        <td>2. Sharing of information (2)</td>
-                        <td class="text-center">64</td>
-                    </tr>
-                    <tr>
-                        <td>3. Users' access to their own information</td>
-                        <td class="text-center">12</td>
-                    </tr>
-                    <tr>
-                        <td>4. Collection of information from third parties</td>
-                        <td class="text-center">38</td>
-                    </tr>
-                    <tr>
-                        <td>5. Process for responding to third-party requests for information (2)</td>
-                        <td class="text-center">27</td>
-                    </tr>
-                    <tr>
-                        <td>6. Data and user notification about third-party requests for information (1)</td>
-                        <td class="text-center">58</td>
-                    </tr>
-                    <tr>
-                        <td>7. Security oversight and addressing security vulnerabilities (1)</td>
-                        <td class="text-center">98</td>
-                    </tr>
-                    <tr>
-                        <td>8. Data breaches (0)</td>
-                        <td class="text-center"><em>not rated</em></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div>
-            <h4>Tool Rating</h4>
-            <p>Please read the <a href="#">Tool Rating document</a> for a detailed description about each category.</p>
-            <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <td>1. Transparency in collection of information (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>2. Purpose for collecting and sharing information (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>3. Retention of information (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>4. Users' control over their own information (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>5. Technical information (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div>
-            <h4>Impact Rating</h4>
-            <p>Please read the <a href="#">Impact Rating document</a> for a detailed description about each category.</p>
-            <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <td>1. Number of users (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>2. Unique functionalities (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>3. Sensitivity of processed data (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-                            
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <p style="white-space: nowrap;">
-            <div id="gauge_org" style="display: inline-block; width: 200px;">
-                <div class="text-center">[<a id="show_organization" href="javascript:void(0);" style="display: inline-block">show details</a><a id="hide_organization" href="javascript:void(0);" style="display: none">hide details</a>]</div>
+                    var link_tool_show = document.getElementById("show_tool");
+                    var link_tool_hide = document.getElementById("hide_tool");
+                    link_tool_show.onclick = function() {
+                        $("#organization_rating").hide();
+                        $("#tool_rating").show();
+                        $("#impact_rating").hide();
+                        $("#show_organization").show();
+                        $("#hide_organization").hide();
+                        $("#show_tool").hide();
+                        $("#hide_tool").show();
+                        $("#show_impact").show();
+                        $("#hide_impact").hide();
+                        return false;
+                    };
+                    link_tool_hide.onclick = function() {
+                        $("#tool_rating").hide();
+                        $("#show_tool").show();
+                        $("#hide_tool").hide();
+                        return false;
+                    };
+
+                    var link_impact_show = document.getElementById("show_impact");
+                    var link_impact_hide = document.getElementById("hide_impact");
+                    link_impact_show.onclick = function() {
+                        $("#organization_rating").hide();
+                        $("#tool_rating").hide();
+                        $("#impact_rating").show();
+                        $("#show_organization").show();
+                        $("#hide_organization").hide();
+                        $("#show_tool").show();
+                        $("#hide_tool").hide();
+                        $("#show_impact").hide();
+                        $("#hide_impact").show();
+                        return false;
+                    };
+                    link_impact_hide.onclick = function() {
+                        $("#impact_rating").hide();
+                        $("#show_impact").show();
+                        $("#hide_impact").hide();
+                        return false;
+                    };
+                });
+            </script>
+            
+            <p style="white-space: nowrap;">
+                <div id="gauge_org" style="display: inline-block; width: 200px;">
+                    <div class="text-center">[<a id="show_organization" href="javascript:void(0);" style="display: inline-block">show details</a><a id="hide_organization" href="javascript:void(0);" style="display: none">hide details</a>]</div>
+                </div>
+                <div id="gauge_tool" style="display: inline-block; width: 200px;">
+                    <div class="text-center">[<a id="show_tool" href="javascript:void(0);" style="display: inline-block">show details</a><a id="hide_tool" href="javascript:void(0);" style="display: none">hide details</a>]</div>
+                </div>
+                <div id="gauge_impact" style="display: inline-block; width: 200px;">
+                    <div class="text-center">[<a id="show_impact" href="javascript:void(0);" style="display: inline-block">show details</a><a id="hide_impact" href="javascript:void(0);" style="display: none">hide details</a>]</div>
+                </div>
+            </p>
+            <script>
+              var org = new JustGage({
+                id: "gauge_org",
+                value: <%= @organization_rating %>,
+                min: 1,
+                max: 6,
+                decimals: 1,
+                hideMinMax: true,
+                title: "Organization",
+                levelColors: [
+                  "#3DA6B2",
+                  "#3DA6B2",
+                  "#3DA6B2"
+                ]
+              });
+              var tool = new JustGage({
+                id: "gauge_tool",
+                value: <%= @tool_rating %>,
+                min: 1,
+                max: 6,
+                decimals: 1,
+                title: "Tool",
+                levelColors: [
+                  "#B23D6C",
+                  "#B23D6C",
+                  "#B23D6C"
+                ]
+              });
+              var impact = new JustGage({
+                id: "gauge_impact",
+                value: <%= @impact_rating %>,
+                min: 1,
+                max: 6,
+                decimals: 1,
+                title: "Impact",
+                levelColors: [
+                  "#3D45B2",
+                  "#3D45B2",
+                  "#3D45B2"
+                ]
+              });
+            </script>
+            <div id="organization_rating" style="display: none;">
+                <h4>Organization Rating</h4>
+                <p>Please read the <a href="https://weekly-digest.ownyourdata.eu/OrganizationalRating.pdf">Organizational Rating document</a> for a detailed description about each category.</p>
+                <p><small><em>(Score is from 1-bad to 6-great calculated based on the average of available ratings shown in parantheses)</em></small></p>
+                <table class="table table-hover">
+                    <tbody>
+                        <%= render partial: "avg_rating", collection: RatingItem.where(group: "organization").sort_by { |item| item["title"] }, locals: {app_id: @app.id} %>
+                    </tbody>
+                </table>
             </div>
-            <div id="gauge_tool" style="display: inline-block; width: 200px;">
-                <div class="text-center">[<a id="show_tool" href="javascript:void(0);" style="display: inline-block">show details</a><a id="hide_tool" href="javascript:void(0);" style="display: none">hide details</a>]</div>
+            <div id="tool_rating" style="display: none;">
+                <h4>Tool Rating</h4>
+                <p>Please read the <a href="https://weekly-digest.ownyourdata.eu/ToolsRating.pdf">Tool Rating document</a> for a detailed description about each category.</p>
+                <p><small><em>(Score is from 1-bad to 100-great calculated based on the number of available ratings shown in parantheses)</em></small></p>
+                <table class="table table-hover">
+                    <tbody>
+                        <%= render partial: "avg_rating", collection: RatingItem.where(group: "tool").sort_by { |item| item["title"] }, locals: {app_id: @app.id} %>
+                    </tbody>
+                </table>
             </div>
-            <div id="gauge_impact" style="display: inline-block; width: 200px;">
-                <div class="text-center">[<a id="show_impact" href="javascript:void(0);" style="display: inline-block">show details</a><a id="hide_impact" href="javascript:void(0);" style="display: none">hide details</a>]</div>
+            <div id="impact_rating" style="display: none;">
+                <h4>Impact Rating</h4>
+                <p>Please read the <a href="https://weekly-digest.ownyourdata.eu/ImpactRating.pdf">Impact Rating document</a> for a detailed description about each category.</p>
+                <p><small><em>(Score is from 1-bad to 100-great calculated based on the number of available ratings shown in parantheses)</em></small></p>
+                <table class="table table-hover">
+                    <tbody>
+                        <%= render partial: "avg_rating", collection: RatingItem.where(group: "impact").sort_by { |item| item["title"] }, locals: {app_id: @app.id} %>
+                    </tbody>
+                </table>
             </div>
-        </p>
-        <script>
-          var org = new JustGage({
-            id: "gauge_org",
-            value: 63,
-            min: 0,
-            max: 100,
-            hideMinMax: true,
-            title: "Organization",
-            levelColors: [
-              "#3DA6B2",
-              "#3DA6B2",
-              "#3DA6B2"
-            ]
-          });
-          var tool = new JustGage({
-            id: "gauge_tool",
-            value: 80,
-            min: 0,
-            max: 100,
-            title: "Tool",
-            levelColors: [
-              "#B23D6C",
-              "#B23D6C",
-              "#B23D6C"
-            ]
-          });
-          var impact = new JustGage({
-            id: "gauge_impact",
-            value: 42,
-            min: 0,
-            max: 100,
-            title: "Impact",
-            levelColors: [
-              "#3D45B2",
-              "#3D45B2",
-              "#3D45B2"
-            ]
-          });
-        </script>
-        <div id="organization_rating" style="display: none;">
-            <h4>Organization Rating</h4>
-            <p>Please read the <a href="#">Organizational Rating document</a> for a detailed description about each category.</p>
-            <p><small><em>(Score is from 1-bad to 100-great calculated based on the number of available ratings shown in parantheses)</em></small></p>
-            <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <td>1. Access & changes to privacy policies (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>2. Sharing of information (2)</td>
-                        <td class="text-center">64</td>
-                    </tr>
-                    <tr>
-                        <td>3. Users' access to their own information (1)</td>
-                        <td class="text-center">12</td>
-                    </tr>
-                    <tr>
-                        <td>4. Collection of information from third parties (2)</td>
-                        <td class="text-center">38</td>
-                    </tr>
-                    <tr>
-                        <td>5. Process for responding to third-party requests for information (2)</td>
-                        <td class="text-center">27</td>
-                    </tr>
-                    <tr>
-                        <td>6. Data and user notification about third-party requests for information (1)</td>
-                        <td class="text-center">58</td>
-                    </tr>
-                    <tr>
-                        <td>7. Security oversight and addressing security vulnerabilities (1)</td>
-                        <td class="text-center">98</td>
-                    </tr>
-                    <tr>
-                        <td>8. Data breaches (0)</td>
-                        <td class="text-center"><em>no data yet</em></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="tool_rating" style="display: none;">
-            <h4>Tool Rating</h4>
-            <p>Please read the <a href="#">Tool Rating document</a> for a detailed description about each category.</p>
-            <p><small><em>(Score is from 1-bad to 100-great calculated based on the number of available ratings shown in parantheses)</em></small></p>
-            <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <td>1. Transparency in collection of information (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>2. Purpose for collecting and sharing information (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>3. Retention of information (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>4. Users' control over their own information (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>5. Technical information (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="impact_rating" style="display: none;">
-            <h4>Impact Rating</h4>
-            <p>Please read the <a href="#">Impact Rating document</a> for a detailed description about each category.</p>
-            <p><small><em>(Score is from 1-bad to 100-great calculated based on the number of available ratings shown in parantheses)</em></small></p>
-            <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <td>1. Number of users (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>2. Unique functionalities (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                    <tr>
-                        <td>3. Sensitivity of processed data (2)</td>
-                        <td class="text-center">78</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <% end %>
         <p>
-            <a href="mailto:mdwd@ownyourdata.eu?subject=Rate%20<%= @app.title.to_s %>"><i class="fa fa-pencil" aria-hidden="true"></i> Submit your own rating for <%= @app.title.to_s %></a>
+            <a href="mailto:mdwd@ownyourdata.eu?subject=Rate%20<%= @app.title.to_s %>"><i class="fa fa-pencil" aria-hidden="true"></i> Submit your rating for <%= @app.title.to_s %></a> (use this <a href="/rating_template.txt" target="_blank">template</a>)
         </p>
     </div>
 
-    <script type="text/javascript">
-        $(function() {
-            var link_individuals_show = document.getElementById("show_individuals");
-            var link_individuals_hide = document.getElementById("hide_individuals");
-            link_individuals_show.onclick = function() {
-                $("#individual_ratings").show();
-                $("#show_individuals").hide();
-                $("#hide_individuals").show();
-                return false;
-            };
-            link_individuals_hide.onclick = function() {
-                $("#individual_ratings").hide();
-                $("#show_individuals").show();
-                $("#hide_individuals").hide();
-                return false;
-            };
-
-            var link_org_show = document.getElementById("show_organization");
-            var link_org_hide = document.getElementById("hide_organization");
-            link_org_show.onclick = function() {
-                $("#organization_rating").show();
-                $("#tool_rating").hide();
-                $("#impact_rating").hide();
-                $("#show_organization").hide();
-                $("#hide_organization").show();
-                $("#show_tool").show();
-                $("#hide_tool").hide();
-                $("#show_impact").show();
-                $("#hide_impact").hide();
-                return false;
-            };
-            link_org_hide.onclick = function() {
-                $("#organization_rating").hide();
-                $("#show_organization").show();
-                $("#hide_organization").hide();
-                return false;
-            };
-
-            var link_tool_show = document.getElementById("show_tool");
-            var link_tool_hide = document.getElementById("hide_tool");
-            link_tool_show.onclick = function() {
-                $("#organization_rating").hide();
-                $("#tool_rating").show();
-                $("#impact_rating").hide();
-                $("#show_organization").show();
-                $("#hide_organization").hide();
-                $("#show_tool").hide();
-                $("#hide_tool").show();
-                $("#show_impact").show();
-                $("#hide_impact").hide();
-                return false;
-            };
-            link_tool_hide.onclick = function() {
-                $("#tool_rating").hide();
-                $("#show_tool").show();
-                $("#hide_tool").hide();
-                return false;
-            };
-
-            var link_impact_show = document.getElementById("show_impact");
-            var link_impact_hide = document.getElementById("hide_impact");
-            link_impact_show.onclick = function() {
-                $("#organization_rating").hide();
-                $("#tool_rating").hide();
-                $("#impact_rating").show();
-                $("#show_organization").show();
-                $("#hide_organization").hide();
-                $("#show_tool").show();
-                $("#hide_tool").hide();
-                $("#show_impact").hide();
-                $("#hide_impact").show();
-                return false;
-            };
-            link_impact_hide.onclick = function() {
-                $("#impact_rating").hide();
-                $("#show_impact").show();
-                $("#hide_impact").hide();
-                return false;
-            };
-        });
-    </script>
      <div class="col-sm-3" style="margin-top: 20px;">
         <div style="border: lightgray 1px solid; padding: 5px 0;">
-            <div class="text-center">
-                <img src="https://media.licdn.com/dms/image/C560BAQE3lK3S22yoig/company-logo_200_200/0?e=2159024400&v=beta&t=v9lCOBQHIvHe9IrpAecliYs_G04jwkRnm3gR0KTOUgo" style="width: 200px;">
-            </div>
-            <hr>
+            <% if @app.image_url.to_s != "" %>
+                <div class="text-center" style="margin-top: 5px;">
+                    <img src="<%= @app.image_url.to_s %>" style="width: 200px;">
+                </div>
+                <hr>
+            <% else %>
+                <div>&nbsp;</div>
+            <% end %>
             <div style="padding: 0 15px;">
                 <strong>Web:</strong><br>
-                <a href="<%= @app.url.to_s %>" target="_blank"><%= @app.url.to_s %></a>
+                <a href="<%= @app.url.to_s %>" target="_blank"><%= @app.url.to_s %> <i class="fa fa-external-link" aria-hidden="true"></i></a>
             </div>
             <hr>
             <div style="padding: 0 15px;">
                 <p><strong>available since:</strong><br>
-                August 2017</p>
+                <%= @app.available_since || "<em>unknown</em>".html_safe %></p>
                 <p><strong>last update:</strong><br>
-                August 21st, 2019</p>
+                <%= @app.updated_at.strftime("%B #{ActiveSupport::Inflector.ordinalize(@app.updated_at.day)}, %Y") %></p>
             </div>
             <hr>
             <div style="padding: 0 15px;">
                 <p><strong>MyData membership:</strong><br>
-                Organization since Oct 2018</p>
+                <%= @app.mydata_membership || "<em>unknown</em>".html_safe %></p>
                 <p><strong>License:</strong><br>
-                commercial</p>
+                <%= @app.license || "<em>unknown</em>".html_safe %></p>
             </div>
         </div>
-        <p class="text-center"><small>information provided by <a href="/user/48">Christoph Fabianek</a><br>
+        <p class="text-center"><small>information provided by <a href="/user/<%= @app.user_id %>"><%= User.find(@app.user_id).name.to_s %></a><br>
         <a href="mailto:mdwd@ownyourdata.eu?subject=Update%20<%= @app.title.to_s %>"><i class="fa fa-pencil" aria-hidden="true"></i> request to edit</a> this <%= @app.title.to_s %> entry
-            <!-- <a id="sighint" tabindex="0" data-toggle="popover" data-placement="top" data-html="true"
-                title='Request to Edit <span class="close">&times;</span>' 
-                data-content="<p>some text to explain how editing this information will work</p>">
-                        <i class="fa fa-info-circle" aria-hidden="true" alt="some text"></i>
-            </a> -->
         </small></p>
     </div>
 </div>
 
-<p style="margin: 40px 15px -30px;"><a href="/apps<%= view_mode %>"><i class="fa fa-wrench" aria-hidden="true"></i> show all Apps & Services</a></p>
+<p style="margin: 40px 15px -30px;"><a href="/tools<%= view_mode %>"><i class="fa fa-wrench" aria-hidden="true"></i> show all Tools</a></p>
 
 <script type="text/javascript">
 $(function () {

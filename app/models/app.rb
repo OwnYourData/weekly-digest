@@ -3,8 +3,9 @@
 # Table name: apps
 #
 #  id                :bigint(8)        not null, primary key
-#  available_since   :date
+#  available_since   :string
 #  description       :text
+#  image_url         :string
 #  license           :string
 #  mydata_membership :string
 #  status            :integer

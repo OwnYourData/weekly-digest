@@ -5,12 +5,17 @@
 		<hr>
 		<h3>Latest news</h3>
 		<ul style="list-style-type: none; padding-left: 0;">
-			<%= render partial: "week2", collection: @week.sort_by { |item| item["release"] }.last(4).reverse %>
+			<%= render partial: "week2", collection: @week.sort_by { |item| item["release"] }.last(5).reverse %>
 		</ul>
-		<p style="margin: -10px 0 40px;"><a href="/news<%= view_mode %>">show all</a></p>
+		<p style="margin: -10px 0 40px;"><a href="/news<%= view_mode %>">show all weekly digests</a></p>
 	</div>
 	<div class="col-md-3 col-md-offset-1">
-		<p style="font-size: 14px; margin-top: 17px; margin-bottom: 5px;"><strong>Recent Tools</strong></p>
+		<p style="font-size: 14px; margin-top: 17px; margin-bottom: 5px;"><strong>New Data Sources</strong></p>
+		<ul style="padding-left: 25px; margin-bottom: 5px;">
+			<%= render partial: "source", collection: @source.sort_by { |item| item["updated_at"] }.reverse.first(5) %>
+		</ul>
+		<a href="/sources<%= view_mode %>">show all</a>
+		<p style="font-size: 14px; margin-top: 30px; margin-bottom: 5px;"><strong>Recent Tools</strong></p>
 		<ul style="padding-left: 25px; margin-bottom: 5px;">
 			<%= render partial: "app", collection: @app.sort_by { |item| item["updated_at"] }.reverse.first(5) %>
 		</ul>

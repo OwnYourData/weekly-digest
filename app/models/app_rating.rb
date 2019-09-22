@@ -3,6 +3,7 @@
 # Table name: app_ratings
 #
 #  id         :bigint(8)        not null, primary key
+#  status     :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  app_id     :integer

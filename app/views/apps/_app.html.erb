@@ -1,1 +1,19 @@
-<li><a href="/app/<%= app["id"].to_s + view_mode %>"><%= app["title"].to_s %></a></li>
+<li>
+    <a href="/tool/<%= app["id"].to_s + view_mode %>"><%= app["title"].to_s %></a>
+    <% if params[:mode].to_s == ""
+            media_cnt = WeeklyApp.where(app_id: app.id, status: 1).count
+            rating_cnt = AppRating.where(app_id: app.id, status: 1).count
+       else
+            media_cnt = WeeklyApp.where(app_id: app.id).count
+            rating_cnt = AppRating.where(app_id: app.id).count
+        end %>
+    <% if media_cnt > 0 %>
+        (media: <%= media_cnt %><% if rating_cnt > 0 %>, ratings: <%= rating_cnt %>)
+        <% else %>)
+        <% end %>
+    <% else %>
+        <% if rating_cnt > 0 %>
+            (ratings: <%= rating_cnt %>)
+        <% end %>
+    <% end %>
+</li>
