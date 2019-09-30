@@ -90,7 +90,7 @@
         <% if @user_ratings.count == 0 %>
             <div style="margin: -10px 0 10px"><em>no rating available yet</em></div>
         <% else %>
-            <p>This rating is based on <%= pluralize @user_ratings.count, "input" %> from 
+            <p>This rating from 1-bad to 6-great is based on <%= pluralize @user_ratings.count, "input" %> from 
                 <%= "a " unless @user_ratings.count != 1 %>registered MyData 
                 user<%= "s" unless @user_ratings.count == 1 %> - <a id="show_individuals" href="javascript:void(0);" style="display: inline-block;">show details</a><a id="hide_individuals" href="javascript:void(0);" style="display: none;">hide details</a></p>
             <div id="individual_ratings" style="display: none;">
@@ -214,6 +214,7 @@
                 min: 1,
                 max: 6,
                 decimals: 1,
+                hideMinMax: true,
                 title: "Tool",
                 levelColors: [
                   "#B23D6C",
@@ -227,6 +228,7 @@
                 min: 1,
                 max: 6,
                 decimals: 1,
+                hideMinMax: true,
                 title: "Impact",
                 levelColors: [
                   "#3D45B2",
@@ -238,7 +240,7 @@
             <div id="organization_rating" style="display: none;">
                 <h4>Organization Rating</h4>
                 <p>Please read the <a href="https://weekly-digest.ownyourdata.eu/OrganizationalRating.pdf">Organizational Rating document</a> for a detailed description about each category.</p>
-                <p><small><em>(Score is from 1-bad to 6-great calculated based on the average of available ratings shown in parantheses)</em></small></p>
+                <p><small><em>(Score is calculated based on the average of available ratings shown in parantheses)</em></small></p>
                 <table class="table table-hover">
                     <tbody>
                         <%= render partial: "avg_rating", collection: RatingItem.where(group: "organization").sort_by { |item| item["title"] }, locals: {app_id: @app.id} %>
@@ -248,7 +250,7 @@
             <div id="tool_rating" style="display: none;">
                 <h4>Tool Rating</h4>
                 <p>Please read the <a href="https://weekly-digest.ownyourdata.eu/ToolsRating.pdf">Tool Rating document</a> for a detailed description about each category.</p>
-                <p><small><em>(Score is from 1-bad to 100-great calculated based on the number of available ratings shown in parantheses)</em></small></p>
+                <p><small><em>(Score is calculated based on the number of available ratings shown in parantheses)</em></small></p>
                 <table class="table table-hover">
                     <tbody>
                         <%= render partial: "avg_rating", collection: RatingItem.where(group: "tool").sort_by { |item| item["title"] }, locals: {app_id: @app.id} %>
@@ -258,7 +260,7 @@
             <div id="impact_rating" style="display: none;">
                 <h4>Impact Rating</h4>
                 <p>Please read the <a href="https://weekly-digest.ownyourdata.eu/ImpactRating.pdf">Impact Rating document</a> for a detailed description about each category.</p>
-                <p><small><em>(Score is from 1-bad to 100-great calculated based on the number of available ratings shown in parantheses)</em></small></p>
+                <p><small><em>(Score is calculated based on the number of available ratings shown in parantheses)</em></small></p>
                 <table class="table table-hover">
                     <tbody>
                         <%= render partial: "avg_rating", collection: RatingItem.where(group: "impact").sort_by { |item| item["title"] }, locals: {app_id: @app.id} %>
