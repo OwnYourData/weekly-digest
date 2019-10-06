@@ -38,7 +38,7 @@
             <li><div class="section">Menu</div></li>
             <li><a href="#info"><i class="fa fa-info-circle" aria-hidden="true"></i> Noteworthy Infos (<%= @posts.count.to_s %>)</a></li>
             <li><a href="#question"><i class="fa fa-question-circle" aria-hidden="true"></i> Questions Asked (<%= @questions.count.to_s %>)</a></li>
-            <li><a href="#apps"><i class="fa fa-wrench" aria-hidden="true"></i> Apps & Services (<%= @apps.count.to_s %>)</a></li>
+            <% if @apps.count > 0 %><li><a href="#apps"><i class="fa fa-wrench" aria-hidden="true"></i> Tools (<%= @apps.count.to_s %>)</a></li><% end %>
             <li><a href="#events"><i class="fa fa-calendar" aria-hidden="true"></i> Upcoming Events (<%= @events.count.to_s %>)</a></li>
             <li><a href="#stats"><i class="fa fa-bar-chart" aria-hidden="true"></i> Statistics</a></li>
             <li><a href="/<%= view_mode %>"><i class="fa fa-home" aria-hidden="true"></i> Start Page</a></li>            
@@ -68,18 +68,20 @@
         </div>
         <%= render partial: "question2", collection: @questions.sort_by { |item| item["post_date"] } %>
 
-        <div class="visible-xs text-right">
-            <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> menu</a>
-        </div>
-        <hr id="apps" style="margin-top: 30px;">
-        <div style="margin-top:40px;">
-            <div class="section">
-                <i class="fa fa-wrench" aria-hidden="true"></i>
-                Tools
+        <% if @apps.count > 0 %>
+            <div class="visible-xs text-right">
+                <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> menu</a>
             </div>
-            <div class="section-sub hidden-xs"><%= @apps.count.to_s %> entries</div>
-        </div>
-        <%= render partial: "app2", collection: @apps.sort_by { |item| item["post_date"]  || Date.parse("1970-01-01") } %>
+            <hr id="apps" style="margin-top: 30px;">
+            <div style="margin-top:40px;">
+                <div class="section">
+                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                    Tools
+                </div>
+                <div class="section-sub hidden-xs"><%= @apps.count.to_s %> entries</div>
+            </div>
+            <%= render partial: "app2", collection: @apps.sort_by { |item| item["post_date"]  || Date.parse("1970-01-01") } %>
+        <% end %>
 
         <div class="visible-xs text-right">
             <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> menu</a>
@@ -133,7 +135,7 @@
             <li><div class="section">Menu</div></li>
             <li><a href="#info"><i class="fa fa-info-circle" aria-hidden="true"></i> Noteworthy Infos</a></li>
             <li><a href="#question"><i class="fa fa-question-circle" aria-hidden="true"></i> Questions Asked</a></li>
-            <li><a href="#apps"><i class="fa fa-wrench" aria-hidden="true"></i> Apps & Services</a></li>
+            <% if @apps.count > 0 %><li><a href="#apps"><i class="fa fa-wrench" aria-hidden="true"></i> Tools</a></li><% end %>
             <li><a href="#events"><i class="fa fa-calendar" aria-hidden="true"></i> Upcoming Events</a></li>
             <li><a href="#stats"><i class="fa fa-bar-chart" aria-hidden="true"></i> Statistics</a></li>
             <li><a href="#"><i class="fa fa-arrow-up" aria-hidden="true"></i> back to top</a></li>
