@@ -29,7 +29,7 @@
             <p>Please read the <a href="https://weekly-digest.ownyourdata.eu/OrganizationalRating.pdf">Organizational Rating document</a> for a detailed description about each category.<br>Ratings are scaled from 1-bad to 6-great.</p>
                 <table class="table table-hover">
                     <tbody>
-                        <%= render partial: "rating", collection: AppRatingItem.where(app_rating_id: user.id, rating_item_id: RatingItem.where(group: "organization").pluck(:id)) %>
+                        <%= render partial: "rating", collection: AppRatingItem.where(app_rating_id: user.id, rating_item_id: RatingItem.where(group: "organization").pluck(:id)).sort_by { |item| RatingItem.find(item["rating_item_id"]).title } %>
                     </tbody>
                 </table>
             </div>
@@ -38,7 +38,7 @@
                 <p>Please read the <a href="https://weekly-digest.ownyourdata.eu/ToolsRating.pdf">Tool Rating document</a> for a detailed description about each category.</p>
                 <table class="table table-hover">
                     <tbody>
-                        <%= render partial: "rating", collection: AppRatingItem.where(app_rating_id: user.id, rating_item_id: RatingItem.where(group: "tool").pluck(:id)) %>
+                        <%= render partial: "rating", collection: AppRatingItem.where(app_rating_id: user.id, rating_item_id: RatingItem.where(group: "tool").pluck(:id)).sort_by { |item| RatingItem.find(item["rating_item_id"]).title } %>
                     </tbody>
                 </table>
             </div>
@@ -47,7 +47,7 @@
                 <p>Please read the <a href="https://weekly-digest.ownyourdata.eu/ImpactRating.pdf">Impact Rating document</a> for a detailed description about each category.</p>
                 <table class="table table-hover">
                     <tbody>
-                        <%= render partial: "rating", collection: AppRatingItem.where(app_rating_id: user.id, rating_item_id: RatingItem.where(group: "impact").pluck(:id)) %>
+                        <%= render partial: "rating", collection: AppRatingItem.where(app_rating_id: user.id, rating_item_id: RatingItem.where(group: "impact").pluck(:id)).sort_by { |item| RatingItem.find(item["rating_item_id"]).title } %>
                     </tbody>
                 </table>
             </div>
