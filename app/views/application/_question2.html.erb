@@ -24,8 +24,5 @@
 	</div>
 	<div class="post-tags">
 		<%= render partial: "tag2", collection: question2.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
-		<% if question2.posting_tags.count > 0 %>
-			<i class="fa fa-arrow-left" aria-hidden="true" style="font-weight: 100; color: #999999;"></i> <span style="color: #999999;">click tag to show related <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg); color: #999999;"></i></span>
-		<% end %>
 	</div>
 </div>

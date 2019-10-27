@@ -82,7 +82,7 @@ class NewsController < ApplicationController
                 @previous = @weekly_order.where("release < ?", my_date).last.release.to_s rescue ""
                 @next = @weekly_order.where("release > ?", my_date).first.release.to_s rescue ""
                 @intro_text = markdown.render(@weekly.intro.to_s)
-                @intro_text_plain = Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(@weekly.intro.to_s).strip.gsub(/\(\/user.*?\) /,'')
+                @intro_text_plain = Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(@weekly.intro.to_s).strip.gsub(/\(\/user.*?\) /,'').gsub(/&nbsp;/,' ')
 
                 @users = @weekly.users
                 @new_users = @weekly.new_users
