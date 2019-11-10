@@ -1,5 +1,6 @@
 class NewsController < ApplicationController
     include ApplicationHelper
+    include ActionView::Helpers::TextHelper
     require 'google/apis/calendar_v3'
     require 'googleauth'
     require 'googleauth/stores/file_token_store'
@@ -82,7 +83,14 @@ class NewsController < ApplicationController
                 @previous = @weekly_order.where("release < ?", my_date).last.release.to_s rescue ""
                 @next = @weekly_order.where("release > ?", my_date).first.release.to_s rescue ""
                 @intro_text = markdown.render(@weekly.intro.to_s)
-                @intro_text_plain = Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(@weekly.intro.to_s).strip.gsub(/\(\/user.*?\) /,'').gsub(/&nbsp;/,' ')
+                @intro_text_plain = "Read in this weeks digest about " + pluralize(@posts.count, "noteworthy post")
+                if @apps.count == 0
+                    @intro_text_plain += " and " + pluralize(@questions.count, "question") + " asked"
+                else
+                    @intro_text_plain += ", " + pluralize(@questions.count, "question") + " asked, and " + pluralize(@apps.count, "personal data tool")
+                end
+                @intro_text_plain += ". General comments for this week: "
+                @intro_text_plain += Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(@weekly.intro.to_s).strip.gsub(/\(\/user.*?\) /,'').gsub(/&nbsp;/,' ')
 
                 @users = @weekly.users
                 @new_users = @weekly.new_users
