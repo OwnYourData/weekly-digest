@@ -173,7 +173,7 @@ class NewsController < ApplicationController
                 format.html { render layout: "application2", template: "news/weekly3"}
             end
         when "4"
-            @heading = t('news.page_header') + " " + l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s))
+            @heading = t('news.page_header', :date => l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s)))
             @heading_short = t('general.title_short') + ": " + l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s))
 
             @it = WeeklyInternal.where(weekly_id: @weekly_id, lang: I18n.locale.to_s)
