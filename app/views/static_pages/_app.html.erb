@@ -1,1 +1,1 @@
-<li><a href="/tool/<%= app["id"].to_s + view_mode %>"><%= app["title"].to_s %></a></li>
+<li><a href="/tool/<%= app["id"].to_s + view_mode %>" onmousedown="$('#stats_target').val('tool');$('#stats_target_id').val('<%= app["id"].to_s %>');$('#stats_form').submit();"><%= app["title"].to_s %></a></li>

@@ -8,6 +8,17 @@ class UsersController < ApplicationController
 			@user = User.all
 		end
 
+        Statistic.new(
+            timestamp: DateTime.now.to_i,
+            url: request.headers["HTTP_REFERER"].to_s,
+            source: "user_list",
+            source_id: "0",
+            target: "",
+            target_id: nil,
+            session_id: Digest::SHA256.hexdigest(request.remote_ip.to_s + " " +  request.env['HTTP_USER_AGENT'].to_s + Rails.application.secrets.secret_key_base.to_s)
+        ).save
+
+
         case params[:view].to_s
         when "0"
         when "2"
@@ -34,7 +45,20 @@ class UsersController < ApplicationController
 		if @user.nil?
 			@heading = "MyData User Info"
 			@heading_short = "User Info"
+			redirect_to users_path
+			return
 		else
+
+	        Statistic.new(
+	            timestamp: DateTime.now.to_i,
+	            url: request.headers["HTTP_REFERER"].to_s,
+	            source: "user",
+	            source_id: @user.id,
+	            target: "",
+	            target_id: nil,
+	            session_id: Digest::SHA256.hexdigest(request.remote_ip.to_s + " " +  request.env['HTTP_USER_AGENT'].to_s + Rails.application.secrets.secret_key_base.to_s)
+	        ).save
+
 			@heading = "MyData User Info for " + @user.name.to_s
 			@heading_short = "User Info: " + @user.name.to_s
 			@posts = Post.where(category: "info").where(user_id: user_id).order(post_date: :desc)

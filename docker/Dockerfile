@@ -1,4 +1,4 @@
-FROM ruby:2.5.3
+FROM ruby:2.5.7
 MAINTAINER "Christoph Fabianek" christoph@ownyourdata.eu
 
 WORKDIR /usr/src/app

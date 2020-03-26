@@ -236,3 +236,75 @@ a.mydata {
 .post-tag {
   color: #999999;
 }
+
+/* footer */
+
+footer {
+  margin-top: 30px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #666666;
+  width: 100%;
+}
+
+footer a {
+  color: #666666;
+}
+
+footer a:hover {
+  color: #666666;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  /* float: right; */
+  margin-left: -50px;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}
+
+.fakelink {
+  color: #666666;
+  outline: none; 
+  padding: 5px; 
+  border: 0px; 
+  box-sizing: none; 
+  background-color: transparent !important; 
+  margin: -5px 0 0 8px;
+  box-shadow: none !important;
+}
+
+.fakelink_nounderline {
+  color: #666666;
+  outline: none; 
+  padding: 5px; 
+  border: 0px; 
+  box-sizing: none; 
+  background-color: transparent !important; 
+  margin: -5px 0 0 8px;
+  box-shadow: none !important;
+}
+
+
+.fakelink:focus,
+.fakelink:hover {
+  color: #666666;
+  text-decoration: underline !important;
+}
+
+.dropdown-text {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.428571429;
+  color: #333333;
+  white-space: nowrap;
+}

@@ -1,12 +1,12 @@
 <div class="quest-elements">
 	<div class="post-title">
-		<a href="<%= question2.url %>" target="_blank"><%= question2.title %></a>
-		<a class="<%= question2.media_type %>" href="<%= question2.media_url %>" target="_blank" title="show on MyData Slack"> </a> 
-		&nbsp;<a href="<%= question2.media_url %>" target="_blank" style="font-size: small;">show on Slack <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a>
+		<a href="<%= question2.url %>" onmousedown="$('#stats_target').val('post');$('#stats_target_id').val('<%= question2.id %>');$('#stats_form').submit();" target="_blank"><%= question2.title %></a>
+		<a class="<%= question2.media_type %>" href="<%= question2.media_url %>" onmousedown="$('#stats_target').val('slack');$('#stats_target_id').val('<%= question2.id %>');$('#stats_form').submit();" target="_blank" title="show on MyData Slack"> </a> 
+		&nbsp;<a href="<%= question2.media_url %>" onmousedown="$('#stats_target').val('slack');$('#stats_target_id').val('<%= question2.id %>');$('#stats_form').submit();" target="_blank" style="font-size: small;">show on Slack <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a>
 	</div>
 	<div class="post-sub">
 		<div class="post-user">
-			<% if controller_name.to_s != "users" %><a href="/user/<%= question2.user_id.to_s + view_mode %>" style="color: inherit;"><% end %>
+			<% if controller_name.to_s != "users" %><a href="/user/<%= question2.user_id.to_s + view_mode %>" onmousedown="$('#stats_source').val('post');$('#stats_source_id').val('<%= question2.id %>');$('#stats_target').val('user');$('#stats_target_id').val('<%= question2.user_id %>');$('#stats_form').submit();" style="color: inherit;"><% end %>
 				<%= User.find(question2.user_id).name %><% if controller_name.to_s != "users" %>
 					<i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a>&nbsp;<% end %>
 		</div>
@@ -14,7 +14,7 @@
 			<% if controller_name == "news" %>
 				<%= question2.post_date.to_s %>
 			<% else %>
-				<a href="/weekly/<%= Weekly.find(question2.weekly_id).release.to_s + view_mode %>" style="color: inherit;">
+				<a href="/weekly/<%= Weekly.find(question2.weekly_id).release.to_s + view_mode %>" onmousedown="$('#stats_target').val('weekly');$('#stats_target_id').val('<%= question2.weekly_id %>');$('#stats_form').submit();" style="color: inherit;">
 					<%= question2.post_date.to_s %> <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a>
 			<% end %>
 		</div>

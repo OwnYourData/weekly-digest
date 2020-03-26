@@ -29,5 +29,9 @@ module WeeklyDigest
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    I18n.enforce_available_locales = false
+    I18n.config.available_locales = [:de, :en, :hu, :jp, :ko, :tw]
+    config.i18n.default_locale = :en
   end
 end

@@ -1,17 +1,17 @@
 <div class="apps-elements">
 	<div class="post-title">
-		<a href="/tool/<%= app2.app_id.to_s + view_mode %>"><%= App.find(app2.app_id).title %></a>
-		<a class="<%= app2.media_type %>" href="<%= app2.media_url %>" target="_blank" title="show on MyData Slack"> </a>
+		<a href="/tool/<%= app2.app_id.to_s + view_mode %>" onmousedown="$('#stats_target').val('tool');$('#stats_target_id').val('<%= app2.app_id.to_s %>');$('#stats_form').submit();"><%= App.find(app2.app_id).title %></a>
+		<a class="<%= app2.media_type %>" href="<%= app2.media_url %>" onmousedown="$('#stats_target').val('slack');$('#stats_target_id').val('<%= app2.id.to_s %>');$('#stats_form').submit();" target="_blank" title="show on MyData Slack"> </a>
 	</div>
 	<div class="post-sub">
-		<div class="post-user"><a href="/user/<%= app2.user_id.to_s + view_mode %>" style="color: inherit;"><%= User.find(app2.user_id).name %></a></div>
+		<div class="post-user"><a href="/user/<%= app2.user_id.to_s + view_mode %>" onmousedown="$('#stats_target').val('user');$('#stats_target_id').val('<%= app2.user_id.to_s %>');$('#stats_form').submit();" style="color: inherit;"><%= User.find(app2.user_id).name %></a></div>
 		<div class="post-date"><%= app2.post_date.to_s %></div>
 	</div>
 	<div class="post-text">
 		<%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(app2.description.to_s).html_safe %>
 	</div>
 	<div class="post-tags">
-		<%= render partial: "tag2", collection: App.find(app2.app_id).app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+		<%= render partial: "tag2", locals:{stats_source: "tag", stats_source_id: local_assigns[:tag_id]}, collection: App.find(app2.app_id).app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
 	</div>
 
 </div>

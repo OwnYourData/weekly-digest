@@ -1,3 +1,8 @@
+<%= form_with url: stats_path, id: "stats_form" do |form| %>
+    <%= form.hidden_field :stats_source, value: "user_list" %>
+    <%= form.hidden_field :stats_source_id, value: "0" %>
+    <%= form.hidden_field :stats_target %>
+    <%= form.hidden_field :stats_target_id %>
 <div class="row">
 	<div class="col-sm-4">
 		<h3>Users [A-I]</h3>
@@ -6,15 +11,16 @@
 		</ul>
 	</div>
 	<div class="col-sm-4">
-		<h3>Users [J-R]</h3>
+		<h3>Users [J-N]</h3>
 		<ul>
-			<%= render partial: "user2", collection: @user.sort_by { |item| item["name"].downcase }.select { |item| item["name"][0..0].downcase =~ /[j-m]/ } %>
+			<%= render partial: "user2", collection: @user.sort_by { |item| item["name"].downcase }.select { |item| item["name"][0..0].downcase =~ /[j-n]/ } %>
 		</ul>		
 	</div>
 	<div class="col-sm-4">
-		<h3>Users [S-Z]</h3>
+		<h3>Users [O-Z]</h3>
 		<ul>
-			<%= render partial: "user2", collection: @user.sort_by { |item| item["name"].downcase }.select { |item| item["name"][0..0].downcase !~ /[a-m]/ } %>
+			<%= render partial: "user2", collection: @user.sort_by { |item| item["name"].downcase }.select { |item| item["name"][0..0].downcase !~ /[a-n]/ } %>
 		</ul>		
 	</div>
 </div>
+<% end %>

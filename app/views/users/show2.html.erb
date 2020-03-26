@@ -1,3 +1,8 @@
+<%= form_with url: stats_path, id: "stats_form" do |form| %>
+    <%= form.hidden_field :stats_source, value: "user" %>
+    <%= form.hidden_field :stats_source_id, value: @user.id %>
+    <%= form.hidden_field :stats_target %>
+    <%= form.hidden_field :stats_target_id %>
 <div class="row">
     <div class="col-sm-9">
         <nav id="menu" class="bs-docs-sidebar visible-xs" style="border-color: lightgray; border-width: 1px; border-style: solid; padding: 20px; margin-top: 20px; width: 220px; border-radius: 20px;">
@@ -49,7 +54,7 @@
                 </div>
                 <div class="section-sub hidden-xs"><%= @apps.count.to_s %> entries</div>
             </div>
-            <%= render partial: "app2", collection: @apps.sort_by { |item| item["title"] } %>
+            <%= render partial: "app2", locals:{user_id: @user.id}, collection: @apps.sort_by { |item| item["title"] } %>
             <div class="visible-xs text-right">
                 <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> menu</a>
             </div>
@@ -69,3 +74,4 @@
         </nav>
     </div>
 </div>
+<% end %>

@@ -21,4 +21,5 @@
 class Weekly < ApplicationRecord
 	has_many :posts, dependent: :destroy
 	has_many :weekly_apps, dependent: :destroy
+	has_many :weekly_internals, dependent: :destroy
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_092932) do
+ActiveRecord::Schema.define(version: 2020_03_22_155306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -162,6 +162,18 @@ ActiveRecord::Schema.define(version: 2019_09_17_092932) do
     t.string "url"
   end
 
+  create_table "statistics", force: :cascade do |t|
+    t.integer "timestamp"
+    t.string "url"
+    t.string "source"
+    t.integer "source_id"
+    t.string "target"
+    t.integer "target_id"
+    t.string "session_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "tag"
     t.integer "status"
@@ -205,6 +217,14 @@ ActiveRecord::Schema.define(version: 2019_09_17_092932) do
     t.string "media_type"
     t.integer "status"
     t.date "post_date"
+  end
+
+  create_table "weekly_internals", force: :cascade do |t|
+    t.integer "weekly_id"
+    t.string "lang"
+    t.text "intro"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "commontator_comments", "commontator_comments", column: "parent_id", on_update: :restrict, on_delete: :cascade

@@ -24,13 +24,13 @@
         <div class="row">
           <div class="col-md-12" style="min-height: 60px; margin-top: 20px;">
             <div style="display: table;">
-              <a href="/<%= view_mode %>" style="display: table-cell;"><%= image_tag 'oyd2.png', style: "height: 60px; margin: -20px -5px -10px -10px; vertical-align: text-bottom;" %></a>
+              <a href="/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" style="display: table-cell;"><%= image_tag 'oyd2.png', style: "height: 60px; margin: -20px -5px -10px -10px; vertical-align: text-bottom;" %></a>
               <div style="display: table-cell;">
-                <h1 class="visible-xs visible-sm hidden-md hiden-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large; padding-right: 110px;"><a href="/<%= view_mode %>" class="title-link"><%= @heading_short.to_s %></a></h1>
-                <h1 class="hidden-xs hidden-sm visible-md visible-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large;"><a href="/<%= view_mode %>" class="title-link"><%= @heading.to_s %></a></h1>
+                <h1 class="visible-xs visible-sm hidden-md hiden-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large; padding-right: 110px;"><a href="/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" class="title-link"><%= @heading_short.to_s %></a></h1>
+                <h1 class="hidden-xs hidden-sm visible-md visible-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large;"><a href="/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" class="title-link"><%= @heading.to_s %></a></h1>
               </div>
             </div>
-            <a href="https://www.ownyourdata.eu/" style="color: #42B58C; text-decoration: none; float: right; white-space: nowrap; margin-top: -28px;">
+            <a href="https://www.ownyourdata.eu/" onmousedown="$('#stats_target').val('ownyourdata');$('#stats_target_id').val('');$('#stats_form').submit();" style="color: #42B58C; text-decoration: none; float: right; white-space: nowrap; margin-top: -28px;">
               <span style="text-decoration: underline;">
                 ownyourdata.eu</span> 
               <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i>
@@ -45,7 +45,7 @@
       <% if controller_name != "static_pages" %>
         <div class="row" style="margin-top: 40px;">
           <div class="col-md-12">
-            <p><a href="/<%= view_mode %>" style="margin-left: 15px;"><i class="fa fa-home" aria-hidden="true"></i> to Start Page</a></p>
+            <p><a href="/<%= view_mode %>" onmousedown="$('#stats_target').val('start_page');$('#stats_target_id').val('0');$('#stats_form').submit();" style="margin-left: 15px;"><i class="fa fa-home" aria-hidden="true"></i> to Start Page</a></p>
           </div>
         </div>
       <% end %>
@@ -54,9 +54,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12" style="margin: -10px 0 30px;">
-          &copy; <a href="https://www.ownyourdata.eu/<%= I18n.locale %>">OwnYourData.eu</a>
-          <a href="https://www.ownyourdata.eu/en/imprint/" style="margin: 0 10px;">Imprint</a>
-          <a href="https://www.ownyourdata.eu/en/privacy-policy/">Privacy Policy</a>
+          &copy; <a href="https://www.ownyourdata.eu/<%= I18n.locale %>" onmousedown="$('#stats_target').val('oyd_footer');$('#stats_target_id').val('');$('#stats_form').submit();">OwnYourData.eu</a>
+          <a href="https://www.ownyourdata.eu/en/imprint/" style="margin: 0 10px;" onmousedown="$('#stats_target').val('imprint');$('#stats_target_id').val('');$('#stats_form').submit();">Imprint</a>
+          <a href="https://www.ownyourdata.eu/en/privacy-policy/" onmousedown="$('#stats_target').val('privacy');$('#stats_target_id').val('');$('#stats_form').submit();">Privacy Policy</a>
         </div>
       </div>
     </div>

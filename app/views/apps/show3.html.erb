@@ -1,3 +1,8 @@
+<%= form_with url: stats_path, id: "stats_form" do |form| %>
+    <%= form.hidden_field :stats_source, value: "tool" %>
+    <%= form.hidden_field :stats_source_id, value: @app.id %>
+    <%= form.hidden_field :stats_target %>
+    <%= form.hidden_field :stats_target_id %>
 <div class="row">
     <div class="col-sm-12">
       <div class="alert alert-warning">
@@ -310,6 +315,7 @@
 
 <p style="margin: 40px 15px -30px;"><a href="/tools<%= view_mode %>"><i class="fa fa-wrench" aria-hidden="true"></i> show all Tools</a></p>
 
+<% end %>
 <script type="text/javascript">
 $(function () {
   $('[data-toggle="popover"]').popover({ container: 'body' }).on("show.bs.popover", function(){ $(this).data("bs.popover").tip().css("max-width", "680px"); }).on('shown.bs.popover', function (eventShown) { var $popup = $('#' + $(eventShown.target).attr('aria-describedby')); $popup.find('.close').click(function (e) { $popup.popover('hide'); }); });

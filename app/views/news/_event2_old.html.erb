@@ -1,0 +1,18 @@
+<div class="apps-elements">
+	<div class="post-title">
+		<a href="<%= event2.html_link.to_s %>"><%= event2.summary.to_s %></a>
+	</div>
+	<div class="post-sub">
+		<div class="post-date">
+			<%= (event2.start.date || event2.start.date_time).to_date.strftime("%F") %> 
+			<% if !event2.start.date_time.nil? %>
+				<%=  event2.start.date_time.to_time.strftime("%H:%M") + " UTC" %>
+			<% else %>
+				all day
+			<% end %>
+		</div>
+	</div>
+	<div class="post-text">
+		<%= event2.description.to_s.html_safe %>
+	</div>
+</div>

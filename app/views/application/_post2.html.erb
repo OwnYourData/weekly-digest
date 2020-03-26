@@ -1,12 +1,12 @@
 <div class="info-elements">
 	<div class="post-title">
-		<a href="<%= post2.url %>" target="_blank"><%= post2.title %></a>
-		<a class="<%= post2.media_type %>" href="<%= post2.media_url %>" target="_blank" title="show on MyData Slack"> </a> 
-		&nbsp;<a href="<%= post2.media_url %>" target="_blank" style="font-size: small;">show on Slack <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a>
+		<a href="<%= post2.url %>" onmousedown="$('#stats_target').val('post');$('#stats_target_id').val('<%= post2.id %>');$('#stats_form').submit();" target="_blank"><%= post2.title %></a>
+		<a class="<%= post2.media_type %>" href="<%= post2.media_url %>" onmousedown="$('#stats_target').val('slack');$('#stats_target_id').val('<%= post2.id %>');$('#stats_form').submit();" target="_blank" title="show on MyData Slack"> </a> 
+		&nbsp;<a href="<%= post2.media_url %>" onmousedown="$('#stats_target').val('slack');$('#stats_target_id').val('<%= post2.id %>');$('#stats_form').submit();" target="_blank" style="font-size: small;">show on Slack <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a>
 	</div>
 	<div class="post-sub">
 		<div class="post-user">
-			<% if controller_name.to_s != "users" %><a href="/user/<%= post2.user_id.to_s + view_mode %>" style="color: inherit;"><% end %>
+			<% if controller_name.to_s != "users" %><a href="/user/<%= post2.user_id.to_s + view_mode %>" onmousedown="$('#stats_source').val('post');$('#stats_source_id').val('<%= post2.id %>');$('#stats_target').val('user');$('#stats_target_id').val('<%= post2.user_id %>');$('#stats_form').submit();" style="color: inherit;"><% end %>
 				<%= User.find(post2.user_id).name %><% if controller_name.to_s != "users" %>
 					<i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a>&nbsp;<% end %>
 		</div>
@@ -14,7 +14,7 @@
 			<% if controller_name == "news" %>
 				<%= post2.post_date.to_s %>
 			<% else %>
-				<a href="/weekly/<%= Weekly.find(post2.weekly_id).release.to_s + view_mode %>" style="color: inherit;">
+				<a href="/weekly/<%= Weekly.find(post2.weekly_id).release.to_s + view_mode %>" onmousedown="$('#stats_target').val('weekly');$('#stats_target_id').val('<%= post2.weekly_id %>');$('#stats_form').submit();" style="color: inherit;">
 					<%= post2.post_date.to_s %> <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a>
 			<% end %>
 		</div>
@@ -23,6 +23,6 @@
 		<%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(post2.description.to_s).html_safe %>
 	</div>
 	<div class="post-tags">
-		<%= render partial: "tag2", collection: post2.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+		<%= render partial: "tag2", locals:{stats_source: "post", stats_source_id: post2.id}, collection: post2.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
 	</div>
 </div>

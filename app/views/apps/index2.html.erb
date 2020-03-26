@@ -1,14 +1,23 @@
+<%= form_with url: stats_path, id: "stats_form" do |form| %>
+    <%= form.hidden_field :stats_source, value: "tool_list" %>
+    <%= form.hidden_field :stats_source_id, value: "0" %>
+    <%= form.hidden_field :stats_target %>
+    <%= form.hidden_field :stats_target_id %>
 <div class="row">
 	<div class="col-sm-4">
-		<h3>Tools [A-Z]</h3>
+		<h3>Tools [A-M]</h3>
 		<ul>
-			<%= render partial: "app", collection: @app.sort_by { |item| item["title"].downcase } %>
+			<%= render partial: "app", collection: @app.sort_by { |item| item["title"].downcase }.select { |item| item["title"][0..0].downcase =~/[a-m]/ } %>
+		</ul>
+	</div>
+	<div class="col-sm-4">
+		<h3>Tools [N-Z]</h3>
+		<ul>
+			<%= render partial: "app", collection: @app.sort_by { |item| item["title"].downcase }.select { |item| item["title"][0..0].downcase !~/[a-m]/ } %>
 		</ul>
 	</div>
 	<div class="col-sm-4">
 		&nbsp;
 	</div>
-	<div class="col-sm-4">
-		&nbsp;
-	</div>
 </div>
+<% end %>
