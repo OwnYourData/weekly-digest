@@ -1,34 +1,3 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 jp:
   general:
     title: "MyData 週刊ダイジェスト"
@@ -38,6 +7,9 @@ jp:
     main_tags: "人気タグ"
     show_all: "全て表示する"
     read_more: "もっと詳しく"
+    menu: "Menu"
+    start_page: "Start Page"
+    to_top: "back to top"
   footer:
     language: "言語選択"
     imprint: "発行者等"
@@ -53,3 +25,15 @@ jp:
     tool: "ツール"
     talking_point: "MyData について語られている点"
     show_all: "Weekly ダイジェストを全て表示する"
+    entry: "Entry"
+    show_all: "show all Weekly Digests"
+    page_header: "MyData Weekly Digest for"
+    next_digest: "next digest"
+    previous_digest: "previous digest"
+    noteworhty_information: "Noteworthy Information"
+    noteworhty_info: "Noteworthy Info"
+    questions_asked: "Questions Asked"
+    mydata_internals: "MyData Internals"
+    upcoming_events: "Upcoming Events"
+    upcoming_events_short: "Upcoming Events"
+    statistics: "Statistics"

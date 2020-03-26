@@ -42,10 +42,10 @@ en:
     start_page: "Start Page"
     to_top: "back to top"
   footer:
+    language: "Language"
     imprint: "Imprint"
     privacy: "Privacy Policy"
     privacy_page: "en/privacy-policy"
-    language: "Language"
   date:
     formats:
       long: "%B %{my_day}, %Y"
