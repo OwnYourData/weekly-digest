@@ -1,2 +1,2 @@
-<a href="/tool/<%= similar_app.to_s + view_mode %>"><%= App.find(similar_app).title.to_s %></a><% 
+<a href="/tool/<%= similar_app.to_s + view_mode %>" onmousedown="$('#stats_target').val('similar_tool');$('#stats_target_id').val('<%= similar_app %>');$('#stats_form').submit();"><%= App.find(similar_app).title.to_s %></a><% 
 	if @similar.last != similar_app %>,<% end %> 

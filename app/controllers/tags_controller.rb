@@ -7,6 +7,15 @@ class TagsController < ApplicationController
 		else
 			@tag = Tag.all
 		end
+        Statistic.new(
+            timestamp: DateTime.now.to_i,
+            url: request.headers["HTTP_REFERER"].to_s,
+            source: "tag_list",
+            source_id: 0,
+            target: "",
+            target_id: nil,
+            session_id: Digest::SHA256.hexdigest(request.remote_ip.to_s + " " +  request.env['HTTP_USER_AGENT'].to_s + Rails.application.secrets.secret_key_base.to_s)
+        ).save
 
         case params[:view].to_s
         when "0"
@@ -27,7 +36,7 @@ class TagsController < ApplicationController
 
 	def show
 		tag_id = params[:id]
-		@tag = Tag.find(tag_id)
+		@tag = Tag.find(tag_id) rescue nil
 		@posts = []
 		@questions = []
 		@apps = []
@@ -35,7 +44,19 @@ class TagsController < ApplicationController
 		if @tag.nil?
 			@heading = "MyData Tag Info"
 			@heading_short = "Tag Info"
+			redirect_to tags_path
+			return
 		else
+	        Statistic.new(
+	            timestamp: DateTime.now.to_i,
+	            url: request.headers["HTTP_REFERER"].to_s,
+	            source: "tag",
+	            source_id: @tag.id,
+	            target: "",
+	            target_id: nil,
+	            session_id: Digest::SHA256.hexdigest(request.remote_ip.to_s + " " +  request.env['HTTP_USER_AGENT'].to_s + Rails.application.secrets.secret_key_base.to_s)
+	        ).save
+
 			@heading = "MyData Tag Info for #" + @tag.tag.to_s
 			@heading_short = "Tag Info: #" + @tag.tag.to_s
 			@posts = Post.where(category: "info").where(id: PostingTag.where(tag_id: tag_id).pluck(:post_id))

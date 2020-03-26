@@ -1,35 +1,42 @@
+<%= form_with url: stats_path, id: "stats_form" do |form| %>
+    <%= form.hidden_field :stats_source, value: "start_page" %>
+    <%= form.hidden_field :stats_source_id, value: "" %>
+    <%= form.hidden_field :stats_target %>
+    <%= form.hidden_field :stats_target_id %>
 <div class="row">
 	<div class="col-md-8 weekly-intro">
-		<p>Welcome to the MyData Weekly Digest, a news site dedicated to producing the best coverage from within the human centred approach in personal data management. See the <a href="https://www.ownyourdata.eu/#mission">OwnYourData Mission Statement</a> for more information, and please consider <a href="https://mydata.org/get-involved/" target="_blank">supporting the MyData movement</a>.</p>
-		<p>This page is a summary of information I retrieve mainly from the <a href="https://mydataglobal.slack.com" target="_blank">MyData Global Slack Channel</a> since June 2019. Postings and comments are owned by the respective user stated with each entry. If you have any suggestions please don't hesitate to contact me at <a href="mailto:mdwd[at]ownyourdata.eu">mdwd(at)ownyourdata.eu</a>.</p>
+		<p>Welcome to the MyData Weekly Digest, a news site dedicated to producing the best coverage from within the human centred approach in personal data management. It provides information retrieved mainly from the <a href="https://mydataglobal.slack.com" onmousedown="$('#stats_target').val('mydata_slack');$('#stats_target_id').val('');$('#stats_form').submit();" target="_blank">MyData Global Slack Channel</a> since June 2019. Postings and comments are owned by the respective user stated with each entry. MyData is an idea and an alternative vision for ethical use of personal data. It’s also a movement and a community, and a global non-profit organisation. Read more here: <a href="https://mydata.org" onmousedown="$('#stats_target').val('mydata');$('#stats_target_id').val('');$('#stats_form').submit();" target="_blank">mydata.org</a></p>
+
+		<p>OwnYourData and the MyData community share the same values for a just, sustainable and prosperous digital society. See the <a href="https://www.ownyourdata.eu/#mission" onmousedown="$('#stats_target').val('mission');$('#stats_target_id').val('');$('#stats_form').submit();">OwnYourData Mission Statement</a> for more information, and please consider <a href="https://mydata.org/get-involved/" target="_blank" onmousedown="$('#stats_target').val('mydata');$('#stats_target_id').val('');$('#stats_form').submit();">supporting the MyData movement</a>. If you have any suggestions please don't hesitate to contact me at <a href="mailto:mdwd[at]ownyourdata.eu" onmousedown="$('#stats_target').val('email_oyd');$('#stats_target_id').val('');$('#stats_form').submit();">mdwd(at)ownyourdata.eu</a>.</p>
+
 		<hr>
 		<h3>Latest news</h3>
 		<ul style="list-style-type: none; padding-left: 0;">
 			<%= render partial: "week2", collection: @week.sort_by { |item| item["release"] }.last(5).reverse %>
 		</ul>
-		<p style="margin: -10px 0 40px;"><a href="/news<%= view_mode %>">show all weekly digests</a></p>
+		<p style="margin: 10px 0 40px;"><a href="/news<%= view_mode %>" onmousedown="$('#stats_target').val('weekly_list');$('#stats_target_id').val('');$('#stats_form').submit();">show all Weekly Digests</a></p>
 	</div>
 	<div class="col-md-3 col-md-offset-1">
-		<p style="font-size: 14px; margin-top: 17px; margin-bottom: 5px;"><strong>New Data Sources</strong></p>
+		<!-- <p style="font-size: 14px; margin-top: 17px; margin-bottom: 5px;"><strong>New Data Sources</strong></p>
 		<ul style="padding-left: 25px; margin-bottom: 5px;">
 			<%= render partial: "source", collection: @source.sort_by { |item| item["updated_at"] }.reverse.first(5) %>
 		</ul>
-		<a href="/sources<%= view_mode %>">show all</a>
+		<a href="/sources<%= view_mode %>">show all</a> -->
 		<p style="font-size: 14px; margin-top: 30px; margin-bottom: 5px;"><strong>Recent Tools</strong></p>
 		<ul style="padding-left: 25px; margin-bottom: 5px;">
 			<%= render partial: "app", collection: @app.sort_by { |item| item["updated_at"] }.reverse.first(5) %>
 		</ul>
-		<a href="/tools<%= view_mode %>">show all</a>
+		<a href="/tools<%= view_mode %>" onmousedown="$('#stats_target').val('tool_list');$('#stats_target_id').val('');$('#stats_form').submit();">show all</a>
 		<p style="font-size: 14px; margin-top: 30px; margin-bottom: 5px;"><strong>Active Users</strong></p>
 		<ul style="padding-left: 25px; margin-bottom: 5px;">
 			<%= render partial: "user", collection: User.where(id: Post.group(:user_id).count.sort_by { |user, cnt| cnt }.reverse.first(5).map{ |row| row.first }) %>
 		</ul style="padding-left: 25px;">
-		<a href="/users<%= view_mode %>">show all</a>
+		<a href="/users<%= view_mode %>" onmousedown="$('#stats_target').val('user_list');$('#stats_target_id').val('');$('#stats_form').submit();">show all</a>
 		<p style="font-size: 14px; margin-top: 30px; margin-bottom: 5px;"><strong>Popular Tags</strong></p>
 		<ul style="padding-left: 25px; margin-bottom: 5px;">
 			<%= render partial: "tag", collection: Tag.where(id: PostingTag.group(:tag_id).count.sort_by { |tag, cnt| cnt }.reverse.first(5).map{ |row| row.first }) %>
 		</ul>
-		<a href="/tags<%= view_mode %>">show all</a>
+		<a href="/tags<%= view_mode %>" onmousedown="$('#stats_target').val('tag_list');$('#stats_target_id').val('');$('#stats_form').submit();">show all</a>
 	</div>
 </div>
-
+<% end %>

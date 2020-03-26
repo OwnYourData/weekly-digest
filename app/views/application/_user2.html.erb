@@ -1,5 +1,5 @@
 <li>
-	<a href="/user/<%= user2.id.to_s + view_mode %>">
+	<a href="/user/<%= user2.id.to_s + view_mode %>" onmousedown="$('#stats_target').val('user');$('#stats_target_id').val('<%= user2.id %>');$('#stats_form').submit();">
 		<%= user2.name %>
 	</a> <span style="color: gray;">(<%= user2.posts.count + user2.weekly_apps.count %>)</span>
 </li>

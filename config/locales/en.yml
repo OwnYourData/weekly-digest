@@ -30,4 +30,55 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  general:
+    title: "MyData Weekly Digest"
+    title_short: "Weekly Digest"
+    main_tools: "Recent Tools"
+    main_users: "Active Users"
+    main_tags: "Popular Tags"
+    show_all: "show all"
+    read_more: "read more"
+    menu: "Menu"
+    start_page: "Start Page"
+    to_top: "back to top"
+  footer:
+    imprint: "Imprint"
+    privacy: "Privacy Policy"
+    privacy_page: "en/privacy-policy"
+    language: "Language"
+  date:
+    formats:
+      long: "%B %{my_day}, %Y"
+  news:
+    latest_news: "Latest news"
+    post: 
+      zero: "posts"
+      one: "post"
+      other: "posts"
+    question: 
+      zero: "questions"
+      one: "question"
+      other: "questions"
+    tool:
+      zero: "tools"
+      one: "tool"
+      other: "tools"
+    talking_point: 
+      zero: "MyData talking points"
+      one: "MyData talking point"
+      other: "MyData talking points"
+    entry:
+      zero: "Entries"
+      one: "Entry"
+      other: "Entries"
+    show_all: "show all Weekly Digests"
+    page_header: "MyData Weekly Digest for"
+    next_digest: "next digest"
+    previous_digest: "previous digest"
+    noteworhty_information: "Noteworthy Information"
+    noteworhty_info: "Noteworthy Info"
+    questions_asked: "Questions Asked"
+    mydata_internals: "MyData Internals"
+    upcoming_events: "Upcoming Events"
+    upcoming_events_short: "Upcoming Events"
+    statistics: "Statistics"

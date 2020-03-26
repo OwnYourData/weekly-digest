@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @heading.to_s %></title>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','<%= ENV["GOOGLE_TOKEN"] %>');</script>
+    <%= stylesheet_link_tag    'application', media: 'all' %> <!--, 'data-turbolinks-track': 'reload' % > -->
+    <%= javascript_include_tag 'application' %> <!--, 'data-turbolinks-track': 'reload' % > -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% if !@og.nil? %>
+      <meta property="og:title" content="<%= @heading.to_s %>" />
+      <meta property="og:url" content="https://weekly-digest.ownyourdata.eu/weekly/<%= @og_date %>" />
+      <meta property="og:type"  content="blog" />
+      <meta property="og:image" content="<%= image_url 'MyDataLogo.png' %>" />
+      <meta property="og:description" content="<%= @intro_text_plain %>" />
+    <% end %>
+  </head>
+
+  <body data-spy="scroll" data-target="#myScrollspy" data-offset="15">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= ENV["GOOGLE_TOKEN"] %>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <div style="background-color: #F2F3F9;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12" style="min-height: 60px; margin-top: 20px;">
+            <div style="display: table;">
+              <a href="/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" style="display: table-cell;"><%= image_tag 'oyd2.png', style: "height: 60px; margin: -20px -5px -10px -10px; vertical-align: text-bottom;" %></a>
+              <div style="display: table-cell;">
+                <h1 class="visible-xs visible-sm hidden-md hiden-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large; padding-right: 190px;"><a href="/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" class="title-link"><%= @heading_short.to_s %></a></h1>
+                <h1 class="hidden-xs hidden-sm visible-md visible-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large;"><a href="/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" class="title-link"><%= @heading.to_s %></a></h1>
+              </div>
+            </div>
+            <div style="float: right; white-space: nowrap; margin-top: -28px;">
+              <a href="https://www.ownyourdata.eu/" onmousedown="$('#stats_target').val('ownyourdata');$('#stats_target_id').val('');$('#stats_form').submit();" style="color: #42B58C; text-decoration: none;">
+                <span style="text-decoration: underline;">
+                  OwnYourData.eu</span> 
+                <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i>
+              </a> 
+              |
+              <div class="btn-group dropdown" style="margin-right: 15px; margin-left: -10px;">
+                <button type="button" class="fakelink_nounderline hidden-xs hidden-sm visible-md visible-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="glyphicon glyphicon-flag"></span>
+                  <span class="font-size-large" style="font-size:14px;"><%= t('footer.language') %></span> 
+                  <span class="caret"></span>
+                </button>
+                <button type="button" class="fakelink_nounderline visible-xs visible-sm hidden-md hidden-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="glyphicon glyphicon-flag"></span>
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li><%= link_to "Deutsch", { locale: 'de', view: params[:view], mode: params[:mode] } %></li>
+                  <li><%= link_to "English", { locale: 'en', view: params[:view], mode: params[:mode] } %></li>
+                  <li><%= link_to "한국어", { locale: 'ko', view: params[:view], mode: params[:mode] } %></li>
+                  <li><%= link_to "Magyar", { locale: 'hu', view: params[:view], mode: params[:mode] } %></li>
+                  <li><%= link_to "日本語", { locale: 'jp', view: params[:view], mode: params[:mode] } %></li>
+                  <li><%= link_to "中文（台灣)", { locale: 'tw', view: params[:view], mode: params[:mode] } %></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr style="margin-top: 0;">
+    <div class="container">
+      <%= yield %>
+      <% if controller_name != "static_pages" %>
+        <div class="row" style="margin-top: 40px;">
+          <div class="col-md-12">
+            <p><a href="/<%= view_mode %>" onmousedown="$('#stats_target').val('start_page');$('#stats_target_id').val('0');$('#stats_form').submit();" style="margin-left: 15px;"><i class="fa fa-home" aria-hidden="true"></i> to Start Page</a></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <nav>
+          <ul style="padding-right: 120px;">
+            <li>&copy; 2020 <a href="https://www.ownyourdata.eu/<%= I18n.locale %>" onmousedown="$('#stats_target').val('oyd_footer');$('#stats_target_id').val('');$('#stats_form').submit();">OwnYourData.eu</a></li>
+            <li><a href="https://www.ownyourdata.eu/en/imprint/" style="margin: 0 10px;" onmousedown="$('#stats_target').val('imprint');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('footer.imprint') %></a></li>
+            <li><a href="https://www.ownyourdata.eu/<%= t('footer.privacy_page') %>/" onmousedown="$('#stats_target').val('privacy');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('footer.privacy') %></a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

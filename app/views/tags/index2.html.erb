@@ -1,3 +1,8 @@
+<%= form_with url: stats_path, id: "stats_form" do |form| %>
+    <%= form.hidden_field :stats_source, value: "tag_list" %>
+    <%= form.hidden_field :stats_source_id, value: "0" %>
+    <%= form.hidden_field :stats_target %>
+    <%= form.hidden_field :stats_target_id %>
 <div class="row">
 	<div class="col-sm-4">
 		<h3>Tags [A-F]</h3>
@@ -18,3 +23,4 @@
 		</ul>		
 	</div>
 </div>
+<% end %>

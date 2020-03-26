@@ -39,5 +39,14 @@ module ApplicationHelper
         end
         credentials
     end
+    
+    def ordinalize_number number, my_locale
+        case my_locale.to_s
+        when "en"
+            return number.ordinalize
+        else
+            return number
+        end
+    end    
 
 end

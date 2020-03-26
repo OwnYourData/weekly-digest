@@ -8,6 +8,16 @@ class AppsController < ApplicationController
             @app = App.all
         end
 
+        Statistic.new(
+            timestamp: DateTime.now.to_i,
+            url: request.headers["HTTP_REFERER"].to_s,
+            source: "tool_list",
+            source_id: "0",
+            target: "",
+            target_id: nil,
+            session_id: Digest::SHA256.hexdigest(request.remote_ip.to_s + " " +  request.env['HTTP_USER_AGENT'].to_s + Rails.application.secrets.secret_key_base.to_s)
+        ).save
+
         case params[:view].to_s
         when "0"
         when "2"
@@ -27,12 +37,25 @@ class AppsController < ApplicationController
 
     def show
         app_id = params[:id]
-        @app = App.find(app_id)
+        @app = App.find(app_id) rescue nil
         @posts = []
         if @app.nil?
             @heading = "MyData Tools"
             @heading_short = "Tools"
+            redirect_to tools_path
+            return
         else
+
+            Statistic.new(
+                timestamp: DateTime.now.to_i,
+                url: request.headers["HTTP_REFERER"].to_s,
+                source: "tool",
+                source_id: @app.id,
+                target: "",
+                target_id: nil,
+                session_id: Digest::SHA256.hexdigest(request.remote_ip.to_s + " " +  request.env['HTTP_USER_AGENT'].to_s + Rails.application.secrets.secret_key_base.to_s)
+            ).save
+
             @heading = "Tool: " + @app.title.to_s
             @heading_short = @app.title.to_s
 

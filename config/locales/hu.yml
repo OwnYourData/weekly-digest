@@ -1,0 +1,63 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+hu:
+  general:
+    title: "MyData Weekly Digest"
+    title_short: "Weekly Digest"
+    main_tools: "Legújabb Eszközök"
+    main_users: "Aktív Felhasználók"
+    main_tags: "Népszerű Cimkék"
+    show_all: "mutasd mindet"
+    read_more: "tovább olvasok"
+  footer:
+    language: "Nyelv"
+    imprint: "Impresszum"
+    privacy: "Adatkezelési Tájékoztató"
+    privacy_page: "en/privacy-policy"
+  date:
+    formats:
+      long: "%Y. %B %d."
+  news:
+    latest_news: "Legfrissebb Hírek"
+    post: 
+      one: "bejegyzés"
+      other: "bejegyzés"
+    question: 
+      one: "kérdés"
+      other: "kérdés"
+    tool: 
+      one: "eszköz"
+      other: "eszköz"
+    talking_point: 
+      one: "MyData témakör"
+      other: "MyData témakörök"
+    show_all: "az összes kiadás megtekintése"

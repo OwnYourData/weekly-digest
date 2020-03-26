@@ -1,0 +1,187 @@
+<%= form_with url: stats_path, id: "stats_form" do |form| %>
+    <%= form.hidden_field :stats_source, value: "weekly" %>
+    <%= form.hidden_field :stats_source_id, value: @weekly_id %>
+    <%= form.hidden_field :stats_target %>
+    <%= form.hidden_field :stats_target_id %>
+<div class="row">
+    <div class="col-sm-9">
+        <div class="weekly-intro" id="org_block">
+            <%= render 'application/intro' %>
+        </div>
+<script type="text/javascript">
+    document.getElementById('org_block').onmousedown = function(e){
+        $('#stats_target').val("org_block <%= I18n.locale %>: ".concat(e.target.innerHTML).concat(': ').concat(e.target.href));
+        $('#stats_form').submit();
+    }
+</script>
+
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col-xs-6">
+                <div class="visible-xs visible-sm hidden-md hiden-lg">
+                    <% if @previous != "" %>
+                        <a href="/<%= I18n.locale.to_s %>/weekly/<%= @previous + view_mode %>">< <%= @previous %></a>
+                    <% end %>
+                </div>
+                <div class="hidden-xs hidden-sm visible-md visible-lg">
+                    <% if @previous != "" %>
+                        <a href="/<%= I18n.locale.to_s %>/weekly/<%= @previous + view_mode %>">< <%= t('news.previous_digest') %> (<%= @previous %>)</a>
+                    <% end %>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="visible-xs visible-sm hidden-md hiden-lg text-right">
+                    <% if @next != "" %>
+                        <a href="/<%= I18n.locale.to_s %>/weekly/<%= @next + view_mode %>"><%= @next %> ></a>
+                    <% end %>
+                </div>
+                <div class="hidden-xs hidden-sm visible-md visible-lg text-right">
+                    <% if @next != "" %>
+                        <a href="/<%= I18n.locale.to_s %>/weekly/<%= @next + view_mode %>"><%= t('news.next_digest') %> (<%= @next %>) ></a>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+
+        <nav id="menu" class="bs-docs-sidebar visible-xs" style="border-color: lightgray; border-width: 1px; border-style: solid; padding: 20px; margin-top: 20px; width: 220px; border-radius: 20px;">
+          <ul class="nav bs-docs-sidenav">
+            <li><div class="section"><%= t('general.menu') %></div></li>
+            <li><a href="#info"><i class="fa fa-info-circle" aria-hidden="true"></i> <%= t('news.noteworhty_info') %> (<%= @posts.count.to_s %>)</a></li>
+            <% if @questions.count > 0 %><li><a href="#question"><i class="fa fa-question-circle" aria-hidden="true"></i> <%= t('news.questions_asked') %> (<%= @questions.count.to_s %>)</a></li><% end %>
+            <% if @apps.count > 0 %><li><a href="#apps"><i class="fa fa-wrench" aria-hidden="true"></i> <%= t('news.tool', count: 2) %> (<%= @apps.count.to_s %>)</a></li><% end %>
+            <li><a href="#internals"><i class="fa fa-commenting" aria-hidden="true"></i> <%= t('news.mydata_internals') %></a></li>
+            <li><a href="#events"><i class="fa fa-calendar" aria-hidden="true"></i> <%= t('news.upcoming_events_short') %> (<%= @events.count.to_s %>)</a></li>
+            <li><a href="#stats"><i class="fa fa-bar-chart" aria-hidden="true"></i> <%= t('news.statistics') %></a></li>
+            <li><a href="/<%= view_mode %>"><i class="fa fa-home" aria-hidden="true"></i> <%= t('general.start_page') %></a></li>            
+          </ul>
+        </nav>
+
+
+        <hr id="info" style="margin-top: 30px;">
+    	<div style="margin-top:40px;">
+    		<div class="section">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                <%= t('news.noteworhty_information') %>
+            </div>
+    		<div class="section-sub hidden-xs"><%= @posts.count.to_s %> <%= t('news.post', count: @posts.count ) %></div>
+    	</div>
+        <%= render partial: "post3", collection: @posts.sort_by { |item| item["post_date"] } %>
+
+        <% if @questions.count > 0 %>
+            <div class="visible-xs text-right">
+                <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> <%= t('general.menu') %></a>
+            </div>
+            <hr id="question" style="margin-top: 30px;">
+            <div style="margin-top:40px;">
+                <div class="section">
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                    <%= t('news.questions_asked') %>
+                </div>
+                <div class="section-sub hidden-xs"><%= @questions.count.to_s %> <%= t('news.post', count: @questions.count ) %></div>
+            </div>
+            <%= render partial: "question2", collection: @questions.sort_by { |item| item["post_date"] } %>
+        <% end %> 
+
+        <% if @apps.count > 0 %>
+            <div class="visible-xs text-right">
+                <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> <%= t('general.menu') %></a>
+            </div>
+            <hr id="apps" style="margin-top: 30px;">
+            <div style="margin-top:40px;">
+                <div class="section">
+                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                    <%= t('news.tool', count: 2) %>
+                </div>
+                <div class="section-sub hidden-xs"><%= @apps.count.to_s %> <%= t('news.entry', count: @apps.count) %></div>
+            </div>
+            <%= render partial: "app2", collection: @apps.sort_by { |item| item["post_date"]  || Date.parse("1970-01-01") } %>
+        <% end %>
+
+        <div class="visible-xs text-right">
+            <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> <%= t('general.menu') %></a>
+        </div>
+        <hr id="internals" style="margin-top: 30px;">
+        <div style="margin-top:40px;">
+            <div class="section">
+                <i class="fa fa-commenting" aria-hidden="true"></i>
+                <%= t('news.mydata_internals') %>
+            </div>
+            <div class="weekly-intro" id="intro_block">
+                <%= @intro_text.html_safe %>
+            </div>
+<script type="text/javascript">
+    document.getElementById('intro_block').onmousedown = function(e){
+        $('#stats_target').val("internal: ".concat(e.target.innerHTML).concat(': ').concat(e.target.href));
+        $('#stats_form').submit();
+    }
+</script>
+        </div>
+
+        <div class="visible-xs text-right">
+            <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> <%= t('general.menu') %></a>
+        </div>
+
+        <hr id="events" style="margin-top: 30px;">
+        <div style="margin-top:40px;">
+            <div class="section">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                <%= t('news.upcoming_events') %>
+            </div>
+            <div class="section-sub hidden-xs"><%= @events.count.to_s %> entries</div>
+        </div>
+        <div class="weekly-intro">
+            The following events are in the <a href="https://calendar.google.com/calendar/embed?src=vndcn3m1dmhve9130flvub9dhg%40group.calendar.google.com&ctz=Europe%2FVienna">MyData calendar</a> for next week:
+        </div>
+        <ul>
+            <%= render partial: "event2", collection: @events %>
+        </ul>
+
+        <div class="visible-xs text-right">
+            <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> <%= t('general.menu') %></a>
+        </div>
+        <hr id="stats" style="margin-top: 30px;">
+        <div style="margin-top:40px;">
+            <div class="section">
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <%= t('news.statistics') %>
+            </div>
+        </div>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-xs-3 control-label statistic post-text">Users:</label>
+                <div class="col-xs-9 statistic post-text"><strong><%= @users %></strong> (<%= @new_users %> new)</div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label statistic post-text">Slack Channels:</label>
+                <div class="col-xs-9 statistic post-text" style="line-height: 1.5em;"><strong><%= @channels %></strong> (<%= @monitored_channels %> monitored<% if @monitored_channel_names.to_s != ""%>: <%= @monitored_channel_names %><% end %>)</div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label statistic post-text">Postings:</label>
+                <div class="col-xs-9 statistic post-text"><strong><%= @postings %></strong></div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label statistic post-text">People said <em>Thank You</em>:</label>
+                <div class="col-xs-9 statistic post-text"><strong><%= @thanks %> thanked <%= @thanked %></strong></div>
+            </div>
+        </div>
+        <div class="visible-xs text-right">
+            <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> <%= t('general.menu') %></a>
+        </div>
+
+    </div>
+    <div class="col-sm-3" style="margin-top: 20px;">
+        <nav class="bs-docs-sidebar hidden-xs" id="myScrollspy">
+          <ul class="nav bs-docs-sidenav" data-spy="affix" data-offset-top="110">
+            <li><div class="section"><%= t('general.menu') %></div></li>
+            <li><a href="#info"><i class="fa fa-info-circle" aria-hidden="true"></i> <%= t('news.noteworhty_info') %></a></li>
+            <% if @questions.count > 0 %><li><a href="#question"><i class="fa fa-question-circle" aria-hidden="true"></i> <%= t('news.questions_asked') %></a></li><% end %>
+            <% if @apps.count > 0 %><li><a href="#apps"><i class="fa fa-wrench" aria-hidden="true"></i> <%= t('news.tool', count: 2) %></a></li><% end %>
+            <li><a href="#internals"><i class="fa fa-commenting" aria-hidden="true"></i> <%= t('news.mydata_internals') %></a></li>
+            <li><a href="#events"><i class="fa fa-calendar" aria-hidden="true"></i> <%= t('news.upcoming_events_short') %></a></li>
+            <li><a href="#stats"><i class="fa fa-bar-chart" aria-hidden="true"></i> <%= t('news.statistics') %></a></li>
+            <li><a href="#"><i class="fa fa-arrow-up" aria-hidden="true"></i> <%= t('general.to_top') %></a></li>
+            <li><a href="/<%= view_mode %>"><i class="fa fa-home" aria-hidden="true"></i> <%= t('general.start_page') %></a></li>            
+          </ul>
+        </nav>
+    </div>
+</div>
+<% end %>
