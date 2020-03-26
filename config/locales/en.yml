@@ -72,7 +72,7 @@ en:
       one: "Entry"
       other: "Entries"
     show_all: "show all Weekly Digests"
-    page_header: "MyData Weekly Digest for"
+    page_header: "MyData Weekly Digest for %{date}"
     next_digest: "next digest"
     previous_digest: "previous digest"
     noteworhty_information: "Noteworthy Information"
