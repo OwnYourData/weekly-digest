@@ -72,7 +72,7 @@ de:
       one: "Eintrag"
       other: "Einträge"
     show_all: "alle Ausgaben anzeigen"
-    page_header: "MyData Weekly Digest vom"
+    page_header: "MyData Weekly Digest vom %{date}"
     next_digest: "nächste Ausgabe"
     previous_digest: "vorherige Ausgabe"
     noteworhty_information: "Interessante Information"

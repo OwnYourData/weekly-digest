@@ -27,7 +27,7 @@ jp:
     show_all: "Weekly ダイジェストを全て表示する"
     entry: "Entry"
     show_all: "show all Weekly Digests"
-    page_header: "MyData Weekly Digest for"
+    page_header: "%{date} の MyData 週刊ダイジェスト"
     next_digest: "next digest"
     previous_digest: "previous digest"
     noteworhty_information: "Noteworthy Information"
