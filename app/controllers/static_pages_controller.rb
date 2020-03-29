@@ -47,6 +47,13 @@ class StaticPagesController < ApplicationController
         end
 	end
 
+    def contributor
+        @heading = t('contributor.page_header')
+        respond_to do |format|
+            format.html { render layout: "application3", template: "static_pages/contributor"}
+        end
+    end
+
 	def favicon
 		send_file 'public/favicon.ico', type: 'image/x-icon', disposition: 'inline'
 	end

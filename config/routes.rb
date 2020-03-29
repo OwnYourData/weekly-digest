@@ -3,19 +3,20 @@ Rails.application.routes.draw do
         root 'static_pages#home'
         get 'favicon', to: "static_pages#favicon"
 
-        match '/news',       to: 'news#index',    via: 'get'
-        match '/weekly/:id', to: 'news#weekly',   via: 'get', as: "weekly"
-        match '/current',    to: 'news#current',  via: 'get'
-        match '/users',      to: 'users#index',   via: 'get'
-        match '/user/:id',   to: 'users#show',    via: 'get'
-        match '/tags',       to: 'tags#index',    via: 'get'
-        match '/tag/:id',    to: 'tags#show',     via: 'get'
-        match '/apps',       to: 'apps#index',    via: 'get'
-        match '/app/:id',    to: 'apps#show',     via: 'get'
-        match '/tools',      to: 'apps#index',    via: 'get'
-        match '/tool/:id',   to: 'apps#show',     via: 'get'
-        match '/sources',    to: 'sources#index', via: 'get'
-        match '/source/:id', to: 'sources#show',  via: 'get'
+        match '/news',        to: 'news#index',               via: 'get'
+        match '/weekly/:id',  to: 'news#weekly',              via: 'get', as: "weekly"
+        match '/current',     to: 'news#current',             via: 'get'
+        match '/users',       to: 'users#index',              via: 'get'
+        match '/user/:id',    to: 'users#show',               via: 'get'
+        match '/tags',        to: 'tags#index',               via: 'get'
+        match '/tag/:id',     to: 'tags#show',                via: 'get'
+        match '/apps',        to: 'apps#index',               via: 'get'
+        match '/app/:id',     to: 'apps#show',                via: 'get'
+        match '/tools',       to: 'apps#index',               via: 'get'
+        match '/tool/:id',    to: 'apps#show',                via: 'get'
+        match '/sources',     to: 'sources#index',            via: 'get'
+        match '/source/:id',  to: 'sources#show',             via: 'get'
+        match '/contributor', to: 'static_pages#contributor', via: 'get'
     end
 
     match '/stats',        to: 'stats#index', via: 'get'

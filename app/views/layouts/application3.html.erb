@@ -67,22 +67,21 @@
       <% if controller_name != "static_pages" %>
         <div class="row" style="margin-top: 40px;">
           <div class="col-md-12">
-            <p><a href="/<%= view_mode %>" onmousedown="$('#stats_target').val('start_page');$('#stats_target_id').val('0');$('#stats_form').submit();" style="margin-left: 15px;"><i class="fa fa-home" aria-hidden="true"></i> to Start Page</a></p>
+            <p><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('start_page');$('#stats_target_id').val('0');$('#stats_form').submit();" style="margin-left: 15px;"><i class="fa fa-home" aria-hidden="true"></i> <%= t('general.start_page') %></a></p>
           </div>
         </div>
       <% end %>
     </div>
-
-    <footer class="footer">
-      <div class="container">
-        <nav>
-          <ul style="padding-right: 120px;">
-            <li>&copy; 2020 <a href="https://www.ownyourdata.eu/<%= I18n.locale %>" onmousedown="$('#stats_target').val('oyd_footer');$('#stats_target_id').val('');$('#stats_form').submit();">OwnYourData.eu</a></li>
-            <li><a href="https://www.ownyourdata.eu/en/imprint/" style="margin: 0 10px;" onmousedown="$('#stats_target').val('imprint');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('footer.imprint') %></a></li>
-            <li><a href="https://www.ownyourdata.eu/<%= t('footer.privacy_page') %>/" onmousedown="$('#stats_target').val('privacy');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('footer.privacy') %></a></li>
-          </ul>
-        </nav>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12" style="margin: -10px 0 30px;">
+          &copy; 2020 <a href="https://www.ownyourdata.eu/<%= I18n.locale.to_s %>" onmousedown="$('#stats_target').val('oyd_footer');$('#stats_target_id').val('');$('#stats_form').submit();">OwnYourData.eu</a>
+          <a href="https://www.ownyourdata.eu/en/imprint/" style="margin: 0 10px;" onmousedown="$('#stats_target').val('imprint');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('footer.imprint') %></a>
+          <a href="https://www.ownyourdata.eu/<%= t('footer.privacy_page') %>/" onmousedown="$('#stats_target').val('privacy');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('footer.privacy') %></a>
+          <a href="/<%= I18n.locale %>/contributor" style="margin: 0 10px;" onmousedown="$('#stats_target').val('contributor');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('footer.contributor') %></a>
+        </div>
       </div>
-    </footer>
+    </div>
   </body>
 </html>

@@ -78,7 +78,7 @@
                 </div>
                 <div class="section-sub hidden-xs"><%= @questions.count.to_s %> <%= t('news.post', count: @questions.count ) %></div>
             </div>
-            <%= render partial: "question2", collection: @questions.sort_by { |item| item["post_date"] } %>
+            <%= render partial: "question3", collection: @questions.sort_by { |item| item["post_date"] } %>
         <% end %> 
 
         <% if @apps.count > 0 %>
@@ -179,7 +179,7 @@
             <li><a href="#events"><i class="fa fa-calendar" aria-hidden="true"></i> <%= t('news.upcoming_events_short') %></a></li>
             <li><a href="#stats"><i class="fa fa-bar-chart" aria-hidden="true"></i> <%= t('news.statistics') %></a></li>
             <li><a href="#"><i class="fa fa-arrow-up" aria-hidden="true"></i> <%= t('general.to_top') %></a></li>
-            <li><a href="/<%= view_mode %>"><i class="fa fa-home" aria-hidden="true"></i> <%= t('general.start_page') %></a></li>            
+            <li><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>"><i class="fa fa-home" aria-hidden="true"></i> <%= t('general.start_page') %></a></li>            
           </ul>
         </nav>
     </div>

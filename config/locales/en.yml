@@ -46,6 +46,7 @@ en:
     imprint: "Imprint"
     privacy: "Privacy Policy"
     privacy_page: "en/privacy-policy"
+    contributor: "Contributor"
   date:
     formats:
       long: "%B %{my_day}, %Y"
@@ -82,3 +83,5 @@ en:
     upcoming_events: "Upcoming Events"
     upcoming_events_short: "Upcoming Events"
     statistics: "Statistics"
+  contributor:
+    page_header: "MyData Weekly Digest Contributors"
