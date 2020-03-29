@@ -1,0 +1,22 @@
+<div class="quest-elements">
+    <div class="post-title">
+        <a href="<%= question3.url %>" onmousedown="$('#stats_target').val('question');$('#stats_target_id').val('<%= question3.id %>');$('#stats_form').submit();" target="_blank"><%= question3.title %></a>
+        <div class="dropdown" style="display: inline; cursor: pointer;">
+            <div id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
+                <%= image_tag 'menu.png', style: "height: 15px; margin: 0 0 3px;" %>
+            </div>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel">
+                <li><span class="dropdown-text">posted on <%= question3.post_date.to_s %></span></li>
+                <li><a href="/user/<%= question3.user_id.to_s + view_mode %>">by <%= User.find(question3.user_id).name %> <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a></li>
+                <li><a href="<%= question3.media_url %>" onmousedown="$('#stats_target').val('slack');$('#stats_target_id').val('<%= question3.id %>');$('#stats_form').submit();" target="_blank" style="font-size: small;">show on Slack <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a></li>
+            </ul>
+        </div>
+        
+    </div>
+    <div class="post-text">
+        <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(question3.description.to_s).html_safe %>
+    </div>
+    <div class="post-tags">
+        <%= render partial: "tag2", locals:{stats_source: "post", stats_source_id: question3.id}, collection: question3.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+    </div>
+</div>

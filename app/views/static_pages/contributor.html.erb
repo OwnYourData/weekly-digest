@@ -1,0 +1,35 @@
+<%= form_with url: stats_path, id: "stats_form" do |form| %>
+    <%= form.hidden_field :stats_source, value: "start_page" %>
+    <%= form.hidden_field :stats_source_id, value: "" %>
+    <%= form.hidden_field :stats_target %>
+    <%= form.hidden_field :stats_target_id %>
+<div class="row">
+	<div class="col-md-8 weekly-intro">
+		<div id="org_block">
+			<strong>Japanese Translation</strong>
+			<ul>
+				<li>Dixon Siu</li>
+				<li>Keiko.S</li>
+			</ul>
+			<strong>Hungarian Translation</strong>
+			<ul>
+				<li>Kata</li>
+			</ul>
+			<strong>Korean Translation</strong>
+			<ul>
+				<li>Chris Lee</li>
+			</ul>
+			<strong>Taiwanese Translation</strong>
+			<ul>
+				<li>Sherry</li>
+			</ul>
+		</div>
+	</div>
+<script type="text/javascript">
+    document.getElementById('org_block').onmousedown = function(e){
+        $('#stats_target').val("org_block <%= I18n.locale %>: ".concat(e.target.innerHTML).concat(': ').concat(e.target.href));
+        $('#stats_form').submit();
+    }
+</script>
+</div>
+<% end %>

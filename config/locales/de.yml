@@ -46,6 +46,7 @@ de:
     privacy: "Privatsphäre"
     privacy_page: "de/datenschutz"
     language: "Sprache"
+    contributor: "Mitwirkende"
   date:
     formats:
       long: "%-d. %B %Y"
@@ -82,3 +83,5 @@ de:
     upcoming_events: "Die nächsten Veranstaltungen"
     upcoming_events_short: "Veranstaltungen"
     statistics: "Statistiken"
+  contributor:
+    page_header: "MyData Weekly Digest Mitwirkende"
