@@ -31,11 +31,7 @@
               </div>
             </div>
             <div style="float: right; white-space: nowrap; margin-top: -28px;">
-              <a href="https://www.ownyourdata.eu/" onmousedown="$('#stats_target').val('ownyourdata');$('#stats_target_id').val('');$('#stats_form').submit();" style="color: #42B58C; text-decoration: none;">
-                <span style="text-decoration: underline;">
-                  OwnYourData.eu</span> 
-                <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i>
-              </a> 
+              <a href="https://www.ownyourdata.eu/" onmousedown="$('#stats_target').val('ownyourdata');$('#stats_target_id').val('');$('#stats_form').submit();" style="color: #42B58C; text-decoration: none;"><span style="text-decoration: underline;">OwnYourData.eu</span></a> 
               |
               <div class="btn-group dropdown" style="margin-right: 15px; margin-left: -10px;">
                 <button type="button" class="fakelink_nounderline hidden-xs hidden-sm visible-md visible-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,7 +63,7 @@
       <% if controller_name != "static_pages" %>
         <div class="row" style="margin-top: 40px;">
           <div class="col-md-12">
-            <p><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('start_page');$('#stats_target_id').val('0');$('#stats_form').submit();" style="margin-left: 15px;"><i class="fa fa-home" aria-hidden="true"></i> <%= t('general.start_page') %></a></p>
+            <p><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('start_page');$('#stats_target_id').val('0');$('#stats_form').submit();" style="margin-left: 15px;"><i class="fa fa-home" aria-hidden="true"></i> <%= t('general.to_start_page') %></a></p>
           </div>
         </div>
       <% end %>

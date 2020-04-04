@@ -9,6 +9,7 @@ jp:
     read_more: "もっと詳しく"
     menu: "メニュー"
     start_page: "ホーム"
+    to_start_page: "tホームページへ"
     to_top: "ページ先頭に戻る"
   footer:
     language: "言語選択"
@@ -18,6 +19,7 @@ jp:
   date:
     formats:
       long: "%Y年%m月%d日"
+      short: "%Y年%m月%d日"
   news:
     latest_news: "最新ニュース"
     post: "件"
@@ -35,4 +37,24 @@ jp:
     mydata_internals: "MyData コミュニティ内報"
     upcoming_events: "今後のイベント"
     upcoming_events_short: "今後のイベント"
-    statistics: "統計"
+    statistic:
+      title: "統計"
+      user: "User"
+      channels: "Slack Channels"
+      channels_monitored: "monitored"
+      postings: "Postings"
+      thank_you_label: "People said <em>Thank you</em>"
+      thank_you_verb: "thanked"
+    posted_on: "posted on %{date}"
+    posted_by: "by %{user}"
+    show_on_slack: "show on Slack"
+    open_website: "open website of this Tool"
+    calendar_description: "The following events are in the <a href='https://calendar.google.com/calendar/embed?src=vndcn3m1dmhve9130flvub9dhg%40group.calendar.google.com'>MyData calendar</a> for next week:"
+  contributor:
+    page_header: "MyData Weekly Digest Contributors"
+    japanese_translation: "Japanese Translation"
+    hungarian_translation: "Hungarian Translation"
+    korean_translation: "Korean Translation"
+    taiwanese_translation: "Taiwanese Translation"
+    design: "Desgin"
+    website: "website"

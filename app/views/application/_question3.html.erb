@@ -6,9 +6,9 @@
                 <%= image_tag 'menu.png', style: "height: 15px; margin: 0 0 3px;" %>
             </div>
             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel">
-                <li><span class="dropdown-text">posted on <%= question3.post_date.to_s %></span></li>
-                <li><a href="/user/<%= question3.user_id.to_s + view_mode %>">by <%= User.find(question3.user_id).name %> <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a></li>
-                <li><a href="<%= question3.media_url %>" onmousedown="$('#stats_target').val('slack');$('#stats_target_id').val('<%= question3.id %>');$('#stats_form').submit();" target="_blank" style="font-size: small;">show on Slack <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg);"></i></a></li>
+                <li><span class="dropdown-text"><%= t('news.posted_on', date: l(question3.post_date, format: :short)) %></span></li>
+                <li><a href="/user/<%= question3.user_id.to_s + view_mode %>"><%= t('news.posted_by', user: User.find(question3.user_id).name) %></a></li>
+                <li><a href="<%= question3.media_url %>" onmousedown="$('#stats_target').val('slack');$('#stats_target_id').val('<%= question3.id %>');$('#stats_form').submit();" target="_blank" style="font-size: small;"><%= t('news.show_on_slack') %></a></li>
             </ul>
         </div>
         

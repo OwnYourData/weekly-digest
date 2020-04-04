@@ -93,7 +93,7 @@
                 </div>
                 <div class="section-sub hidden-xs"><%= @apps.count.to_s %> <%= t('news.entry', count: @apps.count) %></div>
             </div>
-            <%= render partial: "app2", collection: @apps.sort_by { |item| item["post_date"]  || Date.parse("1970-01-01") } %>
+            <%= render partial: "app3", collection: @apps.sort_by { |item| item["post_date"]  || Date.parse("1970-01-01") } %>
         <% end %>
 
         <div class="visible-xs text-right">
@@ -126,10 +126,10 @@
                 <i class="fa fa-calendar" aria-hidden="true"></i>
                 <%= t('news.upcoming_events') %>
             </div>
-            <div class="section-sub hidden-xs"><%= @events.count.to_s %> entries</div>
+            <div class="section-sub hidden-xs"><%= @events.count.to_s %> <%= t('news.entry', count: @events.count) %></div>
         </div>
         <div class="weekly-intro">
-            The following events are in the <a href="https://calendar.google.com/calendar/embed?src=vndcn3m1dmhve9130flvub9dhg%40group.calendar.google.com&ctz=Europe%2FVienna">MyData calendar</a> for next week:
+            <%= t('news.calendar_description').html_safe %>            
         </div>
         <ul>
             <%= render partial: "event2", collection: @events %>
@@ -142,25 +142,25 @@
         <div style="margin-top:40px;">
             <div class="section">
                 <i class="fa fa-bar-chart" aria-hidden="true"></i>
-                <%= t('news.statistics') %>
+                <%= t('news.statistic.title') %>
             </div>
         </div>
         <div class="form-horizontal">
             <div class="form-group">
-                <label class="col-xs-3 control-label statistic post-text">Users:</label>
+                <label class="col-xs-3 control-label statistic post-text"><%= t('news.statistic.user') %>:</label>
                 <div class="col-xs-9 statistic post-text"><strong><%= @users %></strong> (<%= @new_users %> new)</div>
             </div>
             <div class="form-group">
-                <label class="col-xs-3 control-label statistic post-text">Slack Channels:</label>
-                <div class="col-xs-9 statistic post-text" style="line-height: 1.5em;"><strong><%= @channels %></strong> (<%= @monitored_channels %> monitored<% if @monitored_channel_names.to_s != ""%>: <%= @monitored_channel_names %><% end %>)</div>
+                <label class="col-xs-3 control-label statistic post-text"><%= t('news.statistic.channels') %>:</label>
+                <div class="col-xs-9 statistic post-text" style="line-height: 1.5em;"><strong><%= @channels %></strong> (<%= @monitored_channels %> <%= t('news.statistic.channels_monitored') %><% if @monitored_channel_names.to_s != ""%>: <%= @monitored_channel_names %><% end %>)</div>
             </div>
             <div class="form-group">
-                <label class="col-xs-3 control-label statistic post-text">Postings:</label>
+                <label class="col-xs-3 control-label statistic post-text"><%= t('news.statistic.postings') %>:</label>
                 <div class="col-xs-9 statistic post-text"><strong><%= @postings %></strong></div>
             </div>
             <div class="form-group">
-                <label class="col-xs-3 control-label statistic post-text">People said <em>Thank You</em>:</label>
-                <div class="col-xs-9 statistic post-text"><strong><%= @thanks %> thanked <%= @thanked %></strong></div>
+                <label class="col-xs-3 control-label statistic post-text"><%= t('news.statistic.thank_you_label').html_safe %>:</label>
+                <div class="col-xs-9 statistic post-text"><strong><%= @thanks %> <%= t('news.statistic.thank_you_verb') %> <%= @thanked %></strong></div>
             </div>
         </div>
         <div class="visible-xs text-right">
