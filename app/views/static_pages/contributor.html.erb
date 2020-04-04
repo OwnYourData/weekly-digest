@@ -6,22 +6,26 @@
 <div class="row">
 	<div class="col-md-8 weekly-intro">
 		<div id="org_block">
-			<strong>Japanese Translation</strong>
+			<strong><%= t('contributor.japanese_translation') %></strong>
 			<ul>
 				<li>Dixon Siu</li>
 				<li>Keiko.S</li>
 			</ul>
-			<strong>Hungarian Translation</strong>
+			<strong><%= t('contributor.hungarian_translation') %></strong>
 			<ul>
 				<li>Kata</li>
 			</ul>
-			<strong>Korean Translation</strong>
+			<strong><%= t('contributor.korean_translation') %></strong>
 			<ul>
 				<li>Chris Lee</li>
 			</ul>
-			<strong>Taiwanese Translation</strong>
+			<strong><%= t('contributor.taiwanese_translation') %></strong>
 			<ul>
 				<li>Sherry</li>
+			</ul>
+			<strong><%= t('contributor.design') %></strong>
+			<ul>
+				<li>Tim Hacker - <a href="https://www.timhacker.com/" target="_blank"><%= t('contributor.website') %></a></li>
 			</ul>
 		</div>
 	</div>
@@ -33,3 +37,8 @@
 </script>
 </div>
 <% end %>
+<div class="row" style="margin-top: 40px;">
+  <div class="col-md-12">
+    <p><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('start_page');$('#stats_target_id').val('0');$('#stats_form').submit();" style="margin-left: 15px;"><i class="fa fa-home" aria-hidden="true"></i> <%= t('general.to_start_page') %></a></p>
+  </div>
+</div>

@@ -40,6 +40,7 @@ de:
     read_more: "weiterlesen"
     menu: "Menü"
     start_page: "Startseite"
+    to_start_page: "zur Startseite"
     to_top: "zurück nach oben"
   footer:
     imprint: "Impressum"
@@ -50,6 +51,7 @@ de:
   date:
     formats:
       long: "%-d. %B %Y"
+      short: "%-d.%-m.%Y"
   news:
     latest_news: "Wöchentliche Zusammenfassungen"
     post:
@@ -82,6 +84,24 @@ de:
     mydata_internals: "MyData Interna"
     upcoming_events: "Die nächsten Veranstaltungen"
     upcoming_events_short: "Veranstaltungen"
-    statistics: "Statistiken"
+    statistic:
+      title: "Statistiken"
+      user: "Mitglieder"
+      channels: "Slack Channels"
+      channels_monitored: "mitgelesen"
+      postings: "Postings"
+      thank_you_label: "Mitglieder sagten <em>Danke</em>"
+      thank_you_verb: "dankten"
+    posted_on: "gepostet am %{date}"
+    posted_by: "von %{user}"
+    show_on_slack: "auf Slack anzeigen"
+    open_website: "zugehörige Webseite öffnen"
+    calendar_description: "Die folgenden Termine sind im <a href='https://calendar.google.com/calendar/embed?src=vndcn3m1dmhve9130flvub9dhg%40group.calendar.google.com'>MyData Kalender</a> für nächste Woche eingetragen:"
   contributor:
     page_header: "MyData Weekly Digest Mitwirkende"
+    japanese_translation: "Japanische Übersetzung"
+    hungarian_translation: "Hungarian Translation"
+    korean_translation: "Korean Translation"
+    taiwanese_translation: "Taiwanese Translation"
+    design: "Design"
+    website: "Webseite"
