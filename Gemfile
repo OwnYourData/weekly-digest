@@ -46,6 +46,7 @@ gem 'httparty'
 gem 'google-api-client'
 gem 'psych', '~> 2.2.1'
 gem 'yaml_db'
+gem 'devise'
 
 # update for security fixes
 gem 'loofah', '~> 2.3', '>= 2.3.1'

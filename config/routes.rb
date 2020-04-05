@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
     scope "(:locale)", :locale => /en|de|hu|jp|ko|tw/ do
         root 'static_pages#home'
         get 'favicon', to: "static_pages#favicon"
