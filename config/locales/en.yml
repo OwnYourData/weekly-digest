@@ -63,9 +63,9 @@ en:
       one: "question"
       other: "questions"
     tool:
-      zero: "tools"
-      one: "tool"
-      other: "tools"
+      zero: "Tools"
+      one: "Tool"
+      other: "Tools"
     talking_point: 
       zero: "MyData talking points"
       one: "MyData talking point"
