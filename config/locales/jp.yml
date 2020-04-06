@@ -2,6 +2,7 @@ jp:
   general:
     title: "MyData 週刊ダイジェスト"
     title_short: "週刊ダイジェスト"
+    description: "MyData Weekly Digest は人間を基軸としてアプローチした個人情報管理の取り組みについて広範囲で最良の情報を提供することに特化したニュースサイトです。"
     main_tools: "最近ツール"
     main_users: "アクティブユーザー"
     main_tags: "人気タグ"
@@ -32,8 +33,8 @@ jp:
     page_header: "%{date} の MyData 週刊ダイジェスト"
     next_digest: "次のダイジェストへ"
     previous_digest: "前のダイジェストへ"
-    noteworhty_information: "お勧めニュース"
-    noteworhty_info: "お勧めニュース"
+    noteworthy_information: "お勧めニュース"
+    noteworthy_info: "お勧めニュース"
     questions_asked: "質問一覧"
     mydata_internals: "MyData コミュニティ内報"
     upcoming_events: "今後のイベント"
@@ -51,6 +52,17 @@ jp:
     show_on_slack: "Slack で見る"
     open_website: "このツールでウェブサイトを開く"
     calendar_description: "<a href='https://calendar.google.com/calendar/embed?src=vndcn3m1dmhve9130flvub9dhg%40group.calendar.google.com'>MyData カレンダー</a> にある来週のイベントは以下です。"
+    og_description: "Read in this weeks digest about"
+    og_desc_post:
+      one: "noteworthy post"
+      other: "noteworthy posts"
+    og_desc_quest:
+      one: "question asked"
+      other: "questions asked"
+    og_desc_tool:
+      one: "personal data tool"
+      other: "personal data tools"
+    og_desc_and: "and"
   contributor:
     page_header: "MyData 週刊ダイジェスト貢献者"
     japanese_translation: "日本語翻訳"

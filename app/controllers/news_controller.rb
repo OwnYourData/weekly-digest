@@ -106,19 +106,21 @@ class NewsController < ApplicationController
                 @previous = @weekly_order.where("release < ?", my_date).last.release.to_s rescue ""
                 @next = @weekly_order.where("release > ?", my_date).first.release.to_s rescue ""
                 @intro_text = markdown.render(@weekly.intro.to_s)
-                @intro_text_plain = "Read in this weeks digest about " + pluralize(@posts.count, "noteworthy post")
+
+                @intro_text_plain = t('news.og_description')
+                @intro_text_plain += " " + @posts.count.to_s + " " + t('news.og_desc_post', count: @posts.count)
                 if @apps.count == 0
                     if @questions.count > 0
-                        @intro_text_plain += " and " + pluralize(@questions.count, "question") + " asked"
+                        @intro_text_plain += " " + t('news.og_desc_and') + " " + @questions.count.to_s + " " + t('news.og_desc_quest', count: @questions.count)
                     end
                 else
                     if @questions.count > 0
-                        @intro_text_plain += ", " + pluralize(@questions.count, "question") + " asked, and " + pluralize(@apps.count, "personal data tool")
-                    else
-                        @intro_text_plain += " and " + pluralize(@apps.count, "personal data tool")
+                        @intro_text_plain += ", " + @questions.count.to_s + " " + t('news.og_desc_quest', count: @questions.count)
                     end
+                    @intro_text_plain += " " + t('news.og_desc_and') + " " + @apps.count.to_s + " " + t('news.og_desc_tool', count: @apps.count)
                 end
                 @intro_text_plain += "."
+
                 # @intro_text_plain += ". General comments for this week: "
                 # @intro_text_plain += Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(@weekly.intro.to_s).strip.gsub(/\(\/user.*?\) /,'').gsub(/&nbsp;/,' ')
 

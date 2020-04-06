@@ -33,6 +33,7 @@ de:
   general:
     title: "MyData Weekly Digest"
     title_short: "Weekly Digest"
+    description: "Willkommen beim MyData Weekly Digest, einer Nachrichtenseite, die sich der bestmöglichen Berichterstattung innerhalb des menschen-zentrierten Ansatzes bei der Verwaltung personenbezogener Daten widmet."
     main_tools: "Aktuelle Tools"
     main_users: "Aktive Autoren"
     main_tags: "Beliebte Schlagwörter"
@@ -78,12 +79,12 @@ de:
     page_header: "MyData Weekly Digest vom %{date}"
     next_digest: "nächste Ausgabe"
     previous_digest: "vorherige Ausgabe"
-    noteworhty_information: "Interessante Information"
-    noteworhty_info: "Interessante Infos"
+    noteworthy_information: "Interessante Information"
+    noteworthy_info: "Interessante Infos"
     questions_asked: "Gestellte Fragen"
     mydata_internals: "MyData Interna"
-    upcoming_events: "Die nächsten Veranstaltungen"
-    upcoming_events_short: "Veranstaltungen"
+    upcoming_events: "Die nächsten Termine"
+    upcoming_events_short: "Termine"
     statistic:
       title: "Statistiken"
       user: "Mitglieder"
@@ -97,6 +98,17 @@ de:
     show_on_slack: "auf Slack anzeigen"
     open_website: "zugehörige Webseite öffnen"
     calendar_description: "Die folgenden Termine sind im <a href='https://calendar.google.com/calendar/embed?src=vndcn3m1dmhve9130flvub9dhg%40group.calendar.google.com'>MyData Kalender</a> für nächste Woche eingetragen:"
+    og_description: "Lies diese Woche im Weekly Digest über"
+    og_desc_post:
+      one: "interessanten Beitrag"
+      other: "interessante Beiträge"
+    og_desc_quest:
+      one: "gestellte Frage"
+      other: "gestellte Fragen"
+    og_desc_tool:
+      one: "Tool für personenbezogene Daten"
+      other: "Tools für personenbezogene Daten"
+    og_desc_and: "und"
   contributor:
     page_header: "MyData Weekly Digest Mitwirkende"
     japanese_translation: "Japanische Übersetzung"

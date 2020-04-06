@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users
+    devise_for :users
     scope "(:locale)", :locale => /en|de|hu|jp|ko|tw/ do
         root 'static_pages#home'
+        match 'home',         to: 'static_pages#home',        via: 'get'
         get 'favicon', to: "static_pages#favicon"
+
+        get    '/login',      to: 'static_pages#login'
+        post   '/login',      to: 'sessions#create'
+        delete '/logout',     to: 'sessions#destroy'
+        get    '/logout',     to: 'sessions#destroy'
+        get    '/change_pwd', to: 'static_pages#change_pwd'
+        post   '/change_pwd', to: 'sessions#change'
 
         match '/news',        to: 'news#index',               via: 'get'
         match '/weekly/:id',  to: 'news#weekly',              via: 'get', as: "weekly"
