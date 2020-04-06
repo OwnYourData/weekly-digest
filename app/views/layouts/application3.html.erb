@@ -33,7 +33,7 @@
             <div style="float: right; white-space: nowrap; margin-top: -28px;">
               <a href="https://www.ownyourdata.eu/" onmousedown="$('#stats_target').val('ownyourdata');$('#stats_target_id').val('');$('#stats_form').submit();" style="color: #42B58C; text-decoration: none;"><span style="text-decoration: underline;">OwnYourData.eu</span></a> 
               |
-              <div class="btn-group dropdown" style="margin-right: 15px; margin-left: -10px;">
+              <div class="btn-group dropdown" style="margin-left: -10px;">
                 <button type="button" class="fakelink_nounderline hidden-xs hidden-sm visible-md visible-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="glyphicon glyphicon-flag"></span>
                   <span class="font-size-large" style="font-size:14px;"><%= t('footer.language') %></span> 
@@ -52,6 +52,19 @@
                   <li><%= link_to "中文（台灣)", { locale: 'tw', view: params[:view], mode: params[:mode] } %></li>
                 </ul>
               </div>
+              <% if logged_in? %>
+                |
+                <div class="btn-group dropdown" style="margin-left: -10px;">
+                  <button type="button" class="fakelink_nounderline" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-user"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><span class="dropdown-text"><em><%= User.find(current_user).full_name.to_s %></em></span></li>
+                    <li><%= link_to "Change Password", "/" + I18n.locale.to_s + "/change_pwd" + view_mode %></li>
+                    <li><%= link_to "Log Out", "/" + I18n.locale.to_s + "/logout" + view_mode %></li>
+                  </ul>
+                </div>              
+              <% end %>
             </div>
           </div>
         </div>

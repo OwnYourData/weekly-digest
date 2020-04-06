@@ -33,6 +33,7 @@ ko:
   general:
     title: "MyData 주간지"
     title_short: "주간지"
+    description: "MyData Weekly Digest에 오신 것을 환영합니다. MyData Weekly Digest는 사람중심적 개인데이터 관리에 대한 최신 소식을 전하고 있는 뉴스 사이트입니다. "
   footer:
     imprint: "Imprint"
     privacy: "Privacy Policy"
