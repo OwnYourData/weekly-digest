@@ -27,11 +27,23 @@ class UsersController < ApplicationController
             respond_to do |format|
                 format.html { render layout: "application2", template: "users/index2"}
             end
-        else
+        when "3"
 			@heading = "List of All Users"
 			@heading_short = "All Users"
             respond_to do |format|
                 format.html { render layout: "application2", template: "users/index2"}
+            end
+        when "4"
+			@heading = "List of All Users"
+			@heading_short = "All Users"
+            respond_to do |format|
+                format.html { render layout: "application3", template: "users/index2"}
+            end
+        else
+			@heading = "List of All Users"
+			@heading_short = "All Users"
+            respond_to do |format|
+                format.html { render layout: "application3", template: "users/index2"}
             end
         end
 	end
@@ -75,12 +87,26 @@ class UsersController < ApplicationController
 	        respond_to do |format|
 	            format.html { render layout: "application2", template: "users/show2"}
 	        end
-        else
+        when "3"
 			@heading = "User '" + @user.name.to_s + "'"
 			@heading_short = @user.name
 			@apps = WeeklyApp.where(user_id: user_id)
 	        respond_to do |format|
 	            format.html { render layout: "application2", template: "users/show2"}
+	        end
+        when "4"
+			@heading = "User '" + @user.name.to_s + "'"
+			@heading_short = @user.name
+			@apps = WeeklyApp.where(user_id: user_id)
+	        respond_to do |format|
+	            format.html { render layout: "application3", template: "users/show2"}
+	        end
+        else
+			@heading = "User '" + @user.name.to_s + "'"
+			@heading_short = @user.name
+			@apps = WeeklyApp.where(user_id: user_id)
+	        respond_to do |format|
+	            format.html { render layout: "application3", template: "users/show2"}
 	        end
         end
 	end

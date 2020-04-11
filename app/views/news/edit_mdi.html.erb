@@ -1,0 +1,37 @@
+<h3><%= @task.to_s %> “MyData Internals”</h3>
+
+<%= form_with url: mdi_submit_url, remote:false, local: true do |form| %>
+    <%= form.hidden_field :weekly_id, value: @weekly_id %>
+    <%= form.hidden_field :lang, value: @lang %>
+    <%= form.hidden_field :internal_text, id: "internal_text" %>
+<div id="editor" style="height: 300px; width: 100%; border-radius: 2px; border: 1px solid #DDD; margin-bottom: 15px;"><%= @default_text %></div>
+
+
+    <%= form.button value: "save", class: "btn btn-success", onclick: "$('#internal_text').val(ace.edit('editor').getSession().getValue()); return true;" do %>
+        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+        Save
+    <% end %>
+
+    <%= form.button value: "return", class: "btn btn-primary", onclick: "$('#internal_text').val(ace.edit('editor').getSession().getValue()); return true;", style: "margin: 0 10px;" do %>
+        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+        Save &amp; Return
+    <% end %>
+
+    <%= form.button value: "cancel", class: "btn btn-default", onclick: "return true;" do %>
+        Cancel
+    <% end %>
+
+<% end %>
+
+<script type="text/javascript">
+    var editor = ace.edit("editor");
+    editor.setOptions({
+        showPrintMargin: true,
+        maxLines: Infinity,
+        fontSize: "100%"
+    });
+    editor.getSession().setUseWrapMode(true);
+    editor.setTheme("ace/theme/chrome");
+    editor.renderer.setOption("showLineNumbers", true);
+</script>
+

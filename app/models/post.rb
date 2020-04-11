@@ -5,6 +5,7 @@
 #  id          :bigint(8)        not null, primary key
 #  category    :string
 #  description :text
+#  lang        :string
 #  media_type  :string
 #  media_url   :string
 #  post_date   :date

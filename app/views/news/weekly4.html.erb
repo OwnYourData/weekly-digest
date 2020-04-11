@@ -104,6 +104,23 @@
             <div class="section">
                 <i class="fa fa-commenting" aria-hidden="true"></i>
                 <%= t('news.mydata_internals') %>
+                <%  if logged_in?
+                        if I18n.locale.to_s == "en" %>
+                            <span style="font-size: 12px;">
+                                <%= link_to edit_mdi_url(id: @weekly_id) do %>edit <i class="fa fa-pencil" aria-hidden="true"></i><% end %>
+                            </span>
+                    <%  else
+                            if WeeklyInternal.where(lang: I18n.locale.to_s, weekly_id: @weekly_id).count == 0 %>
+                                <span style="font-size: 12px;">
+                                    <%= link_to new_mdi_url(id: @weekly_id) do %><i class="fa fa-plus" aria-hidden="true"> add translation</i><% end %>
+                                </span>
+                        <%  else %>
+                                <span style="font-size: 12px;">
+                                    <%= link_to edit_mdi_url(id: @weekly_id) do %>edit <i class="fa fa-pencil" aria-hidden="true"></i><% end %>
+                                </span>
+                        <%  end
+                        end %>
+                <% end %>
             </div>
             <div class="weekly-intro" id="intro_block">
                 <%= @intro_text.html_safe %>

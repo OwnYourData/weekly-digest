@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
     devise_for :users
-    scope "(:locale)", :locale => /en|de|hu|jp|ko|tw/ do
+    scope "(:locale)", :locale => /en|de|fr|hu|jp|ko|tw/ do
         root 'static_pages#home'
         match 'home',         to: 'static_pages#home',        via: 'get'
         get 'favicon', to: "static_pages#favicon"
@@ -26,6 +26,9 @@ Rails.application.routes.draw do
         match '/sources',     to: 'sources#index',            via: 'get'
         match '/source/:id',  to: 'sources#show',             via: 'get'
         match '/contributor', to: 'static_pages#contributor', via: 'get'
+        match '/edit_mdi',    to: 'news#mdi_edit',            via: 'get'
+        match '/new_mdi',     to: 'news#mdi_edit',             via: 'get'
+        match '/mdi_submit',  to: 'news#update_mdi',          via: 'post'
     end
 
     match '/stats',        to: 'stats#index', via: 'get'

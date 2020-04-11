@@ -59,7 +59,7 @@ class StaticPagesController < ApplicationController
             end
         else
             respond_to do |format|
-                format.html { render layout: "application2", template: "static_pages/home3"}
+                format.html { render layout: "application3", template: "static_pages/home4"}
                 format.rss { render layout: false }
             end
         end

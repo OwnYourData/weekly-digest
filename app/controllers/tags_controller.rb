@@ -25,11 +25,23 @@ class TagsController < ApplicationController
             respond_to do |format|
                 format.html { render layout: "application2", template: "tags/index2"}
             end
-        else
+        when "3"
 			@heading = "List of All Tags"
 			@heading_short = "All Tags"
             respond_to do |format|
                 format.html { render layout: "application2", template: "tags/index2"}
+            end
+        when "4"
+			@heading = "List of All Tags"
+			@heading_short = "All Tags"
+            respond_to do |format|
+                format.html { render layout: "application3", template: "tags/index2"}
+            end
+        else
+			@heading = "List of All Tags"
+			@heading_short = "All Tags"
+            respond_to do |format|
+                format.html { render layout: "application3", template: "tags/index2"}
             end
         end
 	end
@@ -74,12 +86,26 @@ class TagsController < ApplicationController
 	        respond_to do |format|
 	            format.html { render layout: "application2", template: "tags/show2"}
 	        end
-        else
+        when "3"
 	    	@apps = WeeklyApp.where(app_id: AppTag.where(tag_id: tag_id).pluck(:app_id))
 			@heading = "Tag #" + @tag.tag.to_s
 			@heading_short = "#" + @tag.tag.to_s
 	        respond_to do |format|
 	            format.html { render layout: "application2", template: "tags/show2"}
+	        end
+        when "4"
+	    	@apps = WeeklyApp.where(app_id: AppTag.where(tag_id: tag_id).pluck(:app_id))
+			@heading = "Tag #" + @tag.tag.to_s
+			@heading_short = "#" + @tag.tag.to_s
+	        respond_to do |format|
+	            format.html { render layout: "application3", template: "tags/show2"}
+	        end
+        else
+	    	@apps = WeeklyApp.where(app_id: AppTag.where(tag_id: tag_id).pluck(:app_id))
+			@heading = "Tag #" + @tag.tag.to_s
+			@heading_short = "#" + @tag.tag.to_s
+	        respond_to do |format|
+	            format.html { render layout: "application3", template: "tags/show2"}
 	        end
         end
 	end
