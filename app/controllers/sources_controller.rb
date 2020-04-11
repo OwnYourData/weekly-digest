@@ -15,11 +15,23 @@ class SourcesController < ApplicationController
             respond_to do |format|
                 format.html { render layout: "application2", template: "sources/index"}
             end
-        else
+        when "3"
             @heading = "List of All Data Sources"
             @heading_short = "All Data Sources"
             respond_to do |format|
                 format.html { render layout: "application2", template: "sources/index"}
+            end
+        when "4"
+            @heading = "List of All Data Sources"
+            @heading_short = "All Data Sources"
+            respond_to do |format|
+                format.html { render layout: "application3", template: "sources/index"}
+            end
+        else
+            @heading = "List of All Data Sources"
+            @heading_short = "All Data Sources"
+            respond_to do |format|
+                format.html { render layout: "application3", template: "sources/index"}
             end
         end
 	end
@@ -36,9 +48,17 @@ class SourcesController < ApplicationController
             respond_to do |format|
                 format.html { render layout: "application2", template: "sources/show"}
             end
-        else
+        when "3"
             respond_to do |format|
                 format.html { render layout: "application2", template: "sources/show"}
+            end
+        when "4"
+            respond_to do |format|
+                format.html { render layout: "application3", template: "sources/show"}
+            end
+        else
+            respond_to do |format|
+                format.html { render layout: "application3", template: "sources/show"}
             end
         end
 

@@ -26,11 +26,23 @@ class AppsController < ApplicationController
             respond_to do |format|
                 format.html { render layout: "application2", template: "apps/index2"}
             end
-        else
+        when "3"
             @heading = "List of All Tools"
             @heading_short = "All Tools"
             respond_to do |format|
                 format.html { render layout: "application2", template: "apps/index2"}
+            end
+        when "4"
+            @heading = "List of All Tools"
+            @heading_short = "All Tools"
+            respond_to do |format|
+                format.html { render layout: "application3", template: "apps/index2"}
+            end
+        else
+            @heading = "List of All Tools"
+            @heading_short = "All Tools"
+            respond_to do |format|
+                format.html { render layout: "application3", template: "apps/index2"}
             end
         end
     end
@@ -103,9 +115,13 @@ class AppsController < ApplicationController
             respond_to do |format|
                 format.html { render layout: "application2", template: "apps/show3"}
             end
+        when "4"
+            respond_to do |format|
+                format.html { render layout: "application3", template: "apps/show3"}
+            end
         else
             respond_to do |format|
-                format.html { render layout: "application2", template: "apps/show3"}
+                format.html { render layout: "application3", template: "apps/show3"}
             end
         end
 

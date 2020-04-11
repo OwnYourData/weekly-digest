@@ -35,11 +35,23 @@ class NewsController < ApplicationController
             respond_to do |format|
                 format.html { render layout: "application2", template: "news/index2"}
             end
-        else
+        when "3"
             @heading = "List of All MyData Weekly Digests"
             @heading_short = "All Weekly Digests"
             respond_to do |format|
                 format.html { render layout: "application2", template: "news/index2"}
+            end
+        when "4"
+            @heading = "List of All MyData Weekly Digests"
+            @heading_short = "All Weekly Digests"
+            respond_to do |format|
+                format.html { render layout: "application3", template: "news/index2"}
+            end
+        else
+            @heading = "List of All MyData Weekly Digests"
+            @heading_short = "All Weekly Digests"
+            respond_to do |format|
+                format.html { render layout: "application3", template: "news/index2"}
             end
         end
 
@@ -73,8 +85,8 @@ class NewsController < ApplicationController
         @weekly_id = nil
 
         if my_date.nil?
-            @heading = "MyData Weekly Digest"
-            @heading_short = "Weekly Digest"
+            @heading = t('general.title')
+            @heading_short = t('general.title_short')
 
             redirect_to root_path
             return
@@ -93,8 +105,8 @@ class NewsController < ApplicationController
 
                 if params[:mode].to_s == ""
                     @weekly_scope = Weekly.where(status: 1)
-                    @posts = Post.where(status: 1).where(category: "info").where(weekly_id: Weekly.find_by_release(my_date).id)
-                    @questions = Post.where(status: 1).where(category: "question").where(weekly_id: Weekly.find_by_release(my_date).id)
+                    @posts = Post.where(status: 1).where(category: "info").where(weekly_id: Weekly.find_by_release(my_date).id).where(lang: ["", nil, I18n.locale.to_s])
+                    @questions = Post.where(status: 1).where(category: "question").where(weekly_id: Weekly.find_by_release(my_date).id).where(lang: ["", nil, I18n.locale.to_s])
                     @apps = WeeklyApp.where(status: 1).where(weekly_id: @weekly.id)
                 else
                     @weekly_scope = Weekly.all
@@ -187,9 +199,81 @@ class NewsController < ApplicationController
                 format.html { render layout: "application3", template: "news/weekly4"}
             end
         else
-            respond_to do |format|
-                format.html { render layout: "application2", template: "news/weekly3"}
+            @heading = t('news.page_header', :date => l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s)))
+            @heading_short = t('general.title_short') + ": " + l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s))
+
+            @it = WeeklyInternal.where(weekly_id: @weekly_id, lang: I18n.locale.to_s)
+            if @it.count > 0
+                @intro_text = markdown.render(@it.first.intro.to_s)
             end
+
+            respond_to do |format|
+                format.html { render layout: "application3", template: "news/weekly4"}
+            end
+        end
+    end
+
+    def mdi_edit
+        @weekly_id = params[:id].to_s
+        @lang = I18n.locale.to_s
+
+        @heading = t('general.title')
+        @heading_short = t('general.title_short')
+        @weekly = Weekly.find(@weekly_id)
+        if @weekly.nil?
+            redirect_to root_url
+            return
+        end
+        my_date = Date.parse(@weekly.release.to_s) rescue Date.today
+        @heading = t('news.page_header', :date => l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s)))
+        @heading_short = t('general.title_short') + ": " + l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s))
+        @task = "Edit"
+
+        if @lang == "en"
+            @default_text = @weekly.intro
+        else
+            @wi = WeeklyInternal.where(weekly_id: @weekly_id, lang: @lang)
+            if @wi.nil? || @wi.count == 0
+                @task = "Create localized"
+                @default_text = @weekly.intro
+            else
+                @task = "Edit localized"
+                @default_text = @wi.first.intro rescue nil
+            end
+        end
+        if @default_text.to_s == ""
+            @default_text = "\n\n\n\n\n\n\n"
+        end
+
+        respond_to do |format|
+            format.html { render layout: "application3", template: "news/edit_mdi" }
+        end
+    end
+
+    def update_mdi
+        @weekly = Weekly.find(params[:weekly_id])
+        @lang = params[:lang].to_s
+        @internal_text = params[:internal_text].to_s
+
+        case params[:button]
+        when "save", "return"
+            if @lang == "en"
+                @weekly.update_attributes(intro: @internal_text)
+            else
+                @wi = WeeklyInternal.where(weekly_id: @weekly.id, lang: @lang)
+                if @wi.nil? || @wi.count == 0
+                    WeeklyInternal.new(weekly_id: @weekly.id, lang: @lang, intro: @internal_text).save
+                else
+                    @wi.first.update_attributes(intro: @internal_text)
+                end
+            end
+            if params[:button].to_s == "save"
+                redirect_to edit_mdi_url(id: @weekly.id)
+            else
+                redirect_to weekly_url(id: @weekly.release.to_s)
+            end
+        when "cancel"
+            redirect_to weekly_url(id: @weekly.release.to_s)
         end
     end
 end

@@ -46,6 +46,7 @@
                 <ul class="dropdown-menu dropdown-menu-right">
                   <li><%= link_to "Deutsch", { locale: 'de', view: params[:view], mode: params[:mode] } %></li>
                   <li><%= link_to "English", { locale: 'en', view: params[:view], mode: params[:mode] } %></li>
+                  <li><%= link_to "Français", { locale: 'fr', view: params[:view], mode: params[:mode] } %></li>
                   <li><%= link_to "한국어", { locale: 'ko', view: params[:view], mode: params[:mode] } %></li>
                   <li><%= link_to "Magyar", { locale: 'hu', view: params[:view], mode: params[:mode] } %></li>
                   <li><%= link_to "日本語", { locale: 'jp', view: params[:view], mode: params[:mode] } %></li>
@@ -84,11 +85,20 @@
     <hr>
     <div class="container">
       <div class="row">
-        <div class="col-md-12" style="margin: -10px 0 30px;">
+        <div class="col-md-8" style="margin: -10px 0 30px;">
           &copy; 2020 <a href="https://www.ownyourdata.eu/<%= I18n.locale.to_s %>" onmousedown="$('#stats_target').val('oyd_footer');$('#stats_target_id').val('');$('#stats_form').submit();">OwnYourData.eu</a>
           <a href="https://www.ownyourdata.eu/en/imprint/" style="margin: 0 10px;" onmousedown="$('#stats_target').val('imprint');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('footer.imprint') %></a>
           <a href="https://www.ownyourdata.eu/<%= t('footer.privacy_page') %>/" onmousedown="$('#stats_target').val('privacy');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('footer.privacy') %></a>
           <a href="/<%= I18n.locale %>/contributor" style="margin: 0 10px;" onmousedown="$('#stats_target').val('contributor');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('footer.contributor') %></a>
+        </div>
+        <div class="col-md-4" style="margin: -9px 0 30px;">
+          <ul style="float:right; list-style-type: none; margin: -9px 0 30px;">
+            <li class="nav-label" style="display: inline-block;">Social &amp; Feed:</li>
+            <li style="display: inline-block;"><a href="/<%= I18n.locale.to_s %>/home.rss" target="_blank" rel="nofollow"><i class="fa fa-rss-square fa-2x" aria-hidden="true"></i></a></li>
+            <li style="display: inline-block;"><a href="https://www.facebook.com/OwnYourDataEU/" target="_blank" rel="nofollow"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a></li>
+            <li style="display: inline-block;"><a href="https://www.linkedin.com/company/ownyourdata/" target="_blank" rel="nofollow"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a></li>
+            <li style="display: inline-block;"><a href="https://twitter.com/OwnYourDataEU" target="_blank" rel="nofollow"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></i><span class="sr-only">Twitter</span></a></li>
+          </ul>
         </div>
       </div>
     </div>
