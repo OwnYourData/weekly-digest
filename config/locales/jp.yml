@@ -66,7 +66,7 @@ jp:
   contributor:
     page_header: "MyData 週刊ダイジェスト貢献者"
     translation_contribution: "どんな形の貢献にも感謝します。翻訳者は大歓迎です。"
-    translation_contribution_guide: "<a href="https://bit.ly/MyData-Weekly-Digest-Readme" target="_blank">こちら</a>の翻訳者ガイドを参照してください。"
+    translation_contribution_guide: "<a href='https://bit.ly/MyData-Weekly-Digest-Readme' target='_blank'>こちら</a>の翻訳者ガイドを参照してください。"
     japanese_translation: "日本語翻訳"
     hungarian_translation: "ハンガリー語翻訳"
     korean_translation: "韓国語翻訳"
