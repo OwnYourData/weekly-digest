@@ -3,8 +3,13 @@ class StatsController < ApplicationController
 
 	def index
 		if params[:password].to_s == ENV["STATS_PASSWORD"].to_s && params[:password].to_s.length > 0
-			render json: Statistic.all.to_json,
-				   status: 200
+			if params[:last].to_s == ""
+				render json: Statistic.all.to_json,
+					   status: 200
+			else
+				render json: Statistic.last(params[:last].to_i).to_json,
+					   status: 200
+			end
 		else
 			render json: [],
 				   status: 200

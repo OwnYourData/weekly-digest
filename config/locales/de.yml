@@ -79,7 +79,7 @@ de:
     page_header: "MyData Weekly Digest vom %{date}"
     next_digest: "nächste Ausgabe"
     previous_digest: "vorherige Ausgabe"
-    noteworthy_information: "Interessante Information"
+    noteworthy_information: "Interessante Informationen"
     noteworthy_info: "Interessante Infos"
     questions_asked: "Gestellte Fragen"
     mydata_internals: "MyData Interna"

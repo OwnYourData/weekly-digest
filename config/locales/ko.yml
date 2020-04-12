@@ -33,7 +33,7 @@ ko:
   general:
     title: "MyData 주간지"
     title_short: "주간지"
-    description: "MyData Weekly Digest에 오신 것을 환영합니다. MyData Weekly Digest는 사람중심적 개인데이터 관리에 대한 최신 소식을 전하고 있는 뉴스 사이트입니다. "
+    description: "MyData Weekly Digest에 오신 것을 환영합니다. MyData Weekly Digest는 사람중심적 개인데이터 관리에 대한 최신 소식을 전하고 있는 뉴스 사이트입니다."
     main_tools: "최신 도구"
     main_users: "활성 사용자"
     main_tags: "인기 태그"
@@ -92,7 +92,7 @@ ko:
     posted_by: "작성자: %{user}"
     show_on_slack: "Slack에서 표시"
     open_website: "이 도구의 웹 사이트 열기"
-    calendar_description: "다음 주에 계획된 이벤트는 <a href="https://calendar.google.com/calendar/embed?src=vndcn3m1dmhve9130flvub9dhg%40group.calendar.google.com'> MyData 캘린더 </a>에서 볼 수 있습니다:"
+    calendar_description: "다음 주에 계획된 이벤트는 <a href='https://calendar.google.com/calendar/embed?src=vndcn3m1dmhve9130flvub9dhg%40group.calendar.google.com'> MyData 캘린더 </a>에서 볼 수 있습니다:"
     og_description: "이번 주 주간지 주요 내용"
     og_desc_post:
       one: "포커스 기사"
