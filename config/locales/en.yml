@@ -80,6 +80,8 @@ en:
     og_desc_and: "and"
   contributor:
     page_header: "MyData Weekly Digest Contributors"
+    translation_contribution: "We appreciate any form of contributions. Translator is mostly welcomed."
+    translation_contribution_guide: "Please refer to the Contribution guide for translator <a href="https://bit.ly/MyData-Weekly-Digest-Readme" target="_blank">here</a>."
     japanese_translation: "Japanese Translation"
     hungarian_translation: "Hungarian Translation"
     korean_translation: "Korean Translation"
