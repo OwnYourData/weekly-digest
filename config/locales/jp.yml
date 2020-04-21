@@ -52,7 +52,7 @@ jp:
     show_on_slack: "Slack で見る"
     open_website: "このツールでウェブサイトを開く"
     calendar_description: "<a href='https://calendar.google.com/calendar/embed?src=vndcn3m1dmhve9130flvub9dhg%40group.calendar.google.com'>MyData カレンダー</a> にある来週のイベントは以下です。"
-    og_description: "今週のダイジェストについて読む"
+    og_description: "今週のダイジェストをどうぞご覧ください。"
     og_desc_post:
       one: "件のお勧めニュース"
       other: "件のお勧めニュース"
@@ -60,8 +60,9 @@ jp:
       one: "件の質問"
       other: "件の質問"
     og_desc_tool:
-      one: "つ個人データツール"
-      other: "つ個人データツール"
+      one: "つのデータツール"
+      other: "個のデータツール"
+    og_desc_end: "です。"
     og_desc_and: "、と"
   contributor:
     page_header: "MyData 週刊ダイジェスト貢献者"

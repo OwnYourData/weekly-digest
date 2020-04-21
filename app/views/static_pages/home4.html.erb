@@ -16,7 +16,14 @@
 </script>
 
 		<hr>
-		<h3><%= t('news.latest_news') %></h3>
+		<h3>
+			<%= t('news.latest_news') %>
+            <%  if logged_in? %>
+	                <span style="font-size: 12px;">
+	                    <%= link_to new_wd_url do %><i class="fa fa-plus" aria-hidden="true"> new Weekly Digest</i><% end %>
+	                </span>
+            <% end %>
+		</h3>
 		<ul style="list-style-type: none; padding-left: 0;">
 			<%= render partial: "week3", collection: @week.sort_by { |item| item["release"] }.last(5).reverse %>
 		</ul>
