@@ -276,4 +276,83 @@ class NewsController < ApplicationController
             redirect_to weekly_url(id: @weekly.release.to_s)
         end
     end
+
+    def new_wd
+        @heading = t('general.title')
+        @heading_short = t('general.title_short')
+        @task = "New"
+        @weekly_id = nil
+        @release = ""
+        @users = 0
+        @new_users = 0
+        @channels = 0
+        @postings = 0
+        @thanks = 0
+        @thanked = 0
+        @monitored_channels = 0
+        @monitored_channel_names = ""
+        respond_to do |format|
+            format.html { render layout: "application3", template: "news/edit_wd" }
+        end
+    end
+
+    def edit_wd
+        @heading = t('general.title')
+        @heading_short = t('general.title_short')
+        @task = "Edit"
+        @weekly = Weekly.find(params[:id].to_i) rescue nil
+        if @weekly.nil?
+            redirect_to root_url
+            return
+        else
+            @release = @weekly.release.to_s
+            @weekly_id = @weekly.id
+            @users = @weekly.users
+            @new_users = @weekly.new_users
+            @channels = @weekly.channels
+            @postings = @weekly.postings
+            @thanks = @weekly.thanks
+            @thanked = @weekly.thanked
+            @monitored_channels = @weekly.monitored_channels
+            @monitored_channel_names = @weekly.monitored_channel_names
+        end
+        respond_to do |format|
+            format.html { render layout: "application3", template: "news/edit_wd" }
+        end
+    end
+
+    def update_wd
+        case params[:button].to_s
+        when "save"
+            if params[:weekly_id].to_s == ""
+                Weekly.new(
+                    status: 0,
+                    release: params[:release].to_s,
+                    users: params[:users].to_i,
+                    new_users: params[:new_users].to_i,
+                    channels: params[:channels].to_i,
+                    postings: params[:postings].to_i,
+                    thanks: params[:thanks].to_i,
+                    thanked: params[:thanked].to_i,
+                    monitored_channels: params[:monitored_channels].to_i,
+                    monitored_channel_names: params[:monitored_channel_names].to_s).save
+            else
+                Weekly.find(params[:weekly_id]).update_attributes(
+                    release: params[:release].to_s,
+                    users: params[:users].to_i,
+                    new_users: params[:new_users].to_i,
+                    channels: params[:channels].to_i,
+                    postings: params[:postings].to_i,
+                    thanks: params[:thanks].to_i,
+                    thanked: params[:thanked].to_i,
+                    monitored_channels: params[:monitored_channels].to_i,
+                    monitored_channel_names: params[:monitored_channel_names].to_s)
+            end
+        when "delete"
+            if User.find(current_user).full_name.to_s == "Christoph Fabianek"
+                Weekly.find(params[:weekly_id]).destroy
+            end
+        end
+        redirect_to root_url(mode: 0)
+    end
 end
