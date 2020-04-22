@@ -78,6 +78,7 @@ en:
       one: "personal data tool"
       other: "personal data tools"
     og_desc_and: "and"
+    og_desc_end: ""
   contributor:
     page_header: "MyData Weekly Digest Contributors"
     translation_contribution: "We appreciate any form of contribution to the Weekly Digest. Translators are most welcomed."
