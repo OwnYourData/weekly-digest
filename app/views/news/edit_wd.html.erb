@@ -1,0 +1,67 @@
+<h3><%= @task.to_s %> Weely Digest</h3>
+
+<%= form_with url: wd_submit_url, remote:false, local: true do |form| %>
+    <%= form.hidden_field :weekly_id, value: @weekly_id %>
+
+    <div class="field">
+        <%= form.label :release, "Release (YYYY-MM-DD)" %>
+        <%= form.text_field :release, value: @release %>
+    </div>
+
+    <div class="field">
+        <%= form.label :users %>
+        <%= form.number_field :users, value: @users %>
+    </div>
+
+    <div class="field">
+        <%= form.label :new_users %>
+        <%= form.number_field :new_users, value: @new_users %>
+    </div>
+
+    <div class="field">
+        <%= form.label :channels %>
+        <%= form.number_field :channels, value: @channels %>
+    </div>
+
+    <div class="field">
+        <%= form.label :monitored_channels %>
+        <%= form.number_field :monitored_channels, value: @monitored_channels %>
+    </div>
+
+    <div class="field">
+        <%= form.label :monitored_channel_names %>
+        <%= form.text_field :monitored_channel_names, value: @monitored_channel_names %>
+    </div>
+
+    <div class="field">
+        <%= form.label :postings %>
+        <%= form.number_field :postings, value: @postings %>
+    </div>
+
+    <div class="field">
+        <%= form.label :thanks %>
+        <%= form.number_field :thanks, value: @thanks %>
+    </div>
+
+    <div class="field">
+        <%= form.label :thanked %>
+        <%= form.number_field :thanked, value: @thanked %>
+    </div>
+
+    <%= form.button value: "save", class: "btn btn-success" do %>
+        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+        Save
+    <% end %>
+
+    <%  if @weekly_id.to_s != "" %>
+            <%= form.button value: "delete", class: "btn btn-danger" do %>
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                Delete
+            <% end
+        end %>
+
+    <%= form.button value: "cancel", class: "btn btn-default" do %>
+        Cancel
+    <% end %>
+
+<% end %>
