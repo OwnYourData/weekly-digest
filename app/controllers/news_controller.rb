@@ -276,9 +276,6 @@ class NewsController < ApplicationController
             redirect_to weekly_url(id: @weekly.release.to_s)
         end
     end
-<<<<<<< HEAD
-end
-=======
 
     def new_wd
         @heading = t('general.title')
@@ -359,4 +356,3 @@ end
         redirect_to root_url(mode: 0)
     end
 end
->>>>>>> weekly-digest/master
