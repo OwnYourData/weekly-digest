@@ -62,8 +62,8 @@ jp:
     og_desc_tool:
       one: "つのデータツール"
       other: "個のデータツール"
-    og_desc_and: "、と"
-    og_desc_end: "です。"
+    og_desc_and: "と"
+    og_desc_end: "です"
   contributor:
     page_header: "MyData 週刊ダイジェスト貢献者"
     translation_contribution: "どんな形の貢献にも感謝します。翻訳者は大歓迎です。"
