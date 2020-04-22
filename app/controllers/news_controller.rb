@@ -127,7 +127,7 @@ class NewsController < ApplicationController
                     end
                 else
                     if @questions.count > 0
-                        @intro_text_plain += ", " + @questions.count.to_s + " " + t('news.og_desc_quest', count: @questions.count) + " " + t('news.og_desc_end')
+                        @intro_text_plain += ", " + @questions.count.to_s + " " + t('news.og_desc_quest', count: @questions.count) 
                     end
                     @intro_text_plain += " " + t('news.og_desc_and') + " " + @apps.count.to_s + " " + t('news.og_desc_tool', count: @apps.count) 
                 end
