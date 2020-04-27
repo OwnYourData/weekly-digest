@@ -2,7 +2,7 @@ jp:
   general:
     title: "MyData 週刊ダイジェスト"
     title_short: "週刊ダイジェスト"
-    description: "MyData Weekly Digest は人間を基軸としてアプローチした個人情報管理の取り組みについて広範囲で最良の情報を提供することに特化したニュースサイトです。"
+    description: "MyData Weekly Digest は人間を基軸としてアプローチした個人情報管理の取り組みについて広範囲で最良の情報を提供することに特化したニュースサイトです."
     main_tools: "最近ツール"
     main_users: "アクティブユーザー"
     main_tags: "人気タグ"
@@ -51,8 +51,8 @@ jp:
     posted_by: "%{user}の投稿"
     show_on_slack: "Slack で見る"
     open_website: "このツールでウェブサイトを開く"
-    calendar_description: "<a href='https://calendar.google.com/calendar/embed?src=vndcn3m1dmhve9130flvub9dhg%40group.calendar.google.com'>MyData カレンダー</a> にある来週のイベントは以下です。"
-    og_description: "今週のダイジェストをどうぞご覧ください。"
+    calendar_description: "<a href='https://calendar.google.com/calendar/embed?src=vndcn3m1dmhve9130flvub9dhg%40group.calendar.google.com'>MyData カレンダー</a> にある来週のイベントは以下です."
+    og_description: "今週のダイジェストをどうぞご覧ください."
     og_desc_post:
       one: "件のお勧めニュース"
       other: "件のお勧めニュース"
@@ -66,8 +66,8 @@ jp:
     og_desc_end: "です"
   contributor:
     page_header: "MyData 週刊ダイジェスト貢献者"
-    translation_contribution: "どんな形の貢献にも感謝します。翻訳者は大歓迎です。"
-    translation_contribution_guide: "<a href='https://bit.ly/MyData-Weekly-Digest-Readme' target='_blank'>こちら</a>の翻訳者ガイドを参照してください。"
+    translation_contribution: "どんな形の貢献にも感謝します.翻訳者は大歓迎です."
+    translation_contribution_guide: "<a href='https://bit.ly/MyData-Weekly-Digest-Readme' target='_blank'>こちら</a>の翻訳者ガイドを参照してください."
     japanese_translation: "日本語翻訳"
     hungarian_translation: "ハンガリー語翻訳"
     korean_translation: "韓国語翻訳"
