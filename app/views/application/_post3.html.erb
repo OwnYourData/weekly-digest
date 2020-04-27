@@ -13,6 +13,11 @@
                 <%  end %>
             </ul>
         </div>
+        <%  if logged_in? %>
+                <span style="font-size: 12px;">
+                    <%= link_to edit_post_url(id: @weekly_id, post_id: post3.id, post: "info") do %><i class="fa fa-pencil" aria-hidden="true"></i> edit<% end %>
+                </span>
+        <% end %>
         
     </div>
     <div class="post-text">

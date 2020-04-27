@@ -25,11 +25,11 @@ class User < ApplicationRecord
     # :confirmable, :lockable, :timeoutable, :validatable, :trackable, :rememberable, :registerable, :recoverable and :omniauthable
 #    devise :database_authenticatable
 
-	has_many :posts, dependent: :destroy
-	has_many :weekly_apps, dependent: :destroy
-	has_many :apps, dependent: :destroy
-	has_many :sources, dependent: :destroy
-	has_many :source_reports, dependent: :destroy
+    has_many :posts, dependent: :destroy
+    has_many :weekly_apps, dependent: :destroy
+    has_many :apps, dependent: :destroy
+    has_many :sources, dependent: :destroy
+    has_many :source_reports, dependent: :destroy
 
-	has_secure_password
+    has_secure_password
 end

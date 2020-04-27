@@ -63,6 +63,11 @@
                 <%= t('news.noteworthy_information') %>
             </div>
     		<div class="section-sub hidden-xs"><%= @posts.count.to_s %> <%= t('news.post', count: @posts.count ) %></div>
+            <%  if logged_in? %>
+                    <span style="font-size: 12px;">
+                        <%= link_to add_post_url(id: @weekly_id, post: "info") do %><i class="fa fa-plus" aria-hidden="true"></i> add post<% end %>
+                    </span>
+            <% end %>
     	</div>
         <%= render partial: "post3", collection: @posts.sort_by { |item| item["post_date"] } %>
 
@@ -77,6 +82,11 @@
                     <%= t('news.questions_asked') %>
                 </div>
                 <div class="section-sub hidden-xs"><%= @questions.count.to_s %> <%= t('news.post', count: @questions.count ) %></div>
+                <%  if logged_in? %>
+                        <span style="font-size: 12px;">
+                            <%= link_to add_post_url(id: @weekly_id, post: "quest") do %><i class="fa fa-plus" aria-hidden="true"></i> add post<% end %>
+                        </span>
+                <% end %>
             </div>
             <%= render partial: "question3", collection: @questions.sort_by { |item| item["post_date"] } %>
         <% end %> 
