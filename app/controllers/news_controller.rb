@@ -355,4 +355,102 @@ class NewsController < ApplicationController
         end
         redirect_to root_url(mode: 0)
     end
+
+    def add_post
+        @heading = t('general.title')
+        @heading_short = t('general.title_short')
+
+        @weekly_id = params[:id]
+        @post_type = params[:post]
+        @post_type_header = ""
+        case @post_type.to_s
+        when "info"
+            @post_type_header = "Noteworthy Information"
+        when "quest"
+            @post_type_header = "Question"
+        end
+        @post_id = nil
+        @task = "Create"
+
+        @slack_url = nil
+        @post_date = nil
+        @user = nil
+
+        respond_to do |format|
+            format.html { render layout: "application3", template: "news/edit_post" }
+        end
+    end
+
+    def edit_post
+        @heading = t('general.title')
+        @heading_short = t('general.title_short')
+
+        @weekly_id = params[:id]
+        @post_id = params[:post_id]
+        @post_type = params[:post]
+        @post_type_header = ""
+        case @post_type.to_s
+        when "info"
+            @post_type_header = "Noteworthy Information"
+        when "quest"
+            @post_type_header = "Question"
+        end
+        @task = "Edit"
+
+        @post = Post.find(@post_id)
+        @slack_url = @post.media_url
+        @post_date = @post.post_date
+        @description = @post.description
+        @lang = @post.lang
+        @title = @post.title
+        @url = @post.url
+        @user = User.find(@post.user_id).name.to_s
+
+        respond_to do |format|
+            format.html { render layout: "application3", template: "news/edit_post" }
+        end
+    end
+
+    def update_post
+        case params[:button].to_s
+        when "save"
+            @post = Post.find(params[:post_id]) rescue nil
+            if @post.nil?
+                @post = Post.new(
+                    category: params[:post_type].to_s,
+                    description: params[:description].to_s,
+                    lang: params[:lang].to_s,
+                    media_type: "mydata",
+                    media_url: params[:slack_url].to_s,
+                    post_date: params[:post_date],
+                    status: 0,
+                    title: params[:title].to_s,
+                    url: params[:url].to_s,
+                    weekly_id: params[:weekly_id],
+                    user_id: User.find_by_name(params[:user]).id,
+                    author_id: current_user).save
+            else
+                @post.update_attributes(
+                    category: params[:post_type].to_s,
+                    description: params[:description].to_s,
+                    lang: params[:lang].to_s,
+                    media_type: "mydata",
+                    media_url: params[:slack_url].to_s,
+                    post_date: params[:post_date],
+                    status: 0,
+                    title: params[:title].to_s,
+                    url: params[:url].to_s,
+                    weekly_id: params[:weekly_id],
+                    user_id: User.find_by_name(params[:user]).id,
+                    author_id: current_user)
+            end
+        when "delete"
+            @post = Post.find(params[:post_id]) rescue nil
+            if !@post.nil?
+                @post.destroy
+            end
+        end
+        redirect_to weekly_url(id: Weekly.find(params[:weekly_id]).release, mode: 0)
+    end
+
 end

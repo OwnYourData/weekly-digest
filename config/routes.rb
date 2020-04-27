@@ -30,8 +30,11 @@ Rails.application.routes.draw do
         match '/new_mdi',     to: 'news#mdi_edit',            via: 'get'
         match '/mdi_submit',  to: 'news#update_mdi',          via: 'post'
         match '/new_wd',      to: 'news#new_wd',              via: 'get'
-        match '/edit_wd',     to: 'news#edit_wd',              via: 'get'
+        match '/edit_wd',     to: 'news#edit_wd',             via: 'get'
         match '/wd_submit',   to: 'news#update_wd',           via: 'post'
+        match '/add_post',    to: 'news#add_post',            via: 'get'
+        match '/edit_post',   to: 'news#edit_post',           via: 'get'
+        match '/post_submit', to: 'news#update_post',         via: 'post'
     end
 
     match '/stats',        to: 'stats#index', via: 'get'
