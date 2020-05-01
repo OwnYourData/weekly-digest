@@ -35,6 +35,8 @@ Rails.application.routes.draw do
         match '/add_post',    to: 'news#add_post',            via: 'get'
         match '/edit_post',   to: 'news#edit_post',           via: 'get'
         match '/post_submit', to: 'news#update_post',         via: 'post'
+        match '/add_tag',     to: 'news#add_tag',             via: 'post'
+        match '/delete_tag',  to: 'news#delete_tag',          via: 'get'
     end
 
     match '/stats',        to: 'stats#index', via: 'get'

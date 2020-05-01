@@ -14,6 +14,7 @@
 #  url         :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  author_id   :integer
 #  user_id     :integer
 #  weekly_id   :integer
 #

@@ -1,1 +1,4 @@
-<a class="post-tag" href="/tag/<%= tag2.tag_id.to_s + view_mode %>" onmousedown="$('#stats_source').val('<%= local_assigns[:stats_source] %>');$('#stats_source_id').val('<%= local_assigns[:stats_source_id] %>');$('#stats_target').val('tag');$('#stats_target_id').val('<%= tag2.tag_id %>');$('#stats_form').submit();">#<%= Tag.find(tag2.tag_id).tag.to_s %> <i class="fa fa-long-arrow-up" aria-hidden="true" style="-webkit-transform:rotate(30deg); -moz-transform:rotate(30deg); -ms-transform:rotate(30deg); -o-transform:rotate(30deg); transform:rotate(30deg); color: #999999;"></i></a>&nbsp;&nbsp;
+<a class="post-tag" href="/tag/<%= tag2.tag_id.to_s + view_mode %>" onmousedown="$('#stats_source').val('<%= local_assigns[:stats_source] %>');$('#stats_source_id').val('<%= local_assigns[:stats_source_id] %>');$('#stats_target').val('tag');$('#stats_target_id').val('<%= tag2.tag_id %>');$('#stats_form').submit();">#<%= Tag.find(tag2.tag_id).tag.to_s %></a>
+    <%  if logged_in? %>
+    		<%= link_to delete_tag_url(id: tag2.id) do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
+    <% end %>&nbsp;&nbsp;

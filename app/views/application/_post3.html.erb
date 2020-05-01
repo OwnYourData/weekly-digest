@@ -25,5 +25,9 @@
     </div>
     <div class="post-tags">
         <%= render partial: "tag2", locals:{stats_source: "post", stats_source_id: post3.id}, collection: post3.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+            <%  if logged_in? %>
+                <%= link_to "#", data: { toggle: "modal", target: "#addTagModal"}, onclick: '$("#tag").val("");$("#tag_post_id").val("' + post3.id.to_s + '");' do %><i class="fa fa-plus" aria-hidden="true"></i> add tag<% end %>
+            <% end %>
+
     </div>
 </div>
