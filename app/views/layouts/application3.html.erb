@@ -44,13 +44,13 @@
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right">
-                  <li><%= link_to "Deutsch", { locale: 'de', view: params[:view], mode: params[:mode] } %></li>
-                  <li><%= link_to "English", { locale: 'en', view: params[:view], mode: params[:mode] } %></li>
-                  <li><%= link_to "Français", { locale: 'fr', view: params[:view], mode: params[:mode] } %></li>
-                  <li><%= link_to "한국어", { locale: 'ko', view: params[:view], mode: params[:mode] } %></li>
-                  <li><%= link_to "Magyar", { locale: 'hu', view: params[:view], mode: params[:mode] } %></li>
-                  <li><%= link_to "日本語", { locale: 'jp', view: params[:view], mode: params[:mode] } %></li>
-                  <li><%= link_to "中文（台灣)", { locale: 'tw', view: params[:view], mode: params[:mode] } %></li>
+                  <li><%= link_to "Deutsch", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'de') %></li>
+                  <li><%= link_to "English", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'en') %></li>
+                  <li><%= link_to "Français", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'fr') %></li>
+                  <li><%= link_to "한국어", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'ko') %></li>
+                  <li><%= link_to "Magyar", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'hu') %></li>
+                  <li><%= link_to "日本語", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'jp') %></li>
+                  <li><%= link_to "中文（台灣)", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'tw') %></li>
                 </ul>
               </div>
               <% if logged_in? %>
