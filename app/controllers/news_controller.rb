@@ -110,8 +110,8 @@ class NewsController < ApplicationController
                     @apps = WeeklyApp.where(status: 1).where(weekly_id: @weekly.id)
                 else
                     @weekly_scope = Weekly.all
-                    @posts = Post.where(category: "info").where(weekly_id: Weekly.find_by_release(my_date).id)
-                    @questions = Post.where(category: "question").where(weekly_id: Weekly.find_by_release(my_date).id)
+                    @posts = Post.where(category: "info").where(weekly_id: Weekly.find_by_release(my_date).id).where(lang: ["", nil, I18n.locale.to_s])
+                    @questions = Post.where(category: "question").where(weekly_id: Weekly.find_by_release(my_date).id).where(lang: ["", nil, I18n.locale.to_s])
                     @apps = WeeklyApp.where(weekly_id: @weekly.id)
                 end
                 @weekly_order = @weekly_scope.order(:release)
@@ -366,7 +366,7 @@ class NewsController < ApplicationController
         case @post_type.to_s
         when "info"
             @post_type_header = "Noteworthy Information"
-        when "quest"
+        when "question"
             @post_type_header = "Question"
         end
         @post_id = nil
@@ -392,7 +392,7 @@ class NewsController < ApplicationController
         case @post_type.to_s
         when "info"
             @post_type_header = "Noteworthy Information"
-        when "quest"
+        when "question"
             @post_type_header = "Question"
         end
         @task = "Edit"
@@ -452,5 +452,32 @@ class NewsController < ApplicationController
         end
         redirect_to weekly_url(id: Weekly.find(params[:weekly_id]).release, mode: 0)
     end
+
+    def add_tag
+        @post = Post.find(params[:tag_post_id])
+        if @post.nil?
+            redirect_to root_url
+        end
+        PostingTag.new(post_id: @post.id, tag_id: Tag.find_by_tag(params[:tag].to_s).id).save
+        weekly_id = @post.weekly_id
+        redirect_to weekly_url(id: Weekly.find(weekly_id).release, mode: 0)
+
+    end
+
+    def delete_tag
+        if !logged_in?
+            redirect_to root_url
+            return
+        end
+        @pt = PostingTag.find(params[:id])
+        if @pt.nil?
+            redirect_to root_url(mode: 0)
+            return
+        end
+        weekly_id = @pt.post.weekly_id
+        @pt.destroy
+        redirect_to weekly_url(id: Weekly.find(weekly_id).release, mode: 0)
+    end
+
 
 end
