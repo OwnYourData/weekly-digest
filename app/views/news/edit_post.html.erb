@@ -1,12 +1,15 @@
 <h3><%= @task.to_s %> <%= @post_type_header.to_s %></h3>
-
+<p>For user or author's name, please refer to <a href="https://weekly-digest.ownyourdata.eu/users" target="_blank">"List of All Users"</a>. If it is not listed, please use your own name or contact "@Christoph Fabianek" to add a new entry in the "List of All Users" in MyData Global Slack.</p>
+<br>
+<p>You can write in Markdown format in the description field.</p>
+<br>
 <%= form_with url: post_submit_url, remote:false, local: true, html: { autocomplete: "off" } do |form| %>
     <%= form.hidden_field :weekly_id, value: @weekly_id %>
     <%= form.hidden_field :post_id, value: @post_id %>
     <%= form.hidden_field :post_type, value: @post_type %>
 
     <div class="field">
-        <%= form.label :slack_url %>
+        <%= form.label :slack_url, "Slack message URL (optional)" %>
         <%= form.text_field :slack_url, value: @slack_url %>
     </div>
 
@@ -16,8 +19,8 @@
     </div>
 
     <div class="field autocomplete" style="width: 100%;">
-        <%= form.label :user %>
-        <%= form.text_field :user, value: @user, style: "margin-bottom: 0px;" %>
+        <%= form.label :user, "User/author" %>
+        <%= form.text_field :user, value: @user, style: "margin-bottom: 0px;", placeholder: "Enter name (autocomplete available)" %>
     </div>
     <div style="clear: both;"></div>
 
@@ -33,11 +36,11 @@
 
     <div class="field">
         <%= form.label :description %>
-        <%= form.text_area :description, value: @description %>
+        <%= form.text_area :description, value: @description, placeholder: "Write a short description in plain text or Markdown format" %>
     </div>
 
     <div class="field">
-        <%= form.label :lang, "Language specific (leave empty to display always)" %>
+        <%= form.label :lang, "Language specific (leave empty to display in all languages)" %>
         <%= form.select :lang, options_for_select([["", ""],["English", "en"],["German", "de"],["Hungarian", "hu"],["Japanese", "jp"],["Korean", "ko"],["Taiwanese", "tw"]], @lang.to_s) %>
     </div>
 
