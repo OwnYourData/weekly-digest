@@ -270,10 +270,10 @@ class NewsController < ApplicationController
             if params[:button].to_s == "save"
                 redirect_to edit_mdi_url(id: @weekly.id)
             else
-                redirect_to weekly_url(id: @weekly.release.to_s)
+                redirect_to weekly_url(id: @weekly.release.to_s, mode: 0)
             end
         when "cancel"
-            redirect_to weekly_url(id: @weekly.release.to_s)
+            redirect_to weekly_url(id: @weekly.release.to_s, mode: 0)
         end
     end
 
@@ -325,7 +325,7 @@ class NewsController < ApplicationController
         case params[:button].to_s
         when "save"
             if params[:weekly_id].to_s == ""
-                Weekly.new(
+                @weekly = Weekly.new(
                     status: 0,
                     release: params[:release].to_s,
                     users: params[:users].to_i,
@@ -335,9 +335,11 @@ class NewsController < ApplicationController
                     thanks: params[:thanks].to_i,
                     thanked: params[:thanked].to_i,
                     monitored_channels: params[:monitored_channels].to_i,
-                    monitored_channel_names: params[:monitored_channel_names].to_s).save
+                    monitored_channel_names: params[:monitored_channel_names].to_s)
+                @weekly.save
             else
-                Weekly.find(params[:weekly_id]).update_attributes(
+                @weekly = Weekly.find(params[:weekly_id])
+                @weekly.update_attributes(
                     release: params[:release].to_s,
                     users: params[:users].to_i,
                     new_users: params[:new_users].to_i,
@@ -348,9 +350,20 @@ class NewsController < ApplicationController
                     monitored_channels: params[:monitored_channels].to_i,
                     monitored_channel_names: params[:monitored_channel_names].to_s)
             end
+            redirect_to weekly_url(id: @weekly.release, mode: 0)
         when "delete"
             if User.find(current_user).full_name.to_s == "Christoph Fabianek"
                 Weekly.find(params[:weekly_id]).destroy
+            end
+            redirect_to root_url(mode: 0)
+            return
+        when "cancel"
+            if params[:weekly_id].to_s != ""
+                @weekly = Weekly.find(params[:weekly_id])
+                if !@weekly.nil?
+                    redirect_to weekly_url(id: @weekly.release, mode: 0)
+                    return
+                end
             end
         end
         redirect_to root_url(mode: 0)

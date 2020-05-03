@@ -13,12 +13,19 @@
                 <% end %>
             </ul>
         </div>
-        
+        <%  if logged_in? %>
+                <span style="font-size: 12px;">
+                    <%= link_to edit_post_url(id: @weekly_id, post_id: question3.id, post: "question") do %><i class="fa fa-pencil" aria-hidden="true"></i> edit<% end %>
+                </span>
+        <% end %>     
     </div>
     <div class="post-text">
         <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(question3.description.to_s).html_safe %>
     </div>
     <div class="post-tags">
         <%= render partial: "tag2", locals:{stats_source: "post", stats_source_id: question3.id}, collection: question3.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+        <%  if logged_in? %>
+            <%= link_to "#", data: { toggle: "modal", target: "#addTagModal"}, onclick: '$("#tag").val("");$("#tag_post_id").val("' + question3.id.to_s + '");' do %><i class="fa fa-plus" aria-hidden="true"></i> add tag<% end %>
+        <% end %>
     </div>
 </div>

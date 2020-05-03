@@ -14,6 +14,22 @@
                 &nbsp;&nbsp;
                 <%= link_to add_post_url(id: week3.id, post: "question") do %><i class="fa fa-plus" aria-hidden="true"></i> add Question Asked<% end %>
                 &nbsp;&nbsp;
+                <%  if I18n.locale.to_s == "en" %>
+                        <span style="font-size: 12px;">
+                            <%= link_to edit_mdi_url(id: week3.id) do %><i class="fa fa-pencil" aria-hidden="true"></i> edit MyData Internals<% end %>
+                        </span>
+                <%  else
+                        if WeeklyInternal.where(lang: I18n.locale.to_s, weekly_id: week3.id).count == 0 %>
+                            <span style="font-size: 12px;">
+                                <%= link_to new_mdi_url(id: week3.id) do %><i class="fa fa-plus" aria-hidden="true"></i> add MyData Internals translation<% end %>
+                            </span>
+                    <%  else %>
+                            <span style="font-size: 12px;">
+                                <%= link_to edit_mdi_url(id: week3.id) do %><i class="fa fa-pencil" aria-hidden="true"></i> edit MyData Internals<% end %>
+                            </span>
+                    <%  end
+                    end %>
+                &nbsp;&nbsp;
                 <%= link_to edit_wd_url(id: week3.id) do %><i class="fa fa-pencil" aria-hidden="true"></i> edit Statistics<% end %>
             </em></span>
     <% end %>
