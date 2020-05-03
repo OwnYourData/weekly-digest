@@ -31,12 +31,20 @@
               </div>
             </div>
             <div style="float: right; white-space: nowrap; margin-top: -28px;">
-              <a href="https://www.ownyourdata.eu/" onmousedown="$('#stats_target').val('ownyourdata');$('#stats_target_id').val('');$('#stats_form').submit();" style="color: #42B58C; text-decoration: none;"><span style="text-decoration: underline;">OwnYourData.eu</span></a> 
+                <% if logged_in?
+                       if params[:mode].to_s == "0" %>
+                          <span style="vertical-align: top; color: #666;">Preview Mode</span>
+                    <% else %>
+                          <span style="vertical-align: top; color: #666;">Public Mode</span>
+                    <% end
+                   else %>
+                     <a href="https://www.ownyourdata.eu/" onmousedown="$('#stats_target').val('ownyourdata');$('#stats_target_id').val('');$('#stats_form').submit();" style="color: #42B58C; text-decoration: none;"><span style="text-decoration: underline;">OwnYourData.eu</span></a> 
+                <% end %>
               |
               <div class="btn-group dropdown" style="margin-left: -10px;">
                 <button type="button" class="fakelink_nounderline hidden-xs hidden-sm visible-md visible-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="glyphicon glyphicon-flag"></span>
-                  <span class="font-size-large" style="font-size:14px;"><%= t('footer.language') %></span> 
+                  <span class="font-size-large" style="font-size:13px;"><%= t('footer.language') %></span> 
                   <span class="caret"></span>
                 </button>
                 <button type="button" class="fakelink_nounderline visible-xs visible-sm hidden-md hidden-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,6 +69,11 @@
                   </button>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <li><span class="dropdown-text"><em><%= User.find(current_user).full_name.to_s %></em></span></li>
+                    <% if params[:mode].to_s == "0" %>
+                           <li><%= link_to "switch to 'Public Mode'", params.permit(:locale, :view, :id, :post) %></li>
+                    <% else %>
+                           <li><%= link_to "switch to 'Preview Mode'", params.permit(:locale, :mode, :view, :id, :post).merge(mode: '0') %></li>
+                    <% end %>
                     <li><%= link_to "Change Password", "/" + I18n.locale.to_s + "/change_pwd" + view_mode %></li>
                     <li><%= link_to "Log Out", "/" + I18n.locale.to_s + "/logout" + view_mode %></li>
                   </ul>
