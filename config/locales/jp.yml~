@@ -14,7 +14,7 @@ jp:
     to_top: "ページ先頭に戻る"
   footer:
     language: "言語選択"
-    imprint: "発行者について"
+    imprint: "発行者等"
     privacy: "プライバシーポリシー"
     privacy_page: "en/privacy-policy"
     contributor: "コントリビュータ"
@@ -36,7 +36,7 @@ jp:
     noteworthy_information: "お勧めニュース"
     noteworthy_info: "お勧めニュース"
     questions_asked: "質問一覧"
-    mydata_internals: "MyData コミュニティからの情報"
+    mydata_internals: "MyData コミュニティ内情報"
     upcoming_events: "今後のイベント"
     upcoming_events_short: "今後のイベント"
     statistic:
