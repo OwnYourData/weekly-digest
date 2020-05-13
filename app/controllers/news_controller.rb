@@ -351,6 +351,7 @@ class NewsController < ApplicationController
                     monitored_channel_names: params[:monitored_channel_names].to_s)
             end
             redirect_to weekly_url(id: @weekly.release, mode: 0)
+            return
         when "delete"
             if User.find(current_user).full_name.to_s == "Christoph Fabianek"
                 Weekly.find(params[:weekly_id]).destroy
