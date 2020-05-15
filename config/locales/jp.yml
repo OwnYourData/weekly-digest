@@ -72,7 +72,13 @@ jp:
     hungarian_translation: "ハンガリー語翻訳"
     korean_translation: "韓国語翻訳"
     taiwanese_translation: "台湾語翻訳"
+    french_translation: "French Translation"
     german_translation: "ドイツ語翻訳"
     design: "デザイン"
     website: "ウェブサイト"
     twitter: "ツイッター"
+  user:
+    title: "List of All Users"
+    title_short: "All Users"
+    users: "Users"
+    user: "User"
