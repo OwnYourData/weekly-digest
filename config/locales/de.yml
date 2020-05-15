@@ -120,3 +120,8 @@ de:
     design: "Design"
     website: "Webseite"
     twitter: "Twitter"
+  user:
+    title: "Liste aller Autoren"
+    title_short: "Alle Autoren"
+    users: "Autoren"
+    user: "Autor"
