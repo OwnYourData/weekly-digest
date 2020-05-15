@@ -39,14 +39,14 @@ class UsersController < ApplicationController
                 format.html { render layout: "application2", template: "users/index2"}
             end
         when "4"
-            @heading = "List of All Users"
-            @heading_short = "All Users"
+            @heading = t('user.title') # "List of All Users"
+            @heading_short = t('user.title_short') # "All Users"
             respond_to do |format|
                 format.html { render layout: "application3", template: "users/index2"}
             end
         else
-            @heading = "List of All Users"
-            @heading_short = "All Users"
+            @heading = t('user.title')
+            @heading_short = t('user.title_short')
             respond_to do |format|
                 format.html { render layout: "application3", template: "users/index2"}
             end
@@ -100,14 +100,14 @@ class UsersController < ApplicationController
                 format.html { render layout: "application2", template: "users/show2"}
             end
         when "4"
-            @heading = "User '" + @user.name.to_s + "'"
+            @heading = t('user.user') + " '" + @user.name.to_s + "'"
             @heading_short = @user.name
             @apps = WeeklyApp.where(user_id: user_id)
             respond_to do |format|
                 format.html { render layout: "application3", template: "users/show2"}
             end
         else
-            @heading = "User '" + @user.name.to_s + "'"
+            @heading = t('user.user') + " '" + @user.name.to_s + "'"
             @heading_short = @user.name
             @apps = WeeklyApp.where(user_id: user_id)
             respond_to do |format|

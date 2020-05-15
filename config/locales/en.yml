@@ -92,3 +92,8 @@ en:
     design: "Design"
     website: "website"
     twitter: "Twitter"
+  user:
+    title: "List of All Users"
+    title_short: "All Users"
+    users: "Users"
+    user: "User"
