@@ -1,3 +1,3 @@
 <li>
-	<a href="/tag/<%= tag.id.to_s + view_mode %>" onmousedown="$('#stats_target').val('tag');$('#stats_target_id').val('<%= tag.id.to_s %>');$('#stats_form').submit();">#<%= tag.tag.to_s %></a>
+	<a href="/<%= I18n.locale.to_s %>/tag/<%= tag.id.to_s + view_mode %>" onmousedown="$('#stats_target').val('tag');$('#stats_target_id').val('<%= tag.id.to_s %>');$('#stats_form').submit();">#<%= tag.tag.to_s %></a>
 </li>
