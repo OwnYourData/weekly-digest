@@ -27,7 +27,7 @@
 		<ul style="list-style-type: none; padding-left: 0;">
 			<%= render partial: "week3", collection: @week.sort_by { |item| item["release"] }.last(5).reverse %>
 		</ul>
-		<p style="margin: 10px 0 40px;"><a href="/news<%= view_mode %>" onmousedown="$('#stats_target').val('weekly_list');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('news.show_all') %></a></p>
+		<p style="margin: 10px 0 40px;"><a href="/<%= I18n.locale.to_s %>/news<%= view_mode %>" onmousedown="$('#stats_target').val('weekly_list');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('news.show_all') %></a></p>
 	</div>
 	<div class="col-md-3 col-md-offset-1">
 		<!-- <p style="font-size: 14px; margin-top: 17px; margin-bottom: 5px;"><strong>New Data Sources</strong></p>
@@ -39,17 +39,17 @@
 		<ul style="padding-left: 25px; margin-bottom: 5px;">
 			<%= render partial: "app", collection: @app.sort_by { |item| item["updated_at"] }.reverse.first(5) %>
 		</ul>
-		<a href="/tools<%= view_mode %>" onmousedown="$('#stats_target').val('tool_list');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('general.show_all')%></a>
+		<a href="/<%= I18n.locale.to_s %>/tools<%= view_mode %>" onmousedown="$('#stats_target').val('tool_list');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('general.show_all')%></a>
 		<p style="font-size: 14px; margin-top: 30px; margin-bottom: 5px;"><strong><%= t('general.main_users')%></strong></p>
 		<ul style="padding-left: 25px; margin-bottom: 5px;">
 			<%= render partial: "user", collection: User.where(id: Post.group(:user_id).count.sort_by { |user, cnt| cnt }.reverse.first(5).map{ |row| row.first }) %>
 		</ul style="padding-left: 25px;">
-		<a href="/users<%= view_mode %>" onmousedown="$('#stats_target').val('user_list');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('general.show_all')%></a>
+		<a href="/<%= I18n.locale.to_s %>/users<%= view_mode %>" onmousedown="$('#stats_target').val('user_list');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('general.show_all')%></a>
 		<p style="font-size: 14px; margin-top: 30px; margin-bottom: 5px;"><strong><%= t('general.main_tags')%></strong></p>
 		<ul style="padding-left: 25px; margin-bottom: 5px;">
 			<%= render partial: "tag", collection: Tag.where(id: PostingTag.group(:tag_id).count.sort_by { |tag, cnt| cnt }.reverse.first(5).map{ |row| row.first }) %>
 		</ul>
-		<a href="/tags<%= view_mode %>" onmousedown="$('#stats_target').val('tag_list');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('general.show_all')%></a>
+		<a href="/<%= I18n.locale.to_s %>/tags<%= view_mode %>" onmousedown="$('#stats_target').val('tag_list');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('general.show_all')%></a>
 	</div>
 </div>
 <% end %>
