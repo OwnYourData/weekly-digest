@@ -10,6 +10,7 @@ class AppsController < ApplicationController
 
         Statistic.new(
             timestamp: DateTime.now.to_i,
+            lang: I18n.locale.to_s,
             url: request.headers["HTTP_REFERER"].to_s,
             source: "tool_list",
             source_id: "0",
@@ -60,6 +61,7 @@ class AppsController < ApplicationController
 
             Statistic.new(
                 timestamp: DateTime.now.to_i,
+                lang: I18n.locale.to_s,
                 url: request.headers["HTTP_REFERER"].to_s,
                 source: "tool",
                 source_id: @app.id,

@@ -19,6 +19,7 @@ class NewsController < ApplicationController
 
         Statistic.new(
             timestamp: DateTime.now.to_i,
+            lang: I18n.locale.to_s,
             url: request.headers["HTTP_REFERER"].to_s,
             source: "weekly_list",
             source_id: "0",
@@ -165,6 +166,7 @@ class NewsController < ApplicationController
 
                 Statistic.new(
                     timestamp: DateTime.now.to_i,
+                    lang: I18n.locale.to_s,
                     url: request.headers["HTTP_REFERER"].to_s,
                     source: "weekly",
                     source_id: @weekly.id,
@@ -427,7 +429,11 @@ class NewsController < ApplicationController
 
     def update_post
         case params[:button].to_s
-        when "save"
+        when "save", "publish"
+            status = 0
+            if params[:button].to_s == "publish"
+                status = 1
+            end
             @post = Post.find(params[:post_id]) rescue nil
             if @post.nil?
                 @post = Post.new(
@@ -437,12 +443,12 @@ class NewsController < ApplicationController
                     media_type: "mydata",
                     media_url: params[:slack_url].to_s,
                     post_date: params[:post_date],
-                    status: 0,
                     title: params[:title].to_s,
                     url: params[:url].to_s,
                     weekly_id: params[:weekly_id],
                     user_id: User.find_by_name(params[:user]).id,
-                    author_id: current_user).save
+                    author_id: current_user,
+                    status: status).save
             else
                 @post.update_attributes(
                     category: params[:post_type].to_s,
@@ -451,12 +457,12 @@ class NewsController < ApplicationController
                     media_type: "mydata",
                     media_url: params[:slack_url].to_s,
                     post_date: params[:post_date],
-                    status: 0,
                     title: params[:title].to_s,
                     url: params[:url].to_s,
                     weekly_id: params[:weekly_id],
                     user_id: User.find_by_name(params[:user]).id,
-                    author_id: current_user)
+                    author_id: current_user,
+                    status: status)
             end
         when "delete"
             @post = Post.find(params[:post_id]) rescue nil

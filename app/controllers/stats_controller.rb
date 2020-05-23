@@ -19,7 +19,7 @@ class StatsController < ApplicationController
 	def data
 		Statistic.new(
 			timestamp: DateTime.now.to_i,
-			url: request.headers["HTTP_REFERER"].to_s,
+			lang: I18n.locale.to_s,
 			source: params[:stats_source].to_s,
 			source_id: params[:stats_source_id],
 			target: params[:stats_target].to_s,

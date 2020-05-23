@@ -24,10 +24,10 @@
         <div class="row">
           <div class="col-md-12" style="min-height: 60px; margin-top: 20px;">
             <div style="display: table;">
-              <a href="<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" style="display: table-cell;"><%= image_tag 'oyd2.png', style: "height: 60px; margin: -20px -5px -10px -10px; vertical-align: text-bottom;" %></a>
+              <a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" style="display: table-cell;"><%= image_tag 'oyd2.png', style: "height: 60px; margin: -20px -5px -10px -10px; vertical-align: text-bottom;" %></a>
               <div style="display: table-cell;">
-                <h1 class="visible-xs visible-sm hidden-md hiden-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large; padding-right: 190px;"><a href="<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" class="title-link"><%= @heading_short.to_s %></a></h1>
-                <h1 class="hidden-xs hidden-sm visible-md visible-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large;"><a href="<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" class="title-link"><%= @heading.to_s %></a></h1>
+                <h1 class="visible-xs visible-sm hidden-md hiden-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large; padding-right: 190px;"><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" class="title-link"><%= @heading_short.to_s %></a></h1>
+                <h1 class="hidden-xs hidden-sm visible-md visible-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large;"><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" class="title-link"><%= @heading.to_s %></a></h1>
               </div>
             </div>
             <div style="float: right; white-space: nowrap; margin-top: -28px;">

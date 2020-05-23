@@ -44,9 +44,14 @@
         <%= form.select :lang, options_for_select([["", ""],["English", "en"],["German", "de"],["Hungarian", "hu"],["Japanese", "jp"],["Korean", "ko"],["Taiwanese", "tw"]], @lang.to_s) %>
     </div>
 
-    <%= form.button value: "save", class: "btn btn-success" do %>
+    <%= form.button value: "save", class: "btn btn-primary" do %>
         <i class="fa fa-floppy-o" aria-hidden="true"></i>
-        Save
+        Save (Draft)
+    <% end %>
+
+    <%= form.button value: "publish", class: "btn btn-success" do %>
+        <i class="fa fa-diamond" aria-hidden="true"></i>
+        Publish
     <% end %>
 
     <%  if @post_id.to_s != "" %>

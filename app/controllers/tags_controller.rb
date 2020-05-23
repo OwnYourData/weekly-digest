@@ -9,6 +9,7 @@ class TagsController < ApplicationController
 		end
         Statistic.new(
             timestamp: DateTime.now.to_i,
+            lang: I18n.locale.to_s,
             url: request.headers["HTTP_REFERER"].to_s,
             source: "tag_list",
             source_id: 0,
@@ -32,14 +33,14 @@ class TagsController < ApplicationController
                 format.html { render layout: "application2", template: "tags/index2"}
             end
         when "4"
-			@heading = "List of All Tags"
-			@heading_short = "All Tags"
+			@heading = t('tag.title')
+			@heading_short = t('tag.title_short')
             respond_to do |format|
                 format.html { render layout: "application3", template: "tags/index2"}
             end
         else
-			@heading = "List of All Tags"
-			@heading_short = "All Tags"
+			@heading = t('tag.title')
+			@heading_short = t('tag.title_short')
             respond_to do |format|
                 format.html { render layout: "application3", template: "tags/index2"}
             end
@@ -61,6 +62,7 @@ class TagsController < ApplicationController
 		else
 	        Statistic.new(
 	            timestamp: DateTime.now.to_i,
+	            lang: I18n.locale.to_s,
 	            url: request.headers["HTTP_REFERER"].to_s,
 	            source: "tag",
 	            source_id: @tag.id,
@@ -95,14 +97,14 @@ class TagsController < ApplicationController
 	        end
         when "4"
 	    	@apps = WeeklyApp.where(app_id: AppTag.where(tag_id: tag_id).pluck(:app_id))
-			@heading = "Tag #" + @tag.tag.to_s
+			@heading = t('tag.tag') + " #" + @tag.tag.to_s
 			@heading_short = "#" + @tag.tag.to_s
 	        respond_to do |format|
 	            format.html { render layout: "application3", template: "tags/show2"}
 	        end
         else
 	    	@apps = WeeklyApp.where(app_id: AppTag.where(tag_id: tag_id).pluck(:app_id))
-			@heading = "Tag #" + @tag.tag.to_s
+			@heading = t('tag.tag') + " #" + @tag.tag.to_s
 			@heading_short = "#" + @tag.tag.to_s
 	        respond_to do |format|
 	            format.html { render layout: "application3", template: "tags/show2"}

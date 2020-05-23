@@ -97,3 +97,8 @@ en:
     title_short: "All Users"
     users: "Users"
     user: "User"
+  tag:
+    title: "List of All Tags"
+    title_short: "All Tags"
+    tags: "Tags"
+    tag: "Tag"
