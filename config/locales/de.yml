@@ -125,3 +125,8 @@ de:
     title_short: "Alle Autoren"
     users: "Autoren"
     user: "Autor"
+  tag:
+    title: "Liste aller Schlagwörter"
+    title_short: "Alle Schlagwörter"
+    tags: "Schlagwörter"
+    tag: "Schlagwort"

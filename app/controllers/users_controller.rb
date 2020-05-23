@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
         Statistic.new(
             timestamp: DateTime.now.to_i,
+            lang: I18n.locale.to_s,
             url: request.headers["HTTP_REFERER"].to_s,
             source: "user_list",
             source_id: "0",
@@ -68,6 +69,7 @@ class UsersController < ApplicationController
 
             Statistic.new(
                 timestamp: DateTime.now.to_i,
+                lang: I18n.locale.to_s,
                 url: request.headers["HTTP_REFERER"].to_s,
                 source: "user",
                 source_id: @user.id,
