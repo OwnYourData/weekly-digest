@@ -82,3 +82,8 @@ jp:
     title_short: "ユーザーリスト"
     users: "ユーザー名"
     user: "ユーザー名: "
+  tag:
+    title: "タグリスト"
+    title_short: "タグリスト"
+    tags: "タグ"
+    tag: "タグ"
