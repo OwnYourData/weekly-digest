@@ -33,9 +33,11 @@
             <div style="float: right; white-space: nowrap; margin-top: -28px;">
                 <% if logged_in?
                        if params[:mode].to_s == "0" %>
-                          <span style="vertical-align: top; color: #666;">Preview Mode</span>
+                          <%= link_to "Preview Mode", params.permit(:locale, :view, :id, :post), style: "vertical-align: top; color: #666;" %>
+                          <!--<span style="vertical-align: top; color: #666;">Preview Mode</span> -->
                     <% else %>
-                          <span style="vertical-align: top; color: #666;">Public Mode</span>
+                          <%= link_to "Public Mode", params.permit(:locale, :mode, :view, :id, :post).merge(mode: '0'), style: "vertical-align: top; color: #666;" %>
+                          <!--<span style="vertical-align: top; color: #666;">Public Mode</span>-->
                     <% end
                    else %>
                      <a href="https://www.ownyourdata.eu/" onmousedown="$('#stats_target').val('ownyourdata');$('#stats_target_id').val('');$('#stats_form').submit();" style="color: #42B58C; text-decoration: none;"><span style="text-decoration: underline;">OwnYourData.eu</span></a> 
@@ -58,6 +60,7 @@
                   <li><%= link_to "한국어", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'ko') %></li>
                   <li><%= link_to "Magyar", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'hu') %></li>
                   <li><%= link_to "日本語", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'jp') %></li>
+                  <li><%= link_to "Português", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'pt') %></li>
                   <li><%= link_to "中文（台灣)", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'tw') %></li>
                 </ul>
               </div>

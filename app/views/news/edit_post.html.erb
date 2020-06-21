@@ -3,6 +3,15 @@
 <br>
 <p>You can write in Markdown format in the description field.</p>
 <br>
+
+<% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= message %>
+    </div>
+<% end %>
+
+
 <%= form_with url: post_submit_url, remote:false, local: true, html: { autocomplete: "off" } do |form| %>
     <%= form.hidden_field :weekly_id, value: @weekly_id %>
     <%= form.hidden_field :post_id, value: @post_id %>
@@ -41,7 +50,7 @@
 
     <div class="field">
         <%= form.label :lang, "Language specific (leave empty to display in all languages)" %>
-        <%= form.select :lang, options_for_select([["", ""],["English", "en"],["German", "de"],["Hungarian", "hu"],["Japanese", "jp"],["Korean", "ko"],["Taiwanese", "tw"]], @lang.to_s) %>
+        <%= form.select :lang, options_for_select([["", ""],["English", "en"],["German", "de"],["Hungarian", "hu"],["Japanese", "jp"],["Korean", "ko"],["Portuguese", "pt"],["Taiwanese", "tw"]], @lang.to_s) %>
     </div>
 
     <%= form.button value: "save", class: "btn btn-primary" do %>

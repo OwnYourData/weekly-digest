@@ -31,7 +31,7 @@ module WeeklyDigest
     config.generators.system_tests = nil
 
     I18n.enforce_available_locales = false
-    I18n.config.available_locales = [:de, :en, :fr, :hu, :jp, :ko, :tw]
+    I18n.config.available_locales = [:de, :en, :fr, :hu, :jp, :ko, :tw, :pt]
     config.i18n.default_locale = :en
   end
 end

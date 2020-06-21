@@ -6,6 +6,13 @@
     <%= form.hidden_field :internal_text, id: "internal_text" %>
 <div id="editor" style="height: 300px; width: 100%; border-radius: 2px; border: 1px solid #DDD; margin-bottom: 15px;"><%= @default_text %></div>
 
+<% if I18n.locale.to_s != "en" %>
+    <div style="clear: both;"></div>
+    <span style="float: left; white-space: nowrap; margin-bottom: 20px;">
+        <%= form.check_box :locale_only, {checked: @locale_only,  style: "width: 20px;"} %>
+        <strong>only localized content</strong></span>
+    <div style="clear: both;"></div>
+<% end %>
 
     <%= form.button value: "save", class: "btn btn-success", onclick: "$('#internal_text').val(ace.edit('editor').getSession().getValue()); return true;" do %>
         <i class="fa fa-floppy-o" aria-hidden="true"></i>
