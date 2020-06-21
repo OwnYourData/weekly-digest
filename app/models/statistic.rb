@@ -3,6 +3,7 @@
 # Table name: statistics
 #
 #  id         :bigint(8)        not null, primary key
+#  lang       :string
 #  source     :string
 #  target     :string
 #  timestamp  :integer
