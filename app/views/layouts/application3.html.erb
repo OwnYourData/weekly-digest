@@ -71,7 +71,11 @@
                     <span class="glyphicon glyphicon-user"></span>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-right">
-                    <li><span class="dropdown-text"><em><%= User.find(current_user).full_name.to_s %></em></span></li>
+                    <% if User.find(current_user).full_name.to_s == "" %>
+                        <li><span class="dropdown-text"><em><%= User.find(current_user).name.to_s %></em></span></li>
+                    <% else %>
+                        <li><span class="dropdown-text"><em><%= User.find(current_user).full_name.to_s %></em></span></li>
+                    <% end %>
                     <% if params[:mode].to_s == "0" %>
                            <li><%= link_to "switch to 'Public Mode'", params.permit(:locale, :view, :id, :post) %></li>
                     <% else %>
