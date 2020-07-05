@@ -131,19 +131,13 @@ class NewsController < ApplicationController
                 @previous = @weekly_order.where("release < ?", my_date).last.release.to_s rescue ""
                 @next = @weekly_order.where("release > ?", my_date).first.release.to_s rescue ""
 
-                @intro_text_plain = t('news.og_description')
-                @intro_text_plain += " " + @posts.count.to_s + " " + t('news.og_desc_post', count: @posts.count)
-                if @apps.count == 0
-                    if @questions.count > 0
-                        @intro_text_plain += " " + t('news.og_desc_and') + " " + @questions.count.to_s + " " + t('news.og_desc_quest', count: @questions.count) 
-                    end
+                @intro_text_plain = t('news.og_description') + " "
+                temp_text_plain = getWeekCountText(@weekly_id, I18n.locale.to_s, "social")
+                if temp_text_plain == ""
+                    @intro_text_plain = ""
                 else
-                    if @questions.count > 0
-                        @intro_text_plain += ", " + @questions.count.to_s + " " + t('news.og_desc_quest', count: @questions.count) 
-                    end
-                    @intro_text_plain += " " + t('news.og_desc_and') + " " + @apps.count.to_s + " " + t('news.og_desc_tool', count: @apps.count) 
+                    @intro_text_plain += temp_text_plain + t('news.og_desc_end') + "."
                 end
-                @intro_text_plain += t('news.og_desc_end') + "."
 
                 # @intro_text_plain += ". General comments for this week: "
                 # @intro_text_plain += Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(@weekly.intro.to_s).strip.gsub(/\(\/user.*?\) /,'').gsub(/&nbsp;/,' ')
@@ -251,7 +245,6 @@ class NewsController < ApplicationController
                 if @wi.first.locale_only
                     @locale_only = true
                 end
-puts "LOCAL_ONLY: " + @locale_only.to_s                
             end
         end
         if @default_text.to_s == ""
@@ -268,7 +261,6 @@ puts "LOCAL_ONLY: " + @locale_only.to_s
         @lang = params[:lang].to_s
         @internal_text = params[:internal_text].to_s
         @locale_only = (params[:locale_only].to_s == "1")
-puts "locale_only: " + @locale_only.to_s        
 
         case params[:button]
         when "save", "return"
@@ -385,6 +377,16 @@ puts "locale_only: " + @locale_only.to_s
         redirect_to root_url(mode: 0)
     end
 
+    def publish_wd
+        Tag.update_all(status: 1)
+        User.update_all(status: 1)
+        User.find(113).update_attributes(status: 0) rescue nil
+        @weekly = Weekly.find(params[:id])
+        @weekly.update_attributes(status: 1)
+        @weekly.posts.where(lang: ["", nil, I18n.locale.to_s]).update_all(status: 1)
+        redirect_to root_url
+    end
+
     def add_post
         @heading = t('general.title')
         @heading_short = t('general.title_short')
@@ -408,6 +410,29 @@ puts "locale_only: " + @locale_only.to_s
         respond_to do |format|
             format.html { render layout: "application3", template: "news/edit_post" }
         end
+    end
+
+    def add_lang_post
+        @post = Post.find(params[:post_id])
+        @new_post = Post.new(
+            category: @post.category.to_s,
+            description: @post.description.to_s,
+            lang: I18n.locale.to_s,
+            media_type: @post.media_type.to_s,
+            media_url: @post.media_url.to_s,
+            post_date: @post.post_date.to_s,
+            title: @post.title.to_s,
+            url: @post.url.to_s,
+            weekly_id: @post.weekly_id,
+            user_id: @post.user_id,
+            author_id: current_user,
+            status: 0)
+        @new_post.save
+        @post.posting_tags.each do |pt|
+            @new_post.posting_tags.new(tag_id: pt.tag_id).save
+        end
+
+        redirect_to edit_post_url(id: params[:id], post_id: @new_post.id, post: params[:post])
     end
 
     def edit_post
@@ -444,8 +469,15 @@ puts "locale_only: " + @locale_only.to_s
         case params[:button].to_s
         when "save", "publish"
 
-            if User.find_by_name(params[:user]).nil?
-                flash[:warning] = "Please add a valid author!"
+            if User.find_by_name(params[:user]).nil? || 
+                    params[:post_date].to_s == ""
+                if User.find_by_name(params[:user]).nil?
+                    flash[:warning] = "Please add a valid author!"
+                elsif params[:post_date].to_s == ""
+                    flash[:warning] = "Please enter a valid date!"
+                else
+                    flash[:warning] = "Unknown error - please check your inputs!"
+                end                    
 
                 @heading = t('general.title')
                 @heading_short = t('general.title_short')

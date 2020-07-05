@@ -3,11 +3,14 @@
     	<%= l(week3["release"], format: :long, my_day: ordinalize_number(week3["release"].day, I18n.locale.to_s)) %>
     </a>
     <br>
-    <span><%= (week3.posts.where(category: "info").where(lang: ["", nil, I18n.locale.to_s]).count).to_s + " " + t('news.post', count: week3.posts.where(category: "info").where(lang: ["", nil, I18n.locale.to_s]).count) + 
-        (week3.posts.where(category: "question").where(lang: ["", nil, I18n.locale.to_s]).count == 0 ? "" : ", " + (week3.posts.where(category: "question").where(lang: ["", nil, I18n.locale.to_s]).count).to_s + " " + t('news.question', count: week3.posts.where(category: "question").where(lang: ["", nil, I18n.locale.to_s]).count)) +
-        (week3.weekly_apps.count == 0 ? "" : ", " + week3.weekly_apps.count.to_s + " " + t('news.tool', count: week3.weekly_apps.count)) + 
-        (Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(week3["intro"].to_s).scan(/<li>/).length == 0 ? "" : ", " + Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(week3["intro"].to_s).scan(/<li>/).length.to_s + " " + t('news.talking_point', count: Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(week3["intro"].to_s).scan(/<li>/).length)) %></span> - 
-    <a href="/<%= I18n.locale.to_s %>/weekly/<%= week3["release"].to_s + view_mode %>" onmousedown="$('#stats_target').val('weekly');$('#stats_target_id').val('<%= week3.id %>');$('#stats_form').submit();"><%= t('general.read_more') %></a>
+
+    <span>
+        <%= getWeekCountText(week3.id, I18n.locale.to_s, "default") %>
+    </span> -
+    <a href="/<%= I18n.locale.to_s %>/weekly/<%= week3["release"].to_s + view_mode %>" 
+            onmousedown="$('#stats_target').val('weekly');$('#stats_target_id').val('<%= week3.id %>');$('#stats_form').submit();">
+        <%= t('general.read_more') %>
+    </a>
     <%  if logged_in? %>
             <br><span style="font-size: 12px;"><em>Tasks: &nbsp;
                 <%= link_to add_post_url(id: week3.id, post: "info") do %><i class="fa fa-plus" aria-hidden="true"></i> add Noteworthy Information<% end %>
@@ -31,6 +34,8 @@
                     end %>
                 &nbsp;&nbsp;
                 <%= link_to edit_wd_url(id: week3.id) do %><i class="fa fa-pencil" aria-hidden="true"></i> edit Statistics<% end %>
+                &nbsp;&nbsp;
+                <%= link_to publish_wd_url(id: week3.id) do %><i class="fa fa-diamond" aria-hidden="true"></i> Publish<% end %>
             </em></span>
     <% end %>
 
