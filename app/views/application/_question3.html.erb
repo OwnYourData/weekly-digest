@@ -7,9 +7,9 @@
             </div>
             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel">
                 <% if controller_name == "news" %>
-                        <li><span class="dropdown-text"><%= t('news.posted_on', date: l(question3.post_date, format: :short)) %></span></li>
+                        <li><span class="dropdown-text"><%= t('news.posted_on', date: l(question3.post_date || Date.today, format: :short)) %></span></li>
                 <% else %>
-                        <li><a href="/<%= I18n.locale.to_s %>/weekly/<%= Weekly.find(question3.weekly_id).release.to_s + view_mode %>"><%= t('news.posted_on', date: l(question3.post_date, format: :short)) %></a></li>
+                        <li><a href="/<%= I18n.locale.to_s %>/weekly/<%= Weekly.find(question3.weekly_id).release.to_s + view_mode %>"><%= t('news.posted_on', date: l(question3.post_date || Date.today, format: :short)) %></a></li>
                 <% end %>
                 <% if controller_name.to_s != "users" %>
                         <li><a href="/<%= I18n.locale.to_s %>/user/<%= question3.user_id.to_s + view_mode %>"><%= t('news.posted_by', user: User.find(question3.user_id).name) %></a></li>

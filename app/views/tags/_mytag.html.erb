@@ -1,4 +1,7 @@
 <li>
 	<a href="/tag/<%= mytag.id.to_s + view_mode %>" onmousedown="$('#stats_target').val('tag');$('#stats_target_id').val('<%= mytag.id.to_s %>');$('#stats_form').submit();">#<%= mytag.tag.to_s %></a> 
 	<span style="color: gray;">(<%= mytag.posting_tags.count + mytag.app_tags.count %>)</span>
+	<% if logged_in? %>
+			<%= link_to destroy_tag_url(id: mytag.id) do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
+	<% end %>
 </li>

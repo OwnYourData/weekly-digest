@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @heading.to_s %></title>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','<%= ENV["GOOGLE_TOKEN"] %>');</script>
+    <%= stylesheet_link_tag    'application', media: 'all' %> <!--, 'data-turbolinks-track': 'reload' % > -->
+    <%= javascript_include_tag 'application' %> <!--, 'data-turbolinks-track': 'reload' % > -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% if !@og.nil? %>
+      <meta property="og:title" content="<%= @heading.to_s %>" />
+      <meta property="og:url" content="https://weekly-digest.ownyourdata.eu/weekly/<%= @og_date %>" />
+      <meta property="og:type"  content="blog" />
+      <meta property="og:image" content="<%= image_url 'MyDataLogo.png' %>" />
+      <meta property="og:description" content="<%= @intro_text_plain %>" />
+    <% end %>
+  </head>
+
+  <body data-spy="scroll" data-target="#myScrollspy" data-offset="15">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= ENV["GOOGLE_TOKEN"] %>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>

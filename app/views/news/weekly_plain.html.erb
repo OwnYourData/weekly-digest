@@ -1,0 +1,285 @@
+<%= form_with url: stats_path, id: "stats_form" do |form| %>
+    <%= form.hidden_field :stats_source, value: "weekly" %>
+    <%= form.hidden_field :stats_source_id, value: @weekly_id %>
+    <%= form.hidden_field :stats_target %>
+    <%= form.hidden_field :stats_target_id %>
+<div class="row">
+    <div class="col-sm-12">
+<script type="text/javascript">
+    document.getElementById('org_block').onmousedown = function(e){
+        $('#stats_target').val("org_block <%= I18n.locale %>: ".concat(e.target.innerHTML).concat(': ').concat(e.target.href));
+        $('#stats_form').submit();
+    }
+</script>
+    	<div style="margin-top:40px;">
+    		<div class="section">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                <%= t('news.noteworthy_information') %>
+            </div>
+    		<div class="section-sub hidden-xs"><%= @posts.count.to_s %> <%= t('news.post', count: @posts.count ) %></div>
+            <%  if logged_in? %>
+                    <span style="font-size: 12px;">
+                        <%= link_to add_post_url(id: @weekly_id, post: "info") do %><i class="fa fa-plus" aria-hidden="true"></i> add post<% end %>
+                    </span>
+            <% end %>
+    	</div>
+        <%= render partial: "post3", collection: @posts.sort_by { |item| item["post_date"] || Date.parse("1970-01-01") } %>
+
+        <% if @questions.count > 0 %>
+            <div class="visible-xs text-right">
+                <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> <%= t('general.menu') %></a>
+            </div>
+            <hr id="question" style="margin-top: 30px;">
+            <div style="margin-top:40px;">
+                <div class="section">
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                    <%= t('news.questions_asked') %>
+                </div>
+                <div class="section-sub hidden-xs"><%= @questions.count.to_s %> <%= t('news.post', count: @questions.count ) %></div>
+                <%  if logged_in? %>
+                        <span style="font-size: 12px;">
+                            <%= link_to add_post_url(id: @weekly_id, post: "question") do %><i class="fa fa-plus" aria-hidden="true"></i> add post<% end %>
+                        </span>
+                <% end %>
+            </div>
+            <%= render partial: "question3", collection: @questions.sort_by { |item| item["post_date"] || Date.parse("1970-01-01") } %>
+        <% end %> 
+
+        <% if @apps.count > 0 %>
+            <div class="visible-xs text-right">
+                <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> <%= t('general.menu') %></a>
+            </div>
+            <hr id="apps" style="margin-top: 30px;">
+            <div style="margin-top:40px;">
+                <div class="section">
+                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                    <%= t('news.tool', count: 2) %>
+                </div>
+                <div class="section-sub hidden-xs"><%= @apps.count.to_s %> <%= t('news.entry', count: @apps.count) %></div>
+            </div>
+            <%= render partial: "app3", collection: @apps.sort_by { |item| item["post_date"] || Date.parse("1970-01-01") } %>
+        <% end %>
+
+        <div class="visible-xs text-right">
+            <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> <%= t('general.menu') %></a>
+        </div>
+        <hr id="internals" style="margin-top: 30px;">
+        <div style="margin-top:40px;">
+            <div class="section">
+                <i class="fa fa-commenting" aria-hidden="true"></i>
+                <%= t('news.mydata_internals') %>
+                <%  if logged_in?
+                        if I18n.locale.to_s == "en" %>
+                            <span style="font-size: 12px;">
+                                <%= link_to edit_mdi_url(id: @weekly_id) do %><i class="fa fa-pencil" aria-hidden="true"></i> edit<% end %>
+                            </span>
+                    <%  else
+                            if WeeklyInternal.where(lang: I18n.locale.to_s, weekly_id: @weekly_id).count == 0 %>
+                                <span style="font-size: 12px;">
+                                    <%= link_to new_mdi_url(id: @weekly_id) do %><i class="fa fa-plus" aria-hidden="true"></i> add translation<% end %>
+                                </span>
+                        <%  else %>
+                                <span style="font-size: 12px;">
+                                    <%= link_to edit_mdi_url(id: @weekly_id) do %><i class="fa fa-pencil" aria-hidden="true"></i> edit<% end %>
+                                </span>
+                        <%  end
+                        end %>
+                <% end %>
+            </div>
+            <div class="weekly-intro" id="intro_block">
+                <%= @intro_text.html_safe %>
+            </div>
+<script type="text/javascript">
+    document.getElementById('intro_block').onmousedown = function(e){
+        $('#stats_target').val("internal: ".concat(e.target.innerHTML).concat(': ').concat(e.target.href));
+        $('#stats_form').submit();
+    }
+</script>
+        </div>
+
+        <div class="visible-xs text-right">
+            <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> <%= t('general.menu') %></a>
+        </div>
+
+        <hr id="events" style="margin-top: 30px;">
+        <div style="margin-top:40px;">
+            <div class="section">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                <%= t('news.upcoming_events') %>
+            </div>
+            <div class="section-sub hidden-xs"><%= @events.count.to_s %> <%= t('news.entry', count: @events.count) %></div>
+        </div>
+        <div class="weekly-intro">
+            <%= t('news.calendar_description').html_safe %>            
+        </div>
+        <ul>
+            <%= render partial: "event2", collection: @events %>
+        </ul>
+
+        <div class="visible-xs text-right">
+            <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> <%= t('general.menu') %></a>
+        </div>
+        <hr id="stats" style="margin-top: 30px;">
+        <div style="margin-top:40px;">
+            <div class="section">
+                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                <%= t('news.statistic.title') %>
+                <%  if logged_in? %>
+                        <span style="font-size: 12px;">
+                            <%= link_to edit_wd_url(id: @weekly_id) do %><i class="fa fa-pencil" aria-hidden="true"></i> edit Statistics<% end %>
+                        </span>
+                <% end %>
+            </div>
+        </div>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-xs-3 control-label statistic post-text"><%= t('news.statistic.user') %>:</label>
+                <div class="col-xs-9 statistic post-text"><strong><%= @users %></strong> (<%= @new_users %> new)</div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label statistic post-text"><%= t('news.statistic.channels') %>:</label>
+                <div class="col-xs-9 statistic post-text" style="line-height: 1.5em;"><strong><%= @channels %></strong> (<%= @monitored_channels %> <%= t('news.statistic.channels_monitored') %><% if @monitored_channel_names.to_s != ""%>: <%= @monitored_channel_names %><% end %>)</div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label statistic post-text"><%= t('news.statistic.postings') %>:</label>
+                <div class="col-xs-9 statistic post-text"><strong><%= @postings %></strong></div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label statistic post-text"><%= t('news.statistic.thank_you_label').html_safe %>:</label>
+                <div class="col-xs-9 statistic post-text"><strong><%= @thanks %> <%= t('news.statistic.thank_you_verb') %> <%= @thanked %></strong></div>
+            </div>
+        </div>
+        <div class="visible-xs text-right">
+            <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> <%= t('general.menu') %></a>
+        </div>
+
+    </div>
+</div>
+<% end %>
+
+<div class="modal fade" id="addTagModal" tabindex="-1" role="dialog" aria-labelledby="detailsHeader">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <%= form_with url: add_tag_path, remote:false, local: true do |form| %>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="detailsHeader">Add Tag</h4>
+                </div>
+                <div class="modal-body">
+                    <%= form.hidden_field :tag_post_id %>
+                    <div class="field autocomplete" style="width: 100%;">
+                        <%= form.label :tag %>
+                        <%= form.text_field :tag, style: "margin-bottom: 0px;" %>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div class="modal-footer">
+                    <%= form.button "Create", class: "btn btn-success" %>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var tag_names = <%= Tag.pluck(:tag).to_json.html_safe %>;
+
+    function autocomplete(inp, arr) {
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+              b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+    });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+} 
+autocomplete(document.getElementById("tag"), tag_names);
+</script>

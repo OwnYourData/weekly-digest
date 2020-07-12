@@ -62,6 +62,15 @@ class NewsController < ApplicationController
         redirect_to weekly_path(Weekly.where(status: 1).last.release.to_s)
     end
 
+    def plain
+        if I18n.locale.to_s == "en"
+            my_date = Weekly.where(status: 1).last.release.to_s rescue nil
+        else
+            my_date = WeeklyInternal.where(lang: I18n.locale.to_s, locale_only: true).last.weekly.release.to_s rescue Weekly.where(status: 1).last.release.to_s
+        end
+        redirect_to weekly_path(id: my_date, plain: "true")
+    end
+
     def weekly
         my_date = Date.parse(params[:id]) rescue nil
 
@@ -183,34 +192,43 @@ class NewsController < ApplicationController
             end
         end
 
-        case params[:view].to_s
-        when "0"
-        when "2"
-            respond_to do |format|
-                format.html { render layout: "application2", template: "news/weekly2"}
-            end
-        when "3"
-            respond_to do |format|
-                format.html { render layout: "application2", template: "news/weekly3"}
-            end
-        when "4"
+        if params[:plain].to_s == "true"
             @heading = t('news.page_header', :date => l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s)))
             @heading_short = t('general.title_short') + ": " + l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s))
 
-            @it = WeeklyInternal.where(weekly_id: @weekly_id, lang: I18n.locale.to_s)
-            if @it.count > 0
-                @intro_text = markdown.render(@it.first.intro.to_s)
-            end
-
             respond_to do |format|
-                format.html { render layout: "application3", template: "news/weekly4"}
+                format.html { render layout: "application_plain", template: "news/weekly_plain"}
             end
         else
-            @heading = t('news.page_header', :date => l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s)))
-            @heading_short = t('general.title_short') + ": " + l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s))
+            case params[:view].to_s
+            when "0"
+            when "2"
+                respond_to do |format|
+                    format.html { render layout: "application2", template: "news/weekly2"}
+                end
+            when "3"
+                respond_to do |format|
+                    format.html { render layout: "application2", template: "news/weekly3"}
+                end
+            when "4"
+                @heading = t('news.page_header', :date => l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s)))
+                @heading_short = t('general.title_short') + ": " + l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s))
 
-            respond_to do |format|
-                format.html { render layout: "application3", template: "news/weekly4"}
+                @it = WeeklyInternal.where(weekly_id: @weekly_id, lang: I18n.locale.to_s)
+                if @it.count > 0
+                    @intro_text = markdown.render(@it.first.intro.to_s)
+                end
+
+                respond_to do |format|
+                    format.html { render layout: "application3", template: "news/weekly4"}
+                end
+            else
+                @heading = t('news.page_header', :date => l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s)))
+                @heading_short = t('general.title_short') + ": " + l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s))
+
+                respond_to do |format|
+                    format.html { render layout: "application3", template: "news/weekly4"}
+                end
             end
         end
     end
@@ -471,49 +489,57 @@ class NewsController < ApplicationController
 
             if User.find_by_name(params[:user]).nil? || 
                     params[:post_date].to_s == ""
+                continue = true
                 if User.find_by_name(params[:user]).nil?
-                    flash[:warning] = "Please add a valid author!"
+                    if params[:user].to_s.strip == ""
+                        flash[:warning] = "Please add a valid author!"
+                    else
+                        User.new(name: params[:user].to_s, status: 1, password:" ", password_confirmation:" ").save
+                        continue = false
+                    end
                 elsif params[:post_date].to_s == ""
                     flash[:warning] = "Please enter a valid date!"
                 else
                     flash[:warning] = "Unknown error - please check your inputs!"
-                end                    
-
-                @heading = t('general.title')
-                @heading_short = t('general.title_short')
-
-                @weekly_id = params[:weekly_id]
-                @post_id = params[:post_id]
-                @post_type = params[:post_type]
-                @post_type_header = ""
-                case @post_type.to_s
-                when "info"
-                    @post_type_header = "Noteworthy Information"
-                when "question"
-                    @post_type_header = "Question"
-                end
-                if @post_id.to_s == ""
-                    @post_id = nil
-                    @task = "Create"
-                    @slack_url = nil
-                    @post_date = nil
-                    @user = nil
-                else
-                    @task = "Edit"
-                    @post = Post.find(@post_id)
-                    @slack_url = @post.media_url
-                    @post_date = @post.post_date
-                    @description = @post.description
-                    @lang = @post.lang
-                    @title = @post.title
-                    @url = @post.url
-                    @user = User.find(@post.user_id).name.to_s
                 end
 
-                respond_to do |format|
-                    format.html { render layout: "application3", template: "news/edit_post" }
+                if continue
+                    @heading = t('general.title')
+                    @heading_short = t('general.title_short')
+
+                    @weekly_id = params[:weekly_id]
+                    @post_id = params[:post_id]
+                    @post_type = params[:post_type]
+                    @post_type_header = ""
+                    case @post_type.to_s
+                    when "info"
+                        @post_type_header = "Noteworthy Information"
+                    when "question"
+                        @post_type_header = "Question"
+                    end
+                    if @post_id.to_s == ""
+                        @post_id = nil
+                        @task = "Create"
+                        @slack_url = nil
+                        @post_date = nil
+                        @user = nil
+                    else
+                        @task = "Edit"
+                        @post = Post.find(@post_id)
+                        @slack_url = @post.media_url
+                        @post_date = @post.post_date
+                        @description = @post.description
+                        @lang = @post.lang
+                        @title = @post.title
+                        @url = @post.url
+                        @user = User.find(@post.user_id).name.to_s
+                    end
+
+                    respond_to do |format|
+                        format.html { render layout: "application3", template: "news/edit_post" }
+                    end
+                    return
                 end
-                return
             end
 
             status = 0
@@ -564,7 +590,16 @@ class NewsController < ApplicationController
         if @post.nil?
             redirect_to root_url
         end
-        PostingTag.new(post_id: @post.id, tag_id: Tag.find_by_tag(params[:tag].to_s).id).save
+        @tag = Tag.find_by_tag(params[:tag].to_s)
+        if @tag.nil?
+            if params[:tag].to_s.strip == ""
+                redirect_to weekly_url(id: Weekly.find(weekly_id).release, mode: 0)
+                return
+            end
+            @tag = Tag.new(tag: params[:tag].to_s, status: 1)
+            @tag.save
+        end
+        PostingTag.new(post_id: @post.id, tag_id: @tag.id).save
         weekly_id = @post.weekly_id
         redirect_to weekly_url(id: Weekly.find(weekly_id).release, mode: 0)
 

@@ -111,4 +111,15 @@ class TagsController < ApplicationController
 	        end
         end
 	end
+
+	def destroy
+		tag_id = params[:id]
+		@tag = Tag.find(tag_id)
+		if !@tag.nil?
+			if (@tag.posting_tags.count + @tag.app_tags.count + @tag.source_tags.count) == 0
+				@tag.destroy
+			end
+		end
+		redirect_to tags_path
+	end
 end

@@ -9,7 +9,7 @@
                 <% if controller_name == "news" %>
                         <li><span class="dropdown-text"><%= t('news.posted_on', date: l(post3.post_date || Date.today, format: :short)) %></span></li>
                 <% else %>
-                        <li><a href="/<%= I18n.locale.to_s %>/weekly/<%= Weekly.find(post3.weekly_id).release.to_s + view_mode %>"><%= t('news.posted_on', date: l(post3.post_date, format: :short)) %></a></li>
+                        <li><a href="/<%= I18n.locale.to_s %>/weekly/<%= Weekly.find(post3.weekly_id).release.to_s + view_mode %>"><%= t('news.posted_on', date: l(post3.post_date || Date.today, format: :short)) %></a></li>
                 <% end %>
                 <% if controller_name.to_s != "users" %>
                         <li><a href="/<%= I18n.locale.to_s %>/user/<%= post3.user_id.to_s + view_mode %>"><%= t('news.posted_by', user: User.find(post3.user_id).name) %></a></li>
