@@ -117,4 +117,15 @@ class UsersController < ApplicationController
             end
         end
     end
+
+    def destroy
+        user_id = params[:id]
+        @user = User.find(user_id)
+        if !@user.nil?
+            if (@user.posts.count + @user.weekly_apps.count + @user.apps.count + @user.sources.count) == 0
+                @user.destroy
+            end
+        end
+        redirect_to users_path
+    end    
 end

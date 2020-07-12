@@ -15,6 +15,7 @@ Rails.application.routes.draw do
         match '/news',          to: 'news#index',               via: 'get'
         match '/weekly/:id',    to: 'news#weekly',              via: 'get', as: "weekly"
         match '/current',       to: 'news#current',             via: 'get'
+        match '/plain',         to: 'news#plain',               via: 'get'
         match '/users',         to: 'users#index',              via: 'get'
         match '/user/:id',      to: 'users#show',               via: 'get'
         match '/tags',          to: 'tags#index',               via: 'get'
@@ -39,6 +40,8 @@ Rails.application.routes.draw do
         match '/post_submit',   to: 'news#update_post',         via: 'post'
         match '/add_tag',       to: 'news#add_tag',             via: 'post'
         match '/delete_tag',    to: 'news#delete_tag',          via: 'get'
+        match '/destroy_tag',   to: 'tags#destroy',             via: 'get'
+        match '/destroy_user',  to: 'users#destroy',            via: 'get'
     end  
   
     match '/stats',        to: 'stats#index', via: 'get'
