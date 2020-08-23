@@ -28,7 +28,7 @@
                     if Post.where(lang: I18n.locale.to_s, id: question3.id).count == 0 %>
                         <span style="font-size: 12px;">
                             <%= link_to edit_post_url(id: @weekly_id, post_id: question3.id, post: "question") do %><i class="fa fa-pencil" aria-hidden="true"></i> edit<% end %> &nbsp;
-                            <%= link_to add_lang_post_url(id: @weekly_id, post_id: question3.id, post: "question") do %><i class="fa fa-plus" aria-hidden="true"></i> add tranlation<% end %>
+                            <%= link_to add_lang_post_url(id: @weekly_id, post_id: question3.id, post: "question") do %><i class="fa fa-plus" aria-hidden="true"></i> add translation<% end %>
                         </span>
                 <%  else %>
                         <span style="font-size: 12px;">
@@ -37,14 +37,6 @@
                 <%  end
                 end
             end %>     
-
-
-
-
-
-
-
-
     </div>
     <div class="post-text">
         <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(question3.description.to_s).html_safe %>

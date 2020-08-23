@@ -59,7 +59,7 @@ class NewsController < ApplicationController
     end
 
     def current
-        redirect_to weekly_path(Weekly.where(status: 1).last.release.to_s)
+        redirect_to weekly_path(id: Weekly.where(status: 1).last.release.to_s)
     end
 
     def plain
