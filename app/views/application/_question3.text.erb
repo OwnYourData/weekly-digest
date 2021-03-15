@@ -1,0 +1,9 @@
+<div class="quest-elements">
+    <p style="font-size:28px"><a href="<%= question3.url %>" target="_blank" style="color: #16c1f3;"><%= question3.title %></a></p>
+    <div class="post-text" style="text-align: justify;">
+        <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(question3.description.to_s).html_safe %>
+    </div>
+    <div class="post-tags">
+		<p style="font-size:12px;"><%= render partial: "tag2", locals:{stats_source: "post", stats_source_id: question3.id}, collection: question3.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %></p>
+    </div>
+</div>

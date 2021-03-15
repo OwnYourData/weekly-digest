@@ -2,7 +2,7 @@
 #
 # Table name: posts
 #
-#  id          :bigint(8)        not null, primary key
+#  id          :integer          not null, primary key
 #  category    :string
 #  description :text
 #  lang        :string

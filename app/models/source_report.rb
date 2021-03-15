@@ -2,7 +2,7 @@
 #
 # Table name: source_reports
 #
-#  id         :bigint(8)        not null, primary key
+#  id         :integer          not null, primary key
 #  comment    :text
 #  name       :string
 #  created_at :datetime         not null

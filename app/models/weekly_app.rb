@@ -2,7 +2,7 @@
 #
 # Table name: weekly_apps
 #
-#  id          :bigint(8)        not null, primary key
+#  id          :integer          not null, primary key
 #  description :text
 #  media_type  :string
 #  media_url   :string

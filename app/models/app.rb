@@ -2,7 +2,7 @@
 #
 # Table name: apps
 #
-#  id                :bigint(8)        not null, primary key
+#  id                :integer          not null, primary key
 #  available_since   :string
 #  description       :text
 #  image_url         :string

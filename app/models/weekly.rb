@@ -2,7 +2,7 @@
 #
 # Table name: weeklies
 #
-#  id                      :bigint(8)        not null, primary key
+#  id                      :integer          not null, primary key
 #  channels                :integer
 #  intro                   :text
 #  monitored_channel_names :text

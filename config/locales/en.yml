@@ -12,6 +12,8 @@ en:
     start_page: "Start Page"
     to_start_page: "to Start Page"
     to_top: "back to top"
+    show_more: "show more"
+    show_less: "show less"
   footer:
     language: "Language"
     imprint: "Imprint"
@@ -90,6 +92,7 @@ en:
     french_translation: "French Translation"
     german_translation: "German Translation"
     portuguese_translation: "Portuguese Translation"
+    polish_translation: "Polish Translation"
     design: "Design"
     website: "website"
     twitter: "Twitter"

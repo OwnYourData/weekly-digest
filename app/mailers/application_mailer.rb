@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default from: 'MyData Weekly Digest <weekly-digest@ownyourdata.eu>'
   layout 'mailer'
 end

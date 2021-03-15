@@ -26,11 +26,11 @@
             <div style="display: table;">
               <a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" style="display: table-cell;"><%= image_tag 'oyd2.png', style: "height: 60px; margin: -20px -5px -10px -10px; vertical-align: text-bottom;" %></a>
               <div style="display: table-cell;">
-                <h1 class="visible-xs visible-sm hidden-md hiden-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large; padding-right: 190px;"><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" class="title-link"><%= @heading_short.to_s %></a></h1>
+                <h1 class="visible-xs visible-sm hidden-md hiden-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large;"><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" class="title-link"><%= @heading_short.to_s %></a></h1>
                 <h1 class="hidden-xs hidden-sm visible-md visible-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large;"><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" class="title-link"><%= @heading.to_s %></a></h1>
               </div>
             </div>
-            <div style="float: right; white-space: nowrap; margin-top: -28px;">
+            <div style="float: right; white-space: nowrap;">
                 <% if logged_in?
                        if params[:mode].to_s == "0" %>
                           <%= link_to "Preview Mode", params.permit(:locale, :view, :id, :post), style: "vertical-align: top; color: #666;" %>
@@ -60,6 +60,7 @@
                   <li><%= link_to "한국어", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'ko') %></li>
                   <li><%= link_to "Magyar", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'hu') %></li>
                   <li><%= link_to "日本語", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'jp') %></li>
+                  <li><%= link_to "Polski", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'pl') %></li>
                   <li><%= link_to "Português", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'pt') %></li>
                   <li><%= link_to "中文（台灣)", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'tw') %></li>
                 </ul>
@@ -94,7 +95,7 @@
     <hr style="margin-top: 0;">
     <div class="container">
       <%= yield %>
-      <% if controller_name != "static_pages" %>
+      <% if controller_name != "static_pages" && controller_name != "subscriptions" %>
         <div class="row" style="margin-top: 40px;">
           <div class="col-md-12">
             <p><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('start_page');$('#stats_target_id').val('0');$('#stats_form').submit();" style="margin-left: 15px;"><i class="fa fa-home" aria-hidden="true"></i> <%= t('general.to_start_page') %></a></p>

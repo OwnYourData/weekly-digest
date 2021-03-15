@@ -71,6 +71,15 @@ class NewsController < ApplicationController
         redirect_to weekly_path(id: my_date, plain: "true")
     end
 
+    def plain_html
+        if I18n.locale.to_s == "en"
+            my_date = Weekly.where(status: 1).last.release.to_s rescue nil
+        else
+            my_date = WeeklyInternal.where(lang: I18n.locale.to_s, locale_only: true).last.weekly.release.to_s rescue Weekly.where(status: 1).last.release.to_s
+        end
+        redirect_to weekly_path(id: my_date, plain: "html")
+    end
+
     def weekly
         my_date = Date.parse(params[:id]) rescue nil
 
@@ -161,17 +170,17 @@ class NewsController < ApplicationController
                 @thanks = @weekly.thanks
                 @thanked = @weekly.thanked
 
-                service = Google::Apis::CalendarV3::CalendarService.new
-                service.client_options.application_name = 'Google Calendar API Ruby Quickstart'
-                service.authorization = authorize
+                # service = Google::Apis::CalendarV3::CalendarService.new
+                # service.client_options.application_name = 'Google Calendar API Ruby Quickstart'
+                # service.authorization = authorize
 
-                @events = service.list_events(
-                    ENV['CALENDAR_ID'].to_s,
-                    max_results: 40,
-                    single_events: true,
-                    order_by: 'startTime',
-                    time_min: (my_date + 1.day).to_datetime.utc.iso8601,
-                    time_max: (my_date + 8.days).to_datetime.utc.iso8601).items rescue []
+                @events = [] #service.list_events(
+                    # ENV['CALENDAR_ID'].to_s,
+                    # max_results: 40,
+                    # single_events: true,
+                    # order_by: 'startTime',
+                    # time_min: (my_date + 1.day).to_datetime.utc.iso8601,
+                    # time_max: (my_date + 8.days).to_datetime.utc.iso8601).items rescue []
 
                 # @events.each do |event|
                 #     start = event.start.date || event.start.date_time
@@ -192,13 +201,16 @@ class NewsController < ApplicationController
             end
         end
 
-        if params[:plain].to_s == "true"
+        case params[:plain].to_s
+        when "true"
             @heading = t('news.page_header', :date => l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s)))
             @heading_short = t('general.title_short') + ": " + l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s))
 
             respond_to do |format|
                 format.html { render layout: "application_plain", template: "news/weekly_plain"}
             end
+        when "html"
+            render layout: false, formats: :text, template: "news/weekly_html", content_type: 'text/plain'
         else
             case params[:view].to_s
             when "0"
@@ -225,9 +237,9 @@ class NewsController < ApplicationController
             else
                 @heading = t('news.page_header', :date => l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s)))
                 @heading_short = t('general.title_short') + ": " + l(my_date, format: :long, my_day: ordinalize_number(my_date.day, I18n.locale.to_s))
-
                 respond_to do |format|
                     format.html { render layout: "application3", template: "news/weekly4"}
+                    format.js {render inline: "location.reload();" }
                 end
             end
         end
@@ -350,18 +362,32 @@ class NewsController < ApplicationController
         case params[:button].to_s
         when "save"
             if params[:weekly_id].to_s == ""
-                @weekly = Weekly.new(
-                    status: 0,
-                    release: params[:release].to_s,
-                    users: params[:users].to_i,
-                    new_users: params[:new_users].to_i,
-                    channels: params[:channels].to_i,
-                    postings: params[:postings].to_i,
-                    thanks: params[:thanks].to_i,
-                    thanked: params[:thanked].to_i,
-                    monitored_channels: params[:monitored_channels].to_i,
-                    monitored_channel_names: params[:monitored_channel_names].to_s)
-                @weekly.save
+                @weekly = Weekly.find_by_release(params[:release].to_s)
+                if @weekly.nil?
+                    @weekly = Weekly.new(
+                        status: 0,
+                        release: params[:release].to_s,
+                        users: params[:users].to_i,
+                        new_users: params[:new_users].to_i,
+                        channels: params[:channels].to_i,
+                        postings: params[:postings].to_i,
+                        thanks: params[:thanks].to_i,
+                        thanked: params[:thanked].to_i,
+                        monitored_channels: params[:monitored_channels].to_i,
+                        monitored_channel_names: params[:monitored_channel_names].to_s)
+                    @weekly.save
+                else
+                    @weekly.update_attributes(
+                        release: params[:release].to_s,
+                        users: params[:users].to_i,
+                        new_users: params[:new_users].to_i,
+                        channels: params[:channels].to_i,
+                        postings: params[:postings].to_i,
+                        thanks: params[:thanks].to_i,
+                        thanked: params[:thanked].to_i,
+                        monitored_channels: params[:monitored_channels].to_i,
+                        monitored_channel_names: params[:monitored_channel_names].to_s)
+                end                    
             else
                 @weekly = Weekly.find(params[:weekly_id])
                 @weekly.update_attributes(

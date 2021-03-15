@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div style="margin-top:40px;">
+            <p style="font-size:35px"><strong><%= t('news.noteworthy_information') %></strong></p>
+            <p><%= @posts.count.to_s %> <%= t('news.post', count: @posts.count ) %></p>
+        </div>
+        <%= render partial: "post3", collection: @posts.sort_by { |item| item["post_date"] || Date.parse("1970-01-01") } %>
+
+        <% if @questions.count > 0 %>
+            <hr id="question" style="margin-top: 30px;">
+            <div style="margin-top:40px;">
+                <p style="font-size:35px"><strong><%= t('news.questions_asked') %></strong></p>
+                <p><%= @questions.count.to_s %> <%= t('news.post', count: @questions.count ) %></p>
+            </div>
+            <%= render partial: "question3", collection: @questions.sort_by { |item| item["post_date"] || Date.parse("1970-01-01") } %>
+        <% end %> 
+
+        <% if @apps.count > 0 %>
+            <hr id="apps" style="margin-top: 30px;">
+            <div style="margin-top:40px;">
+                <p style="font-size:35px"><strong><%= t('news.tool', count: 2) %></strong></p>
+                <p><%= @apps.count.to_s %> <%= t('news.entry', count: @apps.count) %></p>
+            </div>
+            <%= render partial: "app3", collection: @apps.sort_by { |item| item["post_date"] || Date.parse("1970-01-01") } %>
+        <% end %>
+
+        <hr id="internals" style="margin-top: 30px;">
+        <div style="margin-top:40px;">
+            <p style="font-size:35px"><strong><%= t('news.mydata_internals') %></strong></p>
+            <%= @intro_text.html_safe %>
+        </div>
+    </div>
+</div>

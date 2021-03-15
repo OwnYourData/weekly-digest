@@ -2,7 +2,7 @@
 #
 # Table name: tags
 #
-#  id         :bigint(8)        not null, primary key
+#  id         :integer          not null, primary key
 #  group      :string
 #  status     :integer
 #  tag        :string

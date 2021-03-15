@@ -43,6 +43,8 @@ de:
     start_page: "Startseite"
     to_start_page: "zur Startseite"
     to_top: "zurück nach oben"
+    show_more: "mehr anzeigen"
+    show_less: "weniger anzeigen"
   footer:
     imprint: "Impressum"
     privacy: "Privatsphäre"

@@ -48,11 +48,14 @@ gem 'psych', '~> 2.2.1'
 gem 'yaml_db'
 gem 'devise'
 gem 'ace-rails-ap'
+gem 'bootstrap-email'
+gem 'mailgun-ruby', '~>1.1.6'
 
 # update for security fixes
 gem 'loofah', '~> 2.3', '>= 2.3.1'
 
 group :development, :test do
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

@@ -2,7 +2,7 @@
 #
 # Table name: rating_items
 #
-#  id         :bigint(8)        not null, primary key
+#  id         :integer          not null, primary key
 #  group      :string
 #  info_url   :string
 #  string     :string

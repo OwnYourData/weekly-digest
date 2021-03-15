@@ -2,7 +2,7 @@
 #
 # Table name: weekly_internals
 #
-#  id          :bigint(8)        not null, primary key
+#  id          :integer          not null, primary key
 #  intro       :text
 #  lang        :string
 #  locale_only :boolean          default(FALSE)

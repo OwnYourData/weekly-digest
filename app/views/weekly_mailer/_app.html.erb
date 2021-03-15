@@ -1,0 +1,6 @@
+<p><strong><a href="https://weekly-digest.ownyourdata.eu/<%= @lang.to_s %>/tool/<%= app.app_id %>"><%= App.find(app.app_id).title %></a></p>
+<p><%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(app.description.to_s).html_safe %></p>
+<p style="font-size:14px;">
+    <a style="color: #999999; margin-right: 10px; text-decoration: none;" href="<%= app.media_url.to_s %>">show on Slack</a>
+    <%= render partial: "tag", collection: App.find(app.app_id).app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %></p>
+<p>&nbsp;</p>

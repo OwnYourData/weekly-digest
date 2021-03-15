@@ -2,7 +2,7 @@
 #
 # Table name: source_tags
 #
-#  id         :bigint(8)        not null, primary key
+#  id         :integer          not null, primary key
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  source_id  :integer

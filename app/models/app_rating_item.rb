@@ -2,7 +2,7 @@
 #
 # Table name: app_rating_items
 #
-#  id             :bigint(8)        not null, primary key
+#  id             :integer          not null, primary key
 #  comment        :text
 #  rating         :integer
 #  created_at     :datetime         not null

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 		hal = request.env['HTTP_ACCEPT_LANGUAGE']
 		if hal
 			retval = hal.scan(/^[a-z]{2}/).first
-			if "-en-de-fr-hu-jp-ko-tw-pt-".split(retval).count == 2
+			if "-en-de-fr-hu-jp-ko-tw-pt-pl-".split(retval).count == 2
 				retval
 			else
 				I18n.default_locale

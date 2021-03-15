@@ -1,0 +1,79 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: mail-weekly-digest-cronjob
+spec:
+  schedule: "0 8 * * *"
+  startingDeadlineSeconds: 40
+  concurrencyPolicy: Allow
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: weekly-digest
+            image: oydeu/weekly-digest:latest
+            command: ["rake"]
+            args: ["send_newsletter"]
+            ports:
+            - containerPort: 3000
+            env:
+              - name: LANG
+                value: C.UTF-8
+              - name: RAILS_LOG_TO_STDOUT
+                value: "TRUE"
+              - name: RAILS_SERVE_STATIC_FILES
+                value: "TRUE"
+              - name: RAILS_ENV
+                value: production
+              - name: CALENDAR_ID
+                value: "vndcn3m1dmhve9130flvub9dhg@group.calendar.google.com"
+              - name: DB_HOST
+                value: db-cluster-postgresql.default.svc.cluster.local
+              - name: DB_NAME
+                value: weekly_digest_production
+              - name: DB_USER
+                value: postgres
+              - name: POSTGRES_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: general-secrets
+                    key: db-passwd
+              - name: RAILS_MASTER_KEY
+                valueFrom:
+                  secretKeyRef:
+                    name: weekly-digest-secrets
+                    key: rails-master-key
+              - name: CALENDAR_SECRET
+                valueFrom:
+                  secretKeyRef:
+                    name: weekly-digest-secrets
+                    key: calendar-secret
+              - name: CALENDAR_KEY
+                valueFrom:
+                  secretKeyRef:
+                    name: weekly-digest-secrets
+                    key: calendar-key
+              - name: CALENDAR_CODE
+                valueFrom:
+                  secretKeyRef:
+                    name: weekly-digest-secrets
+                    key: calendar-code
+              - name: GOOGLE_TOKEN
+                valueFrom:
+                  secretKeyRef:
+                    name: general-secrets
+                    key: google-token
+              - name: STATS_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: weekly-digest-secrets
+                    key: stats-password
+              - name: MAILGUN_API_KEY
+                valueFrom:
+                  secretKeyRef:
+                    name: weekly-digest-secrets
+                    key: mailgun-api-key
