@@ -424,7 +424,10 @@ class NewsController < ApplicationController
     def publish_wd
         Tag.update_all(status: 1)
         User.update_all(status: 1)
-        User.find(113).update_attributes(status: 0) rescue nil
+        Post.update_all(status: 1)
+        App.update_all(status: 1)
+        WeeklyApp.update_all(status: 1)
+        User.find(113).update_attributes(status: 0)
         @weekly = Weekly.find(params[:id])
         @weekly.update_attributes(status: 1)
         @weekly.posts.where(lang: ["", nil, I18n.locale.to_s]).update_all(status: 1)
@@ -448,6 +451,7 @@ class NewsController < ApplicationController
         @task = "Create"
 
         @slack_url = nil
+        @media_type = nil
         @post_date = nil
         @user = nil
 
@@ -497,6 +501,7 @@ class NewsController < ApplicationController
 
         @post = Post.find(@post_id)
         @slack_url = @post.media_url
+        @media_type = @post.media_type
         @post_date = @post.post_date
         @description = @post.description
         @lang = @post.lang
@@ -547,12 +552,14 @@ class NewsController < ApplicationController
                         @post_id = nil
                         @task = "Create"
                         @slack_url = nil
+                        @media_type = nil
                         @post_date = nil
                         @user = nil
                     else
                         @task = "Edit"
                         @post = Post.find(@post_id)
                         @slack_url = @post.media_url
+                        @media_type = @post.media_type
                         @post_date = @post.post_date
                         @description = @post.description
                         @lang = @post.lang
@@ -578,7 +585,7 @@ class NewsController < ApplicationController
                     category: params[:post_type].to_s,
                     description: params[:description].to_s,
                     lang: params[:lang].to_s,
-                    media_type: "mydata",
+                    media_type: params[:media_type].to_s,
                     media_url: params[:slack_url].to_s,
                     post_date: params[:post_date],
                     title: params[:title].to_s,
@@ -592,7 +599,7 @@ class NewsController < ApplicationController
                     category: params[:post_type].to_s,
                     description: params[:description].to_s,
                     lang: params[:lang].to_s,
-                    media_type: "mydata",
+                    media_type: params[:media_type].to_s,
                     media_url: params[:slack_url].to_s,
                     post_date: params[:post_date],
                     title: params[:title].to_s,
@@ -646,5 +653,141 @@ class NewsController < ApplicationController
         redirect_to weekly_url(id: Weekly.find(weekly_id).release, mode: 0)
     end
 
+    def current_channels
 
+        render json: {number: Weekly.where(status: 1).last.monitored_channels, channels: Weekly.where(status: 1).last.monitored_channel_names},
+               status: 200
+    end
+
+    def current_internals
+        render json: {text: Weekly.where(status: 1).last.intro},
+               status: 200
+    end
+
+    def add_app
+        @heading = t('general.title')
+        @heading_short = t('general.title_short')
+
+        @weekly_id = params[:id]
+        @app_post_id = nil
+        @task = "Create"
+
+        @slack_url = nil
+        @media_type = nil
+        @post_date = nil
+        @tool = nil
+        @user = nil
+
+        respond_to do |format|
+            format.html { render layout: "application3", template: "news/edit_app_post" }
+        end
+    end
+
+    def edit_app
+        @heading = t('general.title')
+        @heading_short = t('general.title_short')
+
+        @weekly_id = params[:id]
+        @app_post_id = params[:app_post_id]
+        @task = "Edit"
+        @app_post = WeeklyApp.find(@app_post_id)
+        @slack_url = @app_post.media_url
+        @media_type = @app_post.media_type
+        @post_date = @app_post.post_date
+        @description = @app_post.description
+        @user = User.find(@app_post.user_id).name.to_s
+        @tool = App.find(@app_post.app_id).title.to_s
+
+        respond_to do |format|
+            format.html { render layout: "application3", template: "news/edit_app_post" }
+        end
+    end
+
+    def update_app
+        case params[:button].to_s
+        when "save", "publish"
+            if User.find_by_name(params[:user]).nil? || 
+                    App.find_by_title(params[:tool]).nil? ||
+                    params[:post_date].to_s == ""
+                continue = true
+                if User.find_by_name(params[:user]).nil?
+                    if params[:user].to_s.strip == ""
+                        flash[:warning] = "Please add a valid author!"
+                    else
+                        User.new(name: params[:user].to_s, status: 1, password:" ", password_confirmation:" ").save
+                        continue = false
+                    end
+                elsif params[:post_date].to_s == ""
+                    flash[:warning] = "Please enter a valid date!"
+                elsif App.find_by_title(params[:tool]).nil?
+                    flash[:warning] = "Please add an existing tool!"
+                else
+                    flash[:warning] = "Unknown error - please check your inputs!"
+                end
+
+                if continue
+                    @heading = t('general.title')
+                    @heading_short = t('general.title_short')
+
+                    @weekly_id = params[:weekly_id]
+                    @app_post_id = params[:app_post_id]
+                    if @app_post_id.to_s == ""
+                        @app_post_id = nil
+                        @task = "Create"
+                        @slack_url = nil
+                        @media_type = nil
+                        @post_date = nil
+                        @description = params[:description].to_s
+                        @user = params[:user].to_s
+                    else
+                        @task = "Edit"
+                        @app_post = WeeklyApp.find(@app_post_id)
+                        @slack_url = @app_post.media_url
+                        @media_type = @app_post.media_type
+                        @post_date = @app_post.post_date
+                        @description = @app_post.description
+                        @user = User.find(@post.user_id).name.to_s
+                    end
+
+                    respond_to do |format|
+                        format.html { render layout: "application3", template: "news/edit_app_post" }
+                    end
+                    return
+                end
+            end
+
+            status = 0
+            if params[:button].to_s == "publish"
+                status = 1
+            end
+            @app_post = WeeklyApp.find(params[:app_post_id]) rescue nil
+            if @app_post.nil?
+                @app_post = WeeklyApp.new(
+                    description: params[:description].to_s,
+                    media_type: params[:media_type].to_s,
+                    media_url: params[:slack_url].to_s,
+                    post_date: params[:post_date],
+                    weekly_id: params[:weekly_id],
+                    user_id: User.find_by_name(params[:user]).id,
+                    app_id: App.find_by_title(params[:tool]).id,
+                    status: status).save
+            else
+                @app_post.update_attributes(
+                    description: params[:description].to_s,
+                    media_type: params[:media_type].to_s,
+                    media_url: params[:slack_url].to_s,
+                    post_date: params[:post_date],
+                    weekly_id: params[:weekly_id],
+                    user_id: User.find_by_name(params[:user]).id,
+                    app_id: App.find_by_title(params[:tool]).id,
+                    status: status)
+            end
+        when "delete"
+            @app_post = WeeklyApp.find(params[:app_post_id]) rescue nil
+            if !@app_post.nil?
+                @app_post.destroy
+            end
+        end
+        redirect_to weekly_url(id: Weekly.find(params[:weekly_id]).release, mode: 0)
+    end
 end

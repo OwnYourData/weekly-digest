@@ -1,6 +1,17 @@
 <p><strong><a href="https://weekly-digest.ownyourdata.eu/<%= @lang.to_s %>/tool/<%= app.app_id %>"><%= App.find(app.app_id).title %></a></p>
 <p><%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(app.description.to_s).html_safe %></p>
+<div class="post-tags">
+    <span style="color: #999999; font-size: 12px;">
+        <%= t('news.posted_on', date: l(app.post_date || Date.today, format: :short)) %>
+        &nbsp;<%= t('news.by') %> <a href="https://weekly-digest.ownyourdata.eu/<%= I18n.locale.to_s %>/user/<%= app.user_id.to_s %>"  style="color: #999999; text-decoration: undeline;"><%= User.find(app.user_id).name %></a>
+        &nbsp;<a href="<%= app.media_url %>"  style="color: #999999;  font-size: 12px; text-decoration: underline;"><%= t('news.show_on') %> <% if app.media_type == "mydata" %>MyData Slack<% else %><%= app.media_type.to_s %><% end %></a>
+    </span>
+    &nbsp;<%= render partial: "tag", collection: App.find(app.app_id).app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+</div>
+
+<!--
 <p style="font-size:14px;">
     <a style="color: #999999; margin-right: 10px; text-decoration: none;" href="<%= app.media_url.to_s %>">show on Slack</a>
     <%= render partial: "tag", collection: App.find(app.app_id).app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %></p>
 <p>&nbsp;</p>
+-->

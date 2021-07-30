@@ -2,10 +2,10 @@
 	<div class="post-title">
 		<a href="/<%= I18n.locale.to_s %>/tool/<%= app3.id.to_s + view_mode %>" onmousedown="$('#stats_target').val('tool');$('#stats_target_id').val('<%= app3.id %>');$('#stats_form').submit();"><%= app3.title %></a>
         <div class="dropdown" style="display: inline; cursor: pointer;">
-            <div id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
+            <div id="Label_<%= app3.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
                 <%= image_tag 'menu.png', style: "height: 15px; margin: 0 0 3px;" %>
             </div>
-            <ul class="dropdown-menu" aria-labelledby="dLabel">
+            <ul class="dropdown-menu" aria-labelledby="Label_<%= app3.id %>">
                 <li><a href="<%= app3.url %>" onmousedown="$('#stats_target').val('app_page');$('#stats_target_id').val('<%= app3.id %>');$('#stats_form').submit();" target="_blank" style="font-size: small;"><%= t('news.open_website') %></a></li>
             </ul>
         </div>

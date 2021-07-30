@@ -2,10 +2,10 @@
 	<div class="post-title">
 		<a href="/<%= I18n.locale.to_s %>/tool/<%= app3.app_id.to_s + view_mode %>" onmousedown="$('#stats_target').val('app');$('#stats_target_id').val('<%= app3.app.id %>');$('#stats_form').submit();"><%= App.find(app3.app_id).title %></a>
         <div class="dropdown" style="display: inline; cursor: pointer;">
-            <div id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
+            <div id="Label_<%= app3.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
                 <%= image_tag 'menu.png', style: "height: 15px; margin: 0 0 3px;" %>
             </div>
-            <ul class="dropdown-menu" aria-labelledby="dLabel">
+            <ul class="dropdown-menu" aria-labelledby="Label_<%= app3.id %>">
                 <li><a href="/<%= I18n.locale.to_s %>/weekly/<%= Weekly.find(app3.weekly_id).release.to_s + view_mode %>"><%= t('news.posted_on', date: l(app3.post_date || Date.today, format: :short)) %></a></li>
                 <li><a href="<%= app3.media_url %>" onmousedown="$('#stats_target').val('slack');$('#stats_target_id').val('<%= app3.id %>');$('#stats_form').submit();" target="_blank" style="font-size: small;"><%= t('news.show_on_slack') %></a></li>
                 <li><a href="<%= App.find(app3.app_id).url %>" onmousedown="$('#stats_target').val('app_page');$('#stats_target_id').val('<%= app3.id %>');$('#stats_form').submit();" target="_blank" style="font-size: small;"><%= t('news.open_website') %></a></li>

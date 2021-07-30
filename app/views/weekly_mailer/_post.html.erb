@@ -1,8 +1,11 @@
 <p><strong><a href="<%= post.url.to_s %>"><%= post.title.to_s %></a></p>
 <p><%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(post.description.to_s).html_safe %></p>
-<p style="font-size:14px;">
-	<% if post.media_url.to_s != "" %>
-		<a style="color: #999999; margin-right: 10px; text-decoration: none;" href="<%= post.media_url.to_s %>">show on Slack</a>
-	<% end %>
-	<%= render partial: "tag", locals:{stats_source: "post", stats_source_id: post.id}, collection: post.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %></p>
-<p>&nbsp;</p>
+
+<div class="post-tags">
+    <span style="color: #999999; font-size: 12px;">
+        <%= t('news.posted_on', date: l(post.post_date || Date.today, format: :short)) %>
+        &nbsp;<%= t('news.by') %> <a href="https://weekly-digest.ownyourdata.eu/<%= I18n.locale.to_s %>/user/<%= post.user_id.to_s %>"  style="color: #999999; text-decoration: undeline;"><%= User.find(post.user_id).name %></a>
+        &nbsp;<a href="<%= post.media_url %>"  style="color: #999999;  font-size: 12px; text-decoration: underline;"><%= t('news.show_on') %> <% if post.media_type == "mydata" %>MyData Slack<% else %><%= post.media_type.to_s %><% end %></a>
+    </span>
+    &nbsp;<%= render partial: "tag", locals:{stats_source: "post", stats_source_id: post.id}, collection: post.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+</div>

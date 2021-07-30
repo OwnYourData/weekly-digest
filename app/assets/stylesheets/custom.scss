@@ -192,7 +192,7 @@ a.mydata {
   font-size: large;
   color: #337ab7;
   font-weight: 500;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 5px;
   line-height: 1.5em;
 }
@@ -237,10 +237,12 @@ a.mydata {
 .post-tags {
   line-height: 1.3em;
   margin-top: -8px;
+  color: #999999;
 }
 
 .post-tag {
   color: #999999;
+  text-decoration: underline;
 }
 
 /* footer */

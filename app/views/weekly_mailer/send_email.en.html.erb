@@ -1,20 +1,28 @@
+<% if @weekly.invite.to_s != "" %>
+    <div class="alert alert-info">
+        <%= @weekly.invite.html_safe %>
+    </div>
+<% end %>
+
 		<h2><%= t('news.noteworthy_information', locale: @lang) %></h2>
 		<%= render partial: "post", collection: @posts.sort_by { |item| item["post_date"] || Date.parse("1970-01-01") } %>
 		<% if @questions.count > 0 %>
-			<hr style="border: none; height: 1px; background-color: #333;">
+			<hr style="border: none; height: 1px; background-color: #333; margin-top: 15px;">
 			<h2><%= t('news.questions_asked', locale: @lang) %></h2>
 			<%= render partial: "post", collection: @questions.sort_by { |item| item["post_date"] || Date.parse("1970-01-01") } %>
 		<% end %>
 		<% if @apps.count > 0 %>
-			<hr style="border: none; height: 1px; background-color: #333;">
+			<hr style="border: none; height: 1px; background-color: #333; margin-top: 15px;">
 			<h2><%= t('news.tool', count: 2, locale: @lang) %></h2>
 			<%= render partial: "app", collection: @apps.sort_by { |item| item["post_date"] || Date.parse("1970-01-01") } %>
 		<% end %>
-		<hr style="border: none; height: 1px; background-color: #333;">
-		<h2><%= t('news.mydata_internals', locale: @lang) %></h2>
-		<div>
-			<%= @intro_text.html_safe %>
-		</div>
+		<% if @intro_text.length > 0 %>
+			<hr style="border: none; height: 1px; background-color: #333; margin-top: 15px;">
+			<h2><%= t('news.mydata_internals', locale: @lang) %></h2>
+			<div>
+				<%= @intro_text.html_safe %>
+			</div>
+		<% end %>
 		<p>&nbsp;</p>
     </div>
 </div>

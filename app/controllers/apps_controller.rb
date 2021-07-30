@@ -48,6 +48,78 @@ class AppsController < ApplicationController
         end
     end
 
+    def new
+        @heading = t('general.title')
+        @heading_short = t('general.title_short')
+
+        @app_id = nil
+        @users = 0
+
+        respond_to do |format|
+            format.html { render layout: "application3", template: "apps/new" }
+        end
+    end
+
+    def edit
+        @heading = t('general.title')
+        @heading_short = t('general.title_short')
+
+        @app_id = params[:id]
+        @app = App.find(@app_id) rescue nil
+        @user = User.find(@app.user_id).name.to_s
+        @title = @app.title
+        @description = @app.description
+        @url = @app.url
+
+        respond_to do |format|
+            format.html { render layout: "application3", template: "apps/new" }
+        end
+    end
+
+    def update
+        case params[:button].to_s
+        when "save", "publish"
+            if User.find_by_name(params[:user]).nil?
+                if params[:user].to_s.strip == ""
+                    flash[:warning] = "Please add a valid author!"
+                    redirect_to new_app_url
+                    return
+                else
+                    User.new(name: params[:user].to_s, status: 1, password:" ", password_confirmation:" ").save
+                end
+            end
+
+            status = 0
+            if params[:button].to_s == "publish"
+                status = 1
+            end
+
+            @app = App.find(params[:app_id]) rescue nil
+            if @app.nil?
+                @app = App.new(
+                    description: params[:description].to_s,
+                    title: params[:title].to_s,
+                    url: params[:url].to_s,
+                    user_id: User.find_by_name(params[:user]).id,
+                    status: status).save
+            else
+                @app.update_attributes(
+                    description: params[:description].to_s,
+                    title: params[:title].to_s,
+                    url: params[:url].to_s,
+                    user_id: User.find_by_name(params[:user]).id,
+                    status: status)
+            end
+
+        when "delete"
+            @app = App.find(params[:app_id]) rescue nil
+            if !@app.nil?
+                @app.destroy
+            end
+        end
+        redirect_to tools_url
+    end
+
     def show
         app_id = params[:id]
         @app = App.find(app_id) rescue nil

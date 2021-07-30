@@ -1,3 +1,14 @@
+<% flash.each do |message_type, message| %>
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="alert alert-<%= message_type %>">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <%= message %>
+            </div>
+        </div>
+    </div>
+<% end %>
+
 <div class="row">
     <div class="col-sm-9">
 
@@ -62,34 +73,28 @@
             <li><a href="#info"><i class="fa fa-info-circle" aria-hidden="true"></i> <%= t('news.noteworthy_info') %> (<%= @posts.count.to_s %>)</a></li>
             <% if @questions.count > 0 %><li><a href="#question"><i class="fa fa-question-circle" aria-hidden="true"></i> <%= t('news.questions_asked') %> (<%= @questions.count.to_s %>)</a></li><% end %>
             <% if @apps.count > 0 %><li><a href="#apps"><i class="fa fa-wrench" aria-hidden="true"></i> <%= t('news.tool', count: 2) %> (<%= @apps.count.to_s %>)</a></li><% end %>
-            <li><a href="#internals"><i class="fa fa-commenting" aria-hidden="true"></i> <%= t('news.mydata_internals') %></a></li>
-            <!-- <li><a href="#events"><i class="fa fa-calendar" aria-hidden="true"></i> <%= t('news.upcoming_events_short') %> (<%= @events.count.to_s %>)</a></li> -->
-            <li><a href="#stats"><i class="fa fa-bar-chart" aria-hidden="true"></i> <%= t('news.statistic.title') %></a></li>
+            <% if @intro_text.length > 0 || logged_in? %>
+                <li><a href="#internals"><i class="fa fa-commenting" aria-hidden="true"></i> <%= t('news.mydata_internals') %></a></li>
+                <!-- <li><a href="#events"><i class="fa fa-calendar" aria-hidden="true"></i> <%= t('news.upcoming_events_short') %> (<%= @events.count.to_s %>)</a></li> -->
+                <li><a href="#stats"><i class="fa fa-bar-chart" aria-hidden="true"></i> <%= t('news.statistic.title') %></a></li>
+            <% end %>
             <li><a href="/<%= view_mode %>"><i class="fa fa-home" aria-hidden="true"></i> <%= t('general.start_page') %></a></li>            
           </ul>
         </nav>
 
-<div class="visible-xs">
-    <div class="single" style="margin-top: 15px;">
-        <p>To receive the Weekly Digest by email:</p>
-        <% flash.each do |message_type, message| %>
-            <div class="alert alert-<%= message_type %>">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <%= message %>
-            </div>
-        <% end %>
-        <%= form_with url: subscribe_path, remote: false, data: { turbolinks: false } do |form| %>
-            <div class="input-group" style="width: 100%;">                    
-                <%= form.hidden_field :id, value: @og_date %>
-                <%= form.text_field :email, class: "form-control", placeholder: "Enter your email" %>
-            </div>
-            <%= form.button :submit, class: "btn btn-success", data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Subscribe" } do %><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Subscribe<% end %>
-        <% end %>
-        <p style="margin-top: 10px;">You can cancel the subscription anytime with a single click at the end of every mail. We will not spam you!</p>
-    </div>
+<div class="visible-xs" style="margin-top: 20px;">
+    <%= t('subscribe.invite') %> <a href="/<%= I18n.locale.to_s %>/subscribe"><%= t('subscribe.button') %></a>
 </div>
 
         <hr id="info" style="margin-top: 30px;">
+
+<% if @weekly.invite.to_s != "" && Time.now.utc < @weekly.invite_date %>
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= @weekly.invite.html_safe %>
+    </div>
+<% end %>
+
     	<div style="margin-top:40px;">
     		<div class="section">
                 <i class="fa fa-info-circle" aria-hidden="true"></i>
@@ -117,7 +122,7 @@
                 <div class="section-sub hidden-xs"><%= @questions.count.to_s %> <%= t('news.post', count: @questions.count ) %></div>
                 <%  if logged_in? %>
                         <span style="font-size: 12px;">
-                            <%= link_to add_post_url(id: @weekly_id, post: "question") do %><i class="fa fa-plus" aria-hidden="true"></i> add post<% end %>
+                            <%= link_to add_post_url(id: @weekly_id, post: "question") do %><i class="fa fa-plus" aria-hidden="true"></i> add question<% end %>
                         </span>
                 <% end %>
             </div>
@@ -135,6 +140,14 @@
                     <%= t('news.tool', count: 2) %>
                 </div>
                 <div class="section-sub hidden-xs"><%= @apps.count.to_s %> <%= t('news.entry', count: @apps.count) %></div>
+                <%  if logged_in? %>
+                        <span style="font-size: 12px;">
+                            <%= link_to add_app_post_url(id: @weekly_id) do %><i class="fa fa-plus" aria-hidden="true"></i> add tool post<% end %>
+                        </span>
+                        <span style="font-size: 12px;">
+                            <%= link_to new_app_url do %><i class="fa fa-plus" aria-hidden="true"></i> add tool<% end %>
+                        </span>
+                <% end %>
             </div>
             <%= render partial: "app3", collection: @apps.sort_by { |item| item["post_date"] || Date.parse("1970-01-01") } %>
         <% end %>
@@ -142,39 +155,40 @@
         <div class="visible-xs text-right">
             <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> <%= t('general.menu') %></a>
         </div>
-        <hr id="internals" style="margin-top: 30px;">
-        <div style="margin-top:40px;">
-            <div class="section">
-                <i class="fa fa-commenting" aria-hidden="true"></i>
-                <%= t('news.mydata_internals') %>
-                <%  if logged_in?
-                        if I18n.locale.to_s == "en" %>
-                            <span style="font-size: 12px;">
-                                <%= link_to edit_mdi_url(id: @weekly_id) do %><i class="fa fa-pencil" aria-hidden="true"></i> edit<% end %>
-                            </span>
-                    <%  else
-                            if WeeklyInternal.where(lang: I18n.locale.to_s, weekly_id: @weekly_id).count == 0 %>
-                                <span style="font-size: 12px;">
-                                    <%= link_to new_mdi_url(id: @weekly_id) do %><i class="fa fa-plus" aria-hidden="true"></i> add translation<% end %>
-                                </span>
-                        <%  else %>
+        <% if @intro_text.length > 0 || logged_in? %>
+            <hr id="internals" style="margin-top: 30px;">
+            <div style="margin-top:40px;">
+                <div class="section">
+                    <i class="fa fa-commenting" aria-hidden="true"></i>
+                    <%= t('news.mydata_internals') %>
+                    <%  if logged_in?
+                            if I18n.locale.to_s == "en" %>
                                 <span style="font-size: 12px;">
                                     <%= link_to edit_mdi_url(id: @weekly_id) do %><i class="fa fa-pencil" aria-hidden="true"></i> edit<% end %>
                                 </span>
-                        <%  end
-                        end %>
-                <% end %>
+                        <%  else
+                                if WeeklyInternal.where(lang: I18n.locale.to_s, weekly_id: @weekly_id).count == 0 %>
+                                    <span style="font-size: 12px;">
+                                        <%= link_to new_mdi_url(id: @weekly_id) do %><i class="fa fa-plus" aria-hidden="true"></i> add translation<% end %>
+                                    </span>
+                            <%  else %>
+                                    <span style="font-size: 12px;">
+                                        <%= link_to edit_mdi_url(id: @weekly_id) do %><i class="fa fa-pencil" aria-hidden="true"></i> edit<% end %>
+                                    </span>
+                            <%  end
+                            end %>
+                    <% end %>
+                </div>
+                <div class="weekly-intro" id="intro_block">
+                    <%= @intro_text.html_safe %>
+                </div>
+    <script type="text/javascript">
+        document.getElementById('intro_block').onmousedown = function(e){
+            $('#stats_target').val("internal: ".concat(e.target.innerHTML).concat(': ').concat(e.target.href));
+            $('#stats_form').submit();
+        }
+    </script>
             </div>
-            <div class="weekly-intro" id="intro_block">
-                <%= @intro_text.html_safe %>
-            </div>
-<script type="text/javascript">
-    document.getElementById('intro_block').onmousedown = function(e){
-        $('#stats_target').val("internal: ".concat(e.target.innerHTML).concat(': ').concat(e.target.href));
-        $('#stats_form').submit();
-    }
-</script>
-        </div>        
 
         <!-- <div class="visible-xs text-right">
             <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> <%= t('general.menu') %></a>
@@ -229,29 +243,13 @@
         </div>
         <div class="visible-xs text-right">
             <a href="#menu"><i class="fa fa-chevron-up" aria-hidden="true"></i> <%= t('general.menu') %></a>
-        </div>
+        </div>        
+    <% end %>   
+<% end %>
 
 <div class="visible-xs">
-    <div class="single" style="margin-top: 15px;">
-        <p>To receive the Weekly Digest by email:</p>
-        <% flash.each do |message_type, message| %>
-            <div class="alert alert-<%= message_type %>">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <%= message %>
-            </div>
-        <% end %>
-        <%= form_with url: subscribe_path, remote: false, data: { turbolinks: false } do |form| %>
-            <div class="input-group" style="width: 100%;">                    
-                <%= form.hidden_field :id, value: @og_date %>
-                <%= form.text_field :email, class: "form-control", placeholder: "Enter your email" %>
-            </div>
-            <%= form.button :submit, class: "btn btn-success", data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Subscribe" } do %><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Subscribe<% end %>
-        <% end %>
-        <p style="margin-top: 10px;">You can cancel the subscription anytime with a single click at the end of every mail. We will not spam you!</p>
-    </div>
+    <%= render partial: "subscribe" %>
 </div>
-        
-<% end %>
 
     </div>
     <div class="col-sm-3" style="margin-top: 20px;">
@@ -261,31 +259,17 @@
             <li><a href="#info"><i class="fa fa-info-circle" aria-hidden="true"></i> <%= t('news.noteworthy_info') %></a></li>
             <% if @questions.count > 0 %><li><a href="#question"><i class="fa fa-question-circle" aria-hidden="true"></i> <%= t('news.questions_asked') %></a></li><% end %>
             <% if @apps.count > 0 %><li><a href="#apps"><i class="fa fa-wrench" aria-hidden="true"></i> <%= t('news.tool', count: 2) %></a></li><% end %>
-            <li><a href="#internals"><i class="fa fa-commenting" aria-hidden="true"></i> <%= t('news.mydata_internals') %></a></li>
-            <!-- <li><a href="#events"><i class="fa fa-calendar" aria-hidden="true"></i> <%= t('news.upcoming_events_short') %></a></li> -->
-            <li><a href="#stats"><i class="fa fa-bar-chart" aria-hidden="true"></i> <%= t('news.statistic.title') %></a></li>
+            <% if @intro_text.length > 0 || logged_in? %>
+                <li><a href="#internals"><i class="fa fa-commenting" aria-hidden="true"></i> <%= t('news.mydata_internals') %></a></li>
+                <!-- <li><a href="#events"><i class="fa fa-calendar" aria-hidden="true"></i> <%= t('news.upcoming_events_short') %></a></li> -->
+                <li><a href="#stats"><i class="fa fa-bar-chart" aria-hidden="true"></i> <%= t('news.statistic.title') %></a></li>
+            <% end %>
             <li><a href="#"><i class="fa fa-arrow-up" aria-hidden="true"></i> <%= t('general.to_top') %></a></li>
             <li><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>"><i class="fa fa-home" aria-hidden="true"></i> <%= t('general.start_page') %></a></li>
             <li style="max-width: 235px;">
 
-    <hr style="margin-top: 30px;">        
-    <div class="single">
-        <p>To receive the Weekly Digest by email:</p>
-        <% flash.each do |message_type, message| %>
-            <div class="alert alert-<%= message_type %>">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <%= message %>
-            </div>
-        <% end %>
-        <%= form_with url: subscribe_path, remote: false, data: { turbolinks: false } do |form| %>
-            <div class="input-group" style="width: 100%;">                    
-                <%= form.hidden_field :id, value: @og_date %>
-                <%= form.text_field :email, class: "form-control", placeholder: "Enter your email" %>
-            </div>
-            <%= form.button :submit, class: "btn btn-success", data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Subscribe" } do %><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Subscribe<% end %>
-        <% end %>
-        <p style="margin-top: 10px;">You can cancel the subscription anytime with a single click at the end of every mail. We will not spam you!</p>
-    </div>
+    <hr style="margin-top: 15px;">        
+    <%= render partial: "subscribe" %>
 
             </li>
           </ul>

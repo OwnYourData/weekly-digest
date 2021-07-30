@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
     devise_for :users
-    scope "(:locale)", :locale => /en|de|fr|hu|jp|ko|tw|pl|pt/ do
+    scope "(:locale)", :locale => /en|cn|de|fr|hu|jp|ko|pl|pt/ do
         root 'static_pages#home'
         match 'home',         to: 'static_pages#home',        via: 'get'
         get 'favicon', to: "static_pages#favicon"
@@ -15,6 +15,9 @@ Rails.application.routes.draw do
         match '/news',          to: 'news#index',                via: 'get'
         match '/weekly/:id',    to: 'news#weekly',               via: 'get', as: "weekly"
         match '/current',       to: 'news#current',              via: 'get'
+        match '/current/channels',  to: 'news#current_channels',  via: 'get'
+        match '/current/internals', to: 'news#current_internals', via: 'get'
+
         match '/plain',         to: 'news#plain',                via: 'get'
         match '/plain_html',    to: 'news#plain_html',           via: 'get'
         match '/users',         to: 'users#index',               via: 'get'
@@ -25,6 +28,9 @@ Rails.application.routes.draw do
         match '/app/:id',       to: 'apps#show',                 via: 'get'
         match '/tools',         to: 'apps#index',                via: 'get'
         match '/tool/:id',      to: 'apps#show',                 via: 'get'
+        match '/new_app',       to: 'apps#new',                  via: 'get'
+        match '/edit_app',      to: 'apps#edit',                 via: 'get'
+        match '/app_submit',    to: 'apps#update',               via: 'post'
         match '/sources',       to: 'sources#index',             via: 'get'
         match '/source/:id',    to: 'sources#show',              via: 'get'
         match '/contributor',   to: 'static_pages#contributor',  via: 'get'
@@ -36,6 +42,9 @@ Rails.application.routes.draw do
         match '/publish_wd',    to: 'news#publish_wd',           via: 'get'
         match '/wd_submit',     to: 'news#update_wd',            via: 'post'
         match '/add_post',      to: 'news#add_post',             via: 'get'
+        match '/add_app_post',  to: 'news#add_app',              via: 'get'
+        match '/edit_app_post', to: 'news#edit_app',             via: 'get'
+        match '/appost_submit', to: 'news#update_app',           via: 'post'
         match '/add_lang_post', to: 'news#add_lang_post',        via: 'get'
         match '/edit_post',     to: 'news#edit_post',            via: 'get'
         match '/post_submit',   to: 'news#update_post',          via: 'post'
@@ -43,10 +52,10 @@ Rails.application.routes.draw do
         match '/delete_tag',    to: 'news#delete_tag',           via: 'get'
         match '/destroy_tag',   to: 'tags#destroy',              via: 'get'
         match '/destroy_user',  to: 'users#destroy',             via: 'get'
- 
-        match '/subscribe',     to: 'subscriptions#create',      via: 'post'
-        match '/subscribe',     to: 'subscriptions#confirm',     via: 'get'
-        match '/unsubscribe',   to: 'subscriptions#unsubscribe', via: 'get'
+
+        match '/subscribe',     to: 'subscriptions#create',       via: 'post'
+        match '/subscribe',     to: 'subscriptions#subscription', via: 'get'
+        match '/unsubscribe',   to: 'subscriptions#unsubscribe',  via: 'get'
     end  
   
     match '/stats',        to: 'stats#index', via: 'get'

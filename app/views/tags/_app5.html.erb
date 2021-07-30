@@ -1,0 +1,20 @@
+<div class="apps-elements">
+	<div class="post-title">
+		<a href="/<%= I18n.locale.to_s %>/tool/<%= app5.id.to_s + view_mode %>" onmousedown="$('#stats_target').val('tool');$('#stats_target_id').val('<%= app5.id %>');$('#stats_form').submit();"><%= app5.title %></a>
+        <div class="dropdown" style="display: inline; cursor: pointer;">
+            <div id="Label_<%= app5.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
+                <%= image_tag 'menu.png', style: "height: 15px; margin: 0 0 3px;" %>
+            </div>
+            <ul class="dropdown-menu" aria-labelledby="Label_<%= app5.id %>">
+                <li><a href="<%= app5.url %>" onmousedown="$('#stats_target').val('app_page');$('#stats_target_id').val('<%= app5.id %>');$('#stats_form').submit();" target="_blank" style="font-size: small;"><%= t('news.open_website') %></a></li>
+            </ul>
+        </div>
+	</div>
+	<div class="post-text">
+		<%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(app5.description.to_s).html_safe %>
+	</div>
+	<div class="post-tags">
+		<%= render partial: "tag2", collection: app5.app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+	</div>
+</div>
+<%= render partial: "cta" %>

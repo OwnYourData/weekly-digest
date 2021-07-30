@@ -1,0 +1,8 @@
+<% if (@counter % 3) == 2 || (defined?(force) && force) %>
+    <div class="jumbotron text-center" style="margin: 25px 10px 10px;background-color: #F3FCF8;padding: 20px;">
+        <strong style="font-size: 14px;">Interested?</strong><br>
+        <p style="font-size: 14px;">Read more news in the current Weekly Digest issue!</p>
+        <a href="/<%= I18n.locale.to_s %>/current" onmousedown="$('#stats_target').val('weekly_cta');$('#stats_target_id').val('current');$('#stats_form').submit();" class="btn btn-success">Check it out</a>
+    </div>
+<% end
+   @counter += 1 %>

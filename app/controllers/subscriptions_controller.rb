@@ -7,23 +7,48 @@ class SubscriptionsController < ApplicationController
                 @subscription = Subscription.new(email: email_str, lang: params[:locale].to_s, key: SecureRandom.base64(8), confirmed: false)
                 @subscription.save
             end
-            SubscribeMailer.send_email(email_str, @subscription.key, params[:locale].to_s).deliver_now            
-            flash[:success] = "You should have received a confirmation email. Please check your inbox!"
+            begin
+                SubscribeMailer.send_email(email_str, @subscription.key, params[:locale].to_s).deliver_now
+            rescue
+                flash[:warning] = t('subscribe.invalid_email')
+                if params[:id].to_s == ""
+                    redirect_to subscribe_path
+                    return
+                end
+            end
+            flash[:success] = t('subscribe.success_flash')
         else
-            flash[:warning] = "Invalid email address!"
+            flash[:warning] = t('subscribe.invalid_email')
+            if params[:id].to_s == ""
+                redirect_to subscribe_path
+                return
+            end
         end
-        redirect_to weekly_path(id: params[:id])
+        if params[:id].to_s == ""
+            redirect_to root_path
+        else
+            redirect_to weekly_path(id: params[:id])
+        end
     end
 
-    def confirm
-        @subscription = Subscription.find_by_key(params[:key].to_s.gsub(" ","+"))
-        if @subscription.nil?
-            flash[:warning] = "Unknown subscription. No changes were made!"
-        else
-            @subscription.update_attributes(confirmed: true, key: SecureRandom.base64(8))
-            flash[:success] = "You have successfully subscribed the MyData Weekly Digest"
+    def subscription
+        if params[:key].to_s != ""
+            @subscription = Subscription.find_by_key(params[:key].to_s.gsub(" ","+"))
+            if @subscription.nil?
+                flash[:warning] = t('subscribe.unknown')
+            else
+                @subscription.update_attributes(confirmed: true, key: SecureRandom.base64(8))
+                flash[:success] = t('subscribe.success')
+            end
+            redirect_to root_path
+            return
         end
-        redirect_to root_path
+        @heading = t('general.title')
+        @heading_short = t('general.title_short')
+        respond_to do |format|
+            format.html { render layout: "application3" }
+        end
+
     end
 
     def unsubscribe
@@ -35,7 +60,7 @@ class SubscriptionsController < ApplicationController
         if !@subscription.nil?
             if @subscription.key == params[:key].to_s
                 @subscription.destroy
-                @text = "The email address '" + params[:email].to_s + "' was successfully unsubscribed from the Weekly Digest Newsletter."
+                @text = t('subscribe.unsubscribed', email: params[:email].to_s)
             end
         end
         respond_to do |format|

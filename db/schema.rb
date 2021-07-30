@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_03_232037) do
+ActiveRecord::Schema.define(version: 2021_05_01_212043) do
 
   create_table "app_rating_items", force: :cascade do |t|
     t.integer "app_rating_id"
@@ -177,6 +177,8 @@ ActiveRecord::Schema.define(version: 2020_12_03_232037) do
     t.integer "channels"
     t.integer "postings"
     t.text "monitored_channel_names"
+    t.text "invite"
+    t.datetime "invite_date"
   end
 
   create_table "weekly_apps", force: :cascade do |t|

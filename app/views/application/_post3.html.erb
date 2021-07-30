@@ -1,11 +1,11 @@
 <div class="info-elements">
     <div class="post-title">
         <a href="<%= post3.url %>" onmousedown="$('#stats_target').val('post');$('#stats_target_id').val('<%= post3.id %>');$('#stats_form').submit();" target="_blank"><%= post3.title %></a>
-        <div class="dropdown" style="display: inline; cursor: pointer;">
-            <div id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
+        <!--<div class="dropdown" style="display: inline; cursor: pointer;">
+            <div id="Label_<%= post3.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
                 <%= image_tag 'menu.png', style: "height: 15px; margin: 0 0 3px;" %>
             </div>
-            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel">
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="Label_<%= post3.id %>">
                 <% if controller_name == "news" %>
                         <li><span class="dropdown-text"><%= t('news.posted_on', date: l(post3.post_date || Date.today, format: :short)) %></span></li>
                 <% else %>
@@ -18,7 +18,7 @@
                         <li><a href="<%= post3.media_url %>" onmousedown="$('#stats_target').val('slack');$('#stats_target_id').val('<%= post3.id %>');$('#stats_form').submit();" target="_blank" style="font-size: small;"><%= t('news.show_on_slack') %></a></li>
                 <%  end %>
             </ul>
-        </div>
+        </div>-->
         <%  if logged_in?
                 if I18n.locale.to_s == "en" %>
                     <span style="font-size: 12px;">
@@ -42,7 +42,20 @@
         <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(post3.description.to_s).html_safe %>
     </div>
     <div class="post-tags">
-        <%= render partial: "tag2", locals:{stats_source: "post", stats_source_id: post3.id}, collection: post3.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+        <span>
+            <%  if controller_name == "news" %>
+                    <%= t('news.posted_on', date: l(post3.post_date || Date.today, format: :short)) %>
+            <%  else %>
+                    <a href="/<%= I18n.locale.to_s %>/weekly/<%= Weekly.find(post3.weekly_id).release.to_s + view_mode %>" class="post-tag"><%= t('news.posted_on', date: l(post3.post_date || Date.today, format: :short)) %></a>
+            <%  end %>
+            <% if controller_name.to_s != "users" %>
+                    &nbsp;<%= t('news.by') %> <a href="/<%= I18n.locale.to_s %>/user/<%= post3.user_id.to_s + view_mode %>" class="post-tag"><%= User.find(post3.user_id).name %></a>
+            <% end %>
+            <%  if post3.media_url.to_s != "" %>
+                    &nbsp;<a href="<%= post3.media_url %>" onmousedown="$('#stats_target').val('slack');$('#stats_target_id').val('<%= post3.id %>');$('#stats_form').submit();" target="_blank" style="font-size: small;" class="post-tag"><%= t('news.show_on') %> <% if post3.media_type == "mydata" %>MyData Slack<% else %><%= post3.media_type.to_s %><% end %></a>
+            <%  end %>
+        </span>
+        &nbsp;<%= render partial: "tag2", locals:{stats_source: "post", stats_source_id: post3.id}, collection: post3.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
         <%  if logged_in? %>
             <%= link_to "#", data: { toggle: "modal", target: "#addTagModal"}, onclick: '$("#tag").val("");$("#tag_post_id").val("' + post3.id.to_s + '");' do %><i class="fa fa-plus" aria-hidden="true"></i> add tag<% end %>
         <% end %>

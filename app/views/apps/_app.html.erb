@@ -16,4 +16,9 @@
             (ratings: <%= rating_cnt %>)
         <% end %>
     <% end %>
+    <% if logged_in? %>
+            <span style="font-size: 12px;">
+                <%= link_to edit_app_url(id: app.id) do %><i class="fa fa-pencil" aria-hidden="true"></i> edit<% end %>
+            </span>
+    <% end %>
 </li>

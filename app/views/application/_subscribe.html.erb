@@ -1,0 +1,17 @@
+<div class="single" style="margin-top: 15px;">
+    <p><%= t('subscribe.invite') %></p>
+    <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= message %>
+        </div>
+    <% end %>
+    <%= form_with url: subscribe_path, remote: false, data: { turbolinks: false, remote: false } do |form| %>
+        <div class="input-group" style="width: 100%;">                    
+            <%= form.hidden_field :id, value: @og_date %>
+            <%= form.text_field :email, class: "form-control", placeholder: t('subscribe.email_address') %>
+        </div>
+        <%= form.button :submit, class: "btn btn-success", data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Subscribe" } do %><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <%= t('subscribe.button') %><% end %>
+    <% end %>
+    <p style="margin-top: 10px;"><%= t('subscribe.info_text') %></p>
+</div>

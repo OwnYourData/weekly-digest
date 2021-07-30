@@ -24,12 +24,12 @@
     </div>
 
     <div class="field">
-        <%= form.label :monitored_channels %>
+        <%= form.label :monitored_channels, "Monitored Channels <span style='font-weight: 100'><a id='read_monitored_channels' href='#'>(copy from last issue)</a></span>".html_safe %> 
         <%= form.number_field :monitored_channels, value: @monitored_channels %>
     </div>
 
     <div class="field">
-        <%= form.label :monitored_channel_names %>
+        <%= form.label :monitored_channel_names, "Monitored Channel Names <span style='font-weight: 100'><a id='read_monitored_channel_names' href='#'>(copy from last issue)</a></span>".html_safe %> 
         <%= form.text_field :monitored_channel_names, value: @monitored_channel_names %>
     </div>
 
@@ -65,3 +65,17 @@
     <% end %>
 
 <% end %>
+<script type="text/javascript">
+    window.onload = function() {
+        var a = document.getElementById("read_monitored_channels");
+        var b = document.getElementById("read_monitored_channel_names");
+        a.onclick = function() {
+            fetch("https://weekly-digest.ownyourdata.eu/current/channels").then((resp) => resp.json()).then(function(data) { $("#monitored_channels").val(data.number)});
+            return false;
+        };
+        b.onclick = function() {
+            fetch("https://weekly-digest.ownyourdata.eu/current/channels").then((resp) => resp.json()).then(function(data) { $("#monitored_channel_names").val(data.channels)});
+            return false;
+        }
+    }
+</script>

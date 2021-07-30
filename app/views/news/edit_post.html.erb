@@ -18,8 +18,13 @@
     <%= form.hidden_field :post_type, value: @post_type %>
 
     <div class="field">
-        <%= form.label :slack_url, "Slack message URL (optional)" %>
+        <%= form.label :slack_url, "Media message URL (optional)" %>
         <%= form.text_field :slack_url, value: @slack_url %>
+    </div>
+
+    <div class="field">
+        <%= form.label :media_type, "Media Type" %>
+        <%= form.text_field :media_type, value: @media_type %>
     </div>
 
     <div class="field">
@@ -50,7 +55,7 @@
 
     <div class="field">
         <%= form.label :lang, "Language specific (leave empty to display in all languages)" %>
-        <%= form.select :lang, options_for_select([["", ""],["English", "en"],["German", "de"],["Hungarian", "hu"],["Japanese", "jp"],["Korean", "ko"],["Polish", "pl"],["Portuguese", "pt"],["Taiwanese", "tw"]], @lang.to_s) %>
+        <%= form.select :lang, options_for_select([["", ""],["English", "en"],["Chinese", "cn"],["German", "de"],["Hungarian", "hu"],["Japanese", "jp"],["Korean", "ko"],["Polish", "pl"],["Portuguese", "pt"]], @lang.to_s) %>
     </div>
 
     <%= form.button value: "save", class: "btn btn-primary" do %>

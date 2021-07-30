@@ -56,7 +56,11 @@ class UsersController < ApplicationController
 
     def show
         user_id = params[:id]
-        @user = User.find(user_id)
+        @user = User.find(user_id) rescue nil
+        if @user.nil?
+            redirect_to root_path
+            return
+        end
         @posts = []
         @questions = []
         @apps = []

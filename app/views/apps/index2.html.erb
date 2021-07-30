@@ -5,7 +5,14 @@
     <%= form.hidden_field :stats_target_id %>
 <div class="row">
 	<div class="col-sm-4">
-		<h3>Tools [A-M]</h3>
+		<h3>
+			Tools [A-M]
+            <%  if logged_in? %>
+	                <span style="font-size: 12px;">
+	                    <%= link_to new_app_url do %><i class="fa fa-plus" aria-hidden="true"></i> new Tool<% end %>
+	                </span>
+            <% end %>
+		</h3>
 		<ul>
 			<%= render partial: "app", collection: @app.sort_by { |item| item["title"].downcase }.select { |item| item["title"][0..0].downcase =~/[a-m]/ } %>
 		</ul>

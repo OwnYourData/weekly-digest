@@ -1,0 +1,46 @@
+<div class="quest-elements">
+    <div class="post-title">
+        <a href="<%= question5.url %>" onmousedown="$('#stats_target').val('question');$('#stats_target_id').val('<%= question5.id %>');$('#stats_form').submit();" target="_blank"><%= question5.title %></a>
+        <%  if logged_in?
+                if I18n.locale.to_s == "en" %>
+                    <span style="font-size: 12px;">
+                        <%= link_to edit_post_url(id: @weekly_id, post_id: question5.id, post: "question") do %><i class="fa fa-pencil" aria-hidden="true"></i> edit<% end %>
+                    </span>
+            <%  else
+                    if Post.where(lang: I18n.locale.to_s, id: question5.id).count == 0 %>
+                        <span style="font-size: 12px;">
+                            <%= link_to edit_post_url(id: @weekly_id, post_id: question5.id, post: "question") do %><i class="fa fa-pencil" aria-hidden="true"></i> edit<% end %> &nbsp;
+                            <%= link_to add_lang_post_url(id: @weekly_id, post_id: question5.id, post: "question") do %><i class="fa fa-plus" aria-hidden="true"></i> add translation<% end %>
+                        </span>
+                <%  else %>
+                        <span style="font-size: 12px;">
+                            <%= link_to edit_post_url(id: @weekly_id, post_id: question5.id, post: "question") do %><i class="fa fa-pencil" aria-hidden="true"></i> edit<% end %>
+                        </span>
+                <%  end
+                end
+            end %>     
+    </div>
+    <div class="post-text">
+        <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(question5.description.to_s).html_safe %>
+    </div>
+    <div class="post-tags">
+        <span>
+            <%  if controller_name == "news" %>
+                    <%= t('news.posted_on', date: l(question5.post_date || Date.today, format: :short)) %>
+            <%  else %>
+                    <a href="/<%= I18n.locale.to_s %>/weekly/<%= Weekly.find(question5.weekly_id).release.to_s + view_mode %>" class="post-tag"><%= t('news.posted_on', date: l(question5.post_date || Date.today, format: :short)) %></a>
+            <%  end %>
+            <% if controller_name.to_s != "users" %>
+                    &nbsp;<%= t('news.by') %> <a href="/<%= I18n.locale.to_s %>/user/<%= question5.user_id.to_s + view_mode %>" class="post-tag"><%= User.find(question5.user_id).name %></a>
+            <% end %>
+            <%  if question5.media_url.to_s != "" %>
+                    &nbsp;<a href="<%= question5.media_url %>" onmousedown="$('#stats_target').val('slack');$('#stats_target_id').val('<%= question5.id %>');$('#stats_form').submit();" target="_blank" style="font-size: small;" class="post-tag"><%= t('news.show_on') %> <% if question5.media_type == "mydata" %>MyData Slack<% else %><%= question5.media_type.to_s %><% end %></a>
+            <%  end %>
+        </span>
+        &nbsp;<%= render partial: "tag2", locals:{stats_source: "post", stats_source_id: question5.id}, collection: question5.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+        <%  if logged_in? %>
+            <%= link_to "#", data: { toggle: "modal", target: "#addTagModal"}, onclick: '$("#tag").val("");$("#tag_post_id").val("' + question5.id.to_s + '");' do %><i class="fa fa-plus" aria-hidden="true"></i> add tag<% end %>
+        <% end %>
+    </div>
+</div>
+<%= render partial: "cta" %>
