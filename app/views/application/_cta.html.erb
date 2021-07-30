@@ -1,4 +1,4 @@
-<% if (@counter % 3) == 2 || (defined?(force) && force) %>
+<% if (@counter % 3) == 2 || (defined?(force) && force && (((@counter-1) % 3) != 2)) %>
     <div class="jumbotron text-center" style="margin: 25px 10px 10px;background-color: #F3FCF8;padding: 20px;">
         <strong style="font-size: 14px;">Interested?</strong><br>
         <p style="font-size: 14px;">Read more news in the current Weekly Digest issue!</p>
