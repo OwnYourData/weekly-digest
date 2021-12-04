@@ -1,4 +1,4 @@
-<h1>New Tool</h1>
+<h1>Tool</h1>
 
 <% flash.each do |message_type, message| %>
     <div class="alert alert-<%= message_type %>">
@@ -29,6 +29,16 @@
     <div class="field">
         <%= form.label :url %>
         <%= form.text_field :url, value: @url %>
+    </div>
+
+    <div class="field">
+        <%= form.label :cat_1, "Category" %>
+        <%= form.select :cat_1, options_for_select([["", ""],["Individuals", "individual"],["Business & Government", "business"],["Developer", "developer"]], @cat_1.to_s) %>
+    </div>
+
+    <div class="field">
+        <%= form.label :cat_2, "Reading level" %>
+        <%= form.select :cat_2, options_for_select([["", ""],["Simple read", "simple"],["Intermediate read", "intermediate"],["Advanced read", "advanced"]], @cat_2.to_s) %>
     </div>
 
     <%= form.button value: "save", class: "btn btn-primary" do %>

@@ -106,7 +106,16 @@ class TagsController < ApplicationController
             @heading_short = "#" + @tag.tag.to_s
             @counter = 0
             case tag_id.to_s
-            when "339"
+            when "339", "89", "201", "439"
+                @posts = Post.where(lang: lang_array).where(id: PostingTag.where(tag_id: tag_id).pluck(:post_id)).as_json
+                @apps = App.where(id: AppTag.where(tag_id: tag_id).pluck(:app_id).uniq).as_json
+
+                @posts.map { |i| i["type"] = "post" }
+                @apps.map do |i|
+                    i["type"] = "app"
+                    i["post_date"] = i["created_at"]
+                end
+                @posts = @posts + @apps
                 respond_to do |format|
                     format.html { render layout: "application5", template: "tags/show5"}
                 end

@@ -16,6 +16,6 @@
 		<%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(app3.description.to_s).html_safe %>
 	</div>
 	<div class="post-tags">
-		<%= render partial: "tag2", collection: App.find(app3.app_id).app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+		<%= render partial: "tag2", locals:{stats_source: "app", stats_source_id: app3.app_id, tag_id: ""}, collection: App.find(app3.app_id).app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
 	</div>
 </div>

@@ -1,0 +1,21 @@
+<%  case cat.category.category_type.to_s
+    when "1"
+        case cat.category.category.to_s
+        when "simple" %>
+            <span class="badge bg-success">[Simple read]</span>
+    <%  when "intermediate" %>
+            <span class="badge bg-success">[Intermediate read]</span>
+    <%  when "advanced" %>
+            <span class="badge bg-success">[Advanced read]</span>
+    <%  end
+    when "2"
+        case cat.category.category.to_s
+        when "individual" %>
+            <span class="badge bg-info text-dark">[Individuals]</span>
+    <%  when "business" %>
+            <span class="badge bg-info text-dark">[Business & Government]</span>
+    <%  when "developer" %>
+            <span class="badge bg-info text-dark">[Developers]</span>
+    <%  end
+    end %>
+&nbsp;

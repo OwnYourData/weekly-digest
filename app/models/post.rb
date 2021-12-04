@@ -21,6 +21,7 @@
 
 class Post < ApplicationRecord
 	has_many :posting_tags, dependent: :destroy
+	has_many :post_categories, dependent: :destroy
 	belongs_to :user
 	belongs_to :weekly
 end

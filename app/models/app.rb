@@ -21,5 +21,6 @@ class App < ApplicationRecord
 	has_many :weekly_apps, dependent: :destroy
 	has_many :app_ratings, dependent: :destroy
 	has_many :source_tools, dependent: :destroy
+	has_many :app_categories, dependent: :destroy
 	belongs_to :user
 end

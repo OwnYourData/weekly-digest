@@ -70,6 +70,27 @@ class AppsController < ApplicationController
         @title = @app.title
         @description = @app.description
         @url = @app.url
+        @cat_1 = ""
+        @cat_2 = ""
+        if AppCategory.where(app_id: @app_id, category_id: 1).count > 0
+            @cat_2 = "simple"
+        end
+        if AppCategory.where(app_id: @app_id, category_id: 2).count > 0
+            @cat_2 = "intermediate"
+        end
+        if AppCategory.where(app_id: @app_id, category_id: 3).count > 0
+            @cat_2 = "advanced"
+        end
+        if AppCategory.where(app_id: @app_id, category_id: 4).count > 0
+            @cat_1 = "individual"
+        end
+        if AppCategory.where(app_id: @app_id, category_id: 5).count > 0
+            @cat_1 = "business"
+        end
+        if AppCategory.where(app_id: @app_id, category_id: 6).count > 0
+            @cat_1 = "developer"
+        end
+
 
         respond_to do |format|
             format.html { render layout: "application3", template: "apps/new" }
@@ -101,7 +122,8 @@ class AppsController < ApplicationController
                     title: params[:title].to_s,
                     url: params[:url].to_s,
                     user_id: User.find_by_name(params[:user]).id,
-                    status: status).save
+                    status: status)
+                @app.save
             else
                 @app.update_attributes(
                     description: params[:description].to_s,
@@ -109,6 +131,24 @@ class AppsController < ApplicationController
                     url: params[:url].to_s,
                     user_id: User.find_by_name(params[:user]).id,
                     status: status)
+            end
+
+            AppCategory.where(app_id: @app.id).destroy_all
+            case params[:cat_1].to_s
+            when "individual"
+                AppCategory.new(app_id: @app.id, category_id: 4).save
+            when "business"
+                AppCategory.new(app_id: @app.id, category_id: 5).save
+            when "developer"
+                AppCategory.new(app_id: @app.id, category_id: 6).save
+            end
+            case params[:cat_2].to_s
+            when "simple"
+                AppCategory.new(app_id: @app.id, category_id: 1).save
+            when "intermediate"
+                AppCategory.new(app_id: @app.id, category_id: 2).save
+            when "advanced"
+                AppCategory.new(app_id: @app.id, category_id: 3).save
             end
 
         when "delete"

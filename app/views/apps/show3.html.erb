@@ -43,7 +43,7 @@
             <% if @sector_tags.count == 0 %>
                 <em>not available</em>
             <% else %>
-                <%= render partial: "tag2", collection: @sector_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+                <%= render partial: "tag2", locals:{stats_source: "app", stats_source_id: @app.id, tag_id: ""}, collection: @sector_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
             <% end %>
         </p>
         <p><strong>Process:</strong> 
@@ -62,12 +62,12 @@
             <% if @process_tags.count == 0 %>
                 <em>not available</em>
             <% else %>
-                <%= render partial: "tag2", collection: @process_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+                <%= render partial: "tag2", locals:{stats_source: "app", stats_source_id: @app.id, tag_id: ""}, collection: @process_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
             <% end %>
         </p>
         <% if @other_tags.count > 0 %>
             <p><strong>Other:</strong> 
-                <%= render partial: "tag2", collection: @other_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+                <%= render partial: "tag2", locals:{stats_source: "app", stats_source_id: @app.id, tag_id: ""}, collection: @other_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
             </p>
         <% end %>
         <% if @similar.count > 0 %>

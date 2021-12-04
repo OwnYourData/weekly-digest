@@ -245,6 +245,48 @@ a.mydata {
   text-decoration: underline;
 }
 
+.label-ind {
+  background-color: #FFDDF4;
+  color: #8E2CC5;
+  font-weight: 100;
+  border-radius: .5em;
+}
+
+.label-biz {
+  background-color: #FFBCD9;
+  color: #8E2CC5;
+  font-weight: 100;
+  border-radius: .5em;  
+}
+
+.label-dev {
+  background-color: #F1DDCF;
+  color: #8E2CC5;
+  font-weight: 100;
+  border-radius: .5em;
+}
+
+.label-simple {
+  background-color: #D0F0C0;
+  font-weight: 100;
+  color: #107F12;
+  border-radius: .5em;
+}
+
+.label-intermediate {
+  background-color: #DADD98;
+  font-weight: 100;
+  color: #107F12;
+  border-radius: .5em;
+}
+
+.label-advanced {
+  background-color: #ACE1AF;
+  font-weight: 100;
+  color: #107F12;
+  border-radius: .5em;
+}
+
 /* footer */
 
 footer {

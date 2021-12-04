@@ -1,20 +1,26 @@
 <div class="apps-elements">
-	<div class="post-title">
-		<a href="/<%= I18n.locale.to_s %>/tool/<%= app5.id.to_s + view_mode %>" onmousedown="$('#stats_target').val('tool');$('#stats_target_id').val('<%= app5.id %>');$('#stats_form').submit();"><%= app5.title %></a>
-        <div class="dropdown" style="display: inline; cursor: pointer;">
-            <div id="Label_<%= app5.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
-                <%= image_tag 'menu.png', style: "height: 15px; margin: 0 0 3px;" %>
-            </div>
-            <ul class="dropdown-menu" aria-labelledby="Label_<%= app5.id %>">
-                <li><a href="<%= app5.url %>" onmousedown="$('#stats_target').val('app_page');$('#stats_target_id').val('<%= app5.id %>');$('#stats_form').submit();" target="_blank" style="font-size: small;"><%= t('news.open_website') %></a></li>
-            </ul>
-        </div>
-	</div>
-	<div class="post-text">
-		<%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(app5.description.to_s).html_safe %>
-	</div>
-	<div class="post-tags">
-		<%= render partial: "tag2", collection: app5.app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
-	</div>
+    <div class="post-title">
+        <p><%= render partial: "cat", locals:{ app_id: app5.id }, collection: app5.app_categories %></p>
+        <a href="/<%= I18n.locale.to_s %>/tool/<%= app5.id.to_s + view_mode %>" onmousedown="$('#stats_target').val('tool');$('#stats_target_id').val('<%= app5.id %>');$('#stats_form').submit();"><%= app5.title %></a>
+        <% if logged_in? %>
+                <span style="font-size: 12px;">
+                    <%= link_to edit_app_url(id: app5.id) do %><i class="fa fa-pencil" aria-hidden="true"></i> edit<% end %>
+                </span>
+        <% end %>
+    </div>
+    <div class="post-text">
+        <%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(app5.description.to_s).html_safe %>
+    </div>
+    <div class="post-tags">
+        <span>
+            <%= t('news.posted_on', date: l(app5.created_at.to_date || Date.today, format: :short)) %>
+            &nbsp;<%= t('news.by') %> <a href="/<%= I18n.locale.to_s %>/user/<%= app5.user_id.to_s + view_mode %>" class="post-tag"><%= User.find(app5.user_id).name %></a>
+        </span>
+        &nbsp;<%= render partial: "tag2", locals:{stats_source: "app", stats_source_id: app5.id, tag_id: tag_id}, collection: app5.app_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+        <%  if logged_in? %>
+            <%= link_to "#", data: { toggle: "modal", target: "#addTagModal"}, onclick: '$("#tag").val("");$("#tag_id").val("' + tag_id.to_s + '");$("#tag_post_id").val("");$("#tag_app_id").val("' + app5.id.to_s + '");' do %><i class="fa fa-plus" aria-hidden="true"></i> add tag<% end %>
+        <% end %>
+        &nbsp;(<a href="<%= app5.url %>" onmousedown="$('#stats_target').val('app_page');$('#stats_target_id').val('<%= app5.id %>');$('#stats_form').submit();" target="_blank" style="font-size: small;" class="post-tag"><%= t('news.open_website') %></a>)
+    </div>
 </div>
 <%= render partial: "cta" %>

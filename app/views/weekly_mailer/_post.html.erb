@@ -1,7 +1,7 @@
-<p><strong><a href="<%= post.url.to_s %>"><%= post.title.to_s %></a></p>
-<p><%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(post.description.to_s).html_safe %></p>
-
-<div class="post-tags">
+<p style="margin: 0;"><em><%= render partial: "cat", collection: post.post_categories %></em></p>
+<div style="margin-bottom: -5px;"><strong><a href="<%= post.url.to_s %>"><%= post.title.to_s %></a></strong></div>
+<div style="margin: 0;"><%= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true).render(post.description.to_s).html_safe %></div>
+<div class="post-tags" style="margin-top: -6px;margin-bottom: 20px;">
     <span style="color: #999999; font-size: 12px;">
         <%= t('news.posted_on', date: l(post.post_date || Date.today, format: :short)) %>
         &nbsp;<%= t('news.by') %> <a href="https://weekly-digest.ownyourdata.eu/<%= I18n.locale.to_s %>/user/<%= post.user_id.to_s %>"  style="color: #999999; text-decoration: undeline;"><%= User.find(post.user_id).name %></a>

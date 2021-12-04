@@ -5,14 +5,14 @@
     <%= csrf_meta_tags %>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','<%= ENV["GOOGLE_TOKEN"] %>');</script>
-    <%= stylesheet_link_tag    'application', media: 'all' %> <!--, 'data-turbolinks-track': 'reload' % > -->
-    <%= javascript_include_tag 'application' %> <!--, 'data-turbolinks-track': 'reload' % > -->
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <% if !@og.nil? %>
       <meta property="og:title" content="<%= @heading.to_s %>" />
       <meta property="og:url" content="https://weekly-digest.ownyourdata.eu/weekly/<%= @og_date %>" />
       <meta property="og:type"  content="blog" />
-      <meta property="og:image" content="<%= image_url 'MyDataLogo.png' %>" />
+      <meta property="og:image" content="<%= image_url 'oyd_t.png' %>" />
       <meta property="og:description" content="<%= @intro_text_plain %>" />
     <% end %>
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -27,97 +27,119 @@
 </script>
   </head>
 
-  <body data-spy="scroll" data-target="#myScrollspy" data-offset="15">
+  <body style="background-color: #F4F7FB;">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<%= ENV["GOOGLE_TOKEN"] %>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <div style="background-color: #F2F3F9;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12" style="min-height: 60px; margin-top: 20px;">
+    <div>
+      <div class="container" style="margin-top: 15px;">
+        <div class="row row-offcanvas row-offcanvas-right">
+          <div class="col-xs-12 col-sm-9">
             <div style="display: table;">
-              <a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" style="display: table-cell;"><%= image_tag 'oyd2.png', style: "height: 60px; margin: -20px -5px -10px -10px; vertical-align: text-bottom;", alt: "OwnYourData Logo" %></a>
+              <a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" style="display: table-cell;"><%= image_tag 'oyd_g.png', style: "height: 42px; margin: -20px 10px -5px 0px; vertical-align: text-bottom;", alt: "OwnYourData Logo" %></a>
               <div style="display: table-cell;">
-                <h1 class="visible-xs visible-sm hidden-md hiden-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large;"><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" class="title-link"><%= @heading_short.to_s %></a></h1>
-                <h1 class="hidden-xs hidden-sm visible-md visible-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large;"><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" class="title-link"><%= @heading.to_s %></a></h1>
+                <h1 class="visible-xs visible-sm hidden-md hiden-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large; font-weight: 800;"><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" class="title-link"><%= @heading_short.to_s %></a></h1>
+                <h1 class="hidden-xs hidden-sm visible-md visible-lg" style="text-align: left; margin-bottom: 10px; font-size: x-large; font-weight: 800;"><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('home');$('#stats_target_id').val('0');$('#stats_form').submit();" class="title-link"><%= @heading.to_s %></a></h1>
               </div>
-            </div>
-            <div style="float: right; white-space: nowrap;">
-                <% if logged_in?
-                       if params[:mode].to_s == "0" %>
-                          <%= link_to "Preview Mode", params.permit(:locale, :view, :id, :post), style: "vertical-align: top; color: #666;" %>
-                          <!--<span style="vertical-align: top; color: #666;">Preview Mode</span> -->
-                    <% else %>
-                          <%= link_to "Public Mode", params.permit(:locale, :mode, :view, :id, :post).merge(mode: '0'), style: "vertical-align: top; color: #666;" %>
-                          <!--<span style="vertical-align: top; color: #666;">Public Mode</span>-->
-                    <% end
-                   else %>
-                     <a href="https://www.ownyourdata.eu/" onmousedown="$('#stats_target').val('ownyourdata');$('#stats_target_id').val('');$('#stats_form').submit();" style="color: #42B58C; text-decoration: none;"><span style="text-decoration: underline;">OwnYourData.eu</span></a> 
-                <% end %>
-              |
-              <div class="btn-group dropdown" style="margin-left: -10px;">
-                <button type="button" class="fakelink_nounderline hidden-xs hidden-sm visible-md visible-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="glyphicon glyphicon-flag"></span>
-                  <span class="font-size-large" style="font-size:13px;"><%= t('footer.language') %></span> 
-                  <span class="caret"></span>
-                </button>
-                <button type="button" class="fakelink_nounderline visible-xs visible-sm hidden-md hidden-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="glyphicon glyphicon-flag"></span>
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-right">
-                  <li><%= link_to "English", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'en') %></li>
-                  <li><%= link_to "简体中文", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'cn') %></li>
-                  <li><%= link_to "Deutsch", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'de') %></li>
-                  <li><%= link_to "Français", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'fr') %></li>
-                  <li><%= link_to "Magyar", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'hu') %></li>
-                  <li><%= link_to "日本語", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'jp') %></li>
-                  <li><%= link_to "한국어", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'ko') %></li>
-                  <li><%= link_to "Polski", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'pl') %></li>
-                  <li><%= link_to "Português", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'pt') %></li>
-                </ul>
+              <div style="display: table-row;">
+                &nbsp;
+                <div style="display: table-cell; color: #2F4F4F;">
+                  Welcome to the OurData Weekly Digest, a news site dedicated to producing the best coverage from within the human-centred approach to personal data management.
+                </div>
               </div>
-              <% if logged_in? %>
-                |
-                <div class="btn-group dropdown" style="margin-left: -10px;">
-                  <button type="button" class="fakelink_nounderline" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="glyphicon glyphicon-user"></span>
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-right">
-                    <% if User.find(current_user).full_name.to_s == "" %>
-                        <li><span class="dropdown-text"><em><%= User.find(current_user).name.to_s %></em></span></li>
-                    <% else %>
-                        <li><span class="dropdown-text"><em><%= User.find(current_user).full_name.to_s %></em></span></li>
-                    <% end %>
-                    <% if params[:mode].to_s == "0" %>
-                           <li><%= link_to "switch to 'Public Mode'", params.permit(:locale, :view, :id, :post) %></li>
-                    <% else %>
-                           <li><%= link_to "switch to 'Preview Mode'", params.permit(:locale, :mode, :view, :id, :post).merge(mode: '0') %></li>
-                    <% end %>
-                    <li><%= link_to "Change Password", "/" + I18n.locale.to_s + "/change_pwd" + view_mode %></li>
-                    <li><%= link_to "Log Out", "/" + I18n.locale.to_s + "/logout" + view_mode %></li>
-                  </ul>
-                </div>              
+              <% if @tag.intro.to_s != "" %>
+                <div style="display: table-row;">
+                  &nbsp;
+                  <div style="display: table-cell; color: #2F4F4F; padding-top: 10px;">
+                    <%= @tag.intro.to_s.html_safe %>
+                  </div>
+                </div>
               <% end %>
+              <p>&nbsp;</p>
+              <div style="position: absolute; left: 17px; width: 100%;">
+                <a href="/<%= I18n.locale.to_s %>/tags" style="color: #42B58C; text-decoration: underline;">&larr; Back to all Tags</a>
+                <span style="float: right; padding-right: 30px; margin-top: 0; display: inline-flex;">
+                  <span class="hidden-xs hidden-sm visible-md visible-lg">
+                    <%= t('footer.language') %>: 
+                  </span>
+                  <span class="visible-xs visible-sm hidden-md hidden-lg">
+                    <span class="glyphicon glyphicon-flag"></span>
+                  </span>
+                  <div class="btn-group dropdown" style="margin-left: -10px;">
+                    <button type="button" class="fakelink_nounderline" style="margin-top: -5px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="font-size-large" style="font-size:13px; color: #42B58C; text-decoration: underline;">
+                        <%  case I18n.locale.to_s
+                            when "de" %>
+                              Deutsch
+                        <%  when "cn" %>
+                              简体中文
+                        <%  when "fr" %>
+                              Français
+                        <%  when "hu" %>
+                              Magyar
+                        <%  when "jp" %>
+                              日本語
+                        <%  when "ko" %>
+                              한국어
+                        <%  when "pl" %>
+                              Polski
+                        <%  when "pt" %>
+                              Português
+                        <%  else %>
+                              English
+                        <%  end %>
+                      </span> 
+                      <span class="caret" style="color: #42B58C;"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                      <li><%= link_to "English", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'en') %></li>
+                      <li><%= link_to "简体中文", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'cn') %></li>
+                      <li><%= link_to "Deutsch", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'de') %></li>
+                      <li><%= link_to "Français", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'fr') %></li>
+                      <li><%= link_to "Magyar", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'hu') %></li>
+                      <li><%= link_to "日本語", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'jp') %></li>
+                      <li><%= link_to "한국어", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'ko') %></li>
+                      <li><%= link_to "Polski", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'pl') %></li>
+                      <li><%= link_to "Português", params.permit(:locale, :mode, :view, :id, :post).merge(locale: 'pt') %></li>
+                    </ul>
+                  </div>
+                </span>
+              </div>
+              <p style="margin-bottom: -10px;">&nbsp;</p>
             </div>
+            <div style="background-color: white; padding: 0 50px 20px; margin: 20px 0 20px;">
+              <%= yield %>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+            <h3>About</h3>
+            <div style="color: #2F4F4F; font-size: small; margin-bottom: 7px;">This page is a summary from the <a href="https://mydataglobal.slack.com/" style="color: #42B58C; text-decoration: underline;">MyData Global Slack</a>, <a href="https://slashdot.org" style="color: #42B58C; text-decoration: underline;">Slashdot</a>, and <a href="https://identosphere.net/" style="color: #42B58C; text-decoration: underline;">Identosphere</a>. Postings and comments are owned by the respective user stated with each entry.</div>
+            <div style="color: #2F4F4F; font-size: small; display: inline;">See the <a href="https://www.ownyourdata.eu/en#mission" style="color: #42B58C; text-decoration: underline;">OwnYourData Mission Statement</a> for more information, and please consider <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="display: inline-block;"><input name="cmd" type="hidden" value="_s-xclick" /><input name="hosted_button_id" type="hidden" value="EWJH9VHJTLBX6" /><input title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" name="submit" type="submit" value="donating to OwnYourData" style="background: none!important; border: none; padding: 0!important; color: #42B58C; text-decoration: underline; cursor: pointer; display: inline; margin-bottom: 0;" /></form>.</div>
+            <div style="color: #2F4F4F; font-size: small; margin-top: 7px;">If you have any suggestions please don't hesitate to contact us at<br><a href="mailto:weekly-digest@ownyourdata.eu" style="color: #42B58C; text-decoration: underline;">weekly-digest@ownyourdata.eu</a></div>
+            <h3>Inbox</h3>
+            <div style="color: #2F4F4F; font-size: small; margin-bottom: 7px;">Subscribe here to receive the Weekly Digest by email:</div>
+
+            <% flash.each do |message_type, message| %>
+                <div class="alert alert-<%= message_type %>">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <%= message %>
+                </div>
+            <% end %>
+            <%= form_with url: subscribe_path, remote: false, data: { turbolinks: false, remote: false } do |form| %>
+                <div class="input-group" style="width: 100%;">                    
+                    <%= form.hidden_field :id, value: @og_date %>
+                    <%= form.text_field :email, class: "form-control", style: "border-radius: 0; margin-bottom: 5px;", placeholder: t('subscribe.email_address') %>
+                </div>
+                <%= form.button :submit, class: "btn btn-success btn-sm", data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Subscribe" } do %><%= t('subscribe.button') %><% end %>
+            <% end %>
+            <p>&nbsp;</p>
           </div>
         </div>
       </div>
     </div>
-    <hr style="margin-top: 0;">
-    <div class="container">
-      <%= yield %>
-      <% if controller_name != "static_pages" && controller_name != "subscriptions" %>
-        <div class="row" style="margin-top: 40px;">
-          <div class="col-md-12">
-            <p><a href="/<%= I18n.locale.to_s %>/<%= view_mode %>" onmousedown="$('#stats_target').val('start_page');$('#stats_target_id').val('0');$('#stats_form').submit();" style="margin-left: 15px;"><i class="fa fa-home" aria-hidden="true"></i> <%= t('general.to_start_page') %></a></p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <hr>
+
     <div class="container">
       <div class="row">
         <div class="col-md-8" style="margin: -10px 0 30px;">
-          &copy; 2020 <a href="https://www.ownyourdata.eu" onmousedown="$('#stats_target').val('oyd_footer');$('#stats_target_id').val('');$('#stats_form').submit();">OwnYourData.eu</a>
+          &copy; 2021 <a href="https://www.ownyourdata.eu" onmousedown="$('#stats_target').val('oyd_footer');$('#stats_target_id').val('');$('#stats_form').submit();">OwnYourData.eu</a>
           <a href="https://www.ownyourdata.eu/en/imprint/" style="margin: 0 10px;" onmousedown="$('#stats_target').val('imprint');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('footer.imprint') %></a>
           <a href="https://www.ownyourdata.eu/<%= t('footer.privacy_page') %>/" onmousedown="$('#stats_target').val('privacy');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('footer.privacy') %></a>
           <a href="/<%= I18n.locale.to_s %>/contributor" style="margin: 0 10px;" onmousedown="$('#stats_target').val('contributor');$('#stats_target_id').val('');$('#stats_form').submit();"><%= t('footer.contributor') %></a>

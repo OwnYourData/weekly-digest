@@ -23,7 +23,7 @@ Rails.application.routes.draw do
         match '/users',         to: 'users#index',               via: 'get'
         match '/user/:id',      to: 'users#show',                via: 'get'
         match '/tags',          to: 'tags#index',                via: 'get'
-        match '/tag/:id',       to: 'tags#show',                 via: 'get'
+        match '/tag/:id',       to: 'tags#show',                 via: 'get', as: "tag"
         match '/apps',          to: 'apps#index',                via: 'get'
         match '/app/:id',       to: 'apps#show',                 via: 'get'
         match '/tools',         to: 'apps#index',                via: 'get'

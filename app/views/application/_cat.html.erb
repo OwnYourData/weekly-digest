@@ -1,0 +1,20 @@
+<%  case cat.category.category_type.to_s
+    when "1"
+        case cat.category.category.to_s
+        when "simple" %>
+            <span class="label label-simple">Simple read</span>
+    <%  when "intermediate" %>
+            <span class="label label-intermediate">Intermediate read</span>
+    <%  when "advanced" %>
+            <span class="label label-advanced">Advanced read</span>
+    <%  end
+    when "2"
+        case cat.category.category.to_s
+        when "individual" %>
+            <span class="label label-ind">Individuals</span>
+    <%  when "business" %>
+            <span class="label label-biz">Business & Government</span>
+    <%  when "developer" %>
+            <span class="label label-dev">Developers</span>
+    <%  end
+    end %>

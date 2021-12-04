@@ -1,6 +1,7 @@
 class SubscriptionsController < ApplicationController
     def create
         email_str = params[:email].to_s.strip
+        puts "Email: " + email_str.to_s
         if email_str =~ URI::MailTo::EMAIL_REGEXP
             @subscription = Subscription.find_by_email(email_str)
             if @subscription.nil?

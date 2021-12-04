@@ -1,5 +1,6 @@
 <div class="quest-elements">
     <div class="post-title">
+        <p><%= render partial: "cat", locals:{ post_id: question3.id }, collection: question3.post_categories %></p>
         <a href="<%= question3.url %>" onmousedown="$('#stats_target').val('question');$('#stats_target_id').val('<%= question3.id %>');$('#stats_form').submit();" target="_blank"><%= question3.title %></a>
         <!--<div class="dropdown" style="display: inline; cursor: pointer;">
             <div id="Label_<%= question3.id %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline;">
@@ -55,7 +56,7 @@
                     &nbsp;<a href="<%= question3.media_url %>" onmousedown="$('#stats_target').val('slack');$('#stats_target_id').val('<%= question3.id %>');$('#stats_form').submit();" target="_blank" style="font-size: small;" class="post-tag"><%= t('news.show_on') %> <% if question3.media_type == "mydata" %>MyData Slack<% else %><%= question3.media_type.to_s %><% end %></a>
             <%  end %>
         </span>
-        &nbsp;<%= render partial: "tag2", locals:{stats_source: "post", stats_source_id: question3.id}, collection: question3.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
+        &nbsp;<%= render partial: "tag2", locals:{stats_source: "post", stats_source_id: question3.id, tag_id: ""}, collection: question3.posting_tags.sort_by { |item| Tag.find(item.tag_id).tag } %>
         <%  if logged_in? %>
             <%= link_to "#", data: { toggle: "modal", target: "#addTagModal"}, onclick: '$("#tag").val("");$("#tag_post_id").val("' + question3.id.to_s + '");' do %><i class="fa fa-plus" aria-hidden="true"></i> add tag<% end %>
         <% end %>

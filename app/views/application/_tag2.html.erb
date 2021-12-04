@@ -1,4 +1,4 @@
 <a class="post-tag" href="/<%= I18n.locale.to_s %>/tag/<%= tag2.tag_id.to_s + view_mode %>" onmousedown="$('#stats_source').val('<%= local_assigns[:stats_source] %>');$('#stats_source_id').val('<%= local_assigns[:stats_source_id] %>');$('#stats_target').val('tag');$('#stats_target_id').val('<%= tag2.tag_id %>');$('#stats_form').submit();">#<%= Tag.find(tag2.tag_id).tag.to_s %></a>
     <%  if logged_in? %>
-    		<%= link_to delete_tag_url(id: tag2.id) do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
+    		<%= link_to delete_tag_url(id: tag2.id, tag_id: tag_id, cat: local_assigns[:stats_source]) do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
     <% end %>&nbsp;&nbsp;

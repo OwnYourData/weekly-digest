@@ -387,7 +387,8 @@ class NewsController < ApplicationController
                         thanked: params[:thanked].to_i,
                         monitored_channels: params[:monitored_channels].to_i,
                         monitored_channel_names: params[:monitored_channel_names].to_s)
-                end                    
+                end
+
             else
                 @weekly = Weekly.find(params[:weekly_id])
                 @weekly.update_attributes(
@@ -488,7 +489,7 @@ class NewsController < ApplicationController
         @heading_short = t('general.title_short')
 
         @weekly_id = params[:id]
-        @post_id = params[:post_id]
+        @post_id = params[:post_id]            
         @post_type = params[:post]
         @post_type_header = ""
         case @post_type.to_s
@@ -500,6 +501,9 @@ class NewsController < ApplicationController
         @task = "Edit"
 
         @post = Post.find(@post_id)
+        if @weekly_id.nil?
+            @weekly_id = @post.weekly_id
+        end
         @slack_url = @post.media_url
         @media_type = @post.media_type
         @post_date = @post.post_date
@@ -508,6 +512,27 @@ class NewsController < ApplicationController
         @title = @post.title
         @url = @post.url
         @user = User.find(@post.user_id).name.to_s
+        @pcs = PostCategory.where(post_id: @post_id)
+        @cat_1 = ""
+        @cat_2 = ""
+        if PostCategory.where(post_id: @post_id, category_id: 1).count > 0
+            @cat_2 = "simple"
+        end
+        if PostCategory.where(post_id: @post_id, category_id: 2).count > 0
+            @cat_2 = "intermediate"
+        end
+        if PostCategory.where(post_id: @post_id, category_id: 3).count > 0
+            @cat_2 = "advanced"
+        end
+        if PostCategory.where(post_id: @post_id, category_id: 4).count > 0
+            @cat_1 = "individual"
+        end
+        if PostCategory.where(post_id: @post_id, category_id: 5).count > 0
+            @cat_1 = "business"
+        end
+        if PostCategory.where(post_id: @post_id, category_id: 6).count > 0
+            @cat_1 = "developer"
+        end
 
         respond_to do |format|
             format.html { render layout: "application3", template: "news/edit_post" }
@@ -593,10 +618,10 @@ class NewsController < ApplicationController
                     weekly_id: params[:weekly_id],
                     user_id: User.find_by_name(params[:user]).id,
                     author_id: current_user,
-                    status: status).save
+                    status: status)
+                @post.save
             else
                 @post.update_attributes(
-                    category: params[:post_type].to_s,
                     description: params[:description].to_s,
                     lang: params[:lang].to_s,
                     media_type: params[:media_type].to_s,
@@ -609,33 +634,84 @@ class NewsController < ApplicationController
                     author_id: current_user,
                     status: status)
             end
+
+            PostCategory.where(post_id: @post.id).destroy_all
+            case params[:cat_1].to_s
+            when "individual"
+                PostCategory.new(post_id: @post.id, category_id: 4).save
+            when "business"
+                PostCategory.new(post_id: @post.id, category_id: 5).save
+            when "developer"
+                PostCategory.new(post_id: @post.id, category_id: 6).save
+            end
+            case params[:cat_2].to_s
+            when "simple"
+                PostCategory.new(post_id: @post.id, category_id: 1).save
+            when "intermediate"
+                PostCategory.new(post_id: @post.id, category_id: 2).save
+            when "advanced"
+                PostCategory.new(post_id: @post.id, category_id: 3).save
+            end
         when "delete"
             @post = Post.find(params[:post_id]) rescue nil
             if !@post.nil?
                 @post.destroy
             end
         end
-        redirect_to weekly_url(id: Weekly.find(params[:weekly_id]).release, mode: 0)
+        if params[:weekly_id].to_s == ""
+            redirect_to root_url
+        else
+            redirect_to weekly_url(id: Weekly.find(params[:weekly_id]).release, mode: 0)
+        end
     end
 
     def add_tag
-        @post = Post.find(params[:tag_post_id])
-        if @post.nil?
-            redirect_to root_url
-        end
-        @tag = Tag.find_by_tag(params[:tag].to_s)
-        if @tag.nil?
-            if params[:tag].to_s.strip == ""
-                redirect_to weekly_url(id: Weekly.find(weekly_id).release, mode: 0)
-                return
+        if params[:tag_app_id].to_s != ""
+            @app = App.find(params[:tag_app_id])
+            if @app.nil?
+                redirect_to root_url
             end
-            @tag = Tag.new(tag: params[:tag].to_s, status: 1)
-            @tag.save
+            @tag = Tag.find_by_tag(params[:tag].to_s)
+            if @tag.nil?
+                if params[:tag].to_s.strip == ""
+                    if params[:tag_id].to_s == ""
+                        redirect_to weekly_url(id: Weekly.find(weekly_id).release, mode: 0)
+                    else
+                        redirect_to tag_url(id: params[:tag_id], mode: 0)
+                    end
+                    return
+                end
+                @tag = Tag.new(tag: params[:tag].to_s, status: 1)
+                @tag.save
+            end
+            AppTag.new(app_id: @app.id, tag_id: @tag.id).save
+        else
+            @post = Post.find(params[:tag_post_id])
+            if @post.nil?
+                redirect_to root_url
+            end
+            @tag = Tag.find_by_tag(params[:tag].to_s)
+            if @tag.nil?
+                if params[:tag].to_s.strip == ""
+                    if params[:tag_id].to_s == ""
+                        redirect_to weekly_url(id: Weekly.find(weekly_id).release, mode: 0)
+                    else
+                        redirect_to tag_url(id: params[:tag_id], mode: 0)
+                    end
+                    return
+                end
+                @tag = Tag.new(tag: params[:tag].to_s, status: 1)
+                @tag.save
+            end
+            PostingTag.new(post_id: @post.id, tag_id: @tag.id).save
         end
-        PostingTag.new(post_id: @post.id, tag_id: @tag.id).save
-        weekly_id = @post.weekly_id
-        redirect_to weekly_url(id: Weekly.find(weekly_id).release, mode: 0)
-
+        if params[:tag_id].to_s == ""
+            weekly_id = @post.weekly_id
+            redirect_to weekly_url(id: Weekly.find(weekly_id).release, mode: 0)
+        else
+            redirect_to tag_url(id: params[:tag_id], mode: 0)
+        end
+    
     end
 
     def delete_tag
@@ -643,14 +719,32 @@ class NewsController < ApplicationController
             redirect_to root_url
             return
         end
-        @pt = PostingTag.find(params[:id])
-        if @pt.nil?
-            redirect_to root_url(mode: 0)
-            return
+        if params[:cat].to_s == "post"
+            @pt = PostingTag.find(params[:id])
+            if @pt.nil?
+                redirect_to root_url(mode: 0)
+                return
+            end
+            weekly_id = @pt.post.weekly_id
+            @pt.destroy
+        else
+            @at = AppTag.find(params[:id])
+            if @at.nil?
+                redirect_to root_url(mode: 0)
+                return
+            end
+            weekly_id = nil
+            @at.destroy
+        end            
+        if params[:tag_id].to_s == ""
+            if weekly_id.nil?
+                redirect_to root_url(mode: 0)
+            else
+                redirect_to weekly_url(id: Weekly.find(weekly_id).release, mode: 0)
+            end
+        else
+            redirect_to tag_url(id: params[:tag_id], mode: 0)
         end
-        weekly_id = @pt.post.weekly_id
-        @pt.destroy
-        redirect_to weekly_url(id: Weekly.find(weekly_id).release, mode: 0)
     end
 
     def current_channels

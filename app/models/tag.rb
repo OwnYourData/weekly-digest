@@ -4,6 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  group      :string
+#  intro      :text
 #  status     :integer
 #  tag        :string
 #  created_at :datetime         not null

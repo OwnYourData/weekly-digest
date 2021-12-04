@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_01_212043) do
+ActiveRecord::Schema.define(version: 2021_10_04_135940) do
+
+  create_table "app_categories", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "app_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "app_rating_items", force: :cascade do |t|
     t.integer "app_rating_id"
@@ -48,6 +55,20 @@ ActiveRecord::Schema.define(version: 2021_05_01_212043) do
     t.string "license"
     t.integer "user_id"
     t.string "image_url"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category"
+    t.integer "category_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_categories", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "posting_tags", force: :cascade do |t|
@@ -146,6 +167,7 @@ ActiveRecord::Schema.define(version: 2021_05_01_212043) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "group"
+    t.text "intro"
   end
 
   create_table "users", force: :cascade do |t|

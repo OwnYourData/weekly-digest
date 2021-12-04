@@ -5,6 +5,8 @@
 #  id                      :integer          not null, primary key
 #  channels                :integer
 #  intro                   :text
+#  invite                  :text
+#  invite_date             :datetime
 #  monitored_channel_names :text
 #  monitored_channels      :integer
 #  new_users               :integer
