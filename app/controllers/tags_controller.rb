@@ -106,7 +106,7 @@ class TagsController < ApplicationController
             @heading_short = "#" + @tag.tag.to_s
             @counter = 0
             case tag_id.to_s
-            when "339", "89", "201", "439"
+            when "339", "89", "201", "439", "420"
                 @posts = Post.where(lang: lang_array).where(id: PostingTag.where(tag_id: tag_id).pluck(:post_id)).as_json
                 @apps = App.where(id: AppTag.where(tag_id: tag_id).pluck(:app_id).uniq).as_json
 
