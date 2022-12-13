@@ -54,7 +54,7 @@ gem 'listen', '>= 3.0.5', '< 3.2'
 gem 'sqlite3'
 
 # update for security fixes
-gem 'loofah', '~> 2.3', '>= 2.3.1'
+gem 'loofah', '~> 2.19'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
